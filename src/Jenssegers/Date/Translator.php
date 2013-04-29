@@ -3,11 +3,11 @@
 class Translator {
 
     /**
-     * The default locale.
+     * The current locale.
      *
      * @var  string
      */
-    protected $locale = 'en';
+    protected $locale;
 
     /**
      * The array of loaded translation groups.

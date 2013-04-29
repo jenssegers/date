@@ -130,7 +130,6 @@ class Date extends DateTime {
         $date->setTime($hour ?: $date->getHour(), $minute, $second);
 
         return $date;
-
     }
 
     /**
@@ -238,9 +237,10 @@ class Date extends DateTime {
      */
     public function format($format)
     {
+        // Check for predefined format
         if (array_key_exists($format, $this->formats))
         {
-            return parent::format($this->formats[$format]);
+            $format = $this->formats[$format];
         }
 
         return parent::format($format);
