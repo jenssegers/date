@@ -48,9 +48,9 @@ class Date extends DateTime {
 
         // Create Date from timestamp
         if (is_int($time))
-    	{
-    		$time = "@$time";
-    	}
+        {
+            $time = "@$time";
+        }
 
         parent::__construct($time, $timezone);
     }
@@ -68,70 +68,70 @@ class Date extends DateTime {
     }
 
     /**
-	 * Create and return a new Date instance with defined year, month, and day.
-	 * 
-	 * @param  int  $year
-	 * @param  int  $month
-	 * @param  int  $day
-	 * @param  string|DateTimeZone  $timezone
-	 * @return Date
-	 */
+     * Create and return a new Date instance with defined year, month, and day.
+     * 
+     * @param  int  $year
+     * @param  int  $month
+     * @param  int  $day
+     * @param  string|DateTimeZone  $timezone
+     * @return Date
+     */
     public static function makeFromDate($year = null, $month = null, $day = null, $timezone = null)
-	{
-		return static::makeFromDateTime($year, $month, $day, null, null, null, $timezone);
-	}
+    {
+        return static::makeFromDateTime($year, $month, $day, null, null, null, $timezone);
+    }
 
-	/**
-	 * Create and return a new Date instance with defined hour, minute, and second.
-	 * 
-	 * @param  int  $hour
-	 * @param  int  $minute
-	 * @param  int  $second
-	 * @param  string|DateTimeZone  $timezone
-	 * @return Date
-	 */
-	public static function makeFromTime($hour = null, $minute = null, $second = null, $timezone = null)
-	{
-		return static::makeFromDateTime(null, null, null, $hour, $minute, $second, $timezone);
-	}
+    /**
+     * Create and return a new Date instance with defined hour, minute, and second.
+     * 
+     * @param  int  $hour
+     * @param  int  $minute
+     * @param  int  $second
+     * @param  string|DateTimeZone  $timezone
+     * @return Date
+     */
+    public static function makeFromTime($hour = null, $minute = null, $second = null, $timezone = null)
+    {
+        return static::makeFromDateTime(null, null, null, $hour, $minute, $second, $timezone);
+    }
 
-	/**
-	 * Create and return a new Date instance with defined year, month, day, hour, minute, and second.
-	 * 
-	 * @param  int  $year
-	 * @param  int  $month
-	 * @param  int  $day
-	 * @param  int  $hour
-	 * @param  int  $minute
-	 * @param  int  $second
-	 * @param  string|DateTimeZone  $timezone
-	 * @return Date
-	 */
-	public static function makeFromDateTime($year = null, $month = null, $day = null, $hour = null, $minute = null, $second = null, $timezone = null)
-	{
-		$date = new static(null, $timezone);
+    /**
+     * Create and return a new Date instance with defined year, month, day, hour, minute, and second.
+     * 
+     * @param  int  $year
+     * @param  int  $month
+     * @param  int  $day
+     * @param  int  $hour
+     * @param  int  $minute
+     * @param  int  $second
+     * @param  string|DateTimeZone  $timezone
+     * @return Date
+     */
+    public static function makeFromDateTime($year = null, $month = null, $day = null, $hour = null, $minute = null, $second = null, $timezone = null)
+    {
+        $date = new static(null, $timezone);
 
-		$date->setDate($year ?: $date->getYear(), $month ?: $date->getMonth(), $day ?: $date->getDay());
+        $date->setDate($year ?: $date->getYear(), $month ?: $date->getMonth(), $day ?: $date->getDay());
 
-		// If no hour was given then we'll default the minute and second to the current
-		// minute and second. If a date was given and minute or second are null then
-		// we'll set them to 0, mimicking PHPs behaviour.
-		if (is_null($hour))
-		{
-			$minute = $minute ?: $date->getMinute();
-			$second = $second ?: $date->getSecond();
-		}
-		else
-		{
-			$minute = $minute ?: 0;
-			$second = $second ?: 0;
-		}
+        // If no hour was given then we'll default the minute and second to the current
+        // minute and second. If a date was given and minute or second are null then
+        // we'll set them to 0, mimicking PHPs behaviour.
+        if (is_null($hour))
+        {
+            $minute = $minute ?: $date->getMinute();
+            $second = $second ?: $date->getSecond();
+        }
+        else
+        {
+            $minute = $minute ?: 0;
+            $second = $second ?: 0;
+        }
 
-		$date->setTime($hour ?: $date->getHour(), $minute, $second);
+        $date->setTime($hour ?: $date->getHour(), $minute, $second);
 
-		return $date;
+        return $date;
 
-	}
+    }
 
     /**
      * Create and return the current Date instance.
@@ -195,7 +195,7 @@ class Date extends DateTime {
      */
     public function unix()
     {
-    	return $this->getTimestamp();
+        return $this->getTimestamp();
     }
 
     public function timespan($time = null, $timezone = null)
@@ -203,31 +203,31 @@ class Date extends DateTime {
         // Get translator
         $lang = $this->getTranslator();
 
-    	// Create Date instance if needed
-    	if (!$time instanceof Date)
-    	{
-    		$time = new static($time, $timezone);
-    	}
+        // Create Date instance if needed
+        if (!$time instanceof Date)
+        {
+            $time = new static($time, $timezone);
+        }
 
-    	$units = array('y' => 'year', 'm' => 'month', 'w' => 'week', 'd' => 'day', 'h' => 'hour', 'i' => 'minute', 's' => 'second');
+        $units = array('y' => 'year', 'm' => 'month', 'w' => 'week', 'd' => 'day', 'h' => 'hour', 'i' => 'minute', 's' => 'second');
 
-    	// Get DateInterval and cast to array
-    	$interval = (array) $this->diff($time);
+        // Get DateInterval and cast to array
+        $interval = (array) $this->diff($time);
 
-    	// Get weeks
-    	$interval['w'] = (int) ($interval['d'] / 7);
-    	$interval['d'] = $interval['d'] % 7;
+        // Get weeks
+        $interval['w'] = (int) ($interval['d'] / 7);
+        $interval['d'] = $interval['d'] % 7;
 
-    	// Get ready to build
-    	$str = array();
+        // Get ready to build
+        $str = array();
 
-    	// Loop all units and build string
-    	foreach ($units as $k=>$unit)
-    	{
-    		$str[] = $interval[$k] . ' ' . $lang->choice("date::date.$unit", $interval[$k]);
-    	}
+        // Loop all units and build string
+        foreach ($units as $k=>$unit)
+        {
+            $str[] = $interval[$k] . ' ' . $lang->choice("date::date.$unit", $interval[$k]);
+        }
 
-    	return implode(', ', $str);
+        return implode(', ', $str);
     }
 
     /**
