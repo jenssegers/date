@@ -39,7 +39,7 @@ You can create Date objects just like the DateTime object (http://www.php.net/ma
 	$date = new Date('2000-01-31 12:00:00');
 
 	// With time zone
-	$date = new DateTime('2000-01-31', new DateTimeZone('Europe/Brussels'));
+	$date = new Date('2000-01-31', new DateTimeZone('Europe/Brussels'));
 
 	// Relative
 	$date = new Date('now');
