@@ -54,7 +54,7 @@ This is also available from the make or forge static method:
 
 	$date = Date::now();
 
-Creating a Date from timestamp is also possible:
+Creating a Date from a timestamp:
 
 	$date = new Date(1367186296);
 
