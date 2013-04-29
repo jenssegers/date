@@ -23,6 +23,10 @@ Add the service provider in `app/config/app.php`:
 
     'Jenssegers\Date\DateServiceProvider',
 
+And also add an alias:
+
+	'Date'            => 'Jenssegers\Date\Date',
+
 Usage
 -----
 
