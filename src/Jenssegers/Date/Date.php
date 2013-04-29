@@ -1,6 +1,8 @@
 <?php namespace Jenssegers\Date;
 
 use \DateTime;
+use \DateInterval;
+use \DateTimeZone;
 
 class Date extends DateTime {
 
@@ -141,6 +143,54 @@ class Date extends DateTime {
     public static function now($timezone = null)
     {
         return new static(null, $timezone);
+    }
+
+    /** 
+     * Adds an amount of days, months, years, hours, minutes and seconds to a Date object.
+     *
+     * @param string|DateInterval $interval
+     * @return Date
+     */
+    public function add($interval)
+    {
+        if (is_string($interval))
+        {
+            // Check for ISO 8601
+            if (strtoupper(substr($interval, 0, 1)) == 'P')
+            {
+                $interval = new DateInterval($interval);
+            }
+            else
+            {
+                $interval = DateInterval::createFromDateString($interval);
+            }
+        }
+
+        return parent::add($interval);
+    }
+
+    /** 
+     * Subtracts an amount of days, months, years, hours, minutes and seconds from a DateTime object.
+     *
+     * @param string|DateInterval $interval
+     * @return Date
+     */
+    public function sub($interval)
+    {
+        if (is_string($interval))
+        {
+            // Check for ISO 8601
+            if (strtoupper(substr($interval, 0, 1)) == 'P')
+            {
+                $interval = new DateInterval($interval);
+            }
+            else
+            {
+                $interval = DateInterval::createFromDateString($interval);
+            }
+        }
+
+        return parent::sub($interval);
     }
 
     /**

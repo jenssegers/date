@@ -46,15 +46,16 @@ You can create Date objects just like the DateTime object (http://www.php.net/ma
     // With time zone
     $date = new Date('2000-01-31', new DateTimeZone('Europe/Brussels'));
 
-    // Relative
+You can skip the creation of a DateTimeZone object:
+
+    $date = new DateTime('2000-01-31', 'Europe/Brussels');
+
+Create Date objects from a relative format (http://www.php.net/manual/en/datetime.formats.relative.php):
+
     $date = new Date('now');
     $date = new Date('today');
     $date = new Date('+1 hour');
     $date = new Date('next monday');
-
-You can skip the creation of a DateTimeZone object:
-
-    $date = new DateTime('2000-01-31', 'Europe/Brussels');
 
 This is also available from the make or forge static method:
 
@@ -87,11 +88,22 @@ Get a human readable output:
 
     echo $date->ago(); // 5 days ago
 
-Or calculate a timespan:
+Calculate a timespan:
 
     $date = new Date('+1000 days');
     echo Date::now()->timespan($date);
     // 2 years, 8 months, 3 weeks, 5 days, 0 hour, 0 minute, 0 second
+
+Manipulating Dates
+------------------
+
+You can manipulate by using the *add* and *sub* methods, with relative intervals (http://www.php.net/manual/en/datetime.formats.relative.php):
+
+    $yesterday = Date::now()->sub('1 day');
+    $tomorrow  = Date::now()->add('1 day');
+
+    // ISO 8601
+    $date = Date::now()->add('P2Y4DT6H8M');
 
 Localization
 ------------
