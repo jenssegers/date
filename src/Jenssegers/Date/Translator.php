@@ -7,7 +7,7 @@ class Translator {
      *
      * @var  string
      */
-    protected $locale;
+    protected $locale = 'en';
 
     /**
      * The array of loaded translation groups.

@@ -20,13 +20,6 @@ class Date extends DateTime {
     );
 
     /**
-     * The default locale.
-     *
-     * @var  string
-     */
-    protected $locale = "en";
-
-    /**
      * The Translator implementation.
      *
      * @var Translator
@@ -220,9 +213,9 @@ class Date extends DateTime {
             $difference = $difference / $values[$i];
         }
 
-        // Round the difference.
         $difference = round($difference);
 
+        // Future or past?
         if ($since->getTimestamp() < $this->getTimestamp())
         {
             $suffix = $lang->get("date::date.from now");
@@ -329,7 +322,6 @@ class Date extends DateTime {
         if (!static::$translator)
         {
             static::$translator = new Translator;
-            static::$translator->setLocale($this->locale);
         }
 
         return static::$translator;
