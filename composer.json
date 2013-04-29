@@ -1,0 +1,22 @@
+{
+    "name": "jenssegers/date",
+    "description": "A date library to help you work with dates",
+    "keywords": ["laravel","date","time","datetime"],
+    "authors": [
+        {
+            "name": "Jens Segers",
+            "email": "hello@jenssegers.be"
+        }
+    ],
+    "license" : "MIT",
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.x"
+    },
+    "autoload": {
+        "psr-0": {
+            "Jenssegers\\Date": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
