@@ -12,13 +12,26 @@ class DateServiceProvider extends ServiceProvider {
     protected $defer = false;
 
     /**
+     * Bootstrap the application events.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->package('jenssegers/date');
+
+        // Use the Laravel translator
+        Date::setTranslator($this->app['translator']);
+    }
+
+    /**
      * Register the service provider.
      *
      * @return void
      */
     public function register()
     {
-        //
+
     }
 
     /**

@@ -19,11 +19,16 @@ Add the package to your `composer.json` or install manually.
 
 Run `composer update` to download and install the package.
 
+Laravel
+-------
+
+This package is compatible with Laravel 4 (but not limited to). If Laravel is detected, the language library from Laravel will be used instead of an own implementation.
+
 Add the service provider in `app/config/app.php`:
 
     'Jenssegers\Date\DateServiceProvider',
 
-And also add an alias:
+And add an alias:
 
 	'Date'            => 'Jenssegers\Date\Date',
 
@@ -87,3 +92,14 @@ Or calculate a timespan:
 	$date = new Date('+1000 days');
 	echo Date::now()->timespan($date);
 	// 2 years, 8 months, 3 weeks, 5 days, 0 hour, 0 minute, 0 second
+
+Localization
+------------
+
+Language strings are stored in files within the *lang* directory. By using a "pipe" character, you may separate the singular and plural forms of a string:
+
+	'hour'		=> 'hour|hours',
+	'minute'	=> 'minute|minutes',
+	'second'	=> 'second|seconds',
+
+If you are using Laravel, the locale set in `app/config/app.php` will be used.

@@ -14,7 +14,8 @@
     },
     "autoload": {
         "psr-0": {
-            "Jenssegers\\Date": "src/"
+            "Jenssegers\\Date": "src/",
+            "Date": "src/"
         }
     },
     "minimum-stability": "dev"

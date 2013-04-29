@@ -5,7 +5,7 @@ use \DateTime;
 class Date extends DateTime {
 
     /**
-     * Predefined formats
+     * Predefined formats.
      *
      * @var array
      */
@@ -13,7 +13,23 @@ class Date extends DateTime {
         'datetime' => 'Y-m-d H:i:s',
         'date' => 'Y-m-d',
         'time' => 'H:i:s',
+        'long' => 'F jS, Y \a\\t g:ia',
+        'short' => 'M j, Y',
     );
+
+    /**
+     * The default locale.
+     *
+     * @var  string
+     */
+    protected $locale = "en";
+
+    /**
+     * The Translator implementation.
+     *
+     * @var Translator
+     */
+    protected static $translator;
 
     /**
      * Returns new DateTime object.
@@ -136,6 +152,9 @@ class Date extends DateTime {
      */
     public function ago($since = null)
     {
+        // Get translator
+        $lang = $this->getTranslator();
+
         if (is_null($since)) 
         {
             $since = new static("now", $this->getTimezone());
@@ -157,22 +176,16 @@ class Date extends DateTime {
 
         if ($since->getTimestamp() < $this->getTimestamp())
         {
-            $suffix = 'from now';
+            $suffix = $lang->get("date::date.from now");
         }
         else
         {
-            $suffix = 'ago';
+            $suffix = $lang->get("date::date.ago");
         }
 
-        // Apply plural
         $unit = $units[$i];
 
-        if ($difference != 1)
-        {
-            $unit .= 's';
-        }
-
-        return $difference.' '.$unit.' '.$suffix;
+        return $difference . ' ' . $lang->choice("date::date.$unit", $difference) . ' ' . $suffix;
     }
 
     /** 
@@ -187,6 +200,9 @@ class Date extends DateTime {
 
     public function timespan($time = null, $timezone = null)
     {
+        // Get translator
+        $lang = $this->getTranslator();
+
     	// Create Date instance if needed
     	if (!$time instanceof Date)
     	{
@@ -208,7 +224,7 @@ class Date extends DateTime {
     	// Loop all units and build string
     	foreach ($units as $k=>$unit)
     	{
-    		$str[] = $interval[$k] . ' ' . $unit . ($interval[$k] > 1 ? 's' : '');
+    		$str[] = $interval[$k] . ' ' . $lang->choice("date::date.$unit", $interval[$k]);
     	}
 
     	return implode(', ', $str);
@@ -250,6 +266,33 @@ class Date extends DateTime {
             $method = str_replace("forge", "make", $method);
             return call_user_func_array(array("self", $method), $args);
         }
+    }
+
+    /**
+     * Return the Translator implementation
+     *
+     * @return Translator
+     */
+    protected function getTranslator()
+    {
+        // Use own implementation as fallback
+        if (!static::$translator)
+        {
+            static::$translator = new Translator;
+            static::$translator->setLocale($this->locale);
+        }
+
+        return static::$translator;
+    }
+
+    /**
+     * Set the Translator implementation
+     *
+     * @param Translator  $translator
+     */
+    public static function setTranslator($translator)
+    {
+        static::$translator = $translator;
     }
 
 }
