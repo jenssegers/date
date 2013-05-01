@@ -5,6 +5,8 @@ A date library to help you work with dates.
 
 This library was inspired by jasonlewis/expressive-date and CodeIgniter.
 
+[![Build Status](https://travis-ci.org/segersjens/Laravel-Date.png?branch=master)](https://travis-ci.org/segersjens/Laravel-Date)
+
 Installation
 ------------
 
