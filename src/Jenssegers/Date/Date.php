@@ -15,8 +15,17 @@ class Date extends DateTime {
         'datetime' => 'Y-m-d H:i:s',
         'date' => 'Y-m-d',
         'time' => 'H:i:s',
-        'long' => 'F jS, Y \a\\t g:ia',
+        'long' => 'F jS, Y \a\\t H:i',
         'short' => 'M j, Y',
+        'day' => 'd',
+        'month' => 'm',
+        'year' => 'Y',
+        'hour' => 'H',
+        'minute' => 'i',
+        'second' => 's',
+        'dayofweek' => 'l',
+        'daysinmonth' => 't',
+        'dayofyear' => 'z'
     );
 
     /**
@@ -240,6 +249,13 @@ class Date extends DateTime {
         return $this->getTimestamp();
     }
 
+    /** 
+     * Gets the a timespan.
+     *
+     * @param Date $time 
+     * @param string|DateTimeZone $timezone
+     * @return int
+     */
     public function timespan($time = null, $timezone = null)
     {
         // Get translator
@@ -290,6 +306,79 @@ class Date extends DateTime {
     }
 
     /**
+     * Get a date attribute.
+     *
+     * @param  string  $attribute
+     * @return mixed
+     */
+    public function get($attribute)
+    {
+        $attribute = strtolower($attribute);
+
+        // Without leading zero
+        switch ($attribute)
+        {
+            case 'hour':
+            case 'hours':
+                return $this->format('G');
+                break;
+            case 'minute':
+            case 'minutes':
+                return $this->format('i');
+                break;
+            case 'second':
+            case 'seconds':
+                return $this->format('s');
+                break;
+        }
+
+        if (array_key_exists($attribute, $this->formats))
+        {
+            return $this->format($attribute);
+        }
+
+        throw new \InvalidArgumentException("The date attribute '$attribute' could not be found.");
+    }
+
+    /**
+     * Set a date attribute.
+     *
+     * @param  string  $attribute
+     * @return mixed
+     */
+    protected function set($attribute, $value)
+    {
+        $attribute = strtolower($attribute);
+
+        switch ($attribute)
+        {
+            case 'day':
+                return $this->setDate($this->getYear(), $this->getMonth(), $value);
+                break;
+            case 'month':
+                return $this->setDate($this->getYear(), $value, $this->getDay());
+                break;
+            case 'year':
+                return $this->setDate($value, $this->getMonth(), $this->getDay());
+                break;
+            case 'hour':
+            case 'hours':
+                return $this->setTime($value, $this->getMinute(), $this->getSecond());
+                break;
+            case 'minute':
+            case 'minutes':
+                return $this->setTime($this->getHour(), $value, $this->getSecond());
+                break;
+            case 'second':
+            case 'seconds':
+                return $this->setTime($this->getHour(), $this->getMinute(), $value);
+                break;
+        }
+
+        throw new \InvalidArgumentException("The date attribute '$attribute' could not be set.");
+    }
+
+    /**
      * Sets the time zone for the Date object
      *
      * @param  string|DateTimeZone  $timezone
@@ -328,6 +417,41 @@ class Date extends DateTime {
             $method = str_replace("forge", "make", $method);
             return call_user_func_array(array("self", $method), $args);
         }
+    }
+
+    /**
+     * Alias magic
+     */
+    public function __call($method, $args)
+    {
+        $type = substr($method, 0, 3);
+        $what = substr($method, 3);
+
+        if ($type == 'get')
+        {
+            return $this->get($what);
+        }
+
+        if ($type == 'set')
+        {
+            return $this->set($what, $args[0]);
+        }
+    }
+
+    /**
+     * Alias magic
+     */
+    public function __get($name)
+    {
+        return $this->get($name);
+    }
+
+    /**
+     * Alias magic
+     */
+    public function __set($name, $value)
+    {
+        return $this->set($name, $value);
     }
 
     /**

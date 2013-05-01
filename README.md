@@ -80,6 +80,23 @@ You can format a Date object like the DateTime object (http://www.php.net/manual
 
     echo Date::now()->format('Y-m-d'); // 2000-01-31
 
+There are predefined patterns that can be used:
+
+    echo $date->format('datetime'); // 2000-01-31 12:00:00
+    echo $date->format('date');  // 2000-01-31
+    echo $date->format('time'); // 12:00:00
+
+    echo $date->format('long'); // January 31st, 2000 at 12:00
+    echo $date->format('short'); // Jan 31, 2000
+
+Predefined patterns have a corresponding get method and attribute:
+
+    echo $date->getTime();
+    echo $date->time;
+
+    echo $date->getLong();
+    echo $date->long;
+
 The Date object can be cast to a string:
 
     echo Date::now(); // 2000-01-31 12:00:00
@@ -94,6 +111,9 @@ Calculate a timespan:
     echo Date::now()->timespan($date);
     // 2 years, 8 months, 3 weeks, 5 days, 0 hour, 0 minute, 0 second
 
+    // or even
+    echo Date::now()->timespan('+1000 days');
+
 Manipulating Dates
 ------------------
 
@@ -104,6 +124,24 @@ You can manipulate by using the *add* and *sub* methods, with relative intervals
 
     // ISO 8601
     $date = Date::now()->add('P2Y4DT6H8M');
+
+You can access and modify all date attributes as an object:
+
+    $date->year = 2013:
+    $date->month = 1;
+    $date->day = 31;
+
+    $date->hour = 12;
+    $date->minutes = 0;
+    $date->seconds = 0;
+
+All attribute modifiers have a corresponding get or set method:
+
+    $date->setYear(2013);
+    $date->setHour(12);
+
+    echo $date->getMonth();
+    echo $date->getSeconds();
 
 Localization
 ------------
