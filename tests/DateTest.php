@@ -267,9 +267,6 @@ class DateTest extends \PHPUnit_Framework_TestCase {
 	{
 		$date = Date::make('-5 months -15 days -3 hours -42 minutes');
 		$this->assertEquals("0 years, 5 months, 2 weeks, 1 day, 3 hours, 42 minutes, 0 seconds", $date->timespan());
-
-		$date = new Date('2000-01-31 12:00:00');
-		echo $date->format('short');
 	}
 
 }
