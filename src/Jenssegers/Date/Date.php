@@ -290,6 +290,25 @@ class Date extends DateTime {
     }
 
     /**
+     * Sets the time zone for the Date object
+     *
+     * @param  string|DateTimeZone  $timezone
+     * @return Date
+     */
+    public function setTimezone($timezone)
+    {
+        // Create timezone if string was given
+        if (is_string($timezone))
+        {
+            $timezone = new DateTimeZone($timezone);
+        }
+
+        parent::setTimezone($timezone);
+
+        return $this;
+    }
+
+    /**
      * Return the datetime format when casting to string.
      *
      * @return string
