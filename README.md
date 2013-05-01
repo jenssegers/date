@@ -135,7 +135,7 @@ You can access and modify all date attributes as an object:
     $date->minutes = 0;
     $date->seconds = 0;
 
-All attribute modifiers have a corresponding get or set method:
+All attributes have a corresponding get or set method:
 
     $date->setYear(2013);
     $date->setHour(12);
