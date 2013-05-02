@@ -11,7 +11,7 @@ class Date extends DateTime {
      *
      * @var array
      */
-    protected $formats = array(
+    protected static $formats = array(
         'datetime' => 'Y-m-d H:i:s',
         'date' => 'Y-m-d',
         'time' => 'H:i:s',
@@ -314,9 +314,9 @@ class Date extends DateTime {
     public function format($format)
     {
         // Check for predefined format
-        if (array_key_exists($format, $this->formats))
+        if (array_key_exists($format, static::$formats))
         {
-            $format = $this->formats[$format];
+            $format = static::$formats[$format];
         }
 
         return parent::format($format);
@@ -376,7 +376,7 @@ class Date extends DateTime {
                 break;
         }
 
-        if (array_key_exists($attribute, $this->formats))
+        if (array_key_exists($attribute, static::$formats))
         {
             return $this->format($attribute);
         }
