@@ -17,15 +17,6 @@ class Date extends DateTime {
         'time' => 'H:i:s',
         'long' => 'F jS, Y \a\\t H:i',
         'short' => 'M j, Y',
-        'day' => 'd',
-        'month' => 'm',
-        'year' => 'Y',
-        'hour' => 'H',
-        'minute' => 'i',
-        'second' => 's',
-        'dayofweek' => 'l',
-        'daysinmonth' => 't',
-        'dayofyear' => 'z'
     );
 
     /**
@@ -115,15 +106,15 @@ class Date extends DateTime {
     {
         $date = new static(null, $timezone);
 
-        $date->setDate($year ?: $date->getYear(), $month ?: $date->getMonth(), $day ?: $date->getDay());
+        $date->setDate($year ?: $date->year, $month ?: $date->month, $day ?: $date->day);
 
         // If no hour was given then we'll default the minute and second to the current
         // minute and second. If a date was given and minute or second are null then
         // we'll set them to 0, mimicking PHPs behaviour.
         if (is_null($hour))
         {
-            $minute = $minute ?: $date->getMinute();
-            $second = $second ?: $date->getSecond();
+            $minute = $minute ?: $date->minute;
+            $second = $second ?: $date->second;
         }
         else
         {
@@ -131,9 +122,19 @@ class Date extends DateTime {
             $second = $second ?: 0;
         }
 
-        $date->setTime($hour ?: $date->getHour(), $minute, $second);
+        $date->setTime($hour ?: $date->hour, $minute, $second);
 
         return $date;
+    }
+
+    /**
+     * Return copy of the Date object
+     *
+     * @return Date
+     */
+    public function copy()
+    {
+        return clone $this;
     }
 
     /**
@@ -208,7 +209,7 @@ class Date extends DateTime {
 
         if (is_null($since)) 
         {
-            $since = new static("now", $this->getTimezone());
+            $since = new static('now', $this->getTimezone());
         }
 
         $units = array('second', 'minute', 'hour', 'day', 'week', 'month', 'year');
@@ -227,11 +228,11 @@ class Date extends DateTime {
         // Future or past?
         if ($since->getTimestamp() < $this->getTimestamp())
         {
-            $suffix = $lang->get("date::date.from now");
+            $suffix = $lang->get('date::date.from now');
         }
         else
         {
-            $suffix = $lang->get("date::date.ago");
+            $suffix = $lang->get('date::date.ago');
         }
 
         $unit = $units[$i];
@@ -318,17 +319,45 @@ class Date extends DateTime {
         // Without leading zero
         switch ($attribute)
         {
+            case 'day':
+                return (int) $this->format('j');
+                break;
+            case 'month':
+                return (int) $this->format('n');
+                break;
+            case 'year':
+                return (int) $this->format('Y');
+                break;
             case 'hour':
             case 'hours':
-                return $this->format('G');
+                return (int) $this->format('G');
                 break;
             case 'minute':
             case 'minutes':
-                return $this->format('i');
+                return (int) $this->format('i');
                 break;
             case 'second':
             case 'seconds':
-                return $this->format('s');
+                return (int) $this->format('s');
+                break;
+            case 'dayofweek':
+                return (int) $this->format('w');
+                break;
+            case 'dayofyear':
+                return (int) $this->format('z');
+                break;
+            case 'weekofyear':
+                return (int) $this->format('W');
+                break;
+            case 'daysinmonth':
+                return (int) $this->format('t');
+                break;
+            case 'age':
+                $now = static::now($this->getTimezone());
+                return (int) $this->diff($now)->format('%r%y');
+                break;
+            case 'timestamp':
+                return (int) $this->getTimestamp();
                 break;
         }
 
@@ -412,10 +441,10 @@ class Date extends DateTime {
      */
     public static function __callStatic($method, $args)
     {
-        if (strpos($method, "forge") == 0)
+        if (strpos($method, 'forge') == 0)
         {
-            $method = str_replace("forge", "make", $method);
-            return call_user_func_array(array("self", $method), $args);
+            $method = str_replace('forge', 'make', $method);
+            return call_user_func_array(array('self', $method), $args);
         }
     }
 
@@ -452,6 +481,23 @@ class Date extends DateTime {
     public function __set($name, $value)
     {
         return $this->set($name, $value);
+    }
+
+    /** 
+     * Isset
+     */
+    public function __isset($name)
+    {
+        try
+        {
+            $this->get($name);
+        }
+        catch (\InvalidArgumentException $e)
+        {
+            return false;
+        }
+
+        return true;
     }
 
     /**
