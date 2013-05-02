@@ -288,6 +288,15 @@ class DateTest extends \PHPUnit_Framework_TestCase {
 		$this->assertSame("5 days from now", $date->ago());
 	}
 
+	public function testAge()
+	{
+		$date = Date::make('31 January 1991 12:00:30');
+		$this->assertSame(22, $date->age());
+
+		$date = Date::make('+10 years');
+		$this->assertSame(-10, $date->age());
+	}
+
 	public function testTimespan()
 	{
 		$date = Date::make('-5 months -15 days -3 hours -42 minutes');

@@ -240,6 +240,22 @@ class Date extends DateTime {
         return $difference . ' ' . $lang->choice("date::date.$unit", $difference) . ' ' . $suffix;
     }
 
+    /**
+     * Get a difference in years.
+     *
+     * @param  Date    $since
+     * @return int
+     */
+    public function age($since = null)
+    {
+        if (is_null($since)) 
+        {
+            $since = new static('now', $this->getTimezone());
+        }
+
+        return (int) $this->diff($since)->format('%r%y');
+    }
+
     /** 
      * Gets the Unix timestamp.
      *
@@ -353,8 +369,7 @@ class Date extends DateTime {
                 return (int) $this->format('t');
                 break;
             case 'age':
-                $now = static::now($this->getTimezone());
-                return (int) $this->diff($now)->format('%r%y');
+                return $this->age();
                 break;
             case 'timestamp':
                 return (int) $this->getTimestamp();
