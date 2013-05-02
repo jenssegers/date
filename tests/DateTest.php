@@ -1,5 +1,7 @@
 <?php 
 
+require "vendor/autoload.php";
+
 use \Jenssegers\Date\Date;
 
 class DateTest extends \PHPUnit_Framework_TestCase {
