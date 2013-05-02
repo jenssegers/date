@@ -114,6 +114,14 @@ Calculate a timespan:
     // or even
     echo Date::now()->timespan('+1000 days');
 
+Get years since date:
+
+    $date = new Date('-10 years');
+    echo $date->age(); // 10
+
+    $date = new Date('+10 years');
+    echo $date->age(); // -10
+
 Manipulating Dates
 ------------------
 
