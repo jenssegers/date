@@ -56,7 +56,7 @@ $date = new Date('2000-01-31', new DateTimeZone('Europe/Brussels'));
 You can skip the creation of a DateTimeZone object:
 
 ```php
-$date = new DateTime('2000-01-31', 'Europe/Brussels');
+$date = new Date('2000-01-31', 'Europe/Brussels');
 ```
 
 Create Date objects from a relative format (http://www.php.net/manual/en/datetime.formats.relative.php):
