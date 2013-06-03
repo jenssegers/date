@@ -384,14 +384,18 @@ class Date extends DateTime {
      */
     private function _translate($text)
     {
-        // Get translator
-        $lang = $this->getTranslator();
+        // If default language is not english, we need to translated from english
+        if (\Config::get('app.locale') != 'en')
+        {
+            // Get translator
+            $lang = $this->getTranslator();
 
-        // Translate long string
-        $text = str_replace(static::$to_translate['long'], $lang->get("date::date.translated.long"), $text);
+            // Translate long string
+            $text = str_replace(static::$to_translate['long'], $lang->get("date::date.translated.long"), $text);
 
-        // Translate short string
-        $text = str_replace(static::$to_translate['short'], $lang->get("date::date.translated.short"), $text);
+            // Translate short string
+            $text = str_replace(static::$to_translate['short'], $lang->get("date::date.translated.short"), $text);
+        }
 
         return $text;
     }
