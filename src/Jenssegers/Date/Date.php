@@ -7,17 +7,19 @@ use \DateTimeZone;
 class Date extends DateTime {
 
     /**
-     * Predefined formats.
+     * Strings to translate.
      *
      * @var array
      */
-    protected static $formats = array(
-        'datetime' => 'Y-m-d H:i:s',
-        'date' => 'Y-m-d',
-        'time' => 'H:i:s',
-        'long' => 'F jS, Y \a\\t H:i',
-        'short' => 'M j, Y',
-    );
+    protected static $to_translate  = array('long' => array('Monday', 'Tuesday', 'Wednesday', 'Thursday',
+                                                            'Friday', 'Saturday', 'Sunday', 'January',
+                                                            'February', 'March', 'April', 'May',
+                                                            'June', 'July', 'August', 'September',
+                                                            'October', 'November', 'December'),
+                                            'short' => array('Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun',
+                                                             'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul',
+                                                             'Aug', 'Sep', 'Oct', 'Nov', 'Dec'),
+                                            );
 
     /**
      * The Translator implementation.
@@ -39,6 +41,12 @@ class Date extends DateTime {
         if (is_string($timezone))
         {
             $timezone = new DateTimeZone($timezone);
+        }
+
+        // Create timezone if none was given
+        if (is_null($timezone))
+        {
+            $timezone = new DateTimeZone(\Config::get('app.timezone'));
         }
 
         // Create Date from timestamp
@@ -64,7 +72,7 @@ class Date extends DateTime {
 
     /**
      * Create and return a new Date instance with defined year, month, and day.
-     * 
+     *
      * @param  int  $year
      * @param  int  $month
      * @param  int  $day
@@ -78,7 +86,7 @@ class Date extends DateTime {
 
     /**
      * Create and return a new Date instance with defined hour, minute, and second.
-     * 
+     *
      * @param  int  $hour
      * @param  int  $minute
      * @param  int  $second
@@ -92,7 +100,7 @@ class Date extends DateTime {
 
     /**
      * Create and return a new Date instance with defined year, month, day, hour, minute, and second.
-     * 
+     *
      * @param  int  $year
      * @param  int  $month
      * @param  int  $day
@@ -145,10 +153,22 @@ class Date extends DateTime {
      */
     public static function now($timezone = null)
     {
+        // Create timezone if string was given
+        if (is_string($timezone))
+        {
+            $timezone = new DateTimeZone($timezone);
+        }
+
+        // Create timezone if none was given
+        if (is_null($timezone))
+        {
+            $timezone = new DateTimeZone(\Config::get('app.timezone'));
+        }
+
         return new static(null, $timezone);
     }
 
-    /** 
+    /**
      * Adds an amount of days, months, years, hours, minutes and seconds to a Date object.
      *
      * @param string|DateInterval $interval
@@ -172,7 +192,7 @@ class Date extends DateTime {
         return parent::add($interval);
     }
 
-    /** 
+    /**
      * Subtracts an amount of days, months, years, hours, minutes and seconds from a DateTime object.
      *
      * @param string|DateInterval $interval
@@ -197,50 +217,6 @@ class Date extends DateTime {
     }
 
     /**
-     * Get a relative date string.
-     *
-     * @param  Date    $since
-     * @return string
-     */
-    public function ago($since = null)
-    {
-        // Get translator
-        $lang = $this->getTranslator();
-
-        if (is_null($since)) 
-        {
-            $since = new static('now', $this->getTimezone());
-        }
-
-        $units = array('second', 'minute', 'hour', 'day', 'week', 'month', 'year');
-        $values = array(60, 60, 24, 7, 4.35, 12);
-
-        // Date difference
-        $difference = abs($since->getTimestamp() - $this->getTimestamp());
-
-        for ($i = 0; $i < count($values) and $difference >= $values[$i]; $i++)
-        {
-            $difference = $difference / $values[$i];
-        }
-
-        $difference = round($difference);
-
-        // Future or past?
-        if ($since->getTimestamp() < $this->getTimestamp())
-        {
-            $suffix = $lang->get('date::date.from now');
-        }
-        else
-        {
-            $suffix = $lang->get('date::date.ago');
-        }
-
-        $unit = $units[$i];
-
-        return $difference . ' ' . $lang->choice("date::date.$unit", $difference) . ' ' . $suffix;
-    }
-
-    /**
      * Get a difference in years.
      *
      * @param  Date    $since
@@ -248,15 +224,15 @@ class Date extends DateTime {
      */
     public function age($since = null)
     {
-        if (is_null($since)) 
+        if (is_null($since))
         {
-            $since = new static('now', $this->getTimezone());
+            $since = new static('now');
         }
 
         return (int) $this->diff($since)->format('%r%y');
     }
 
-    /** 
+    /**
      * Gets the Unix timestamp.
      *
      * @return int
@@ -266,10 +242,10 @@ class Date extends DateTime {
         return $this->getTimestamp();
     }
 
-    /** 
+    /**
      * Gets the a timespan.
      *
-     * @param Date $time 
+     * @param Date $time
      * @param string|DateTimeZone $timezone
      * @return int
      */
@@ -306,6 +282,82 @@ class Date extends DateTime {
     }
 
     /**
+     * Get a relative date string.
+     *
+     * @param Date $time
+     * @param string|DateTimeZone $timezone
+     * @return int
+     */
+    public function diffForHumans($time = null, $timezone = null)
+    {
+        // Get translator
+        $lang = $this->getTranslator();
+
+        // Create Date instance if needed
+        if (!$time instanceof Date)
+        {
+            // Create timezone if string was given
+            if (is_string($timezone))
+            {
+                $timezone = new DateTimeZone($timezone);
+            }
+
+            // Create timezone if none was given
+            if (is_null($timezone))
+            {
+                $timezone = new DateTimeZone(\Config::get('app.timezone'));
+            }
+
+            $time = new static($time, $timezone);
+        }
+
+        $units = array('y' => 'year', 'm' => 'month', 'w' => 'week', 'd' => 'day', 'h' => 'hour', 'i' => 'minute');
+
+        // Get DateInterval and cast to array
+        $interval = (array) $this->diff($time);
+
+        // Past or future?
+        if ($interval['invert'] == 1)
+        {
+            $suffix = $lang->get('date::date.suffixes.past');
+        }
+        else
+        {
+            $suffix = $lang->get('date::date.suffixes.future');
+        }
+
+        // Get weeks
+        $interval['w'] = (int) ($interval['d'] / 7);
+        $interval['d'] = $interval['d'] % 7;
+
+        // Get ready to build
+        $str = array();
+
+        // Loop all units and build string
+        foreach ($units as $k=>$unit)
+        {
+            if ($interval[$k] != 0)
+            {
+                $str[] = $interval[$k] . ' ' . $lang->choice("date::date.units.$unit", $interval[$k]);
+            }
+        }
+
+        $string = implode(', ', $str);
+
+        $search = strrchr($string, ',');
+        $replace = str_replace(',', ' '.$lang->get('date::date.and'), $search);
+        $difference = str_replace($search, $replace, $string);
+
+        // Translate month and days.
+        $difference = $this->_translate($difference);
+
+        $string = str_replace('%difference%', $difference, $lang->get('date::date.formats.relative'));
+        $string = str_replace('%suffix%', $suffix, $string);
+
+        return $string;
+    }
+
+    /**
      * Returns date formatted according to given or predefined format.
      *
      * @param  string  $format
@@ -313,13 +365,39 @@ class Date extends DateTime {
      */
     public function format($format)
     {
-        // Check for predefined format
-        if (array_key_exists($format, static::$formats))
+        // Get translator
+        $lang = $this->getTranslator();
+
+        $format = $lang->get("date::date.formats.$format");
+
+        // Date without months and days translated
+        $date = parent::format($format);
+
+        return $this->_translate($date);
+    }
+
+    /**
+     * Returns translated strings for month and days.
+     *
+     * @param  string  $text
+     * @return string
+     */
+    private function _translate($text)
+    {
+        // If default language is not english, we need to translated from english
+        if (\Config::get('app.locale') != 'en')
         {
-            $format = static::$formats[$format];
+            // Get translator
+            $lang = $this->getTranslator();
+
+            // Translate long string
+            $text = str_replace(static::$to_translate['long'], $lang->get("date::date.translated.long"), $text);
+
+            // Translate short string
+            $text = str_replace(static::$to_translate['short'], $lang->get("date::date.translated.short"), $text);
         }
 
-        return parent::format($format);
+        return $text;
     }
 
     /**
@@ -330,6 +408,9 @@ class Date extends DateTime {
      */
     public function get($attribute)
     {
+        // Get translator
+        $lang = $this->getTranslator();
+
         $attribute = strtolower($attribute);
 
         // Without leading zero
@@ -376,11 +457,13 @@ class Date extends DateTime {
                 break;
         }
 
-        if (array_key_exists($attribute, static::$formats))
+        // Date formats given by language file
+        $formats = $lang->get('date::date.formats');
+
+        if (array_key_exists($attribute, $formats))
         {
             return $this->format($attribute);
         }
-
         throw new \InvalidArgumentException("The date attribute '$attribute' could not be found.");
     }
 
@@ -498,7 +581,7 @@ class Date extends DateTime {
         return $this->set($name, $value);
     }
 
-    /** 
+    /**
      * Isset
      */
     public function __isset($name)
