@@ -249,7 +249,7 @@ class DateTest extends \PHPUnit_Framework_TestCase {
 		$this->assertSame(-4*86400, Date::now()->sub('4 day')->getTimestamp() - Date::now()->getTimestamp());
 
 		$this->assertSame(10*86400, Date::now()->add('P10D')->getTimestamp() - Date::now()->getTimestamp());
-		$this->assertSame(100*86400, Date::now()->add('P100D')->getTimestamp() - Date::now()->getTimestamp());
+		$this->assertSame(-10*86400, Date::now()->sub('P10D')->getTimestamp() - Date::now()->getTimestamp());
 	}
 
 	public function testAgo()
