@@ -20,6 +20,15 @@ class Date extends DateTime {
     );
 
     /**
+     * prefixed langs.
+     *
+     * @var array
+     */
+    protected static $prefixed = array(
+        'es',
+    );
+
+    /**
      * The Translator implementation.
      *
      * @var Translator
@@ -236,6 +245,11 @@ class Date extends DateTime {
         }
 
         $unit = $units[$i];
+
+
+        if (in_array(\Lang::getLocale(), static::$prefixed)) {
+            return $suffix . ' ' . $difference . ' ' . $lang->choice("date::date.$unit", $difference);
+        }
 
         return $difference . ' ' . $lang->choice("date::date.$unit", $difference) . ' ' . $suffix;
     }
