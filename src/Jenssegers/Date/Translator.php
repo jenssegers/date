@@ -53,7 +53,7 @@ class Translator {
         // Replace parameters
         foreach ($replace as $key => $value)
         {
-            $string = str_replace("%{$key}%", $value, $string);
+            $string = str_replace(":{$key}", $value, $string);
         }
 
         return $string;
