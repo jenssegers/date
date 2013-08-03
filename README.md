@@ -155,8 +155,8 @@ Localization
 
 Language strings are stored in files within the *lang* directory. By using a "pipe" character, you may separate the singular and plural forms of a string:
 
-    'hour'      => 'hour|hours',
-    'minute'    => 'minute|minutes',
-    'second'    => 'second|seconds',
+    'hour'      => '1 hour|%number% hours',
+    'minute'    => '1 minute|%number% minutes',
+    'second'    => '1 second|%number% seconds',
 
 If you are using Laravel, the locale set in `app/config/app.php` will be used.
