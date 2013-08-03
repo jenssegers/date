@@ -22,7 +22,7 @@ class Translator {
      * @param  string  $key
      * @return string
      */
-    public function get($key)
+    public function get($key, array $replace = array())
     {
         if (strpos($key, '::'))
         {
@@ -39,11 +39,24 @@ class Translator {
         // Load language file
         $this->load($group, $locale);
 
-        // Return $key if not found
-        if (!isset($this->loaded[$group][$locale][$key])) return $key;
+        // Use $key if not found
+        if (!isset($this->loaded[$group][$locale][$key])) 
+        {
+            $string = $key;
+        }
+        // Get translation
+        else
+        {
+            $string = $this->loaded[$group][$locale][$key];
+        }
 
-        // Return translation
-        return $this->loaded[$group][$locale][$key];
+        // Replace parameters
+        foreach ($replace as $key => $value)
+        {
+            $string = str_replace("%{$key}%", $value, $string);
+        }
+
+        return $string;
     }
 
     /**
@@ -53,16 +66,16 @@ class Translator {
      * @param  int     $number
      * @return string
      */
-    public function choice($key, $number)
+    public function choice($key, $number, array $replace = array())
     {
-        $line = $this->get($key);
+        $line = $this->get($key, $replace);
 
         // Only singular
         if (strpos($line, '|') === FALSE) return $line;
 
         list($singular, $plural) = explode('|', $line);
 
-        // Return based on number
+        // Select string based on number
         return ($number == 1) ? $singular : $plural;
     }
 

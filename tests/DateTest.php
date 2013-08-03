@@ -299,8 +299,8 @@ class DateTest extends \PHPUnit_Framework_TestCase {
 
 	public function testTimespan()
 	{
-		$date = Date::make('-5 months -15 days -3 hours -42 minutes');
-		$this->assertSame("0 years, 5 months, 2 weeks, 1 day, 3 hours, 42 minutes, 0 seconds", $date->timespan());
+		$date = Date::make('-100 days -3 hours -20 minutes');
+		$this->assertSame("0 years, 3 months, 1 week, 2 days, 3 hours, 20 minutes, 0 seconds", $date->timespan());
 	}
 
 }

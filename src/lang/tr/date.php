@@ -17,14 +17,14 @@ return array(
     |
     */
 
-    'ago'       => 'önce',
-    'from now'  => 'sonra',
-    'year'      => 'yıl|yıl',
-    'month'     => 'ay|ay',
-    'week'      => 'hafta|hafta',
-    'day'       => 'gün|gün',
-    'hour'      => 'saat|saat',
-    'minute'    => 'dakika|dakika',
-    'second'    => 'saniye|saniye',
+    'ago'       => '%time% önce',
+    'from now'  => '%time% sonra',
+    'year'      => '%number% yıl',
+    'month'     => '%number% ay',
+    'week'      => '%number% hafta',
+    'day'       => '%number% gün',
+    'hour'      => '%number% saat',
+    'minute'    => '%number% dakika',
+    'second'    => '%number% saniye',
 
 );

@@ -12,14 +12,14 @@ return array(
     |
     */
 
-    'ago'       => 'geleden',
-    'from now'  => 'vanaf nu',
-    'year'      => 'jaar|jaren',
-    'month'     => 'maand|maanden',
-    'week'      => 'week|weken',
-    'day'       => 'dag|dagen',
-    'hour'      => 'uur|uren',
-    'minute'    => 'minuut|minuten',
-    'second'    => 'seconde|secondes',
+    'ago'       => '%time% geleden',
+    'from now'  => '%time% vanaf nu',
+    'year'      => '1 jaar|%number% jaren',
+    'month'     => '1 maand|%number% maanden',
+    'week'      => '1 week|%number% weken',
+    'day'       => '1 dag|%number% dagen',
+    'hour'      => '1 uur|%number% uren',
+    'minute'    => '1 minuut|%number% minuten',
+    'second'    => '1 seconde|%number% secondes',
 
 );

@@ -225,19 +225,21 @@ class Date extends DateTime {
 
         $difference = round($difference);
 
+        // Select unit
+        $unit = $units[$i];
+
+        // Translate
+        $ago = $lang->choice("date::date.$unit", $difference, array('number' => $difference));
+
         // Future or past?
         if ($since->getTimestamp() < $this->getTimestamp())
         {
-            $suffix = $lang->get('date::date.from now');
+            return $lang->get('date::date.from now', array('time' => $ago));
         }
         else
         {
-            $suffix = $lang->get('date::date.ago');
+            return $lang->get('date::date.ago', array('time' => $ago));
         }
-
-        $unit = $units[$i];
-
-        return $difference . ' ' . $lang->choice("date::date.$unit", $difference) . ' ' . $suffix;
     }
 
     /**
@@ -299,7 +301,7 @@ class Date extends DateTime {
         // Loop all units and build string
         foreach ($units as $k=>$unit)
         {
-            $str[] = $interval[$k] . ' ' . $lang->choice("date::date.$unit", $interval[$k]);
+            $str[] = $lang->choice("date::date.$unit", $interval[$k], array('number' => $interval[$k]));
         }
 
         return implode(', ', $str);
