@@ -1,5 +1,7 @@
-Laravel Date [![Build Status](http://img.shields.io/travis/jenssegers/laravel-date.svg)](https://travis-ci.org/jenssegers/laravel-date)
+Laravel Date
 ============
+
+[![Build Status](http://img.shields.io/travis/jenssegers/laravel-date.svg)](https://travis-ci.org/jenssegers/laravel-date)
 
 A date library to help you work with dates.
 
