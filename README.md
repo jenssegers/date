@@ -1,4 +1,4 @@
-Laravel Date [![Build Status](https://travis-ci.org/jenssegers/Laravel-Date.png?branch=master)](https://travis-ci.org/jenssegers/Laravel-Date)
+Laravel Date [![Build Status](http://img.shields.io/travis/jenssegers/laravel-date.svg)](https://travis-ci.org/jenssegers/laravel-date)
 ============
 
 A date library to help you work with dates.
