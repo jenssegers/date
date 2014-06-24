@@ -35,10 +35,16 @@ class Date extends Carbon {
      */
     public function __construct($time = null, $timezone = null)
     {
-        // Create Date from timestamp
+        // Create Date from timestamp.
         if (is_int($time))
         {
             $time = "@$time";
+        }
+
+        // Get default timezone from app config.
+        if (is_null($timezone) and class_exists('Illuminate\Support\Facades\Config'))
+        {
+            $timezone = \Config::get('app.timezone');
         }
 
         parent::__construct($time, $timezone);
