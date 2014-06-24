@@ -4,9 +4,12 @@ branches:
   only:
     - master
 
-php: 
+php:
   - 5.3
   - 5.4
+
+before_install:
+  - sudo apt-get update && sudo apt-get --reinstall install -qq language-pack-en language-pack-nl
 
 before_script:
   - composer install --no-interaction
