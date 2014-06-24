@@ -6,6 +6,7 @@ class DateTest extends \PHPUnit_Framework_TestCase {
 
 	public function setUp()
 	{
+		date_default_timezone_set('UTC');
 		$translator = Date::getTranslator();
 		$translator->setLocale('en');
 	}
@@ -28,7 +29,7 @@ class DateTest extends \PHPUnit_Framework_TestCase {
 	public function testConstructFromString()
 	{
 		$date = new Date('2013-01-31');
-		$this->assertSame(1359586800, $date->getTimestamp());
+		$this->assertSame(1359590400, $date->getTimestamp());
 
 		$date = new Date('1 day ago');
 		$this->assertSame(time() - 86400, $date->getTimestamp());
