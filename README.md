@@ -53,7 +53,7 @@ Create Date objects from a relative format (http://www.php.net/manual/en/datetim
     $date = new Date('+1 hour');
     $date = new Date('next monday');
 
-This is also available from the make or forge static method:
+This is also available using these static methods:
 
     $date = Date::parse('now');
     $date = Date::now();
