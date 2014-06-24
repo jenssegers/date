@@ -3,7 +3,7 @@ Laravel Date
 
 [![Build Status](http://img.shields.io/travis/jenssegers/laravel-date.svg)](https://travis-ci.org/jenssegers/laravel-date)
 
-This date library is based on Carbon and adds language support.
+This date library is based on [Carbon](https://github.com/briannesbitt/Carbon) and adds language support.
 
 Installation
 ------------
