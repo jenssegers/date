@@ -5,18 +5,17 @@
     "authors": [
         {
             "name": "Jens Segers",
-            "email": "hello@jenssegers.be"
+            "homepage": "http://jenssegers.be"
         }
     ],
     "license" : "MIT",
     "require": {
-        "php": ">=5.3.0"
+        "php": ">=5.3.0",
+        "nesbot/Carbon": "*"
     },
     "autoload": {
         "psr-0": {
-            "Jenssegers\\Date": "src/",
-            "Date": "src/"
+            "Jenssegers\\Date": "src/"
         }
-    },
-    "minimum-stability": "dev"
+    }
 }

@@ -3,25 +3,18 @@ Laravel Date
 
 [![Build Status](http://img.shields.io/travis/jenssegers/laravel-date.svg)](https://travis-ci.org/jenssegers/laravel-date)
 
-A date library to help you work with dates.
-
-This library was inspired by jasonlewis/expressive-date and CodeIgniter.
+This date library is based on Carbon and adds language support.
 
 Installation
 ------------
 
-Add the package to your `composer.json` or install manually.
+Add the package to your `composer.json` and run `composer update`.
 
     {
         "require": {
             "jenssegers/date": "*"
         }
     }
-
-Run `composer update` to download and install the package.
-
-Laravel
--------
 
 This package is compatible with Laravel 4 (but not limited to). If Laravel is detected, the language library from Laravel will be used instead of an own implementation.
 
@@ -36,6 +29,8 @@ And add an alias:
 Usage
 -----
 
+All of the original Carbon operations are still available, check out https://github.com/briannesbitt/Carbon for more information.
+
 ### Creating dates
 
 You can create Date objects just like the DateTime object (http://www.php.net/manual/en/datetime.construct.php):
@@ -43,7 +38,7 @@ You can create Date objects just like the DateTime object (http://www.php.net/ma
     $date = new Date();
     $date = new Date('2000-01-31');
     $date = new Date('2000-01-31 12:00:00');
-    
+
     // With time zone
     $date = new Date('2000-01-31', new DateTimeZone('Europe/Brussels'));
 
@@ -52,7 +47,7 @@ You can skip the creation of a DateTimeZone object:
     $date = new Date('2000-01-31', 'Europe/Brussels');
 
 Create Date objects from a relative format (http://www.php.net/manual/en/datetime.formats.relative.php):
-    
+
     $date = new Date('now');
     $date = new Date('today');
     $date = new Date('+1 hour');
@@ -60,9 +55,7 @@ Create Date objects from a relative format (http://www.php.net/manual/en/datetim
 
 This is also available from the make or forge static method:
 
-    $date = Date::make('now');
-    $date = Date::forge('now');
-
+    $date = Date::parse('now');
     $date = Date::now();
 
 Creating a Date from a timestamp:
@@ -71,9 +64,9 @@ Creating a Date from a timestamp:
 
 Or from an existing date or time:
 
-    $date = new Date::makeFromDate(2000, 1, 31);
-    $date = new Date::makeFromTime(12, 0, 0);
-    $date = new Date::makeFromDateTime(2000, 1, 31, 12, 0, 0);
+    $date = new Date::createFromDate(2000, 1, 31);
+    $date = new Date::createFromTime(12, 0, 0);
+    $date = new Date::create(2000, 1, 31, 12, 0, 0);
 
 ### Formatting Dates
 
@@ -81,28 +74,11 @@ You can format a Date object like the DateTime object (http://www.php.net/manual
 
     echo Date::now()->format('Y-m-d'); // 2000-01-31
 
-There are predefined patterns that can be used:
-
-    echo $date->format('datetime'); // 2000-01-31 12:00:00
-    echo $date->format('date');  // 2000-01-31
-    echo $date->format('time'); // 12:00:00
-
-    echo $date->format('long'); // January 31st, 2000 at 12:00
-    echo $date->format('short'); // Jan 31, 2000
-
-Predefined patterns have a corresponding get method and attribute:
-
-    echo $date->getTime();
-    echo $date->time;
-
-    echo $date->getLong();
-    echo $date->long;
-
 The Date object can be cast to a string:
 
     echo Date::now(); // 2000-01-31 12:00:00
 
-Get a human readable output:
+Get a human readable output (alias for diffForHumans):
 
     echo $date->ago(); // 5 days ago
 
@@ -118,10 +94,10 @@ Calculate a timespan:
 Get years since date:
 
     $date = new Date('-10 years');
-    echo $date->age(); // 10
+    echo $date->age; // 10
 
     $date = new Date('+10 years');
-    echo $date->age(); // -10
+    echo $date->age; // -10
 
 Manipulating Dates
 ------------------
@@ -141,21 +117,18 @@ You can access and modify all date attributes as an object:
     $date->day = 31;
 
     $date->hour = 12;
-    $date->minutes = 0;
-    $date->seconds = 0;
-
-All attributes have a corresponding get or set method:
-
-    $date->setYear(2013);
-    $date->setHour(12);
-
-    echo $date->getMonth();
-    echo $date->getSeconds();
+    $date->minute = 0;
+    $date->second = 0;
 
 Localization
 ------------
 
-Language strings are stored in files within the *lang* directory. By using a "pipe" character, you may separate the singular and plural forms of a string:
+There's some magic under the hood of the `format` method. It will check if there are any available translations using the [strftime](http://be2.php.net/manual/en/function.strftime.php) method. This does require you to set the correct locale:
+
+    setlocale(LC_TIME, "nl_NL");
+    echo $date->format('l j F Y H:i:s'); // zondag 28 april 2013 21:58:16
+
+The `ago` and `timestamp` method also support different languages. Language strings for these methods are stored in files within the *lang* directory. By using a "pipe" character, you may separate the singular and plural forms of a string:
 
     'hour'      => '1 hour|%number% hours',
     'minute'    => '1 minute|%number% minutes',

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return array(
 
@@ -14,6 +14,8 @@ return array(
 
     'ago'       => ':time ago',
     'from now'  => ':time from now',
+    'after'     => ':time after',
+    'before'    => ':time before',
     'year'      => '1 year|:number years',
     'month'     => '1 month|:number months',
     'week'      => '1 week|:number weeks',
