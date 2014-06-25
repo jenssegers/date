@@ -14,6 +14,8 @@ return array(
 
     'ago'       => ':time önce',
     'from now'  => ':time sonra',
+    'after'     => '',
+    'before'    => '',
     'year'      => ':number yıl',
     'month'     => ':number ay',
     'week'      => ':number hafta',
@@ -21,5 +23,26 @@ return array(
     'hour'      => ':number saat',
     'minute'    => ':number dakika',
     'second'    => ':number saniye',
+
+    'january'   => 'Ocak',
+    'february'  => 'Şubat',
+    'march'     => 'Mart',
+    'april'     => 'Nisan',
+    'may'       => 'Mayıs',
+    'june'      => 'Haziran',
+    'july'      => 'Temmuz',
+    'august'    => 'Ağustos',
+    'september' => 'Eylül',
+    'october'   => 'Ekim',
+    'november'  => 'Kasım',
+    'december'  => 'Aralık',
+
+    'monday'    => 'Pazartesi',
+    'tuesday'   => 'Salı',
+    'wednesday' => 'Çarşamba',
+    'thursday'  => 'Perşembe',
+    'friday'    => 'Cuma',
+    'saturday'  => 'Cumartesi',
+    'sunday'    => 'Pazar',
 
 );
