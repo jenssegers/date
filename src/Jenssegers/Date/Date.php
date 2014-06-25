@@ -15,18 +15,6 @@ class Date extends Carbon {
     protected static $translator;
 
     /**
-     * DateTime to strftime conversion matrix.
-     *
-     * @var array
-     */
-    protected static $conversion = array(
-        'D' => '%a',
-        'l' => '%A',
-        'F' => '%B',
-        'M' => '%b',
-    );
-
-    /**
      * Returns new DateTime object.
      *
      * @param  string  $time
