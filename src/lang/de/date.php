@@ -14,8 +14,8 @@ return array(
 
     'ago'       => 'vor :time',
     'from now'  => ':time von jetzt',
-    'after'     => '',
-    'before'    => '',
+    'after'     => ':time nach',
+    'before'    => ':time vor',
     'year'      => '1 Jahr|:number Jahre',
     'month'     => '1 Monat|:number Monate',
     'week'      => '1 Woche|:number Wochen',
