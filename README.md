@@ -12,7 +12,7 @@ Add the package to your `composer.json` and run `composer update`.
 
     {
         "require": {
-            "jenssegers/date": "*"
+            "jenssegers/laravel-date": "*"
         }
     }
 
