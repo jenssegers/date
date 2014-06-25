@@ -3,12 +3,16 @@ language: php
 php:
   - 5.3
   - 5.4
-
-before_install:
-  - sudo apt-get update && sudo apt-get --reinstall install -qq language-pack-en language-pack-nl
-  - sudo locale-gen --no-purge --lang nl_NL.UTF-8
+  - 5.5
 
 before_script:
-  - composer install --no-interaction
+  - composer self-update
+  - composer require satooshi/php-coveralls:dev-master
+  - composer install --dev --no-interaction
 
-script: phpunit tests
+script:
+  - mkdir -p build/logs
+  - phpunit --coverage-clover build/logs/clover.xml
+
+  after_script:
+  - php vendor/bin/coveralls -v
