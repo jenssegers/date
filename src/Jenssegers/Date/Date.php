@@ -177,16 +177,38 @@ class Date extends Carbon {
             $character = $format[$i];
 
             // Check if we can replace it with a translated version.
-            if (array_key_exists($character, static::$conversion))
+            if (in_array($character, array('D', 'l', 'F', 'M')))
             {
                 // Check escaped characters.
                 if ($i > 0 and $format[$i-1] == '\\') continue;
 
+                switch ($character)
+                {
+                    case 'D':
+                        $key = parent::format('l');
+                        break;
+                    case 'M':
+                        $key = parent::format('F');
+                        break;
+                    default:
+                        $key = parent::format($character);
+                }
+
+                // The original result.
                 $original = parent::format($character);
-                $translated = strftime(static::$conversion[$character], $this->getTimestamp());
+
+                // Translate.
+                $lang = $this->getTranslator();
+                $translated = $lang->get('date::date.' . strtolower($key));
+
+                // Short notations.
+                if (in_array($character, array('D', 'M')))
+                {
+                    $translated = substr($translated, 0, 3);
+                }
 
                 // Add to replace list.
-                if ($original != $translated) $replace[$original] = $translated;
+                if ($translated and $original != $translated) $replace[$original] = $translated;
             }
         }
 

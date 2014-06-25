@@ -76,13 +76,17 @@ class DateTest extends \PHPUnit_Framework_TestCase {
 
 	public function testFormatTranslated()
 	{
-		setlocale(LC_ALL, 'nl_NL');
+		$translator = Date::getTranslator();
+		$translator->setLocale('nl');
 
 		$date = new Date(1367186296);
 		$this->assertSame('zondag 28 april 2013 21:58:16', $date->format('l j F Y H:i:s'));
 
 		$date = new Date(1367186296);
 		$this->assertSame('l 28 F 2013 21:58:16', $date->format('\l j \F Y H:i:s'));
+
+		$date = new Date(1367186296);
+		$this->assertSame('zon 28 apr 2013 21:58:16', $date->format('D j M Y H:i:s'));
 	}
 
 	public function testAge()

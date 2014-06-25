@@ -24,4 +24,25 @@ return array(
     'minute'    => '1 minuut|:number minuten',
     'second'    => '1 seconde|:number secondes',
 
+   'january'    => 'januari',
+    'february'  => 'februari',
+    'march'     => 'maart',
+    'april'     => 'april',
+    'may'       => 'mei',
+    'june'      => 'juni',
+    'july'      => 'juli',
+    'august'    => 'augustus',
+    'september' => 'september',
+    'october'   => 'oktober',
+    'november'  => 'november',
+    'december'  => 'december',
+
+    'monday'    => 'maandag',
+    'tuesday'   => 'dinsdag',
+    'wednesday' => 'woensdag',
+    'thursday'  => 'donderdag',
+    'friday'    => 'vrijdag',
+    'saturday'  => 'zaterdag',
+    'sunday'    => 'zondag',
+
 );

@@ -7,10 +7,6 @@ return array(
     | Date Language Lines
     |--------------------------------------------------------------------------
     |
-    | French Language file by
-    | Jason Lemay :: twitter.com/jasonlemay
-    | www.captn.ca
-    |
     | The following language lines are used by the date library. Each line can
     | have a singular and plural translation separated by a '|'.
     |
@@ -25,5 +21,26 @@ return array(
     'hour'      => '1 heure|:number heures',
     'minute'    => '1 minute|:number minutes',
     'second'    => '1 seconde|:number secondes',
+
+    'january'   => 'janvier',
+    'february'  => 'février',
+    'march'     => 'mars',
+    'april'     => 'avril',
+    'may'       => 'mai',
+    'june'      => 'juin',
+    'july'      => 'juillet',
+    'august'    => 'août',
+    'september' => 'septembre',
+    'october'   => 'octobre',
+    'november'  => 'novembre',
+    'december'  => 'décembre',
+
+    'monday'    => 'lundi',
+    'tuesday'   => 'mardi',
+    'wednesday' => 'mercredi',
+    'thursday'  => 'jeudi',
+    'friday'    => 'vendredi',
+    'saturday'  => 'samedi',
+    'sunday'    => 'dimanche',
 
 );
