@@ -54,6 +54,13 @@ class DateTest extends \PHPUnit_Framework_TestCase {
 		$this->assertSame(1367186296, $date->getTimestamp());
 	}
 
+	public function testMake()
+	{
+		$now1 = Date::make('now');
+		$now2 = new Date('now');
+		$this->assertEquals($now1, $now2);
+	}
+
 	public function testManipulation()
 	{
 		$now = Date::now();
@@ -134,7 +141,16 @@ class DateTest extends \PHPUnit_Framework_TestCase {
 		$this->assertSame("5 days from now", $date->ago());
 
 		$date = Date::parse('+5 days');
-		$this->assertSame("6 days after", $date->ago(Date::yesterday()));
+		$this->assertSame("5 days after", $date->ago(Date::now()));
+
+		$date = Date::parse('-5 days');
+		$this->assertSame("5 days before", $date->ago(Date::now()));
+	}
+
+	public function testDiffForHumans()
+	{
+		$date = Date::parse('-5 years');
+		$this->assertSame("5 years ago", $date->diffForHumans());
 	}
 
 	public function testAgoTranslated()
@@ -179,7 +195,10 @@ class DateTest extends \PHPUnit_Framework_TestCase {
 		$this->assertSame("5 dagen vanaf nu", $date->ago());
 
 		$date = Date::parse('+5 days');
-		$this->assertSame("6 dagen na", $date->ago(Date::yesterday()));
+		$this->assertSame("5 dagen na", $date->ago(Date::now()));
+
+		$date = Date::parse('-5 days');
+		$this->assertSame("5 dagen voor", $date->ago(Date::now()));
 	}
 
 	public function testTimespan()

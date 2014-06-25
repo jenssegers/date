@@ -20,7 +20,7 @@ class DateServiceProvider extends ServiceProvider {
     {
         $this->package('jenssegers/date');
 
-        // Use the Laravel translator
+        // Use the Laravel translator.
         Date::setTranslator($this->app['translator']);
     }
 
