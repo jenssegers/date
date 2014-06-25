@@ -3,7 +3,7 @@ Laravel Date
 
 [![Build Status](http://img.shields.io/travis/jenssegers/laravel-date.svg)](https://travis-ci.org/jenssegers/laravel-date)
 
-This date library is based on [Carbon](https://github.com/briannesbitt/Carbon) and adds language support.
+This date library is extends [Carbon](https://github.com/briannesbitt/Carbon) with multi-language support. Methods such as `format`, `diffForHumans` and the new `timespan`, will now be translated based on your locale.
 
 Installation
 ------------
@@ -26,10 +26,48 @@ And add an alias:
 
     'Date'            => 'Jenssegers\Date\Date',
 
+Languages
+---------
+
+This package contains language files for the following languages:
+
+ - English
+ - French
+ - Dutch
+ - Swedish (incomplete)
+ - Turkish (incomplete)
+
+You can easily add new languages by adding a new language file to the *lang* directory. These language entries support pluralization. By using a "pipe" character, you may separate the singular and plural forms of a string:
+
+    'hour'      => '1 hour|%number% hours',
+    'minute'    => '1 minute|%number% minutes',
+    'second'    => '1 second|%number% seconds',
+
+If you are using Laravel, the locale set in `app/config/app.php` will be used to select the correct language file.
+
+There is also a `generator.php` script that can be used to quickly output day and month translations for a specific locale. If you want to add a new language, this can speed up the process:
+
+    `php generator.php nl`
+
 Usage
 -----
 
-All of the original Carbon operations are still available, check out https://github.com/briannesbitt/Carbon for more information.
+The Date class extends Carbon methods such as `format` and `diffForHumans` so that they are translated based on your locale:
+
+    Lang::setLocale('nl');
+
+    echo Date::now()->format('l j F Y H:i:s'); // zondag 28 april 2013 21:58:16
+
+    echo Date::parse('-1 day')->diffForHumans(); // 1 dag geleden
+
+The Date class also added some aliases and additional methods such as: `ago` which is an alias for `diffForHumans`, and the `timespan` method:
+
+    echo $date->timespan(); // 0 years, 3 months, 1 week, 1 day, 3 hours, 20 minutes, 0 seconds
+
+Carbon
+------
+
+Carbon is the library the Date class is based on. All of the original Carbon operations are still available, check out https://github.com/briannesbitt/Carbon for more information.
 
 ### Creating dates
 
@@ -119,19 +157,3 @@ You can access and modify all date attributes as an object:
     $date->hour = 12;
     $date->minute = 0;
     $date->second = 0;
-
-Localization
-------------
-
-There's some magic under the hood of the `format` method. It will check if there are any available translations using the [strftime](http://be2.php.net/manual/en/function.strftime.php) method. This does require you to set the correct locale:
-
-    setlocale(LC_TIME, "nl_NL");
-    echo $date->format('l j F Y H:i:s'); // zondag 28 april 2013 21:58:16
-
-The `ago` and `timestamp` method also support different languages. Language strings for these methods are stored in files within the *lang* directory. By using a "pipe" character, you may separate the singular and plural forms of a string:
-
-    'hour'      => '1 hour|%number% hours',
-    'minute'    => '1 minute|%number% minutes',
-    'second'    => '1 second|%number% seconds',
-
-If you are using Laravel, the locale set in `app/config/app.php` will be used.
