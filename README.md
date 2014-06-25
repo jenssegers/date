@@ -48,7 +48,7 @@ If you are using Laravel, the locale set in `app/config/app.php` will be used to
 
 There is also a `generator.php` script that can be used to quickly output day and month translations for a specific locale. If you want to add a new language, this can speed up the process:
 
-    `php generator.php nl`
+    `php generator.php nl_NL`
 
 Usage
 -----
