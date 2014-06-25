@@ -12,7 +12,7 @@ Add the package to your `composer.json` and run `composer update`.
 
     {
         "require": {
-            "jenssegers/date": "*"
+            "jenssegers/laravel-date": "*"
         }
     }
 
@@ -39,6 +39,8 @@ This package contains language files for the following languages:
  - French
  - Italian
  - Dutch
+ - Polish
+ - German (incomplete)
  - Swedish (incomplete)
  - Turkish (incomplete)
 
