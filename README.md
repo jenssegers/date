@@ -137,8 +137,7 @@ Get years since date:
     $date = new Date('+10 years');
     echo $date->age; // -10
 
-Manipulating Dates
-------------------
+### Manipulating Dates
 
 You can manipulate by using the *add* and *sub* methods, with relative intervals (http://www.php.net/manual/en/datetime.formats.relative.php):
 
