@@ -31,10 +31,14 @@ Languages
 
 This package contains language files for the following languages:
 
+ - German
  - English
+ - Spanish
+ - Basque
+ - Finnish (incomplete)
  - French
+ - Italian
  - Dutch
- - German (incomplete)
  - Swedish (incomplete)
  - Turkish (incomplete)
 

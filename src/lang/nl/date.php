@@ -24,7 +24,7 @@ return array(
     'minute'    => '1 minuut|:number minuten',
     'second'    => '1 seconde|:number secondes',
 
-   'january'    => 'januari',
+    'january'    => 'januari',
     'february'  => 'februari',
     'march'     => 'maart',
     'april'     => 'april',
