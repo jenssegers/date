@@ -41,7 +41,6 @@ This package contains language files for the following languages:
  - Dutch
  - Polish
  - Portuguese
- - German
  - Swedish (incomplete)
  - Turkish (incomplete)
 
