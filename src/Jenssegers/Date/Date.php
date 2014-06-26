@@ -51,12 +51,12 @@ class Date extends Carbon {
     }
 
     /**
-     * Get a relative date string.
+     * Get the difference in a human readable format.
      *
      * @param  Date    $since
      * @return string
      */
-    public function ago($since = null)
+    public function diffForHumans(Carbon $since = null)
     {
         // Get translator
         $lang = $this->getTranslator();
@@ -128,23 +128,23 @@ class Date extends Carbon {
     }
 
     /**
-     * Alias for ago.
+     * Alias for diffForHumans.
      *
      * @param  Date $since
      * @return string
      */
-    public function diffForHumans(Carbon $since = null)
+    public function ago($since = null)
     {
-        return $this->ago($since);
+        return $this->diffForHumans($since);
     }
 
     /**
-     * Alias for ago.
+     * Alias for diffForHumans.
      *
      * @param  Date $since
      * @return string
      */
-    public function until(Carbon $since = null)
+    public function until($since = null)
     {
         return $this->ago($since);
     }
@@ -294,6 +294,17 @@ class Date extends Carbon {
         }
 
         return parent::sub($interval);
+    }
+
+    /**
+     * Set the current locale.
+     *
+     * @param  string  $locale
+     * @return void
+     */
+    public static function setLocale($locale)
+    {
+        static::getTranslator()->setLocale($locale);
     }
 
     /**

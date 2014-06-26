@@ -7,8 +7,7 @@ class DateTest extends \PHPUnit_Framework_TestCase {
 	public function setUp()
 	{
 		date_default_timezone_set('UTC');
-		$translator = Date::getTranslator();
-		$translator->setLocale('en');
+		Date::setLocale('en');
 	}
 
 	public function testConstructs()
@@ -83,8 +82,7 @@ class DateTest extends \PHPUnit_Framework_TestCase {
 
 	public function testFormatTranslated()
 	{
-		$translator = Date::getTranslator();
-		$translator->setLocale('nl');
+		Date::setLocale('nl');
 
 		$date = new Date(1367186296);
 		$this->assertSame('zondag 28 april 2013 21:58:16', $date->format('l j F Y H:i:s'));
@@ -155,8 +153,7 @@ class DateTest extends \PHPUnit_Framework_TestCase {
 
 	public function testAgoTranslated()
 	{
-		$translator = Date::getTranslator();
-		$translator->setLocale('nl');
+		Date::setLocale('nl');
 
 		$date = Date::parse('-5 years');
 		$this->assertSame("5 jaren geleden", $date->ago());
@@ -211,8 +208,7 @@ class DateTest extends \PHPUnit_Framework_TestCase {
 
 	public function testTimespanTranslated()
 	{
-		$translator = Date::getTranslator();
-		$translator->setLocale('nl');
+		Date::setLocale('nl');
 
 		$date = new Date(1403619368);
 		$date = $date->sub('-100 days -3 hours -20 minutes');

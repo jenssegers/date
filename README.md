@@ -50,7 +50,9 @@ You can easily add new languages by adding a new language file to the *lang* dir
     'minute'    => '1 minute|%number% minutes',
     'second'    => '1 second|%number% seconds',
 
-If you are using Laravel, the locale set in `app/config/app.php` will be used to select the correct language file.
+If you are using Laravel, the locale set in `app/config/app.php` will be used to select the correct language file. If not, you can manually set the current locale using:
+
+    Date::setLocale('nl');
 
 There is also a `generator.php` script that can be used to quickly output day and month translations for a specific locale. If you want to add a new language, this can speed up the process:
 
