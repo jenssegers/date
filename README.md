@@ -40,6 +40,7 @@ This package contains language files for the following languages:
  - Italian
  - Dutch
  - Polish
+ - Portuguese
  - German (incomplete)
  - Swedish (incomplete)
  - Turkish (incomplete)
