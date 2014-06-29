@@ -32,12 +32,12 @@ class TranslationTest extends \PHPUnit_Framework_TestCase {
 
             foreach ($months as $month)
             {
-                $date = new Date($month);
+                $date = new Date("1 $month");
                 $date->setLocale($language);
 
                 $this->assertTrue(isset($translations[$month]));
-                $this->assertEquals($translations[$month], $date->format('F')); // Full
-                $this->assertEquals(substr($translations[$month], 0 , 3), $date->format('M')); // Short
+                $this->assertEquals($translations[$month], $date->format('F'), "Language: $language"); // Full
+                $this->assertEquals(substr($translations[$month], 0 , 3), $date->format('M'), "Language: $language"); // Short
             }
         }
     }
@@ -64,8 +64,8 @@ class TranslationTest extends \PHPUnit_Framework_TestCase {
                 $date->setLocale($language);
 
                 $this->assertTrue(isset($translations[$day]));
-                $this->assertEquals($translations[$day], $date->format('l')); // Full
-                $this->assertEquals(substr($translations[$day], 0 , 3), $date->format('D')); // Short
+                $this->assertEquals($translations[$day], $date->format('l'), "Language: $language"); // Full
+                $this->assertEquals(substr($translations[$day], 0 , 3), $date->format('D'), "Language: $language"); // Short
             }
         }
     }
@@ -92,7 +92,7 @@ class TranslationTest extends \PHPUnit_Framework_TestCase {
 
             foreach ($items as $item)
             {
-                $this->assertTrue(isset($translations[$item]));
+                $this->assertTrue(isset($translations[$item]), "Language: $language");
             }
         }
     }
