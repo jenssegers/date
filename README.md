@@ -31,18 +31,19 @@ Languages
 
 This package contains language files for the following languages:
 
- - Danish
- - German
- - Greek
- - English
- - Spanish
  - Basque
+ - Croatian
+ - Danish
+ - Dutch
+ - English
  - Finnish (incomplete)
  - French
+ - German
+ - Greek
  - Italian
- - Dutch
  - Polish
  - Portuguese
+ - Spanish
  - Swedish (incomplete)
  - Turkish (incomplete)
 
