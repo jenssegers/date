@@ -6,8 +6,6 @@ php:
   - 5.5
 
 before_script:
-  - sudo grep UTF-8 /usr/share/i18n/SUPPORTED | sudo tee /var/lib/locales/supported.d/local > /dev/null
-  - sudo locale-gen
   - composer self-update
   - composer require satooshi/php-coveralls:dev-master
   - composer install --dev --no-interaction
