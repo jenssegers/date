@@ -76,6 +76,15 @@ The Date class also added some aliases and additional methods such as: `ago` whi
 
     echo $date->timespan(); // 0 years, 3 months, 1 week, 1 day, 3 hours, 20 minutes, 0 seconds
 
+Without Laravel
+---------------
+
+You can use this library outside of the Laravel framework. The library contains a fallback translator class that will be used if Laravel is not detected. The only thing that is different, is that you need to set the locale on the Date class directly, instead of the Lang class:
+
+    Date::setLocale('nl');
+
+    echo Date::now()->format('l j F Y H:i:s'); // zondag 28 april 2013 21:58:16
+
 Carbon
 ------
 
