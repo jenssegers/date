@@ -216,4 +216,21 @@ class DateTest extends \PHPUnit_Framework_TestCase {
 		$this->assertSame("0 jaren, 3 maanden, 1 week, 1 dag, 3 uren, 20 minuten, 0 secondes", $date->timespan(1403619368));
 	}
 
+	public function testMultiplePluralForms()
+	{
+		Date::setLocale('hr');
+
+		$date = Date::parse('-1 years');
+		$this->assertSame("Prije 1 godinu", $date->ago());
+
+		$date = Date::parse('-2 years');
+		$this->assertSame("Prije 2 godine", $date->ago());
+
+		$date = Date::parse('-3 years');
+		$this->assertSame("Prije 3 godine", $date->ago());
+
+		$date = Date::parse('-5 years');
+		$this->assertSame("Prije 5 godina", $date->ago());
+	}
+
 }

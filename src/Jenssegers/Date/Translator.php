@@ -1,5 +1,7 @@
 <?php namespace Jenssegers\Date;
 
+use Symfony\Component\Translation\MessageSelector;
+
 class Translator {
 
     /**
@@ -43,13 +45,7 @@ class Translator {
         // If the line doesn't exist, we will return back the item which was requested.
         if ( ! isset($line)) return $item;
 
-        // Replace parameters.
-        foreach ($replace as $key => $value)
-        {
-            $line = str_replace(":{$key}", $value, $line);
-        }
-
-        return $line;
+        return $this->makeReplacements($line, $replace);
     }
 
     /**
@@ -63,16 +59,16 @@ class Translator {
      */
     public function choice($key, $number, array $replace = array(), $locale = null)
     {
-        $line = $this->get($key, $replace, $locale);
+        // Get all plural lines.
+        $lines = $this->get($key, $replace, $locale = $locale ?: $this->getLocale());
 
-        // Check if there is a plurar form available, otherwise just return
-        // the single item.
-        if (strpos($line, '|') === FALSE) return $line;
+        // Possible replacements.
+        $replace['number'] = $number;
+        $replace['time'] = $number;
+        $replace['count'] = $number;
 
-        list($singular, $plural) = explode('|', $line);
-
-        // Select string based on number
-        return ($number == 1) ? $singular : $plural;
+        // Let the Symfony MessageSelector do its work.
+        return $this->makeReplacements($this->getSelector()->choose($lines, $number, $locale), $replace);
     }
 
     /**
@@ -106,6 +102,23 @@ class Translator {
     protected function isLoaded($namespace, $group, $locale)
     {
         return isset($this->loaded[$namespace][$group][$locale]);
+    }
+
+    /**
+     * Make the place-holder replacements on a line.
+     *
+     * @param  string  $line
+     * @param  array   $replace
+     * @return string
+     */
+    protected function makeReplacements($line, array $replace)
+    {
+        foreach ($replace as $key => $value)
+        {
+            $line = str_replace(':'.$key, $value, $line);
+        }
+
+        return $line;
     }
 
     /**
@@ -149,4 +162,31 @@ class Translator {
     {
         $this->locale = $locale;
     }
+
+    /**
+     * Get the message selector instance.
+     *
+     * @return \Symfony\Component\Translation\MessageSelector
+     */
+    public function getSelector()
+    {
+        if ( ! isset($this->selector))
+        {
+            $this->selector = new MessageSelector;
+        }
+
+        return $this->selector;
+    }
+
+    /**
+     * Set the message selector instance.
+     *
+     * @param  \Symfony\Component\Translation\MessageSelector  $selector
+     * @return void
+     */
+    public function setSelector(MessageSelector $selector)
+    {
+        $this->selector = $selector;
+    }
+
 }

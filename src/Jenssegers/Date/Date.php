@@ -100,7 +100,7 @@ class Date extends Carbon {
         }
 
         // Translate the unit part
-        $ago = $lang->choice("date::date.$unit", $difference, array('number' => $difference));
+        $ago = $lang->choice("date::date.$unit", $difference);
 
         // Translate the ending
         if ($relative)
@@ -242,7 +242,7 @@ class Date extends Carbon {
         // Loop all units and build string
         foreach ($units as $k => $unit)
         {
-            $str[] = $lang->choice("date::date.$unit", $interval[$k], array('number' => $interval[$k]));
+            $str[] = $lang->choice("date::date.$unit", $interval[$k]);
         }
 
         return implode(', ', $str);
