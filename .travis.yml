@@ -6,7 +6,8 @@ php:
   - 5.5
 
 before_script:
-  - sudo apt-get install locales-all
+  - sudo cp /usr/share/i18n/SUPPORTED /var/lib/locales/supported.d/local
+  - sudo locale-gen
   - composer self-update
   - composer require satooshi/php-coveralls:dev-master
   - composer install --dev --no-interaction
