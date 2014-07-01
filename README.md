@@ -43,6 +43,7 @@ This package contains language files for the following languages:
  - Italian
  - Polish
  - Portuguese
+ - Serbian
  - Spanish
  - Swedish (incomplete)
  - Turkish (incomplete)
