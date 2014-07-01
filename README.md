@@ -40,6 +40,7 @@ This package contains language files for the following languages:
  - French
  - German
  - Greek
+ - Hungarian
  - Italian
  - Polish
  - Portuguese
