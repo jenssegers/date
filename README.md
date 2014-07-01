@@ -49,9 +49,9 @@ This package contains language files for the following languages:
 
 You can easily add new languages by adding a new language file to the *lang* directory. These language entries support pluralization. By using a "pipe" character, you may separate the singular and plural forms of a string:
 
-    'hour'      => '1 hour|%number% hours',
-    'minute'    => '1 minute|%number% minutes',
-    'second'    => '1 second|%number% seconds',
+    'hour'      => '1 hour|:count hours',
+    'minute'    => '1 minute|:count minutes',
+    'second'    => '1 second|:count seconds',
 
 If you are using Laravel, the locale set in `app/config/app.php` will be used to select the correct language file. If not, you can manually set the current locale using:
 
