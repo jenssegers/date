@@ -1,12 +1,23 @@
 <?php
 
 use Jenssegers\Date\Date;
+use Jenssegers\Date\Translator;
+use Symfony\Component\Translation\MessageSelector;
 
 class TranslationTest extends \PHPUnit_Framework_TestCase {
 
     public function setUp()
     {
         $this->languages = array_slice(scandir('src/lang'), 2);
+    }
+
+    public function testGetsAndSetsTranslator()
+    {
+        $translator = new Translator;
+        $this->assertNotEquals($translator, Date::getTranslator());
+
+        Date::setTranslator($translator);
+        $this->assertEquals($translator, Date::getTranslator());
     }
 
     public function testTranslatesMonths()
