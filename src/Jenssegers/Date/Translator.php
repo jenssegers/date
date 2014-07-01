@@ -62,9 +62,6 @@ class Translator {
         // Get all plural lines.
         $lines = $this->get($key, $replace, $locale = $locale ?: $this->getLocale());
 
-        // Possible replacements.
-        $replace['number'] = $number;
-        $replace['time'] = $number;
         $replace['count'] = $number;
 
         // Let the Symfony MessageSelector do its work.
