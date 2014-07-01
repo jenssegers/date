@@ -107,22 +107,22 @@ class Date extends Carbon {
         {
             if ($future)
             {
-                return $lang->get('date::date.after', array('time' => $ago));
+                return $lang->choice('date::date.after', $difference, array('time' => $ago));
             }
             else
             {
-                return $lang->get('date::date.before', array('time' => $ago));
+                return $lang->choice('date::date.before', $difference, array('time' => $ago));
             }
         }
         else
         {
             if ($future)
             {
-                return $lang->get('date::date.from now', array('time' => $ago));
+                return $lang->choice('date::date.from now', $difference, array('time' => $ago));
             }
             else
             {
-                return $lang->get('date::date.ago', array('time' => $ago));
+                return $lang->choice('date::date.ago', $difference, array('time' => $ago));
             }
         }
     }
@@ -222,7 +222,7 @@ class Date extends Carbon {
         $lang = $this->getTranslator();
 
         // Create Date instance if needed
-        if (! $time instanceof Date)
+        if ( ! $time instanceof Date)
         {
             $time = new static($time, $timezone);
         }
@@ -315,7 +315,7 @@ class Date extends Carbon {
     public static function getTranslator()
     {
         // Use own implementation as fallback
-        if (! static::$translator)
+        if ( ! static::$translator)
         {
             static::$translator = new Translator;
         }

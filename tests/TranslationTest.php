@@ -20,6 +20,34 @@ class TranslationTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals($translator, Date::getTranslator());
     }
 
+    public function testMultiplePluralForms()
+    {
+        Date::setLocale('hr');
+
+        $date = Date::parse('-1 years');
+        $this->assertSame("Prije 1 godinu", $date->ago());
+
+        $date = Date::parse('-2 years');
+        $this->assertSame("Prije 2 godine", $date->ago());
+
+        $date = Date::parse('-3 years');
+        $this->assertSame("Prije 3 godine", $date->ago());
+
+        $date = Date::parse('-5 years');
+        $this->assertSame("Prije 5 godina", $date->ago());
+    }
+
+    public function testMultipleAgo()
+    {
+        Date::setLocale('de');
+
+        $date = Date::parse('-1 month');
+        $this->assertSame("vor 1 Monat", $date->ago());
+
+        $date = Date::parse('-5 months');
+        $this->assertSame("vor 5 Monaten", $date->ago());
+    }
+
     public function testTranslatesMonths()
     {
         $months = array(

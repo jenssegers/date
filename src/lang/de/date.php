@@ -12,7 +12,7 @@ return array(
     |
     */
 
-    'ago'       => 'vor :time',
+    'ago'       => 'vor :time|vor :timen',
     'from now'  => ':time von jetzt',
     'after'     => ':time nach',
     'before'    => ':time vor',
