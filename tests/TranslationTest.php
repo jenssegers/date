@@ -93,6 +93,21 @@ class TranslationTest extends \PHPUnit_Framework_TestCase {
             foreach ($items as $item)
             {
                 $this->assertTrue(isset($translations[$item]), "Language: $language");
+
+                if ( ! $translations[$item])
+                {
+                    echo "\nWARNING! '$item' not set for language $language";
+                    continue;
+                }
+
+                if (in_array($item, array('ago', 'from now', 'after', 'before')))
+                {
+                    $this->assertContains(':time', $translations[$item]);
+                }
+                else
+                {
+                    $this->assertContains(':count', $translations[$item]);
+                }
             }
         }
     }
