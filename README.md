@@ -36,6 +36,7 @@ This package contains language files for the following languages:
  - Danish
  - Dutch
  - English
+ - Esperanto
  - Finnish (incomplete)
  - French
  - German
