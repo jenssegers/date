@@ -13,7 +13,7 @@ return array(
     */
 
     'ago'       => ':time önce',
-    'from now'  => ':time sonra',
+    'from_now'  => ':time sonra',
     'after'     => ':time sonra',
     'before'    => ':time önce',
     'year'      => '1 yıl|:count yıl',
