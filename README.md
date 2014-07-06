@@ -33,6 +33,7 @@ This package contains language files for the following languages:
 
  - Basque
  - Croatian
+ - Chinese Simplified
  - Danish
  - Dutch
  - English
