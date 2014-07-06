@@ -60,6 +60,11 @@ If you are using Laravel, the locale set in `app/config/app.php` will be used to
 
     Date::setLocale('nl');
 
+Some languages have a different unit translation when they are used in combination with a suffix like 'ago'. For those situations you can add additional translations by adding the suffix to the unit as a key:
+
+    'year'          => '1 Jahr|:count Jahre',
+    'year_ago'      => '1 Jahr|:count Jahren',
+
 There is also a `generator.php` script that can be used to quickly output day and month translations for a specific locale. If you want to add a new language, this can speed up the process:
 
     `php generator.php nl_NL`
