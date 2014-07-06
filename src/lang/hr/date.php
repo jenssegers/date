@@ -13,7 +13,7 @@ return array(
     */
 
     'ago'       => 'Prije :time',
-    'from now'  => ':time od sad',
+    'from_now'  => ':time od sad',
     'after'     => 'Nakon :time',
     'before'    => 'Prije :time',
     'year'      => ':count godinu|:count godine|:count godina',

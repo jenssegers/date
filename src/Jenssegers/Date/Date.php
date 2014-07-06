@@ -99,32 +99,29 @@ class Date extends Carbon {
             $difference = floor($difference / $value);
         }
 
-        // Translate the unit part
-        $ago = $lang->choice("date::date.$unit", $difference);
-
-        // Translate the ending
+        // Select the suffix.
         if ($relative)
         {
-            if ($future)
-            {
-                return $lang->choice('date::date.after', $difference, array('time' => $ago));
-            }
-            else
-            {
-                return $lang->choice('date::date.before', $difference, array('time' => $ago));
-            }
+            $suffix = $future ? 'after' : 'before';
         }
         else
         {
-            if ($future)
-            {
-                return $lang->choice('date::date.from now', $difference, array('time' => $ago));
-            }
-            else
-            {
-                return $lang->choice('date::date.ago', $difference, array('time' => $ago));
-            }
+            $suffix = $future ? 'from_now' : 'ago';
         }
+
+        // Some languages have different unit translations when used in combination
+        // with a specific suffix. Here we will check if there is an optional
+        // translation for that specific suffix and use it if it exists.
+        if ($lang->get("date::date.${unit}_${suffix}") != "${unit}_${suffix}")
+        {
+            $ago = $lang->choice("date::date.${unit}_${suffix}", $difference);
+        }
+        else
+        {
+            $ago = $lang->choice("date::date.$unit", $difference);
+        }
+
+        return $lang->choice("date::date.$suffix", $difference, array('time' => $ago));
     }
 
     /**

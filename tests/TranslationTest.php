@@ -37,7 +37,7 @@ class TranslationTest extends \PHPUnit_Framework_TestCase {
         $this->assertSame("Prije 5 godina", $date->ago());
     }
 
-    public function testMultipleAgo()
+    public function testCustomSuffix()
     {
         Date::setLocale('de');
 
@@ -46,6 +46,9 @@ class TranslationTest extends \PHPUnit_Framework_TestCase {
 
         $date = Date::parse('-5 months');
         $this->assertSame("vor 5 Monaten", $date->ago());
+
+        $date = Date::parse('-5 seconds');
+        $this->assertSame("vor 5 Sekunden", $date->ago());
     }
 
     public function testTranslatesMonths()
@@ -113,7 +116,7 @@ class TranslationTest extends \PHPUnit_Framework_TestCase {
     {
         $items = array(
             'ago',
-            'from now',
+            'from_now',
             'after',
             'before',
             'year',
@@ -139,13 +142,13 @@ class TranslationTest extends \PHPUnit_Framework_TestCase {
                     continue;
                 }
 
-                if (in_array($item, array('ago', 'from now', 'after', 'before')))
+                if (in_array($item, array('ago', 'from_now', 'after', 'before')))
                 {
-                    $this->assertContains(':time', $translations[$item]);
+                    $this->assertContains(':time', $translations[$item], "Language: $language");
                 }
                 else
                 {
-                    $this->assertContains(':count', $translations[$item]);
+                    $this->assertContains(':count', $translations[$item], "Language: $language");
                 }
             }
         }

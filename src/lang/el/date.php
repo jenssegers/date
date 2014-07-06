@@ -13,7 +13,7 @@ return array(
     */
 
     'ago'       => 'πρίν απο :time',
-    'from now'  => 'σε :time απο τώρα',
+    'from_now'  => 'σε :time απο τώρα',
     'after'     => ':time μετά',
     'before'    => ':time πρίν',
     'year'      => '1 χρόνος|:count χρόνια',

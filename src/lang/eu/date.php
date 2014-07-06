@@ -13,7 +13,7 @@ return array(
     */
 
     'ago'       => 'Orain dela :time',
-    'from now'  => ':time barru',
+    'from_now'  => ':time barru',
     'after'     => ':time geroago',
     'before'    => ':time lehenago',
     'year'      => 'Urte 1|:count urte',

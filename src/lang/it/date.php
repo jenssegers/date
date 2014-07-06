@@ -13,7 +13,7 @@ return array(
     */
 
     'ago'       => ':time fa',
-    'from now'  => 'tra :time',
+    'from_now'  => 'tra :time',
     'after'     => ':time dopo',
     'before'    => ':time prima',
     'year'      => '1 anno|:count anni',

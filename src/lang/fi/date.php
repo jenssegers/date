@@ -13,7 +13,7 @@ return array(
     */
 
     'ago'       => ':time sitten',
-    'from now'  => ':time tästä hetkestä',
+    'from_now'  => ':time tästä hetkestä',
     'after'     => '',
     'before'    => '',
     'year'      => '1 vuosi|:count vuotta',

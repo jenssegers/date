@@ -12,8 +12,8 @@ return array(
     |
     */
 
-    'ago'       => 'vor :time|vor :timen',
-    'from now'  => ':time von jetzt',
+    'ago'       => 'vor :time',
+    'from_now'  => ':time von jetzt',
     'after'     => ':time nach',
     'before'    => ':time vor',
     'year'      => '1 Jahr|:count Jahre',
@@ -44,5 +44,13 @@ return array(
     'friday'    => 'Freitag',
     'saturday'  => 'Samstag',
     'sunday'    => 'Sonntag',
+
+    'year_ago'      => '1 Jahr|:count Jahren',
+    'month_ago'     => '1 Monat|:count Monaten',
+    'week_ago'      => '1 Woche|:count Wochen',
+    'day_ago'       => '1 Tag|:count Tagen',
+    'hour_ago'      => '1 Stunde|:count Stunden',
+    'minute_ago'    => '1 Minute|:count Minuten',
+    'second_ago'    => '1 Sekunde|:count Sekunden',
 
 );

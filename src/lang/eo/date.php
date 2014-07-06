@@ -13,7 +13,7 @@ return array(
     */
 
     'ago'       => 'antaŭ :time',
-    'from now'  => 'je :time',
+    'from_now'  => 'je :time',
     'after'     => ':time poste',
     'before'    => ':time antaŭe',
     'year'      => '1 jaro|:count jaroj',
