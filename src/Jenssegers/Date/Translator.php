@@ -43,7 +43,7 @@ class Translator {
         }
 
         // If the line doesn't exist, we will return back the item which was requested.
-        if ( ! isset($line)) return $item;
+        if ( ! isset($line)) return "${namespace}::${group}.${item}";
 
         return $this->makeReplacements($line, $replace);
     }
