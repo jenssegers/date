@@ -134,7 +134,7 @@ class TranslationTest extends \PHPUnit_Framework_TestCase {
 
             foreach ($items as $item)
             {
-                $this->assertTrue(isset($translations[$item]), "Language: $language");
+                $this->assertTrue(isset($translations[$item]), "Language: $language >> $item");
 
                 if ( ! $translations[$item])
                 {

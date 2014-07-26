@@ -13,7 +13,7 @@ return array(
     */
 
     'ago'       => 'منذ :time',
-    'from now'  => 'من الأن :time',
+    'from_now'  => 'من الأن :time',
     'after'     => 'بعد :time',
     'before'    => 'قبل :time',
     'year'      => '{1} سنة| {2} سنتين | [3,Inf] :count سنوات',
