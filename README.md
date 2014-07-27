@@ -31,6 +31,7 @@ Languages
 
 This package contains language files for the following languages:
 
+ - Arabic
  - Basque
  - Croatian
  - Chinese Simplified
