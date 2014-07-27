@@ -112,7 +112,11 @@ class Date extends Carbon {
         // Some languages have different unit translations when used in combination
         // with a specific suffix. Here we will check if there is an optional
         // translation for that specific suffix and use it if it exists.
-        if ($lang->get("date::date.${unit}_${suffix}") != "date::date.${unit}_${suffix}")
+        if ($lang->get("date::date.${unit}_diff") != "date::date.${unit}_diff")
+        {
+            $ago = $lang->choice("date::date.${unit}_diff", $difference);
+        }
+        else if ($lang->get("date::date.${unit}_${suffix}") != "date::date.${unit}_${suffix}")
         {
             $ago = $lang->choice("date::date.${unit}_${suffix}", $difference);
         }
