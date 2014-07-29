@@ -196,6 +196,14 @@ class DateTest extends \PHPUnit_Framework_TestCase {
 
 		$date = Date::parse('-5 days');
 		$this->assertSame("5 dagen voor", $date->ago(Date::now()));
+
+		Date::setLocale('ru');
+
+		$date = Date::parse('-21 hours');
+		$this->assertSame("21 час до", $date->ago(Date::now()));
+
+		$date = Date::parse('-11 hours');
+		$this->assertSame("11 часов до", $date->ago(Date::now()));
 	}
 
 	public function testTimespan()
