@@ -47,6 +47,7 @@ This package contains language files for the following languages:
  - Italian
  - Polish
  - Portuguese
+ - Russian
  - Serbian
  - Spanish
  - Swedish (incomplete)
