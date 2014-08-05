@@ -13,9 +13,9 @@ return array(
     */
 
     'ago'       => 'vor :time',
-    'from_now'  => ':time von jetzt',
-    'after'     => ':time nach',
-    'before'    => ':time vor',
+    'from_now'  => 'in :time',
+    'after'     => ':time später',
+    'before'    => ':time vorher',
     'year'      => '1 Jahr|:count Jahre',
     'month'     => '1 Monat|:count Monate',
     'week'      => '1 Woche|:count Wochen',
