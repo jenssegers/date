@@ -25,16 +25,16 @@ class TranslationTest extends \PHPUnit_Framework_TestCase {
         Date::setLocale('hr');
 
         $date = Date::parse('-1 years');
-        $this->assertSame("Prije 1 godinu", $date->ago());
+        $this->assertSame("prije 1 godinu", $date->ago());
 
         $date = Date::parse('-2 years');
-        $this->assertSame("Prije 2 godine", $date->ago());
+        $this->assertSame("prije 2 godine", $date->ago());
 
         $date = Date::parse('-3 years');
-        $this->assertSame("Prije 3 godine", $date->ago());
+        $this->assertSame("prije 3 godine", $date->ago());
 
         $date = Date::parse('-5 years');
-        $this->assertSame("Prije 5 godina", $date->ago());
+        $this->assertSame("prije 5 godina", $date->ago());
     }
 
     public function testCustomSuffix()
