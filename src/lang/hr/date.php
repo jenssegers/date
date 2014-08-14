@@ -13,8 +13,8 @@ return array(
     */
 
     'ago'       => 'prije :time',
-    'from_now'  => ':time od sad',
-    'after'     => 'nakon :time',
+    'from_now'  => 'za :time',
+    'after'     => 'za :time',
     'before'    => 'prije :time',
     'year'      => ':count godinu|:count godine|:count godina',
     'month'     => ':count mjesec|:count mjeseca|:count mjeseci',
@@ -31,7 +31,7 @@ return array(
     'may'       => 'svibanj',
     'june'      => 'lipanj',
     'july'      => 'srpanj',
-    'august'    => 'lolovoz',
+    'august'    => 'kolovoz',
     'september' => 'rujan',
     'october'   => 'listopad',
     'november'  => 'studeni',
