@@ -45,6 +45,7 @@ This package contains language files for the following languages:
  - German
  - Greek
  - Hungarian
+ - Indonesian
  - Italian
  - Norwegian
  - Polish
