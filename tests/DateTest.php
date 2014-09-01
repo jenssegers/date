@@ -221,7 +221,7 @@ class DateTest extends \PHPUnit_Framework_TestCase {
 		$date = new Date(1403619368);
 		$date = $date->sub('-100 days -3 hours -20 minutes');
 
-		$this->assertSame("0 jaren, 3 maanden, 1 week, 1 dag, 3 uren, 20 minuten, 0 secondes", $date->timespan(1403619368));
+		$this->assertSame("0 jaar, 3 maanden, 1 week, 1 dag, 3 uur, 20 minuten, 0 seconde", $date->timespan(1403619368));
 	}
 
 }
