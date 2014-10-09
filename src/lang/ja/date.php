@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 return array(
 
@@ -12,14 +12,37 @@ return array(
     |
     */
 
-    'ago'       => '前',
-    'from now'  => '今から',
-    'year'      => '年 | 年',
-    'month'     => '月 | 月',
-    'week'      => '週 | 週',
-    'day'       => '日 | 日',
-    'hour'      => '時間 | 時間',
-    'minute'    => '分 | 分',
-    'second'    => '秒 | 秒',
+    'ago'       => ':time ago',
+    'from_now'  => ':time from now',
+    'after'     => ':time after',
+    'before'    => ':time before',
+    'year'      => '1 year|:count years',
+    'month'     => '1 month|:count months',
+    'week'      => '1 week|:count weeks',
+    'day'       => '1 day|:count days',
+    'hour'      => '1 hour|:count hours',
+    'minute'    => '1 minute|:count minutes',
+    'second'    => '1 second|:count seconds',
+
+    'january'   => 'January',
+    'february'  => 'February',
+    'march'     => 'March',
+    'april'     => 'April',
+    'may'       => 'May',
+    'june'      => 'June',
+    'july'      => 'July',
+    'august'    => 'August',
+    'september' => 'September',
+    'october'   => 'October',
+    'november'  => 'November',
+    'december'  => 'December',
+
+    'monday'    => 'Monday',
+    'tuesday'   => 'Tuesday',
+    'wednesday' => 'Wednesday',
+    'thursday'  => 'Thursday',
+    'friday'    => 'Friday',
+    'saturday'  => 'Saturday',
+    'sunday'    => 'Sunday',
 
 );
