@@ -13,7 +13,7 @@ return array(
     */
 
     'ago'       => ':time 前',
-    'from_now'  => '今から :time ',
+    'from_now'  => '今から :time',
     'after'     => ':time 後',
     'before'    => ':time 前',
     'year'      => '1年|:count 年',
@@ -22,7 +22,7 @@ return array(
     'day'       => '1日|:count 日',
     'hour'      => '1時間|:count 時間',
     'minute'    => '1分|:count 分',
-    'second'    => '1秒 | :count 秒',
+    'second'    => '1秒|:count 秒',
 
     'january'   => '1月',
     'february'  => '2月',
