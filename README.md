@@ -33,6 +33,8 @@ This package contains language files for the following languages:
 
  - Arabic
  - Basque
+ - Brazilian Portuguese
+ - Bulgarian
  - Catalan
  - Croatian
  - Chinese Simplified
@@ -47,6 +49,7 @@ This package contains language files for the following languages:
  - Hungarian
  - Indonesian
  - Italian
+ - Japanese
  - Norwegian
  - Polish
  - Portuguese
