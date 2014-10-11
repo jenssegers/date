@@ -22,7 +22,7 @@ return array(
     'day'       => '1 dag|:count dagen',
     'hour'      => ':count uur',
     'minute'    => '1 minuut|:count minuten',
-    'second'    => ':count seconde',
+    'second'    => '1 seconde|:count seconden',
 
     'january'   => 'januari',
     'february'  => 'februari',

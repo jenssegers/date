@@ -183,7 +183,7 @@ class DateTest extends \PHPUnit_Framework_TestCase {
 		$this->assertSame("1 minuut geleden", $date->ago());
 
 		$date = Date::parse('-50 second');
-		$this->assertSame("50 seconde geleden", $date->ago());
+		$this->assertSame("50 seconden geleden", $date->ago());
 
 		$date = Date::parse('-1 second');
 		$this->assertSame("1 seconde geleden", $date->ago());
@@ -221,7 +221,7 @@ class DateTest extends \PHPUnit_Framework_TestCase {
 		$date = new Date(1403619368);
 		$date = $date->sub('-100 days -3 hours -20 minutes');
 
-		$this->assertSame("0 jaar, 3 maanden, 1 week, 1 dag, 3 uur, 20 minuten, 0 seconde", $date->timespan(1403619368));
+		$this->assertSame("0 jaar, 3 maanden, 1 week, 1 dag, 3 uur, 20 minuten, 0 seconden", $date->timespan(1403619368));
 	}
 
 }
