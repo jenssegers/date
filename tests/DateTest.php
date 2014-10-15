@@ -211,7 +211,7 @@ class DateTest extends \PHPUnit_Framework_TestCase {
 		$date = new Date(1403619368);
 		$date = $date->sub('-100 days -3 hours -20 minutes');
 
-		$this->assertSame("0 years, 3 months, 1 week, 1 day, 3 hours, 20 minutes, 0 seconds", $date->timespan(1403619368));
+		$this->assertSame("3 months, 1 week, 1 day, 3 hours, 20 minutes", $date->timespan(1403619368));
 	}
 
 	public function testTimespanTranslated()
@@ -221,7 +221,7 @@ class DateTest extends \PHPUnit_Framework_TestCase {
 		$date = new Date(1403619368);
 		$date = $date->sub('-100 days -3 hours -20 minutes');
 
-		$this->assertSame("0 jaar, 3 maanden, 1 week, 1 dag, 3 uur, 20 minuten, 0 seconden", $date->timespan(1403619368));
+		$this->assertSame("3 maanden, 1 week, 1 dag, 3 uur, 20 minuten", $date->timespan(1403619368));
 	}
 
 }

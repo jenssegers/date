@@ -243,7 +243,7 @@ class Date extends Carbon {
         // Loop all units and build string
         foreach ($units as $k => $unit)
         {
-            $str[] = $lang->choice("date::date.$unit", $interval[$k]);
+            if ($interval[$k]) $str[] = $lang->choice("date::date.$unit", $interval[$k]);
         }
 
         return implode(', ', $str);
