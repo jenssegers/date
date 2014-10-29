@@ -38,6 +38,7 @@ This package contains language files for the following languages:
  - Catalan
  - Croatian
  - Chinese Simplified
+ - Chinese Traditional
  - Danish
  - Dutch
  - English
