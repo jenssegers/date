@@ -8,13 +8,9 @@ This date library extends [Carbon](https://github.com/briannesbitt/Carbon) with 
 Installation
 ------------
 
-Add the package to your `composer.json` and run `composer update`.
+Install using composer:
 
-    {
-        "require": {
-            "jenssegers/date": "*"
-        }
-    }
+    composer require jenssegers/data
 
 This package is compatible with Laravel 4 (but not limited to). If Laravel is detected, the language library from Laravel will be used instead of an own implementation.
 
