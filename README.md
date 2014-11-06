@@ -10,7 +10,7 @@ Installation
 
 Install using composer:
 
-    composer require jenssegers/data
+    composer require jenssegers/date
 
 This package is compatible with Laravel 4 (but not limited to). If Laravel is detected, the language library from Laravel will be used instead of an own implementation.
 
