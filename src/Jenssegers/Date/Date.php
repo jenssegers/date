@@ -1,8 +1,6 @@
 <?php namespace Jenssegers\Date;
 
-use DateTime;
-use DateInterval;
-use DateTimeZone;
+use DateTime, DateInterval, DateTimeZone;
 use Carbon\Carbon;
 
 class Date extends Carbon {
@@ -32,7 +30,7 @@ class Date extends Carbon {
         // Get default timezone from app config.
         if (is_null($timezone) and class_exists('Illuminate\Support\Facades\Config'))
         {
-            $timezone = \Config::get('app.timezone');
+            $timezone = \Illuminate\Support\Facades\Config::get('app.timezone');
         }
 
         parent::__construct($time, $timezone);
