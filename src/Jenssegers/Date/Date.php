@@ -191,7 +191,7 @@ class Date extends Carbon {
                 // Short notations.
                 if (in_array($character, array('D', 'M')))
                 {
-                    $translated = substr($translated, 0, 3);
+                    $translated = mb_substr($translated, 0, 3);
                 }
 
                 // Add to replace list.
