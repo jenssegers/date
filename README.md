@@ -55,6 +55,7 @@ This package contains language files for the following languages:
  - Spanish
  - Swedish (incomplete)
  - Turkish
+ - Vietnamese
 
 You can easily add new languages by adding a new language file to the *lang* directory. These language entries support pluralization. By using a "pipe" character, you may separate the singular and plural forms of a string:
 
