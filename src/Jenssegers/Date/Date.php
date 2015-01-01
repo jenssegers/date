@@ -75,7 +75,7 @@ class Date extends Carbon {
             'minute' => 60,
             'hour' => 24,
             'day' => 7,
-            'week' => 4,
+            'week' => 30 / 7,
             'month' => 12,
         );
 
@@ -94,8 +94,10 @@ class Date extends Carbon {
                 break;
             }
 
-            $difference = floor($difference / $value);
+            $difference = $difference / $value;
         }
+
+        $difference = floor($difference);
 
         // Select the suffix.
         if ($relative)

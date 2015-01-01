@@ -103,52 +103,52 @@ class DateTest extends \PHPUnit_Framework_TestCase {
 	public function testAgo()
 	{
 		$date = Date::parse('-5 years');
-		$this->assertSame("5 years ago", $date->ago());
+		$this->assertSame('5 years ago', $date->ago());
 
 		$date = Date::parse('-5 months');
-		$this->assertSame("5 months ago", $date->ago());
+		$this->assertSame('5 months ago', $date->ago());
 
 		$date = Date::parse('-32 days');
-		$this->assertSame("1 month ago", $date->ago());
+		$this->assertSame('1 month ago', $date->ago());
 
 		$date = Date::parse('-4 days');
-		$this->assertSame("4 days ago", $date->ago());
+		$this->assertSame('4 days ago', $date->ago());
 
 		$date = Date::parse('-1 day');
-		$this->assertSame("1 day ago", $date->ago());
+		$this->assertSame('1 day ago', $date->ago());
 
 		$date = Date::parse('-3 hours');
-		$this->assertSame("3 hours ago", $date->ago());
+		$this->assertSame('3 hours ago', $date->ago());
 
 		$date = Date::parse('-1 hour');
-		$this->assertSame("1 hour ago", $date->ago());
+		$this->assertSame('1 hour ago', $date->ago());
 
 		$date = Date::parse('-2 minutes');
-		$this->assertSame("2 minutes ago", $date->ago());
+		$this->assertSame('2 minutes ago', $date->ago());
 
 		$date = Date::parse('-1 minute');
-		$this->assertSame("1 minute ago", $date->ago());
+		$this->assertSame('1 minute ago', $date->ago());
 
 		$date = Date::parse('-50 second');
-		$this->assertSame("50 seconds ago", $date->ago());
+		$this->assertSame('50 seconds ago', $date->ago());
 
 		$date = Date::parse('-1 second');
-		$this->assertSame("1 second ago", $date->ago());
+		$this->assertSame('1 second ago', $date->ago());
 
 		$date = Date::parse('+5 days');
-		$this->assertSame("5 days from now", $date->ago());
+		$this->assertSame('5 days from now', $date->ago());
 
 		$date = Date::parse('+5 days');
-		$this->assertSame("5 days after", $date->ago(Date::now()));
+		$this->assertSame('5 days after', $date->ago(Date::now()));
 
 		$date = Date::parse('-5 days');
-		$this->assertSame("5 days before", $date->ago(Date::now()));
+		$this->assertSame('5 days before', $date->ago(Date::now()));
 	}
 
 	public function testDiffForHumans()
 	{
 		$date = Date::parse('-5 years');
-		$this->assertSame("5 years ago", $date->diffForHumans());
+		$this->assertSame('5 years ago', $date->diffForHumans());
 	}
 
 	public function testAgoTranslated()
@@ -156,54 +156,54 @@ class DateTest extends \PHPUnit_Framework_TestCase {
 		Date::setLocale('nl');
 
 		$date = Date::parse('-5 years');
-		$this->assertSame("5 jaar geleden", $date->ago());
+		$this->assertSame('5 jaar geleden', $date->ago());
 
 		$date = Date::parse('-5 months');
-		$this->assertSame("5 maanden geleden", $date->ago());
+		$this->assertSame('5 maanden geleden', $date->ago());
 
 		$date = Date::parse('-32 days');
-		$this->assertSame("1 maand geleden", $date->ago());
+		$this->assertSame('1 maand geleden', $date->ago());
 
 		$date = Date::parse('-4 days');
-		$this->assertSame("4 dagen geleden", $date->ago());
+		$this->assertSame('4 dagen geleden', $date->ago());
 
 		$date = Date::parse('-1 day');
-		$this->assertSame("1 dag geleden", $date->ago());
+		$this->assertSame('1 dag geleden', $date->ago());
 
 		$date = Date::parse('-3 hours');
-		$this->assertSame("3 uur geleden", $date->ago());
+		$this->assertSame('3 uur geleden', $date->ago());
 
 		$date = Date::parse('-1 hour');
-		$this->assertSame("1 uur geleden", $date->ago());
+		$this->assertSame('1 uur geleden', $date->ago());
 
 		$date = Date::parse('-2 minutes');
-		$this->assertSame("2 minuten geleden", $date->ago());
+		$this->assertSame('2 minuten geleden', $date->ago());
 
 		$date = Date::parse('-1 minute');
-		$this->assertSame("1 minuut geleden", $date->ago());
+		$this->assertSame('1 minuut geleden', $date->ago());
 
 		$date = Date::parse('-50 second');
-		$this->assertSame("50 seconden geleden", $date->ago());
+		$this->assertSame('50 seconden geleden', $date->ago());
 
 		$date = Date::parse('-1 second');
-		$this->assertSame("1 seconde geleden", $date->ago());
+		$this->assertSame('1 seconde geleden', $date->ago());
 
 		$date = Date::parse('+5 days');
-		$this->assertSame("5 dagen vanaf nu", $date->ago());
+		$this->assertSame('5 dagen vanaf nu', $date->ago());
 
 		$date = Date::parse('+5 days');
-		$this->assertSame("5 dagen na", $date->ago(Date::now()));
+		$this->assertSame('5 dagen na', $date->ago(Date::now()));
 
 		$date = Date::parse('-5 days');
-		$this->assertSame("5 dagen voor", $date->ago(Date::now()));
+		$this->assertSame('5 dagen voor', $date->ago(Date::now()));
 
 		Date::setLocale('ru');
 
 		$date = Date::parse('-21 hours');
-		$this->assertSame("21 час до", $date->ago(Date::now()));
+		$this->assertSame('21 час до', $date->ago(Date::now()));
 
 		$date = Date::parse('-11 hours');
-		$this->assertSame("11 часов до", $date->ago(Date::now()));
+		$this->assertSame('11 часов до', $date->ago(Date::now()));
 	}
 
 	public function testTimespan()
@@ -211,7 +211,7 @@ class DateTest extends \PHPUnit_Framework_TestCase {
 		$date = new Date(1403619368);
 		$date = $date->sub('-100 days -3 hours -20 minutes');
 
-		$this->assertSame("3 months, 1 week, 1 day, 3 hours, 20 minutes", $date->timespan(1403619368));
+		$this->assertSame('3 months, 1 week, 1 day, 3 hours, 20 minutes', $date->timespan(1403619368));
 	}
 
 	public function testTimespanTranslated()
@@ -221,7 +221,7 @@ class DateTest extends \PHPUnit_Framework_TestCase {
 		$date = new Date(1403619368);
 		$date = $date->sub('-100 days -3 hours -20 minutes');
 
-		$this->assertSame("3 maanden, 1 week, 1 dag, 3 uur, 20 minuten", $date->timespan(1403619368));
+		$this->assertSame('3 maanden, 1 week, 1 dag, 3 uur, 20 minuten', $date->timespan(1403619368));
 	}
 
 }
