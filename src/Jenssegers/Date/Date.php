@@ -100,11 +100,6 @@ class Date extends Carbon {
 
         $difference = floor($difference);
 
-        if ($absolute)
-        {
-            return $lang->choice("date::date.$unit", $difference, array('time' => $difference));
-        }
-
         // Select the suffix.
         if ($relative)
         {
@@ -129,6 +124,11 @@ class Date extends Carbon {
         else
         {
             $ago = $lang->choice("date::date.$unit", $difference);
+        }
+
+        if ($absolute)
+        {
+            return $lang->choice("date::date.$unit", $difference, array('time' => $ago));
         }
 
         return $lang->choice("date::date.$suffix", $difference, array('time' => $ago));
