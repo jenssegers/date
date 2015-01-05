@@ -54,7 +54,7 @@ class Date extends Carbon {
      * @param  Date    $since
      * @return string
      */
-    public function diffForHumans(Carbon $since = null)
+    public function diffForHumans(Carbon $since = null, $absolute = false)
     {
         // Get translator
         $lang = $this->getTranslator();
@@ -73,10 +73,10 @@ class Date extends Carbon {
         $units = array(
             'second' => 60,
             'minute' => 60,
-            'hour' => 24,
-            'day' => 7,
-            'week' => 30 / 7,
-            'month' => 12,
+            'hour'   => 24,
+            'day'    => 7,
+            'week'   => 30 / 7,
+            'month'  => 12,
         );
 
         // Date difference
@@ -98,6 +98,11 @@ class Date extends Carbon {
         }
 
         $difference = floor($difference);
+
+        if ($absolute)
+        {
+            return $lang->choice("date::date.$unit", $difference, array('time' => $difference));
+        }
 
         // Select the suffix.
         if ($relative)
