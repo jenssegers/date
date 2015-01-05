@@ -52,6 +52,7 @@ class Date extends Carbon {
      * Get the difference in a human readable format.
      *
      * @param  Date    $since
+     * @param  bool    $absolute removes time difference modifiers ago, after, etc
      * @return string
      */
     public function diffForHumans(Carbon $since = null, $absolute = false)
