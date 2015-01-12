@@ -50,6 +50,7 @@ This package contains language files for the following languages:
  - Norwegian
  - Polish
  - Portuguese
+ - Romanian
  - Russian
  - Thai
  - Serbian
