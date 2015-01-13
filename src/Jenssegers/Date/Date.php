@@ -128,7 +128,7 @@ class Date extends Carbon {
 
         if ($absolute)
         {
-            return $lang->choice("date::date.$unit", $difference, array('time' => $ago));
+            return $ago;
         }
 
         return $lang->choice("date::date.$suffix", $difference, array('time' => $ago));
