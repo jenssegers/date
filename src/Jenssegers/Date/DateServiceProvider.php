@@ -18,6 +18,8 @@ class DateServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
+        $this->package('jenssegers/date');
+
         // Use the Laravel translator.
         Date::setTranslator($this->app['translator']);
     }
