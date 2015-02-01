@@ -11,6 +11,27 @@ class TranslationTest extends PHPUnit_Framework_TestCase {
         $this->languages = array_slice(scandir('src/lang'), 2);
     }
 
+    public function testKnownTranslation()
+    {
+        $translator = new Translator;
+        $this->assertTrue($translator->has('date::date.january'));
+        $this->assertEquals('January', $translator->get('date::date.january'));
+    }
+
+    public function testUnknownTranslation()
+    {
+        $translator = new Translator;
+        $this->assertFalse($translator->has('date::date.test'));
+        $this->assertEquals('date::date.test', $translator->get('date::date.test'));
+    }
+
+    public function testChoiceTranslation()
+    {
+        $translator = new Translator;
+        $this->assertEquals('1 month', $translator->choice('date::date.month', 1));
+        $this->assertEquals('2 months', $translator->choice('date::date.month', 2));
+    }
+
     public function testGetsAndSetsTranslator()
     {
         $translator = new Translator;
