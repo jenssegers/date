@@ -18,7 +18,16 @@ class DateServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-        $this->package('jenssegers/date');
+        // Laravel 5 resource registration
+        if (starts_with($this->app->version(), '5'))
+        {
+            $this->loadTranslationsFrom($this->app->basePath() . '/vendor/jenssegers/date/src/lang', 'date');
+        }
+        // Laravel 4 package registration
+        else
+        {
+            $this->package('jenssegers/date');
+        }
 
         // Use the Laravel translator.
         Date::setTranslator($this->app['translator']);

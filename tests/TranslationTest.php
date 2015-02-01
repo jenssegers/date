@@ -4,7 +4,7 @@ use Jenssegers\Date\Date;
 use Jenssegers\Date\Translator;
 use Symfony\Component\Translation\MessageSelector;
 
-class TranslationTest extends \PHPUnit_Framework_TestCase {
+class TranslationTest extends PHPUnit_Framework_TestCase {
 
     public function setUp()
     {

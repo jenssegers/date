@@ -2,7 +2,7 @@
 
 use Jenssegers\Date\Date;
 
-class DateTest extends \PHPUnit_Framework_TestCase {
+class DateTest extends PHPUnit_Framework_TestCase {
 
 	public function setUp()
 	{
