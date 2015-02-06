@@ -52,9 +52,10 @@ class Date extends Carbon {
      * Get the difference in a human readable format.
      *
      * @param  Date    $since
+     * @param  bool    $absolute removes time difference modifiers ago, after, etc
      * @return string
      */
-    public function diffForHumans(Carbon $since = null)
+    public function diffForHumans(Carbon $since = null, $absolute = false)
     {
         // Get translator
         $lang = $this->getTranslator();
@@ -73,10 +74,10 @@ class Date extends Carbon {
         $units = array(
             'second' => 60,
             'minute' => 60,
-            'hour' => 24,
-            'day' => 7,
-            'week' => 30 / 7,
-            'month' => 12,
+            'hour'   => 24,
+            'day'    => 7,
+            'week'   => 30 / 7,
+            'month'  => 12,
         );
 
         // Date difference
@@ -123,6 +124,11 @@ class Date extends Carbon {
         else
         {
             $ago = $lang->choice("date::date.$unit", $difference);
+        }
+
+        if ($absolute)
+        {
+            return $ago;
         }
 
         return $lang->choice("date::date.$suffix", $difference, array('time' => $ago));
