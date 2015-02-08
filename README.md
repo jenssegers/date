@@ -35,6 +35,7 @@ This package contains language files for the following languages:
  - Croatian
  - Chinese Simplified
  - Chinese Traditional
+ - Czech
  - Danish
  - Dutch
  - English
