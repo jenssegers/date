@@ -12,17 +12,17 @@ return array(
     |
     */
 
-    'ago'       => ':time 之前',
-    'from_now'  => ':time 距现在',
-    'after'     => ':time 之后',
-    'before'    => ':time 之前',
-    'year'      => '1 年|:count 年',
-    'month'     => '1 月|:count 月',
-    'week'      => '1 周|:count 周',
-    'day'       => '1 天|:count 天',
-    'hour'      => '1 小时|:count 小时',
-    'minute'    => '1 分钟|:count 分钟',
-    'second'    => '1 秒|:count 秒',
+    'ago'       => ':time前',
+    'from_now'  => ':time距现在',
+    'after'     => ':time后',
+    'before'    => ':time前',
+    'year'      => '1年|:count年',
+    'month'     => '1月|:count月',
+    'week'      => '1周|:count周',
+    'day'       => '1天|:count天',
+    'hour'      => '1小时|:count小时',
+    'minute'    => '1分钟|:count分钟',
+    'second'    => '1秒|:count秒',
 
     'january'   => '一月',
     'february'  => '二月',
