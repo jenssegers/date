@@ -37,7 +37,7 @@ return array(
     'november'  => 'listopad',
     'december'  => 'prosinec',
 
-    'monday'    => 'pondelí',
+    'monday'    => 'pondělí',
     'tuesday'   => 'uterý',
     'wednesday' => 'středa',
     'thursday'  => 'čtvrtek',
