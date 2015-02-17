@@ -18,13 +18,14 @@ class DateServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
+
         // Laravel 5 resource registration
-        if (method_exists($this->app, 'version') && starts_with($this->app->version(), '5'))
+        if (method_exists($this, 'loadTranslationsFrom'))
         {
             $this->loadTranslationsFrom($this->app->basePath() . '/vendor/jenssegers/date/src/lang', 'date');
         }
         // Laravel 4 package registration
-        else
+        else if (method_exists($this, 'package'))
         {
             $this->package('jenssegers/date');
         }
