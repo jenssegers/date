@@ -56,6 +56,7 @@ This package contains language files for the following languages:
  - Thai
  - Serbian
  - Slovak
+ - Slovenian
  - Spanish
  - Swedish (incomplete)
  - Turkish
