@@ -12,8 +12,8 @@ return array(
     |
     */
 
-    'ago'       => 'Il y a :time',
-    'from_now'  => 'Dans :time',
+    'ago'       => 'il y a :time',
+    'from_now'  => 'dans :time',
     'after'     => ':time après',
     'before'    => ':time avant',
     'year'      => '1 an|:count ans',

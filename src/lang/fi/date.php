@@ -14,8 +14,8 @@ return array(
 
     'ago'       => ':time sitten',
     'from_now'  => ':time tästä hetkestä',
-    'after'     => '',
-    'before'    => '',
+    'after'     => ':time sen jälkeen',
+    'before'    => ':time ennen',
     'year'      => '1 vuosi|:count vuotta',
     'month'     => '1 kuukausi|:count kuukautta',
     'week'      => '1 viikko|:count viikkoa',

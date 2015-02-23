@@ -13,9 +13,9 @@ return array(
     */
 
     'ago'       => 'vor :time',
-    'from_now'  => ':time von jetzt',
-    'after'     => ':time nach',
-    'before'    => ':time vor',
+    'from_now'  => 'in :time',
+    'after'     => ':time später',
+    'before'    => ':time vorher',
     'year'      => '1 Jahr|:count Jahre',
     'month'     => '1 Monat|:count Monate',
     'week'      => '1 Woche|:count Wochen',
@@ -45,12 +45,12 @@ return array(
     'saturday'  => 'Samstag',
     'sunday'    => 'Sonntag',
 
-    'year_ago'      => '1 Jahr|:count Jahren',
-    'month_ago'     => '1 Monat|:count Monaten',
-    'week_ago'      => '1 Woche|:count Wochen',
-    'day_ago'       => '1 Tag|:count Tagen',
-    'hour_ago'      => '1 Stunde|:count Stunden',
-    'minute_ago'    => '1 Minute|:count Minuten',
-    'second_ago'    => '1 Sekunde|:count Sekunden',
+    'year_diff'      => '1 Jahr|:count Jahren',
+    'month_diff'     => '1 Monat|:count Monaten',
+    'week_diff'      => '1 Woche|:count Wochen',
+    'day_diff'       => '1 Tag|:count Tagen',
+    'hour_diff'      => '1 Stunde|:count Stunden',
+    'minute_diff'    => '1 Minute|:count Minuten',
+    'second_diff'    => '1 Sekunde|:count Sekunden',
 
 );

@@ -1,20 +1,16 @@
 Laravel Date
 ============
 
-[![Build Status](http://img.shields.io/travis/jenssegers/laravel-date.svg)](https://travis-ci.org/jenssegers/laravel-date) [![Coverage Status](http://img.shields.io/coveralls/jenssegers/laravel-date.svg)](https://coveralls.io/r/jenssegers/laravel-date?branch=master)
+[![Latest Stable Version](http://img.shields.io/github/release/jenssegers/laravel-date.svg)](https://packagist.org/packages/jenssegers/date) [![Total Downloads](http://img.shields.io/packagist/dm/jenssegers/date.svg)](https://packagist.org/packages/jenssegers/date) [![Build Status](http://img.shields.io/travis/jenssegers/laravel-date.svg)](https://travis-ci.org/jenssegers/laravel-date) [![Coverage Status](http://img.shields.io/coveralls/jenssegers/laravel-date.svg)](https://coveralls.io/r/jenssegers/laravel-date?branch=master)
 
 This date library extends [Carbon](https://github.com/briannesbitt/Carbon) with multi-language support. Methods such as `format`, `diffForHumans` and the new `timespan`, will now be translated based on your locale.
 
 Installation
 ------------
 
-Add the package to your `composer.json` and run `composer update`.
+Install using composer:
 
-    {
-        "require": {
-            "jenssegers/date": "*"
-        }
-    }
+    composer require jenssegers/date
 
 This package is compatible with Laravel 4 (but not limited to). If Laravel is detected, the language library from Laravel will be used instead of an own implementation.
 
@@ -31,9 +27,15 @@ Languages
 
 This package contains language files for the following languages:
 
+ - Arabic
  - Basque
+ - Brazilian Portuguese
+ - Bulgarian
+ - Catalan
  - Croatian
  - Chinese Simplified
+ - Chinese Traditional
+ - Czech
  - Danish
  - Dutch
  - English
@@ -43,13 +45,22 @@ This package contains language files for the following languages:
  - German
  - Greek
  - Hungarian
+ - Indonesian
  - Italian
+ - Japanese
+ - Norwegian
  - Polish
  - Portuguese
+ - Romanian
+ - Russian
+ - Thai
  - Serbian
+ - Slovak
+ - Slovenian
  - Spanish
  - Swedish (incomplete)
  - Turkish
+ - Vietnamese
 
 You can easily add new languages by adding a new language file to the *lang* directory. These language entries support pluralization. By using a "pipe" character, you may separate the singular and plural forms of a string:
 
@@ -85,7 +96,7 @@ The Date class extends Carbon methods such as `format` and `diffForHumans` so th
 
 The Date class also added some aliases and additional methods such as: `ago` which is an alias for `diffForHumans`, and the `timespan` method:
 
-    echo $date->timespan(); // 0 years, 3 months, 1 week, 1 day, 3 hours, 20 minutes, 0 seconds
+    echo $date->timespan(); // 3 months, 1 week, 1 day, 3 hours, 20 minutes
 
 Without Laravel
 ---------------
@@ -156,7 +167,7 @@ Calculate a timespan:
 
     $date = new Date('+1000 days');
     echo Date::now()->timespan($date);
-    // 2 years, 8 months, 3 weeks, 5 days, 0 hour, 0 minute, 0 second
+    // 2 years, 8 months, 3 weeks, 5 days
 
     // or even
     echo Date::now()->timespan('+1000 days');

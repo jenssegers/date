@@ -19,6 +19,25 @@ class Translator {
     protected $loaded = array();
 
     /**
+     * A cache of the parsed items.
+     *
+     * @var array
+     */
+    protected $parsed = array();
+
+    /**
+     * Determine if a translation exists.
+     *
+     * @param  string  $key
+     * @param  string  $locale
+     * @return bool
+     */
+    public function has($key, $locale = null)
+    {
+        return $this->get($key, array(), $locale) !== $key;
+    }
+
+    /**
      * Get the translation for the given key.
      *
      * @param  string  $key
@@ -30,22 +49,47 @@ class Translator {
     {
         list($namespace, $group, $item) = $this->parseKey($key);
 
-        // Get the current locale.
         if ( ! $locale) $locale = $this->getLocale();
 
-        // Load the language file.
         $this->load($namespace, $group, $locale);
 
-        // Get the translation.
-        if (isset($this->loaded[$group][$locale][$item]))
+        $line = $this->getLine(
+            $namespace, $group, $locale, $item, $replace
+        );
+
+        // If the line doesn't exist, we will return back the key which was requested as
+        // that will be quick to spot in the UI if language keys are wrong or missing
+        // from the application's language files. Otherwise we can return the line.
+        if ( ! isset($line)) return $key;
+
+        return $line;
+    }
+
+    /**
+     * Retrieve a language line out the loaded array.
+     *
+     * @param  string  $namespace
+     * @param  string  $group
+     * @param  string  $locale
+     * @param  string  $item
+     * @param  array   $replace
+     * @return string|null
+     */
+    protected function getLine($namespace, $group, $locale, $item, array $replace)
+    {
+        if (isset($this->loaded[$namespace][$group][$locale][$item]))
         {
-            $line = $this->loaded[$group][$locale][$item];
+            $line = $this->loaded[$namespace][$group][$locale][$item];
+
+            if (is_string($line))
+            {
+                return $this->makeReplacements($line, $replace);
+            }
+            elseif (is_array($line) && count($line) > 0)
+            {
+                return $line;
+            }
         }
-
-        // If the line doesn't exist, we will return back the item which was requested.
-        if ( ! isset($line)) return $item;
-
-        return $this->makeReplacements($line, $replace);
     }
 
     /**
@@ -59,13 +103,11 @@ class Translator {
      */
     public function choice($key, $number, array $replace = array(), $locale = null)
     {
-        // Get all plural lines.
-        $lines = $this->get($key, $replace, $locale = $locale ?: $this->getLocale());
+        $line = $this->get($key, $replace, $locale = $locale ?: $this->locale);
 
         $replace['count'] = $number;
 
-        // Let the Symfony MessageSelector do its work.
-        return $this->makeReplacements($this->getSelector()->choose($lines, $number, $locale), $replace);
+        return $this->makeReplacements($this->getSelector()->choose($line, $number, $locale), $replace);
     }
 
     /**
@@ -84,7 +126,7 @@ class Translator {
 
         if (file_exists($path))
         {
-            $this->loaded[$group][$locale] = require $path;
+            $this->loaded[$namespace][$group][$locale] = require $path;
         }
     }
 
@@ -126,17 +168,28 @@ class Translator {
      */
     public function parseKey($key)
     {
-        if (strpos($key, '::'))
+        // If we've already parsed the given key, we'll return the cached version we
+        // already have, as this will save us some processing. We cache off every
+        // key we parse so we can quickly return it on all subsequent requests.
+        if (isset($this->parsed[$key]))
+        {
+            return $this->parsed[$key];
+        }
+
+        if (strpos($key, '::') !== false)
         {
             list($namespace, $key) = explode('::', $key);
         }
 
-        if (strpos($key, '.'))
+        if (strpos($key, '.') !== false)
         {
             list($group, $key) = explode('.', $key);
         }
 
-        return array($namespace, $group, $key);
+        // Once we have the parsed array of this key's elements, such as its groups
+        // and namespace, we will cache each array inside a simple list that has
+        // the key and the parsed array for quick look-ups for later requests.
+        return $this->parsed[$key] = array($namespace, $group, $key);
     }
 
     /**

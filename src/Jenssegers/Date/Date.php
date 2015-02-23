@@ -1,8 +1,6 @@
 <?php namespace Jenssegers\Date;
 
-use DateTime;
-use DateInterval;
-use DateTimeZone;
+use DateTime, DateInterval, DateTimeZone;
 use Carbon\Carbon;
 
 class Date extends Carbon {
@@ -32,7 +30,7 @@ class Date extends Carbon {
         // Get default timezone from app config.
         if (is_null($timezone) and class_exists('Illuminate\Support\Facades\Config'))
         {
-            $timezone = \Config::get('app.timezone');
+            $timezone = \Illuminate\Support\Facades\Config::get('app.timezone');
         }
 
         parent::__construct($time, $timezone);
@@ -54,9 +52,10 @@ class Date extends Carbon {
      * Get the difference in a human readable format.
      *
      * @param  Date    $since
+     * @param  bool    $absolute removes time difference modifiers ago, after, etc
      * @return string
      */
-    public function diffForHumans(Carbon $since = null)
+    public function diffForHumans(Carbon $since = null, $absolute = false)
     {
         // Get translator
         $lang = $this->getTranslator();
@@ -75,10 +74,10 @@ class Date extends Carbon {
         $units = array(
             'second' => 60,
             'minute' => 60,
-            'hour' => 24,
-            'day' => 7,
-            'week' => 4,
-            'month' => 12,
+            'hour'   => 24,
+            'day'    => 7,
+            'week'   => 30 / 7,
+            'month'  => 12,
         );
 
         // Date difference
@@ -96,8 +95,10 @@ class Date extends Carbon {
                 break;
             }
 
-            $difference = floor($difference / $value);
+            $difference = $difference / $value;
         }
+
+        $difference = floor($difference);
 
         // Select the suffix.
         if ($relative)
@@ -112,13 +113,22 @@ class Date extends Carbon {
         // Some languages have different unit translations when used in combination
         // with a specific suffix. Here we will check if there is an optional
         // translation for that specific suffix and use it if it exists.
-        if ($lang->get("date::date.${unit}_${suffix}") != "${unit}_${suffix}")
+        if ($lang->get("date::date.${unit}_diff") != "date::date.${unit}_diff")
+        {
+            $ago = $lang->choice("date::date.${unit}_diff", $difference);
+        }
+        else if ($lang->get("date::date.${unit}_${suffix}") != "date::date.${unit}_${suffix}")
         {
             $ago = $lang->choice("date::date.${unit}_${suffix}", $difference);
         }
         else
         {
             $ago = $lang->choice("date::date.$unit", $difference);
+        }
+
+        if ($absolute)
+        {
+            return $ago;
         }
 
         return $lang->choice("date::date.$suffix", $difference, array('time' => $ago));
@@ -189,7 +199,7 @@ class Date extends Carbon {
                 // Short notations.
                 if (in_array($character, array('D', 'M')))
                 {
-                    $translated = substr($translated, 0, 3);
+                    $translated = mb_substr($translated, 0, 3);
                 }
 
                 // Add to replace list.
@@ -239,7 +249,7 @@ class Date extends Carbon {
         // Loop all units and build string
         foreach ($units as $k => $unit)
         {
-            $str[] = $lang->choice("date::date.$unit", $interval[$k]);
+            if ($interval[$k]) $str[] = $lang->choice("date::date.$unit", $interval[$k]);
         }
 
         return implode(', ', $str);
