@@ -47,6 +47,42 @@ class Date extends Carbon {
     {
         return static::parse($time, $timezone);
     }
+    
+    /**
+     * Create new Date object from format and localized date
+     *
+     * @param  string  format
+     * @param  string  $date
+     * @return Date
+     */
+    public static function createFromFormat($format, $date, $tz = null)
+    {
+        // Get translator
+        $lang = new Translator;
+        
+        // Get and set locale
+        $locale = static::getTranslator()->getLocale();
+        $lang->setLocale($locale);
+        
+        // Get all the language lines of the current locale and of the english file
+        $localeLines = $lang->getAllLines('date::date', $locale);
+        $englishLines = $lang->getAllLines('date::date', 'en');
+
+        // Filter out all lines that do not exist in the other language
+        $localeLines = array_intersect_key($localeLines, $englishLines);
+        $englishLines = array_intersect_key($englishLines, $localeLines);
+        
+        // Sort the lines by key
+		ksort($localeLines);
+        ksort($englishLines);
+        
+        // Replace the translated words with the English words
+        $date = str_replace($localeLines, $englishLines, $date);
+
+        // Let the parent create the date object
+        // now that the date is translated back to English
+        return parent::createFromFormat($format, $date, $tz);
+    }
 
     /**
      * Get the difference in a human readable format.
