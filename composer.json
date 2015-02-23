@@ -15,7 +15,8 @@
         "symfony/translation": "*"
     },
     "require-dev": {
-        "satooshi/php-coveralls": "*"
+        "satooshi/php-coveralls": "*",
+        "phpunit/phpunit":"*"
     },
     "autoload": {
         "psr-0": {
