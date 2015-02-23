@@ -132,12 +132,7 @@ class AutomaticTest extends PHPUnit_Framework_TestCase {
 
         foreach ($this->languages as $language)
         {
-            if (in_array($language, array('ar')))
-            {
-                echo "\nWARNING! Not running automatic test for $language\n";
-                continue;
-            }
-
+            
             $translations = include "src/lang/$language/date.php";
 
             $translator = Date::getTranslator();
