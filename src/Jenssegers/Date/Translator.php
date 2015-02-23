@@ -91,6 +91,25 @@ class Translator {
             }
         }
     }
+    
+    /**
+     * Retrieve all lines from a language file.
+     *
+     * @param  string  $key
+     * @param  string  $locale
+     * @return array|null
+     */
+    public function getAllLines($key, $locale = null)
+    {
+        list($namespace, $group) = explode('::', $key);
+
+        if ( ! $locale) $locale = $this->getLocale();
+
+        $this->load($namespace, $group, $locale);
+
+        if (isset($this->loaded[$namespace][$group][$locale]))
+        	return $this->loaded[$namespace][$group][$locale];
+    }
 
     /**
      * Get a translation according to an integer value.
