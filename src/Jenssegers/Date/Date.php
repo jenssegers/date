@@ -73,7 +73,7 @@ class Date extends Carbon {
         $englishLines = array_intersect_key($englishLines, $localeLines);
         
         // Sort the lines by key
-	ksort($localeLines);
+        ksort($localeLines);
         ksort($englishLines);
         
         // Replace the translated words with the English words
