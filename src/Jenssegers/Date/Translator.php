@@ -108,7 +108,7 @@ class Translator {
         $this->load($namespace, $group, $locale);
 
         if (isset($this->loaded[$namespace][$group][$locale]))
-        	return $this->loaded[$namespace][$group][$locale];
+            return $this->loaded[$namespace][$group][$locale];
     }
 
     /**
