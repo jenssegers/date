@@ -39,7 +39,7 @@ class AutomaticTest extends PHPUnit_Framework_TestCase {
 
                 $this->assertTrue(isset($translations[$month]));
                 $this->assertEquals($translations[$month], $date->format('F'), "Language: $language"); // Full
-                $this->assertEquals(substr($translations[$month], 0 , 3), $date->format('M'), "Language: $language"); // Short
+                $this->assertEquals(mb_substr($translations[$month], 0 , 3), $date->format('M'), "Language: $language"); // Short
             }
         }
     }
@@ -67,7 +67,7 @@ class AutomaticTest extends PHPUnit_Framework_TestCase {
 
                 $this->assertTrue(isset($translations[$day]));
                 $this->assertEquals($translations[$day], $date->format('l'), "Language: $language"); // Full
-                $this->assertEquals(substr($translations[$day], 0 , 3), $date->format('D'), "Language: $language"); // Short
+                $this->assertEquals(mb_substr($translations[$day], 0 , 3), $date->format('D'), "Language: $language"); // Short
             }
         }
     }
