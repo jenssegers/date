@@ -16,7 +16,7 @@ return array(
     'from_now'  => 'om :time',
     'after'     => ':time efter',
     'before'    => ':time före',
-    'year'      => '1 år|:count år',
+    'year'      => ':count år',
     'month'     => '1 månad|:count månader',
     'week'      => '1 vecka|:count veckor',
     'day'       => '1 dag|:count dagar',
