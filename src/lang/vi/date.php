@@ -21,7 +21,7 @@ return array(
     'week'      => ':count tuần',
     'day'       => ':count ngày',
     'hour'      => ':count giờ',
-    'minute'    => ':count minutes',
+    'minute'    => ':count phút',
     'second'    => ':count giây',
 
     'january'   => 'Tháng một',
