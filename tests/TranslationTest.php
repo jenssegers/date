@@ -62,7 +62,8 @@ class TranslationTest extends PHPUnit_Framework_TestCase {
     {
         Date::setLocale('de');
 
-        $date = Date::parse('-1 month');
+        // If we use -1 month, we have the chance of it being converted to 4 weeks.
+        $date = Date::parse('-40 days');
         $this->assertSame("vor 1 Monat", $date->ago());
 
         $date = Date::parse('-5 months');
