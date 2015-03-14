@@ -18,7 +18,6 @@ class DateServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-
         // Laravel 5 resource registration
         if (method_exists($this, 'loadTranslationsFrom'))
         {

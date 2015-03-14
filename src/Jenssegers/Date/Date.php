@@ -28,7 +28,7 @@ class Date extends Carbon {
         }
 
         // Get default timezone from app config.
-        if (is_null($timezone) and class_exists('Illuminate\Support\Facades\Config'))
+        if (is_null($timezone) and class_exists('Illuminate\Config\Repository') and class_exists('Illuminate\Support\Facades\Config'))
         {
             $timezone = \Illuminate\Support\Facades\Config::get('app.timezone');
         }
