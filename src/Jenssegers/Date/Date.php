@@ -373,7 +373,7 @@ class Date extends Carbon {
     public static function translateTimeString($time)
     {
         // All the language file items we can translate.
-        $keys = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+        $keys = array('january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday');
 
         // Get all the language lines of the current locale.
         $translator = static::getTranslator();
