@@ -233,4 +233,26 @@ class DateTest extends PHPUnit_Framework_TestCase {
 		$this->assertSame('3 maanden, 1 week, 1 dag, 3 uur, 20 minuten', $date->timespan(1403619368));
 	}
 
+	public function testParse()
+	{
+		Date::setLocale('nl');
+		$date = Date::parse('1 januari 2015');
+		$this->assertSame('2015-01-01', $date->format('Y-m-d'));
+
+		Date::setLocale('nl');
+		$date = Date::parse('zaterdag 21 maart 2015');
+		$this->assertSame('2015-03-21', $date->format('Y-m-d'));
+	}
+
+	public function testCreateFromFormat()
+	{
+		Date::setLocale('nl');
+		$date = Date::createFromFormat('d F Y', '1 januari 2015');
+		$this->assertSame('2015-01-01', $date->format('Y-m-d'));
+
+		Date::setLocale('nl');
+		$date = Date::createFromFormat('D d F Y', 'zaterdag 21 maart 2015');
+		$this->assertSame('2015-03-21', $date->format('Y-m-d'));
+	}
+
 }

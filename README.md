@@ -3,7 +3,7 @@ Date
 
 [![Latest Stable Version](http://img.shields.io/github/release/jenssegers/laravel-date.svg)](https://packagist.org/packages/jenssegers/date) [![Total Downloads](http://img.shields.io/packagist/dm/jenssegers/date.svg)](https://packagist.org/packages/jenssegers/date) [![Build Status](http://img.shields.io/travis/jenssegers/laravel-date.svg)](https://travis-ci.org/jenssegers/laravel-date) [![Coverage Status](http://img.shields.io/coveralls/jenssegers/laravel-date.svg)](https://coveralls.io/r/jenssegers/laravel-date?branch=master)
 
-This date library extends [Carbon](https://github.com/briannesbitt/Carbon) with multi-language support. Methods such as `format`, `diffForHumans` and the new `timespan`, will now be translated based on your locale.
+This date library extends [Carbon](https://github.com/briannesbitt/Carbon) with multi-language support. Methods such as `format`, `diffForHumans`, `parse`, `createFromFormat` and the new `timespan`, will now be translated based on your locale.
 
 Installation
 ------------
@@ -76,6 +76,10 @@ The Date class extends the Carbon methods such as `format` and `diffForHumans`n 
 The Date class also added some aliases and additional methods such as: `ago` which is an alias for `diffForHumans`, and the `timespan` method:
 
     echo $date->timespan(); // 3 months, 1 week, 1 day, 3 hours, 20 minutes
+
+Methods such as `parse` and `createFromFormat` also support "reverse translations". When calling these methods with translated input, it will try to translate it to English before passing it to DateTime:
+
+    $date = Date::createFromFormat('D d F Y', 'zaterdag 21 maart 2015');
 
 Carbon
 ------

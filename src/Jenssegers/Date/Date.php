@@ -15,7 +15,7 @@ class Date extends Carbon {
     /**
      * Returns new DateTime object.
      *
-     * @param  string  $time
+     * @param  string               $time
      * @param  string|DateTimeZone  $timezone
      * @return Date
      */
@@ -33,13 +33,43 @@ class Date extends Carbon {
     /**
      * Create and return new Date instance.
      *
-     * @param  string  $time
+     * @param  string               $time
      * @param  string|DateTimeZone  $timezone
      * @return Date
      */
     public static function make($time = null, $timezone = null)
     {
         return static::parse($time, $timezone);
+    }
+
+    /**
+     * Create a carbon instance from a string.
+     *
+     * @param string              $time
+     * @param string|DateTimeZone $timezone
+     * @return Date
+     */
+    public static function parse($time = null, $timezone = null)
+    {
+        $time = static::translateTimeString($time);
+
+        return parent::parse($time, $timezone);
+    }
+
+    /**
+     * Create a Carbon instance from a specific format
+     *
+     * @param string              $format
+     * @param string              $time
+     * @param DateTimeZone|string $timezone
+     * @return static
+     * @throws InvalidArgumentException
+     */
+    public static function createFromFormat($format, $time, $timezone = null)
+    {
+        $time = static::translateTimeString($time);
+
+        return parent::createFromFormat($format, $time, $timezone);
     }
 
     /**
@@ -214,7 +244,7 @@ class Date extends Carbon {
     /**
      * Gets the timespan between this date and another date.
      *
-     * @param Date $time
+     * @param Date                $time
      * @param string|DateTimeZone $timezone
      * @return int
      */
@@ -253,7 +283,7 @@ class Date extends Carbon {
     /**
      * Adds an amount of days, months, years, hours, minutes and seconds to a Date object.
      *
-     * @param string|DateInterval $interval
+     * @param  string|DateInterval $interval
      * @return Date
      */
     public function add($interval)
@@ -277,7 +307,7 @@ class Date extends Carbon {
     /**
      * Subtracts an amount of days, months, years, hours, minutes and seconds from a DateTime object.
      *
-     * @param string|DateInterval $interval
+     * @param  string|DateInterval $interval
      * @return Date
      */
     public function sub($interval)
@@ -332,6 +362,25 @@ class Date extends Carbon {
     public static function setTranslator($translator)
     {
         static::$translator = $translator;
+    }
+
+    /**
+     * Translate a locale based time string to its english equivalent.
+     *
+     * @param  string $time
+     * @return string
+     */
+    public static function translateTimeString($time)
+    {
+        // All the language file items we can translate.
+        $keys = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+
+        // Get all the language lines of the current locale and of the english file.
+        $translator = static::getTranslator();
+        $lines = array_intersect_key($translator->getAllLines(), array_flip((array) $keys));
+
+        // Replace the translated words with the English words
+        return str_replace($lines, array_keys($lines), $time);
     }
 
 }
