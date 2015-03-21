@@ -375,7 +375,7 @@ class Date extends Carbon {
         // All the language file items we can translate.
         $keys = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
-        // Get all the language lines of the current locale and of the english file.
+        // Get all the language lines of the current locale.
         $translator = static::getTranslator();
         $lines = array_intersect_key($translator->getAllLines(), array_flip((array) $keys));
 
