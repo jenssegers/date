@@ -107,17 +107,17 @@ class Date extends Carbon {
         // Some languages have different unit translations when used in combination
         // with a specific suffix. Here we will check if there is an optional
         // translation for that specific suffix and use it if it exists.
-        if ($lang->get("date::date.${unit}_diff") != "date::date.${unit}_diff")
+        if ($lang->get("${unit}_diff") != "${unit}_diff")
         {
-            $ago = $lang->choice("date::date.${unit}_diff", $difference);
+            $ago = $lang->choice("${unit}_diff", $difference);
         }
-        else if ($lang->get("date::date.${unit}_${suffix}") != "date::date.${unit}_${suffix}")
+        else if ($lang->get("${unit}_${suffix}") != "${unit}_${suffix}")
         {
-            $ago = $lang->choice("date::date.${unit}_${suffix}", $difference);
+            $ago = $lang->choice("${unit}_${suffix}", $difference);
         }
         else
         {
-            $ago = $lang->choice("date::date.$unit", $difference);
+            $ago = $lang->choice("$unit", $difference);
         }
 
         if ($absolute)
@@ -125,7 +125,7 @@ class Date extends Carbon {
             return $ago;
         }
 
-        return $lang->choice("date::date.$suffix", $difference, array('time' => $ago));
+        return $lang->choice("$suffix", $difference, array('time' => $ago));
     }
 
     /**
@@ -189,7 +189,7 @@ class Date extends Carbon {
 
                 // Translate.
                 $lang = $this->getTranslator();
-                $translated = $lang->get('date::date.' . strtolower($key));
+                $translated = $lang->get('' . strtolower($key));
 
                 // Short notations.
                 if (in_array($character, array('D', 'M')))
@@ -244,7 +244,7 @@ class Date extends Carbon {
         // Loop all units and build string
         foreach ($units as $k => $unit)
         {
-            if ($interval[$k]) $str[] = $lang->choice("date::date.$unit", $interval[$k]);
+            if ($interval[$k]) $str[] = $lang->choice("$unit", $interval[$k]);
         }
 
         return implode(', ', $str);

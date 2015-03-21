@@ -14,22 +14,26 @@ class TranslationTest extends PHPUnit_Framework_TestCase {
     public function testKnownTranslation()
     {
         $translator = new Translator;
-        $this->assertTrue($translator->has('date::date.january'));
-        $this->assertEquals('January', $translator->get('date::date.january'));
+        $this->assertTrue($translator->has('january'));
+        $this->assertEquals('January', $translator->get('january'));
+
+        $translator->setLocale('nl');
+        $this->assertTrue($translator->has('january'));
+        $this->assertEquals('januari', $translator->get('january'));
     }
 
     public function testUnknownTranslation()
     {
         $translator = new Translator;
-        $this->assertFalse($translator->has('date::date.test'));
-        $this->assertEquals('date::date.test', $translator->get('date::date.test'));
+        $this->assertFalse($translator->has('test'));
+        $this->assertEquals('test', $translator->get('test'));
     }
 
     public function testChoiceTranslation()
     {
         $translator = new Translator;
-        $this->assertEquals('1 month', $translator->choice('date::date.month', 1));
-        $this->assertEquals('2 months', $translator->choice('date::date.month', 2));
+        $this->assertEquals('1 month', $translator->choice('month', 1));
+        $this->assertEquals('2 months', $translator->choice('month', 2));
     }
 
     public function testGetsAndSetsTranslator()
@@ -71,6 +75,16 @@ class TranslationTest extends PHPUnit_Framework_TestCase {
 
         $date = Date::parse('-5 seconds');
         $this->assertSame("vor 5 Sekunden", $date->ago());
+    }
+
+    public function testGetAllLines()
+    {
+        $translator = new Translator;
+        $translator->setLocale('nl');
+
+        $lines = $translator->getAllLines();
+        $this->assertTrue(is_array($lines));
+        $this->assertEquals('1 maand|:count maanden', $lines['month']);
     }
 
 }
