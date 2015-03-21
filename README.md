@@ -1,5 +1,5 @@
-Laravel Date
-============
+Date
+====
 
 [![Latest Stable Version](http://img.shields.io/github/release/jenssegers/laravel-date.svg)](https://packagist.org/packages/jenssegers/date) [![Total Downloads](http://img.shields.io/packagist/dm/jenssegers/date.svg)](https://packagist.org/packages/jenssegers/date) [![Build Status](http://img.shields.io/travis/jenssegers/laravel-date.svg)](https://travis-ci.org/jenssegers/laravel-date) [![Coverage Status](http://img.shields.io/coveralls/jenssegers/laravel-date.svg)](https://coveralls.io/r/jenssegers/laravel-date?branch=master)
 
@@ -12,15 +12,12 @@ Install using composer:
 
     composer require jenssegers/date
 
-This package is compatible with Laravel 4 (but not limited to). If Laravel is detected, the language library from Laravel will be used instead of an own implementation.
+Laravel
+-------
 
-Add the service provider in `app/config/app.php`:
+There is a service provider included for integration with the Laravel framework. This provider will get the application locale setting and use this for translations. To register the service provider, add the following to the providers array in `config/app.php`:
 
     'Jenssegers\Date\DateServiceProvider',
-
-And add an alias:
-
-    'Date'            => 'Jenssegers\Date\Date',
 
 Languages
 ---------
@@ -63,33 +60,14 @@ This package contains language files for the following languages:
  - Ukrainian
  - Vietnamese
 
-You can easily add new languages by adding a new language file to the *lang* directory. These language entries support pluralization. By using a "pipe" character, you may separate the singular and plural forms of a string:
-
-    'hour'      => '1 hour|:count hours',
-    'minute'    => '1 minute|:count minutes',
-    'second'    => '1 second|:count seconds',
-
-If you are using Laravel, the locale set in `app/config/app.php` will be used to select the correct language file. If not, you can manually set the current locale using:
-
-    Date::setLocale('nl');
-
-Some languages have a different unit translation when they are used in combination with a suffix like 'ago'. For those situations you can add additional translations by adding the suffix to the unit as a key:
-
-    'year'          => '1 Jahr|:count Jahre',
-    'year_ago'      => '1 Jahr|:count Jahren',
-
-There is also a `generator.php` script that can be used to quickly output day and month translations for a specific locale. If you want to add a new language, this can speed up the process:
-
-    `php generator.php nl_NL`
-
-**NOTE!** If you are adding languages, please check the rules about the capitalization of month and day names: http://meta.wikimedia.org/wiki/Capitalization_of_Wiktionary_pages#Capitalization_of_month_names
-
 Usage
 -----
 
-The Date class extends Carbon methods such as `format` and `diffForHumans` so that they are translated based on your locale:
+The Date class extends the Carbon methods such as `format` and `diffForHumans`n and translates them based on your locale:
 
-    Lang::setLocale('nl');
+    use Jenssegers\Date\Date as Date;
+
+    Date::setLocale('nl');
 
     echo Date::now()->format('l j F Y H:i:s'); // zondag 28 april 2013 21:58:16
 
@@ -99,19 +77,10 @@ The Date class also added some aliases and additional methods such as: `ago` whi
 
     echo $date->timespan(); // 3 months, 1 week, 1 day, 3 hours, 20 minutes
 
-Without Laravel
----------------
-
-You can use this library outside of the Laravel framework. The library contains a fallback translator class that will be used if Laravel is not detected. The only thing that is different, is that you need to set the locale on the Date class directly, instead of the Lang class:
-
-    Date::setLocale('nl');
-
-    echo Date::now()->format('l j F Y H:i:s'); // zondag 28 april 2013 21:58:16
-
 Carbon
 ------
 
-Carbon is the library the Date class is based on. All of the original Carbon operations are still available, check out https://github.com/briannesbitt/Carbon for more information.
+Carbon is the library the Date class is based on. All of the original Carbon operations are still available, check out https://github.com/briannesbitt/Carbon for more information. Here are some of the available methods:
 
 ### Creating dates
 
@@ -200,3 +169,23 @@ You can access and modify all date attributes as an object:
     $date->hour = 12;
     $date->minute = 0;
     $date->second = 0;
+
+Contributing
+------------
+
+You can easily add new languages by adding a new language file to the *lang* directory. These language entries support pluralization. By using a "pipe" character, you may separate the singular and plural forms of a string:
+
+    'hour'      => '1 hour|:count hours',
+    'minute'    => '1 minute|:count minutes',
+    'second'    => '1 second|:count seconds',
+
+Some languages have a different unit translation when they are used in combination with a suffix like 'ago'. For those situations you can add additional translations by adding the suffix to the unit as a key:
+
+    'year'          => '1 Jahr|:count Jahre',
+    'year_ago'      => '1 Jahr|:count Jahren',
+
+There is also a `generator.php` script that can be used to quickly output day and month translations for a specific locale. If you want to add a new language, this can speed up the process:
+
+    `php generator.php nl_NL`
+
+**NOTE!** If you are adding languages, please check the rules about the capitalization of month and day names: http://meta.wikimedia.org/wiki/Capitalization_of_Wiktionary_pages#Capitalization_of_month_names

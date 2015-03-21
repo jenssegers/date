@@ -27,12 +27,6 @@ class Date extends Carbon {
             $time = "@$time";
         }
 
-        // Get default timezone from app config.
-        if (is_null($timezone) and class_exists('Illuminate\Config\Repository') and class_exists('Illuminate\Support\Facades\Config'))
-        {
-            $timezone = \Illuminate\Support\Facades\Config::get('app.timezone');
-        }
-
         parent::__construct($time, $timezone);
     }
 
@@ -52,7 +46,7 @@ class Date extends Carbon {
      * Get the difference in a human readable format.
      *
      * @param  Date    $since
-     * @param  bool    $absolute removes time difference modifiers ago, after, etc
+     * @param  bool    $absolute   Removes time difference modifiers ago, after, etc
      * @return string
      */
     public function diffForHumans(Carbon $since = null, $absolute = false)
@@ -137,12 +131,13 @@ class Date extends Carbon {
     /**
      * Alias for diffForHumans.
      *
-     * @param  Date $since
+     * @param  Date   $since
+     * @param  bool   $absolute   Removes time difference modifiers ago, after, etc
      * @return string
      */
-    public function ago($since = null)
+    public function ago($since = null, $absolute = false)
     {
-        return $this->diffForHumans($since);
+        return $this->diffForHumans($since, $absolute);
     }
 
     /**
@@ -217,7 +212,7 @@ class Date extends Carbon {
     }
 
     /**
-     * Gets the a timespan.
+     * Gets the timespan between this date and another date.
      *
      * @param Date $time
      * @param string|DateTimeZone $timezone
@@ -321,7 +316,6 @@ class Date extends Carbon {
      */
     public static function getTranslator()
     {
-        // Use own implementation as fallback
         if ( ! static::$translator)
         {
             static::$translator = new Translator;

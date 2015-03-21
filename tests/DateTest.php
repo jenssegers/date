@@ -145,6 +145,15 @@ class DateTest extends PHPUnit_Framework_TestCase {
 		$this->assertSame('5 days before', $date->ago(Date::now()));
 	}
 
+	public function testAbsoluteAgo()
+	{
+		$date = Date::parse('-5 days');
+		$this->assertSame('5 days', $date->ago(Date::now(), true));
+
+		$date = Date::parse('+5 days');
+		$this->assertSame('5 days', $date->ago(Date::now(), true));
+	}
+
 	public function testDiffForHumans()
 	{
 		$date = Date::parse('-5 years');
