@@ -380,7 +380,7 @@ class Date extends Carbon {
         $lines = array_intersect_key($translator->getAllLines(), array_flip((array) $keys));
 
         // Replace the translated words with the English words
-        return str_replace($lines, array_keys($lines), $time);
+        return str_ireplace($lines, array_keys($lines), $time);
     }
 
 }
