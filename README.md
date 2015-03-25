@@ -55,7 +55,7 @@ This package contains language files for the following languages:
  - Slovak
  - Slovenian
  - Spanish
- - Swedish (incomplete)
+ - Swedish
  - Turkish
  - Ukrainian
  - Vietnamese
