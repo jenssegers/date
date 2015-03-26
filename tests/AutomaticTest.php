@@ -8,7 +8,7 @@ class AutomaticTest extends PHPUnit_Framework_TestCase {
 
     public function setUp()
     {
-        $this->languages = array_slice(scandir('src/lang'), 2);
+        $this->languages = array_slice(scandir('src/Lang'), 2);
     }
 
     public function testTranslatesMonths()

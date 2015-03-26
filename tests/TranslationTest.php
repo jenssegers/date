@@ -10,7 +10,6 @@ class TranslationTest extends PHPUnit_Framework_TestCase {
     public function setUp()
     {
         date_default_timezone_set('UTC');
-        $this->languages = array_slice(scandir('src/lang'), 2);
     }
 
     public function testGetsAndSetsTranslator()
