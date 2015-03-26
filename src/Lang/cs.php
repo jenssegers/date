@@ -44,11 +44,11 @@ return array(
     'friday'    => 'pátek',
     'saturday'  => 'sobota',
     'sunday'    => 'neděle',
-	
+
 	'year_ago'      => 'rokem|[2,Inf]:count lety',
     'month_ago'     => 'měsícem|[2,Inf]:count měsíci',
     'week_ago'      => 'týdnem|[2,Inf]:count týdny',
-    'day_ago'       => 'dnem|[2,Inf]:count dny',
+    'day_ago'       => 'jedním|[2,Inf]:count dny',
     'hour_ago'      => 'hodinou|[2,Inf]:count hodinami',
     'minute_ago'    => 'minútou|[2,Inf]:count minutami',
     'second_ago'    => 'sekundou|[2,Inf]:count sekundami',
