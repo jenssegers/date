@@ -31,7 +31,7 @@ class AutomaticTest extends PHPUnit_Framework_TestCase {
         foreach ($this->languages as $language)
         {
             $language = str_replace('.php', '', $language);
-            $translations = include "src/lang/$language.php";
+            $translations = include "src/Lang/$language.php";
 
             foreach ($months as $month)
             {
@@ -60,7 +60,7 @@ class AutomaticTest extends PHPUnit_Framework_TestCase {
         foreach ($this->languages as $language)
         {
             $language = str_replace('.php', '', $language);
-            $translations = include "src/lang/$language.php";
+            $translations = include "src/Lang/$language.php";
 
             foreach ($days as $day)
             {
@@ -93,7 +93,7 @@ class AutomaticTest extends PHPUnit_Framework_TestCase {
         foreach ($this->languages as $language)
         {
             $language = str_replace('.php', '', $language);
-            $translations = include "src/lang/$language.php";
+            $translations = include "src/Lang/$language.php";
 
             foreach ($items as $item)
             {
@@ -137,7 +137,7 @@ class AutomaticTest extends PHPUnit_Framework_TestCase {
         {
 
             $language = str_replace('.php', '', $language);
-            $translations = include "src/lang/$language.php";
+            $translations = include "src/Lang/$language.php";
 
             $translator = Date::getTranslator();
             $translator->setLocale($language);
