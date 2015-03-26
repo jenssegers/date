@@ -11,11 +11,11 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "nesbot/carbon": "~1.18",
-        "symfony/translation": "~2.6"
+        "nesbot/carbon": "~1.0",
+        "symfony/translation": "~2.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4.5",
+        "phpunit/phpunit": "~4.0",
         "satooshi/php-coveralls": "~0.6"
     },
     "autoload": {

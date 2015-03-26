@@ -56,7 +56,7 @@ class Date extends Carbon {
     {
         $time = static::translateTimeString($time);
 
-        return parent::parse($time, $timezone);
+        return new static($time, $timezone);
     }
 
     /**
