@@ -23,6 +23,11 @@
             "Jenssegers\\Date\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Jenssegers\\Tests\\Date\\": "tests/"
+        }
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "3.0-dev"
