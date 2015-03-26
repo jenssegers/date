@@ -37,7 +37,7 @@ This package contains language files for the following languages:
  - Dutch
  - English
  - Esperanto
- - Finnish (incomplete)
+ - Finnish
  - French
  - German
  - Greek
@@ -45,6 +45,7 @@ This package contains language files for the following languages:
  - Indonesian
  - Italian
  - Japanese
+ - Korean
  - Norwegian
  - Polish
  - Portuguese
