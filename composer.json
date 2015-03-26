@@ -11,16 +11,16 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "nesbot/carbon": "~1.0",
-        "symfony/translation": "~2.0"
+        "nesbot/carbon": "~1.18",
+        "symfony/translation": "~2.6"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4.0",
-        "satooshi/php-coveralls": "0.6.*"
+        "phpunit/phpunit": "~4.5",
+        "satooshi/php-coveralls": "~0.6"
     },
     "autoload": {
-        "psr-0": {
-            "Jenssegers\\Date": "src/"
+        "psr-4": {
+            "Jenssegers\\Date\\": "src/"
         }
     },
     "extra": {

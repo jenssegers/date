@@ -2,6 +2,9 @@
 
 use DateTime, DateInterval, DateTimeZone;
 use Carbon\Carbon;
+use Symfony\Component\Translation\Translator;
+use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Component\Translation\Loader\ArrayLoader;
 
 class Date extends Carbon {
 
@@ -137,17 +140,17 @@ class Date extends Carbon {
         // Some languages have different unit translations when used in combination
         // with a specific suffix. Here we will check if there is an optional
         // translation for that specific suffix and use it if it exists.
-        if ($lang->get("${unit}_diff") != "${unit}_diff")
+        if ($lang->trans("${unit}_diff") != "${unit}_diff")
         {
-            $ago = $lang->choice("${unit}_diff", $difference);
+            $ago = $lang->transChoice("${unit}_diff", $difference, array(':count' => $difference));
         }
-        else if ($lang->get("${unit}_${suffix}") != "${unit}_${suffix}")
+        else if ($lang->trans("${unit}_${suffix}") != "${unit}_${suffix}")
         {
-            $ago = $lang->choice("${unit}_${suffix}", $difference);
+            $ago = $lang->transChoice("${unit}_${suffix}", $difference, array(':count' => $difference));
         }
         else
         {
-            $ago = $lang->choice("$unit", $difference);
+            $ago = $lang->transChoice($unit, $difference, array(':count' => $difference));
         }
 
         if ($absolute)
@@ -155,7 +158,7 @@ class Date extends Carbon {
             return $ago;
         }
 
-        return $lang->choice("$suffix", $difference, array('time' => $ago));
+        return $lang->transChoice($suffix, $difference, array(':time' => $ago));
     }
 
     /**
@@ -219,7 +222,7 @@ class Date extends Carbon {
 
                 // Translate.
                 $lang = $this->getTranslator();
-                $translated = $lang->get('' . strtolower($key));
+                $translated = $lang->trans(strtolower($key));
 
                 // Short notations.
                 if (in_array($character, array('D', 'M')))
@@ -274,7 +277,7 @@ class Date extends Carbon {
         // Loop all units and build string
         foreach ($units as $k => $unit)
         {
-            if ($interval[$k]) $str[] = $lang->choice("$unit", $interval[$k]);
+            if ($interval[$k]) $str[] = $lang->transChoice($unit, $interval[$k], array(':count' => $interval[$k]));
         }
 
         return implode(', ', $str);
@@ -329,6 +332,16 @@ class Date extends Carbon {
     }
 
     /**
+     * Get the current translator locale
+     *
+     * @return string
+     */
+    public static function getLocale()
+    {
+        return static::getTranslator()->getLocale();
+    }
+
+    /**
      * Set the current locale.
      *
      * @param  string  $locale
@@ -337,6 +350,10 @@ class Date extends Carbon {
     public static function setLocale($locale)
     {
         static::getTranslator()->setLocale($locale);
+
+        $resourcePath = __DIR__ . '/Lang/' . $locale . '.php';
+
+        static::getTranslator()->addResource('array', require $resourcePath, $locale);
     }
 
     /**
@@ -348,7 +365,9 @@ class Date extends Carbon {
     {
         if ( ! static::$translator)
         {
-            static::$translator = new Translator;
+            static::$translator = new Translator('en');
+            static::$translator->addLoader('array', new ArrayLoader());
+            static::setLocale('en');
         }
 
         return static::$translator;
@@ -359,7 +378,7 @@ class Date extends Carbon {
      *
      * @param Translator  $translator
      */
-    public static function setTranslator($translator)
+    public static function setTranslator(TranslatorInterface $translator)
     {
         static::$translator = $translator;
     }
@@ -373,7 +392,8 @@ class Date extends Carbon {
     public static function translateTimeString($time)
     {
         // Don't run translations for english.
-        if (static::$translator->getLocale() == 'en') {
+        if (static::getLocale() == 'en')
+        {
             return $time;
         }
 
@@ -381,8 +401,9 @@ class Date extends Carbon {
         $keys = array('january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday');
 
         // Get all the language lines of the current locale.
-        $translator = static::getTranslator();
-        $lines = array_intersect_key($translator->getAllLines(), array_flip((array) $keys));
+        $all = static::getTranslator()->getMessages();
+
+        $lines = array_intersect_key($all['messages'], array_flip((array) $keys));
 
         // Replace the translated words with the English words
         return str_ireplace($lines, array_keys($lines), $time);
