@@ -142,9 +142,9 @@ $date = new Date(1367186296);
 Or from an existing date or time:
 
 ```php
-$date = new Date::createFromDate(2000, 1, 31);
-$date = new Date::createFromTime(12, 0, 0);
-$date = new Date::create(2000, 1, 31, 12, 0, 0);
+$date = Date::createFromDate(2000, 1, 31);
+$date = Date::createFromTime(12, 0, 0);
+$date = Date::create(2000, 1, 31, 12, 0, 0);
 ```
 
 ### Formatting Dates
