@@ -222,7 +222,19 @@ class Date extends Carbon {
 
                 // Translate.
                 $lang = $this->getTranslator();
-                $translated = $lang->trans(strtolower($key));
+
+                // For declension support, we need to check if the month is lead by a numeric number.
+                // If so, we will use the second translation choice if it is available.
+                if (in_array($character, array('F', 'M')))
+                {
+                    $choice = (($i-2) >= 0 and in_array($format[$i-2], array('d', 'j'))) ? 1 : 0;
+
+                    $translated = $lang->transChoice(strtolower($key), $choice);
+                }
+                else
+                {
+                    $translated = $lang->trans(strtolower($key));
+                }
 
                 // Short notations.
                 if (in_array($character, array('D', 'M')))

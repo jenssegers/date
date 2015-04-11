@@ -28,6 +28,8 @@ class AutomaticTest extends PHPUnit_Framework_TestCase {
             'december'
         );
 
+        $selector = new MessageSelector;
+
         foreach ($this->languages as $language)
         {
             $language = str_replace('.php', '', $language);
@@ -38,9 +40,11 @@ class AutomaticTest extends PHPUnit_Framework_TestCase {
                 $date = new Date("1 $month");
                 $date->setLocale($language);
 
-                $this->assertTrue(isset($translations[$month]));
-                $this->assertEquals($translations[$month], $date->format('F'), "Language: $language"); // Full
-                $this->assertEquals(mb_substr($translations[$month], 0 , 3), $date->format('M'), "Language: $language"); // Short
+                $translation = $selector->choose($translations[$month], 0, $language);
+
+                $this->assertTrue(isset($translation));
+                $this->assertEquals($translation, $date->format('F'), "Language: $language"); // Full
+                $this->assertEquals(mb_substr($translation, 0 , 3), $date->format('M'), "Language: $language"); // Short
             }
         }
     }
