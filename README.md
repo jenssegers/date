@@ -29,6 +29,7 @@ Languages
 This package contains language files for the following languages:
 
  - Arabic
+ - Azerbaijani
  - Basque
  - Brazilian Portuguese
  - Bulgarian
