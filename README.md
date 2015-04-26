@@ -55,6 +55,7 @@ This package contains language files for the following languages:
  - Norwegian
  - Polish
  - Portuguese
+ - Persian (Farsi)
  - Romanian
  - Russian
  - Thai
