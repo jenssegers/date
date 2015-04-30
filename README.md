@@ -52,6 +52,7 @@ This package contains language files for the following languages:
  - Italian
  - Japanese
  - Korean
+ - Malay
  - Norwegian
  - Polish
  - Portuguese
