@@ -26,7 +26,7 @@ return array(
 
     'january'   => 'январь',
     'february'  => 'февраль',
-    'march'     => 'март',
+    'march'     => '{0}март|{1}мартa',
     'april'     => 'апрель',
     'may'       => 'май',
     'june'      => 'июнь',
