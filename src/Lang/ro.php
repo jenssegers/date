@@ -33,7 +33,7 @@ return array(
     'july'      => 'iulie',
     'august'    => 'august',
     'september' => 'septembrie',
-    'october'   => 'octobrie',
+    'october'   => 'octombrie',
     'november'  => 'noiembrie',
     'december'  => 'decembrie',
 
