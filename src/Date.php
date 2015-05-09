@@ -1,6 +1,8 @@
 <?php namespace Jenssegers\Date;
 
-use DateTime, DateInterval, DateTimeZone;
+use DateTime;
+use DateInterval;
+use DateTimeZone;
 use Carbon\Carbon;
 use Symfony\Component\Translation\Translator;
 use Symfony\Component\Translation\TranslatorInterface;
@@ -18,8 +20,8 @@ class Date extends Carbon {
     /**
      * Returns new DateTime object.
      *
-     * @param  string               $time
-     * @param  string|DateTimeZone  $timezone
+     * @param  string              $time
+     * @param  string|DateTimeZone $timezone
      * @return Date
      */
     public function __construct($time = null, $timezone = null)
@@ -36,8 +38,8 @@ class Date extends Carbon {
     /**
      * Create and return new Date instance.
      *
-     * @param  string               $time
-     * @param  string|DateTimeZone  $timezone
+     * @param  string              $time
+     * @param  string|DateTimeZone $timezone
      * @return Date
      */
     public static function make($time = null, $timezone = null)
@@ -48,8 +50,8 @@ class Date extends Carbon {
     /**
      * Create a carbon instance from a string.
      *
-     * @param string              $time
-     * @param string|DateTimeZone $timezone
+     * @param  string              $time
+     * @param  string|DateTimeZone $timezone
      * @return Date
      */
     public static function parse($time = null, $timezone = null)
@@ -60,11 +62,11 @@ class Date extends Carbon {
     }
 
     /**
-     * Create a Carbon instance from a specific format
+     * Create a Carbon instance from a specific format.
      *
-     * @param string              $format
-     * @param string              $time
-     * @param DateTimeZone|string $timezone
+     * @param  string                   $format
+     * @param  string                   $time
+     * @param  DateTimeZone|string      $timezone
      * @return static
      * @throws InvalidArgumentException
      */
@@ -78,8 +80,8 @@ class Date extends Carbon {
     /**
      * Get the difference in a human readable format.
      *
-     * @param  Date    $since
-     * @param  bool    $absolute   Removes time difference modifiers ago, after, etc
+     * @param  Date   $since
+     * @param  bool   $absolute Removes time difference modifiers ago, after, etc
      * @return string
      */
     public function diffForHumans(Carbon $since = null, $absolute = false)
@@ -144,7 +146,7 @@ class Date extends Carbon {
         {
             $ago = $lang->transChoice("${unit}_diff", $difference, array(':count' => $difference));
         }
-        else if ($lang->trans("${unit}_${suffix}") != "${unit}_${suffix}")
+        elseif ($lang->trans("${unit}_${suffix}") != "${unit}_${suffix}")
         {
             $ago = $lang->transChoice("${unit}_${suffix}", $difference, array(':count' => $difference));
         }
@@ -165,7 +167,7 @@ class Date extends Carbon {
      * Alias for diffForHumans.
      *
      * @param  Date   $since
-     * @param  bool   $absolute   Removes time difference modifiers ago, after, etc
+     * @param  bool   $absolute Removes time difference modifiers ago, after, etc
      * @return string
      */
     public function ago($since = null, $absolute = false)
@@ -176,7 +178,7 @@ class Date extends Carbon {
     /**
      * Alias for diffForHumans.
      *
-     * @param  Date $since
+     * @param  Date   $since
      * @return string
      */
     public function until($since = null)
@@ -187,7 +189,7 @@ class Date extends Carbon {
     /**
      * Returns date formatted according to given or predefined format.
      *
-     * @param  string  $format
+     * @param  string $format
      * @return string
      */
     public function format($format)
@@ -203,7 +205,7 @@ class Date extends Carbon {
             if (in_array($character, array('D', 'l', 'F', 'M')))
             {
                 // Check escaped characters.
-                if ($i > 0 and $format[$i-1] == '\\') continue;
+                if ($i > 0 and $format[$i - 1] == '\\') continue;
 
                 switch ($character)
                 {
@@ -227,7 +229,7 @@ class Date extends Carbon {
                 // If so, we will use the second translation choice if it is available.
                 if (in_array($character, array('F', 'M')))
                 {
-                    $choice = (($i-2) >= 0 and in_array($format[$i-2], array('d', 'j'))) ? 1 : 0;
+                    $choice = (($i - 2) >= 0 and in_array($format[$i - 2], array('d', 'j'))) ? 1 : 0;
 
                     $translated = $lang->transChoice(strtolower($key), $choice);
                 }
@@ -259,8 +261,8 @@ class Date extends Carbon {
     /**
      * Gets the timespan between this date and another date.
      *
-     * @param Date                $time
-     * @param string|DateTimeZone $timezone
+     * @param  Date                $time
+     * @param  string|DateTimeZone $timezone
      * @return int
      */
     public function timespan($time = null, $timezone = null)
@@ -344,7 +346,7 @@ class Date extends Carbon {
     }
 
     /**
-     * Get the current translator locale
+     * Get the current translator locale.
      *
      * @return string
      */
@@ -356,7 +358,7 @@ class Date extends Carbon {
     /**
      * Set the current locale.
      *
-     * @param  string  $locale
+     * @param  string $locale
      * @return void
      */
     public static function setLocale($locale)
@@ -369,7 +371,7 @@ class Date extends Carbon {
     }
 
     /**
-     * Return the Translator implementation
+     * Return the Translator implementation.
      *
      * @return Translator
      */
@@ -386,9 +388,9 @@ class Date extends Carbon {
     }
 
     /**
-     * Set the Translator implementation
+     * Set the Translator implementation.
      *
-     * @param Translator  $translator
+     * @param Translator $translator
      */
     public static function setTranslator(TranslatorInterface $translator)
     {

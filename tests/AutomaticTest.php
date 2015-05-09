@@ -1,7 +1,6 @@
 <?php
 
 use Jenssegers\Date\Date;
-use Jenssegers\Date\Translator;
 use Symfony\Component\Translation\MessageSelector;
 
 class AutomaticTest extends PHPUnit_Framework_TestCase {
@@ -25,7 +24,7 @@ class AutomaticTest extends PHPUnit_Framework_TestCase {
             'september',
             'october',
             'november',
-            'december'
+            'december',
         );
 
         $selector = new MessageSelector;
@@ -44,7 +43,7 @@ class AutomaticTest extends PHPUnit_Framework_TestCase {
 
                 $this->assertTrue(isset($translation));
                 $this->assertEquals($translation, $date->format('F'), "Language: $language"); // Full
-                $this->assertEquals(mb_substr($translation, 0 , 3), $date->format('M'), "Language: $language"); // Short
+                $this->assertEquals(mb_substr($translation, 0, 3), $date->format('M'), "Language: $language"); // Short
             }
         }
     }
@@ -58,7 +57,7 @@ class AutomaticTest extends PHPUnit_Framework_TestCase {
             'thursday',
             'friday',
             'saturday',
-            'sunday'
+            'sunday',
         );
 
         foreach ($this->languages as $language)
@@ -73,7 +72,7 @@ class AutomaticTest extends PHPUnit_Framework_TestCase {
 
                 $this->assertTrue(isset($translations[$day]));
                 $this->assertEquals($translations[$day], $date->format('l'), "Language: $language"); // Full
-                $this->assertEquals(mb_substr($translations[$day], 0 , 3), $date->format('D'), "Language: $language"); // Short
+                $this->assertEquals(mb_substr($translations[$day], 0, 3), $date->format('D'), "Language: $language"); // Short
             }
         }
     }
@@ -91,7 +90,7 @@ class AutomaticTest extends PHPUnit_Framework_TestCase {
             'day',
             'hour',
             'minute',
-            'second'
+            'second',
         );
 
         foreach ($this->languages as $language)
@@ -134,7 +133,7 @@ class AutomaticTest extends PHPUnit_Framework_TestCase {
             'day',
             'hour',
             'minute',
-            'second'
+            'second',
         );
 
         foreach ($this->languages as $language)

@@ -18,7 +18,7 @@ $months = array(
     'september',
     'october',
     'november',
-    'december'
+    'december',
 );
 
 $days = array(
@@ -28,7 +28,7 @@ $days = array(
     'thursday',
     'friday',
     'saturday',
-    'sunday'
+    'sunday',
 );
 
 $translations = array();

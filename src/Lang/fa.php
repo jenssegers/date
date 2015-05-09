@@ -1,12 +1,11 @@
 <?php
 /**
- * Persian Language
+ * Persian Language.
  *
  * @author  AliReza Tofighi
  * @website http://my-bb.ir
  * @version 1.0.0
  */
-
 
 return array(
 

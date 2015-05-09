@@ -16,7 +16,7 @@ return array(
     'from_now'  => 'za :time',
     'after'     => ':time neskôr',
     'before'    => ':time predtým',
-	'year'      => 'rok|:count roky|:count rokov',
+    'year'      => 'rok|:count roky|:count rokov',
     'month'     => 'mesiac|:count mesiace|:count mesiacov',
     'week'      => 'týždeň|:count týždne|:count týždňov',
     'day'       => 'deň|:count dni|:count dní',
@@ -44,13 +44,13 @@ return array(
     'friday'    => 'piatok',
     'saturday'  => 'sobota',
     'sunday'    => 'nedeľa',
-	
-	'year_ago'      => 'rokom|[2,Inf]:count rokmi',
+
+    'year_ago'      => 'rokom|[2,Inf]:count rokmi',
     'month_ago'     => 'mesiacom|[2,Inf]:count mesiacmi',
     'week_ago'      => 'týždňom|[2,Inf]:count týždňami',
     'day_ago'       => 'dňom|[2,Inf]:count dňami',
     'hour_ago'      => 'hodinou|[2,Inf]:count hodinami',
     'minute_ago'    => 'minútou|[2,Inf]:count minútami',
     'second_ago'    => 'sekundou|[2,Inf]:count sekundami',
-	
+
 );
