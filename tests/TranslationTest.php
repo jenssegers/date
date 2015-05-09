@@ -1,11 +1,12 @@
 <?php
 
+namespace Jenssegers\Tests\Date;
+
 use Jenssegers\Date\Date;
 use Symfony\Component\Translation\Translator;
-use Symfony\Component\Translation\MessageSelector;
 use Symfony\Component\Translation\Loader\ArrayLoader;
 
-class TranslationTest extends PHPUnit_Framework_TestCase {
+class TranslationTest extends \PHPUnit_Framework_TestCase {
 
     public function setUp()
     {
