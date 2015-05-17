@@ -415,7 +415,7 @@ class Date extends Carbon {
         $keys = array('january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday');
 
         // Get all the language lines of the current locale.
-        $all = static::getTranslator()->getMessages();
+        $all = static::getTranslator()->getCatalogue()->all();
 
         $lines = array_intersect_key($all['messages'], array_flip((array) $keys));
 
