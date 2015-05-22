@@ -18,7 +18,7 @@ class DateServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-        $locale = $this->app->getLocale();
+        $locale = $this->app['translator']->getLocale();
 
         Date::setLocale($locale);
     }
