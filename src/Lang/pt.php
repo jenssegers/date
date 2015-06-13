@@ -37,11 +37,11 @@ return array(
     'november'  => 'novembro',
     'december'  => 'dezembro',
 
-    'monday'    => 'segunda',
-    'tuesday'   => 'terça',
-    'wednesday' => 'quarta',
-    'thursday'  => 'quinta',
-    'friday'    => 'sexta',
+    'monday'    => 'segunda-feira',
+    'tuesday'   => 'terça-feira',
+    'wednesday' => 'quarta-feira',
+    'thursday'  => 'quinta-feira',
+    'friday'    => 'sexta-feira',
     'saturday'  => 'sábado',
     'sunday'    => 'domingo',
 
