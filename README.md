@@ -48,6 +48,7 @@ This package contains language files for the following languages:
  - Indonesian
  - Italian
  - Japanese
+ - Malay
  - Norwegian
  - Polish
  - Portuguese
