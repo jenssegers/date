@@ -1,13 +1,15 @@
 <?php namespace Jenssegers\Date\Traits;
 
+use Jenssegers\Date\Date;
+
 /**
- * This is a trait containing a methods to
- * facilitate the file upload process.
+ * This is a trait overwrites methods to
+ * replace Carbon with Date.
  *
  * @package Jenssegers\Date
  */
 
-trait Date{
+trait EloquentDateHelper{
 
     public function freshTimestamp()
     {
