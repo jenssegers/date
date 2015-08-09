@@ -31,7 +31,7 @@ return array(
     'may'       => 'مايو',
     'june'      => 'يونيو',
     'july'      => 'يوليو',
-    'august'    => 'أغسطص',
+    'august'    => 'أغسطس',
     'september' => 'سبتمبر',
     'october'   => 'أكتوبر',
     'november'  => 'نوفمبر',
