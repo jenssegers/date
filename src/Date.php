@@ -142,7 +142,11 @@ class Date extends Carbon {
         // Some languages have different unit translations when used in combination
         // with a specific suffix. Here we will check if there is an optional
         // translation for that specific suffix and use it if it exists.
-        if ($lang->trans("${unit}_diff") != "${unit}_diff")
+        if ($lang->getCatalogue()->has('now') && $unit == 'second' && $difference <= 10)
+        {
+            $suffix = 'now';
+        }
+        elseif ($lang->trans("${unit}_diff") != "${unit}_diff")
         {
             $ago = $lang->transChoice("${unit}_diff", $difference, array(':count' => $difference));
         }
@@ -155,7 +159,10 @@ class Date extends Carbon {
             $ago = $lang->transChoice($unit, $difference, array(':count' => $difference));
         }
 
-        if ($absolute)
+        if ($suffix == 'now') {
+            return $lang->trans($suffix);
+        }
+        elseif ($absolute)
         {
             return $ago;
         }
