@@ -119,7 +119,7 @@ class DateTest extends PHPUnit_Framework_TestCase {
         $this->assertSame('50 seconds ago', $date->ago());
 
         $date = Date::parse('-1 second');
-        $this->assertSame('1 second ago', $date->ago());
+        $this->assertSame('now', $date->ago());
 
         $date = Date::parse('+5 days');
         $this->assertSame('5 days from now', $date->ago());
