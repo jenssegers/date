@@ -51,5 +51,5 @@ return array(
     'day_ago'       => 'jedním dnem|[2,Inf]:count dny',
     'hour_ago'      => 'hodinou|[2,Inf]:count hodinami',
     'minute_ago'    => 'minutou|[2,Inf]:count minutami',
-    'second_ago'    => 'sekundou|[2,Inf]:count sekundami',
+    'second_ago'    => '{0}0 sekundami|{1}sekundou|[2,Inf]:count sekundami',
 );
