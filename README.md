@@ -23,6 +23,12 @@ There is a service provider included for integration with the Laravel framework.
 'Jenssegers\Date\DateServiceProvider',
 ```
 
+You can also add it as a Facade in `config/app.php`:
+
+```php
+'Date' => Jenssegers\Date\Date::class,
+```
+
 Languages
 ---------
 
