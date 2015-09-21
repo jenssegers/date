@@ -48,6 +48,7 @@ This package contains language files for the following languages:
  - Dutch
  - English
  - Esperanto
+ - Estonian
  - Finnish
  - French
  - German
