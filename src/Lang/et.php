@@ -2,16 +2,6 @@
 
 return array(
 
-    /*
-    |--------------------------------------------------------------------------
-    | Date Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used by the date library. Each line can
-    | have a singular and plural translation separated by a '|'.
-    |
-    */
-
     'ago'       => ':time tagasi',
     'from_now'  => 'alates :time',
     'after'     => 'p&auml;rast :time ',
