@@ -1,7 +1,7 @@
 Date
 ====
 
-[![Latest Stable Version](http://img.shields.io/github/release/jenssegers/laravel-date.svg)](https://packagist.org/packages/jenssegers/date) [![Total Downloads](http://img.shields.io/packagist/dm/jenssegers/date.svg)](https://packagist.org/packages/jenssegers/date) [![Build Status](http://img.shields.io/travis/jenssegers/date.svg)](https://travis-ci.org/jenssegers/date) [![Coverage Status](http://img.shields.io/coveralls/jenssegers/laravel-date.svg)](https://coveralls.io/r/jenssegers/laravel-date?branch=master)
+[![Latest Stable Version](http://img.shields.io/github/release/jenssegers/date.svg)](https://packagist.org/packages/jenssegers/date) [![Total Downloads](http://img.shields.io/packagist/dm/jenssegers/date.svg)](https://packagist.org/packages/jenssegers/date) [![Build Status](http://img.shields.io/travis/jenssegers/date.svg)](https://travis-ci.org/jenssegers/date) [![Coverage Status](http://img.shields.io/coveralls/jenssegers/laravel-date.svg)](https://coveralls.io/r/jenssegers/date?branch=master)
 
 This date library extends [Carbon](https://github.com/briannesbitt/Carbon) with multi-language support. Methods such as `format`, `diffForHumans`, `parse`, `createFromFormat` and the new `timespan`, will now be translated based on your locale.
 
