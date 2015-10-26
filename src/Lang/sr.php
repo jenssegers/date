@@ -31,7 +31,7 @@ return array(
     'may'       => 'мај',
     'june'      => 'јун',
     'july'      => 'јул',
-    'august'    => 'авгус',
+    'august'    => 'август',
     'september' => 'септембар',
     'october'   => 'октобар',
     'november'  => 'новембар',
