@@ -2,21 +2,22 @@
     "name": "jenssegers/date",
     "description": "A date library to help you work with dates in different languages",
     "keywords": ["laravel", "date", "time", "datetime", "i18n", "translation", "carbon"],
+    "homepage": "https://github.com/jenssegers/date",
     "license" : "MIT",
     "authors": [
         {
             "name": "Jens Segers",
-            "homepage": "http://jenssegers.be"
+            "homepage": "https://jenssegers.com"
         }
     ],
     "require": {
         "php": ">=5.3.3",
-        "nesbot/carbon": "~1.0",
-        "symfony/translation": "~2.0"
+        "nesbot/carbon": "^1.0",
+        "symfony/translation": "^2.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4.0",
-        "satooshi/php-coveralls": "~0.6"
+        "phpunit/phpunit": "^5.0",
+        "satooshi/php-coveralls": "^0.6"
     },
     "autoload": {
         "psr-4": {
