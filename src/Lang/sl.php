@@ -28,7 +28,7 @@ return array(
     'week_ago'   => '1 tednom|:count tedni|:count tedni',
     'day_ago'    => '1 dnem|:count dnevoma|:count dnevi|:count dnevi',
     'hour_ago'   => '1 uro|:count urama|:count urami|:count urami',
-    'minute_ago' => '1 minuto|:count minutama|:count minutami',
+    'minute_ago' => '1 minuto|:count minutama|:count minutami|:count minutami',
     'second_ago' => '1 sekundo|:count sekundama|:count sekundami|:count sekundami',
 
     'january'   => 'januar',
