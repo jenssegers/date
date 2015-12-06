@@ -16,7 +16,7 @@ matrix:
 sudo: false
 
 install:
-  - travis_retry self-update
+  - travis_retry composer self-update
   - travis_retry composer install --no-interaction --prefer-source
 
 script:
