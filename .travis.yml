@@ -8,16 +8,10 @@ php:
   - 7.0
   - hhvm
 
-matrix:
-  fast_finish: true
-  allow_failures:
-    - php: hhvm
-    - php: 7.0
-
 sudo: false
 
 install:
-  - composer self-update
+  - travis_retry self-update
   - travis_retry composer install --no-interaction --prefer-source
 
 script:
