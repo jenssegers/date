@@ -185,11 +185,6 @@ class TranslationTest extends PHPUnit_Framework_TestCase
 
         $date = new Date(1367186296);
         $this->assertSame('zon 28 apr 2013 21:58:16', $date->format('D j M Y H:i:s'));
-
-        Date::setLocale('ka');
-
-        $date = new Date(1367186296);
-        $this->assertSame('კვი 28 აპრ 2013 21:58:16', $date->format('D j M Y H:i:s'));
     }
 
     public function testFormatDeclensions()
