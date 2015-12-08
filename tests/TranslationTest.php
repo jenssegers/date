@@ -1,10 +1,11 @@
 <?php
 
 use Jenssegers\Date\Date;
-use Symfony\Component\Translation\Translator;
 use Symfony\Component\Translation\Loader\ArrayLoader;
+use Symfony\Component\Translation\Translator;
 
-class TranslationTest extends PHPUnit_Framework_TestCase {
+class TranslationTest extends PHPUnit_Framework_TestCase
+{
 
     public function setUp()
     {
@@ -184,6 +185,11 @@ class TranslationTest extends PHPUnit_Framework_TestCase {
 
         $date = new Date(1367186296);
         $this->assertSame('zon 28 apr 2013 21:58:16', $date->format('D j M Y H:i:s'));
+
+        Date::setLocale('ka');
+
+        $date = new Date(1367186296);
+        $this->assertSame('კვი 28 აპრ 2013 21:58:16', $date->format('D j M Y H:i:s'));
     }
 
     public function testFormatDeclensions()
@@ -203,11 +209,7 @@ class TranslationTest extends PHPUnit_Framework_TestCase {
 
         $date = new Date('10 march 2015');
         $this->assertSame('10 მარტი 2015', $date->format('j F Y'));
-
-        $date = new Date(1367186296);
-        $this->assertSame('კვი 28 აპრ 2013 21:58:16', $date->format('D j M Y H:i:s'));
     }
-
 
     public function testAfterTranslated()
     {
@@ -228,8 +230,5 @@ class TranslationTest extends PHPUnit_Framework_TestCase {
         $date = Date::parse('+10 years');
         $this->assertSame('10 წლის შემდეგ', $date->ago(Date::now()));
     }
-
-
-
 
 }

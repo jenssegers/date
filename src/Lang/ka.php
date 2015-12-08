@@ -16,7 +16,7 @@ return array(
     | The following language lines are used by the date library. Each line can
     | have a singular and plural translation separated by a '|'.
     |
-    */
+     */
 
     'ago'       => ':time უკან',
     'from_now'  => ':time შემდეგ',
