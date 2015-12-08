@@ -1,10 +1,11 @@
 <?php
 
 use Jenssegers\Date\Date;
-use Symfony\Component\Translation\Translator;
 use Symfony\Component\Translation\Loader\ArrayLoader;
+use Symfony\Component\Translation\Translator;
 
-class TranslationTest extends PHPUnit_Framework_TestCase {
+class TranslationTest extends PHPUnit_Framework_TestCase
+{
 
     public function setUp()
     {
@@ -164,5 +165,4 @@ class TranslationTest extends PHPUnit_Framework_TestCase {
         $date = new Date('10 march 2015');
         $this->assertSame('10 мартa 2015', $date->format('j F Y'));
     }
-
 }
