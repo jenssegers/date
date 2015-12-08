@@ -61,6 +61,13 @@ class TranslationTest extends PHPUnit_Framework_TestCase {
         $date = $date->sub('-100 days -3 hours -20 minutes');
 
         $this->assertSame('3 maanden, 1 week, 1 dag, 3 uur, 20 minuten', $date->timespan(1403619368));
+
+        Date::setLocale('ka');
+
+        $date = new Date(1403619368);
+        $date = $date->sub('-100 days -3 hours -20 minutes');
+
+        $this->assertSame('3 თვის, 1 კვირის, 1 დღის, 3 საათის, 20 წუთის', $date->timespan(1403619368));
     }
 
     public function testParse()
@@ -82,6 +89,14 @@ class TranslationTest extends PHPUnit_Framework_TestCase {
 
         Date::setLocale('nl');
         $date = Date::createFromFormat('D d F Y', 'zaterdag 21 maart 2015');
+        $this->assertSame('2015-03-21', $date->format('Y-m-d'));
+
+        Date::setLocale('ka');
+
+        $date = Date::createFromFormat('d F Y', '1 იანვარი 2015');
+        $this->assertSame('2015-01-01', $date->format('Y-m-d'));
+
+        $date = Date::createFromFormat('D d F Y', 'შაბათი 21 მარტი 2015');
         $this->assertSame('2015-03-21', $date->format('Y-m-d'));
     }
 
@@ -138,6 +153,23 @@ class TranslationTest extends PHPUnit_Framework_TestCase {
 
         $date = Date::parse('-11 hours');
         $this->assertSame('11 часов до', $date->ago(Date::now()));
+
+        Date::setLocale('ka');
+
+        $date = Date::parse('-21 hours');
+        $this->assertSame('21 საათის უკან', $date->ago(Date::now()));
+
+        $date = Date::parse('-5 days');
+        $this->assertSame('5 დღის უკან', $date->ago(Date::now()));
+
+        $date = Date::parse('-3 weeks');
+        $this->assertSame('3 კვირის უკან', $date->ago(Date::now()));
+
+        $date = Date::parse('-6 months');
+        $this->assertSame('6 თვის უკან', $date->ago(Date::now()));
+
+        $date = Date::parse('-10 years');
+        $this->assertSame('10 წლის უკან', $date->ago(Date::now()));
     }
 
     public function testFormatTranslated()
@@ -163,6 +195,41 @@ class TranslationTest extends PHPUnit_Framework_TestCase {
 
         $date = new Date('10 march 2015');
         $this->assertSame('10 мартa 2015', $date->format('j F Y'));
+
+        Date::setLocale('ka');
+
+        $date = new Date('10 march 2015');
+        $this->assertSame('მარტი 2015', $date->format('F Y'));
+
+        $date = new Date('10 march 2015');
+        $this->assertSame('10 მარტი 2015', $date->format('j F Y'));
+
+        $date = new Date(1367186296);
+        $this->assertSame('კვი 28 აპრ 2013 21:58:16', $date->format('D j M Y H:i:s'));
     }
+
+
+    public function testAfterTranslated()
+    {
+        Date::setLocale('ka');
+
+        $date = Date::parse('+21 hours');
+        $this->assertSame('21 საათის შემდეგ', $date->ago(Date::now()));
+
+        $date = Date::parse('+5 days');
+        $this->assertSame('5 დღის შემდეგ', $date->ago(Date::now()));
+
+        $date = Date::parse('+3 weeks');
+        $this->assertSame('3 კვირის შემდეგ', $date->ago(Date::now()));
+
+        $date = Date::parse('+6 months');
+        $this->assertSame('6 თვის შემდეგ', $date->ago(Date::now()));
+
+        $date = Date::parse('+10 years');
+        $this->assertSame('10 წლის შემდეგ', $date->ago(Date::now()));
+    }
+
+
+
 
 }
