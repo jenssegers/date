@@ -4,7 +4,7 @@ return array(
 
     /*
     |--------------------------------------------------------------------------
-    | Date Language Lines
+    | Date Language Lines |Indonesia|
     |--------------------------------------------------------------------------
     |
     | The following language lines are used by the date library. Each line can
@@ -12,17 +12,17 @@ return array(
     |
     */
 
-    'ago'       => ':time yang lalu',
-    'from_now'  => ':time dari sekarang',
-    'after'     => ':time setelah',
-    'before'    => ':time sebelum',
-    'year'      => ':count tahun',
-    'month'     => ':count bulan',
-    'week'      => ':count minggu',
-    'day'       => ':count hari',
-    'hour'      => ':count jam',
-    'minute'    => ':count menit',
-    'second'    => ':count detik',
+    'ago'       => ':waktu lalu',
+    'from_now'  => ':waktu sekarang',
+    'after'     => ':waktu sesudah',
+    'before'    => ':waktu sebelum',
+    'year'      => '1 tahun|:menghitung tahun',
+    'month'     => '1 bulan|:menghitung bulan',
+    'week'      => '1 minggu|:menghitung minggu',
+    'day'       => '1 hari|:menghitung hari',
+    'hour'      => '1 jam|:menghitung jam',
+    'minute'    => '1 menit|:menghitung menit',
+    'second'    => '1 detik|:menghitung detik',
 
     'january'   => 'Januari',
     'february'  => 'Februari',
@@ -31,7 +31,7 @@ return array(
     'may'       => 'Mei',
     'june'      => 'Juni',
     'july'      => 'Juli',
-    'august'    => 'Agustus',
+    'august'    => 'Augustus',
     'september' => 'September',
     'october'   => 'Oktober',
     'november'  => 'November',
