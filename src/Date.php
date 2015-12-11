@@ -26,13 +26,22 @@ class Date extends Carbon {
      */
     public function __construct($time = null, $timezone = null)
     {
-        // Create Date from timestamp.
         if (is_int($time))
         {
-            $time = "@$time";
+            $timestamp = $time;
+            $time = null;
+        }
+        else
+        {
+            $timestamp = null;
         }
 
         parent::__construct($time, $timezone);
+
+        if ($timestamp !== null)
+        {
+            $this->setTimestamp($timestamp);
+        }
     }
 
     /**
