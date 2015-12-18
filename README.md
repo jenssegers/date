@@ -76,6 +76,7 @@ This package contains language files for the following languages:
  - Spanish
  - Swedish
  - Turkish
+ - Turkmen
  - Ukrainian
  - Vietnamese
 
