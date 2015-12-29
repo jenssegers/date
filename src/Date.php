@@ -375,6 +375,14 @@ class Date extends Carbon {
         // Use RFC 5646 for filenames.
         $resourcePath = __DIR__ . '/Lang/' . str_replace('_', '-', $locale) . '.php';
 
+        // Check if the locale is supported
+        if ( ! is_readable($resourcePath))
+        {
+            // Silently fall back to "en"
+            static::setLocale("en");
+            return;
+        }
+
         // Symfony locale format.
         $locale = str_replace('-', '_', $locale);
 

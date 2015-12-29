@@ -165,4 +165,12 @@ class TranslationTest extends PHPUnit_Framework_TestCase
         $date = new Date('10 march 2015');
         $this->assertSame('10 мартa 2015', $date->format('j F Y'));
     }
+
+    public function testFallbackLocale()
+    {
+        Date::setLocale('doge');
+
+        $date = new Date();
+        $this->assertSame('en', $date->getLocale());
+    }
 }
