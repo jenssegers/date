@@ -12,8 +12,8 @@ return array(
     |
     */
 
-    'ago'       => ':time korábban',
-    'from_now'  => ':time később',
+    'ago'       => ':time ezelőtt',
+    'from_now'  => ':time ezután',
     'after'     => ':time később',
     'before'    => ':time korábban',
     'year'      => '1 évvel|:count évvel',
