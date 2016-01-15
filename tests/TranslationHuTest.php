@@ -119,6 +119,4 @@ class TranslationHuTest extends PHPUnit_Framework_TestCase
         $date = Date::createFromFormat('Y. F d., D', '2015. március 21., szombat');
         $this->assertSame('2015-03-21', $date->format('Y-m-d'));
     }
-
-
 }
