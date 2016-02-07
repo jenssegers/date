@@ -370,10 +370,10 @@ class Date extends Carbon {
      * @param  string $locale
      * @return void
      */
-    public static function setLocale($locale)
+    public static function setLocale($locale, $resourcePath = null)
     {
         // Use RFC 5646 for filenames.
-        $resourcePath = __DIR__ . '/Lang/' . str_replace('_', '-', $locale) . '.php';
+        $resourcePath or $resourcePath = __DIR__ . '/Lang/' . str_replace('_', '-', $locale) . '.php';
 
         // Symfony locale format.
         $locale = str_replace('-', '_', $locale);

@@ -20,6 +20,15 @@ class DateServiceProvider extends ServiceProvider {
     {
         $locale = $this->app['translator']->getLocale();
 
+        // Option to have custom resource file for Laravel ^5.1
+        $laravel_version = explode('.', $this->app['app']->version());
+        if ($laravel_version[0] == 5 && $laravel_version[1] >= 1) {
+            $resource = $this->app['path.lang'] . '\vendor\\' . __NAMESPACE__ . '\\' . $locale . '.php';
+            file_exists($resource) or $resource = null;
+            Date::setLocale($locale, $resource);
+            return;
+        }
+
         Date::setLocale($locale);
     }
 
