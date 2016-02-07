@@ -29,6 +29,8 @@ You can also add it as a Facade in `config/app.php`:
 'Date' => Jenssegers\Date\Date::class,
 ```
 
+To override any default language file in Laravel newer than 5.1, create file as `resources/lang/vendor/Jenssegers/Date/{locale}.php`:
+
 Languages
 ---------
 
