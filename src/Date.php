@@ -368,6 +368,7 @@ class Date extends Carbon {
      * Set the current locale.
      *
      * @param  string $locale
+     * @param  string $resourcePath Optional parameter to override resource path
      * @return void
      */
     public static function setLocale($locale, $resourcePath = null)
