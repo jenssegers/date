@@ -219,10 +219,12 @@ class Date extends Carbon {
                 switch ($character)
                 {
                     case 'D':
-                        $key = parent::format('l');
+					case 'l':
+                        $key = parent::format('N');
                         break;
+                    case 'F':
                     case 'M':
-                        $key = parent::format('F');
+                        $key = parent::format('n');
                         break;
                     default:
                         $key = parent::format($character);
@@ -234,24 +236,27 @@ class Date extends Carbon {
                 // Translate.
                 $lang = $this->getTranslator();
 
-                // For declension support, we need to check if the month is lead by a numeric number.
-                // If so, we will use the second translation choice if it is available.
-                if (in_array($character, array('F', 'M')))
-                {
-                    $choice = (($i - 2) >= 0 and in_array($format[$i - 2], array('d', 'j'))) ? 1 : 0;
 
-                    $translated = $lang->transChoice(strtolower($key), $choice);
-                }
-                else
-                {
-                    $translated = $lang->trans(strtolower($key));
-                }
-
-                // Short notations.
-                if (in_array($character, array('D', 'M')))
-                {
-                    $translated = mb_substr($translated, 0, 3);
-                }
+				if( $character === 'D' )
+				{
+					$translated = $lang->trans('weekDayNames.narrow.'. $key);
+				}
+				else if( $character === 'l' )
+				{
+					$translated = $lang->trans('weekDayNames.wide.'. $key);
+				}
+				else if( $character === 'F' )
+				{
+					$translated = $lang->trans('monthNames.wide.'. $key);
+				}
+				else if( $character === 'M' )
+				{
+					$translated = $lang->trans('monthNames.narrow.'. $key);
+				}
+				else
+				{
+					 $translated = $lang->trans(strtolower($key));
+				}
 
                 // Add to replace list.
                 if ($translated and $original != $translated) $replace[$original] = $translated;
@@ -379,7 +384,6 @@ class Date extends Carbon {
         $locale = str_replace('-', '_', $locale);
 
         static::getTranslator()->setLocale($locale);
-
         static::getTranslator()->addResource('array', require $resourcePath, $locale);
     }
 
@@ -396,7 +400,6 @@ class Date extends Carbon {
             static::$translator->addLoader('array', new ArrayLoader());
             static::setLocale('en');
         }
-
         return static::$translator;
     }
 

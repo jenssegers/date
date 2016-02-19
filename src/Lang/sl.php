@@ -52,4 +52,105 @@ return array(
     'saturday'  => 'sobota',
     'sunday'    => 'nedelja',
 
+
+ 'monthNames'  => array (
+  'wide' => 
+  array (
+    1 => 'januar',
+    2 => 'februar',
+    3 => 'marec',
+    4 => 'april',
+    5 => 'maj',
+    6 => 'junij',
+    7 => 'julij',
+    8 => 'avgust',
+    9 => 'september',
+    10 => 'oktober',
+    11 => 'november',
+    12 => 'december',
+  ),
+  'abbreviated' => 
+  array (
+    1 => 'jan.',
+    2 => 'feb.',
+    3 => 'mar.',
+    4 => 'apr.',
+    5 => 'maj',
+    6 => 'jun.',
+    7 => 'jul.',
+    8 => 'avg.',
+    9 => 'sep.',
+    10 => 'okt.',
+    11 => 'nov.',
+    12 => 'dec.',
+  ),
+),
+
+ 'weekDayNames'  => array (
+  'wide' => 
+  array (
+    0 => 'nedelja',
+    1 => 'ponedeljek',
+    2 => 'torek',
+    3 => 'sreda',
+    4 => 'četrtek',
+    5 => 'petek',
+    6 => 'sobota',
+  ),
+  'abbreviated' => 
+  array (
+    0 => 'ned.',
+    1 => 'pon.',
+    2 => 'tor.',
+    3 => 'sre.',
+    4 => 'čet.',
+    5 => 'pet.',
+    6 => 'sob.',
+  ),
+  'short' => 
+  array (
+    0 => 'ned.',
+    1 => 'pon.',
+    2 => 'tor.',
+    3 => 'sre.',
+    4 => 'čet.',
+    5 => 'pet.',
+    6 => 'sob.',
+  ),
+),
+
+ 'eraNames'  => array (
+  'abbreviated' => 
+  array (
+    0 => 'pr. n. št.',
+    1 => 'po Kr.',
+  ),
+  'wide' => 
+  array (
+    0 => 'pred našim štetjem',
+    1 => 'naše štetje',
+  ),
+  'narrow' => 
+  array (
+    0 => 'pr. n. št.',
+    1 => 'po Kr.',
+  ),
+),
+
+ 'dateFormats'  => array (
+  'full' => 'EEEE, dd. MMMM y',
+  'long' => 'dd. MMMM y',
+  'medium' => 'd. MMM y',
+  'short' => 'd. MM. yy',
+),
+
+ 'timeFormats'  => array (
+  'full' => 'HH:mm:ss zzzz',
+  'long' => 'HH:mm:ss z',
+  'medium' => 'HH:mm:ss',
+  'short' => 'HH:mm',
+),
+
+ 'dateTimeFormat'  => '{1} {0}',
+
 );

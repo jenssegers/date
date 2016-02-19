@@ -45,4 +45,130 @@ return array(
     'saturday'  => 'Sestdiena',
     'sunday'    => 'Svētdiena',
 
+
+ 'monthNames'  => array (
+  'wide' => 
+  array (
+    1 => 'janvāris',
+    2 => 'februāris',
+    3 => 'marts',
+    4 => 'aprīlis',
+    5 => 'maijs',
+    6 => 'jūnijs',
+    7 => 'jūlijs',
+    8 => 'augusts',
+    9 => 'septembris',
+    10 => 'oktobris',
+    11 => 'novembris',
+    12 => 'decembris',
+  ),
+  'abbreviated' => 
+  array (
+    1 => 'janv.',
+    2 => 'febr.',
+    3 => 'marts',
+    4 => 'apr.',
+    5 => 'maijs',
+    6 => 'jūn.',
+    7 => 'jūl.',
+    8 => 'aug.',
+    9 => 'sept.',
+    10 => 'okt.',
+    11 => 'nov.',
+    12 => 'dec.',
+  ),
+  'narrow' => 
+  array (
+    1 => 'J',
+    2 => 'F',
+    3 => 'M',
+    4 => 'A',
+    5 => 'M',
+    6 => 'J',
+    7 => 'J',
+    8 => 'A',
+    9 => 'S',
+    10 => 'O',
+    11 => 'N',
+    12 => 'D',
+  ),
+),
+
+ 'weekDayNames'  => array (
+  'wide' => 
+  array (
+    0 => 'svētdiena',
+    1 => 'pirmdiena',
+    2 => 'otrdiena',
+    3 => 'trešdiena',
+    4 => 'ceturtdiena',
+    5 => 'piektdiena',
+    6 => 'sestdiena',
+  ),
+  'abbreviated' => 
+  array (
+    0 => 'Sv',
+    1 => 'Pr',
+    2 => 'Ot',
+    3 => 'Tr',
+    4 => 'Ce',
+    5 => 'Pk',
+    6 => 'Se',
+  ),
+  'narrow' => 
+  array (
+    0 => 'S',
+    1 => 'P',
+    2 => 'O',
+    3 => 'T',
+    4 => 'C',
+    5 => 'P',
+    6 => 'S',
+  ),
+  'short' => 
+  array (
+    0 => 'Sv',
+    1 => 'Pr',
+    2 => 'Ot',
+    3 => 'Tr',
+    4 => 'Ce',
+    5 => 'Pk',
+    6 => 'Se',
+  ),
+),
+
+ 'eraNames'  => array (
+  'abbreviated' => 
+  array (
+    0 => 'p.m.ē.',
+    1 => 'm.ē.',
+  ),
+  'wide' => 
+  array (
+    0 => 'pirms mūsu ēras',
+    1 => 'mūsu ērā',
+  ),
+  'narrow' => 
+  array (
+    0 => 'p.m.ē.',
+    1 => 'm.ē.',
+  ),
+),
+
+ 'dateFormats'  => array (
+  'full' => 'EEEE, y. \'gada\' d. MMMM',
+  'long' => 'y. \'gada\' d. MMMM',
+  'medium' => 'y. \'gada\' d. MMM',
+  'short' => 'dd.MM.yy',
+),
+
+ 'timeFormats'  => array (
+  'full' => 'HH:mm:ss zzzz',
+  'long' => 'HH:mm:ss z',
+  'medium' => 'HH:mm:ss',
+  'short' => 'HH:mm',
+),
+
+ 'dateTimeFormat'  => '{1} {0}',
+
 );
