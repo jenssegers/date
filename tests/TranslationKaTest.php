@@ -13,16 +13,6 @@ class TranslationKaTest extends PHPUnit_Framework_TestCase
         Date::setLocale('ka');
     }
 
-    public function testGetsAndSetsTranslator()
-    {
-        $translator = new Translator('ka');
-        $translator->addLoader('array', new ArrayLoader());
-        $this->assertNotEquals($translator, Date::getTranslator());
-
-        Date::setTranslator($translator);
-        $this->assertEquals($translator, Date::getTranslator());
-    }
-
     public function testTimespanTranslated()
     {
         $date = new Date(1403619368);

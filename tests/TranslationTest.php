@@ -6,7 +6,6 @@ use Symfony\Component\Translation\Translator;
 
 class TranslationTest extends PHPUnit_Framework_TestCase
 {
-
     public function setUp()
     {
         date_default_timezone_set('UTC');
@@ -20,6 +19,14 @@ class TranslationTest extends PHPUnit_Framework_TestCase
 
         Date::setTranslator($translator);
         $this->assertEquals($translator, Date::getTranslator());
+    }
+
+    public function testFallback()
+    {
+        Date::setLocale('xx');
+
+        $date = Date::parse('-5 years');
+        $this->assertSame('5 years ago', $date->ago());
     }
 
     public function testMultiplePluralForms()

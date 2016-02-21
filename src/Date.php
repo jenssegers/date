@@ -1,12 +1,12 @@
 <?php namespace Jenssegers\Date;
 
-use DateTime;
-use DateInterval;
-use DateTimeZone;
 use Carbon\Carbon;
+use DateInterval;
+use DateTime;
+use DateTimeZone;
+use Symfony\Component\Translation\Loader\ArrayLoader;
 use Symfony\Component\Translation\Translator;
 use Symfony\Component\Translation\TranslatorInterface;
-use Symfony\Component\Translation\Loader\ArrayLoader;
 
 class Date extends Carbon {
 
@@ -16,6 +16,13 @@ class Date extends Carbon {
      * @var Translator
      */
     protected static $translator;
+
+    /**
+     * The fallback locale when a locale is not available.
+     *
+     * @var string
+     */
+    protected static $fallbackLocale = 'en';
 
     /**
      * Returns new DateTime object.
@@ -373,14 +380,42 @@ class Date extends Carbon {
     public static function setLocale($locale)
     {
         // Use RFC 5646 for filenames.
-        $resourcePath = __DIR__ . '/Lang/' . str_replace('_', '-', $locale) . '.php';
+        $resource = __DIR__ . '/Lang/' . str_replace('_', '-', $locale) . '.php';
+
+        if (! file_exists($resource))
+        {
+            static::setLocale(static::getFallbackLocale());
+            return;
+        }
 
         // Symfony locale format.
         $locale = str_replace('-', '_', $locale);
 
+        // Set locale and load translations.
         static::getTranslator()->setLocale($locale);
+        static::getTranslator()->addResource('array', require $resource, $locale);
+    }
 
-        static::getTranslator()->addResource('array', require $resourcePath, $locale);
+    /**
+     * Set the fallback locale.
+     *
+     * @param  string $locale
+     * @return void
+     */
+    public static function setFallbackLocale($locale)
+    {
+        static::$fallbackLocale = $locale;
+        static::getTranslator()->setFallbackLocales([$locale]);
+    }
+
+    /**
+     * Get the fallback locale.
+     *
+     * @return string
+     */
+    public static function getFallbackLocale()
+    {
+        return static::$fallbackLocale;
     }
 
     /**
@@ -390,7 +425,7 @@ class Date extends Carbon {
      */
     public static function getTranslator()
     {
-        if ( ! static::$translator)
+        if (static::$translator === null)
         {
             static::$translator = new Translator('en');
             static::$translator->addLoader('array', new ArrayLoader());
