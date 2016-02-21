@@ -1,6 +1,16 @@
 <?php
 
-return array(
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Date Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are used by the date library. Each line can
+    | have a singular and plural translation separated by a '|'.
+    |
+    */
 
     'ago'       => 'пред :time',
     'from_now'  => 'за :time',
@@ -35,4 +45,4 @@ return array(
     'saturday'  => 'сабота',
     'sunday'    => 'недела',
 
-);
+];

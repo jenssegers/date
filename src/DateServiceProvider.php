@@ -2,8 +2,8 @@
 
 use Illuminate\Support\ServiceProvider;
 
-class DateServiceProvider extends ServiceProvider {
-
+class DateServiceProvider extends ServiceProvider
+{
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -40,7 +40,6 @@ class DateServiceProvider extends ServiceProvider {
      */
     public function provides()
     {
-        return array('Date');
+        return ['Date'];
     }
-
 }

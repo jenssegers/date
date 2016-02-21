@@ -1,12 +1,6 @@
 <?php
-/**
- * Georgian Language.
- *
- * @author  Avtandil Kikabidze aka LONGMAN <akalongman@gmail.com>
- * @version 1.0.0
- */
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -51,4 +45,4 @@ return array(
     'saturday'  => 'შაბათი',
     'sunday'    => 'კვირა',
 
-);
+];

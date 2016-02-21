@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -52,4 +52,4 @@ return array(
     'hour_ago'      => 'hodinou|[2,Inf]:count hodinami',
     'minute_ago'    => 'minutou|[2,Inf]:count minutami',
     'second_ago'    => '{0}0 sekundami|{1}sekundou|[2,Inf]:count sekundami',
-);
+];

@@ -8,8 +8,8 @@ use Symfony\Component\Translation\Loader\ArrayLoader;
 use Symfony\Component\Translation\Translator;
 use Symfony\Component\Translation\TranslatorInterface;
 
-class Date extends Carbon {
-
+class Date extends Carbon
+{
     /**
      * The Translator implementation.
      *
@@ -33,20 +33,16 @@ class Date extends Carbon {
      */
     public function __construct($time = null, $timezone = null)
     {
-        if (is_int($time))
-        {
+        if (is_int($time)) {
             $timestamp = $time;
             $time = null;
-        }
-        else
-        {
+        } else {
             $timestamp = null;
         }
 
         parent::__construct($time, $timezone);
 
-        if ($timestamp !== null)
-        {
+        if ($timestamp !== null) {
             $this->setTimestamp($timestamp);
         }
     }
@@ -108,22 +104,21 @@ class Date extends Carbon {
         // Are we comparing against another date?
         $relative = ! is_null($since);
 
-        if (is_null($since))
-        {
+        if (is_null($since)) {
             $since = new static('now', $this->getTimezone());
         }
 
         // Are we comparing to a date in the future?
         $future = $since->getTimestamp() < $this->getTimestamp();
 
-        $units = array(
+        $units = [
             'second' => 60,
             'minute' => 60,
             'hour'   => 24,
             'day'    => 7,
             'week'   => 30 / 7,
             'month'  => 12,
-        );
+        ];
 
         // Date difference
         $difference = abs($since->getTimestamp() - $this->getTimestamp());
@@ -132,10 +127,8 @@ class Date extends Carbon {
         $unit = 'year';
 
         // Select the best unit.
-        foreach ($units as $key => $value)
-        {
-            if ($difference < $value)
-            {
+        foreach ($units as $key => $value) {
+            if ($difference < $value) {
                 $unit = $key;
                 break;
             }
@@ -146,37 +139,28 @@ class Date extends Carbon {
         $difference = floor($difference);
 
         // Select the suffix.
-        if ($relative)
-        {
+        if ($relative) {
             $suffix = $future ? 'after' : 'before';
-        }
-        else
-        {
+        } else {
             $suffix = $future ? 'from_now' : 'ago';
         }
 
         // Some languages have different unit translations when used in combination
         // with a specific suffix. Here we will check if there is an optional
         // translation for that specific suffix and use it if it exists.
-        if ($lang->trans("${unit}_diff") != "${unit}_diff")
-        {
-            $ago = $lang->transChoice("${unit}_diff", $difference, array(':count' => $difference));
-        }
-        elseif ($lang->trans("${unit}_${suffix}") != "${unit}_${suffix}")
-        {
-            $ago = $lang->transChoice("${unit}_${suffix}", $difference, array(':count' => $difference));
-        }
-        else
-        {
-            $ago = $lang->transChoice($unit, $difference, array(':count' => $difference));
+        if ($lang->trans("${unit}_diff") != "${unit}_diff") {
+            $ago = $lang->transChoice("${unit}_diff", $difference, [':count' => $difference]);
+        } elseif ($lang->trans("${unit}_${suffix}") != "${unit}_${suffix}") {
+            $ago = $lang->transChoice("${unit}_${suffix}", $difference, [':count' => $difference]);
+        } else {
+            $ago = $lang->transChoice($unit, $difference, [':count' => $difference]);
         }
 
-        if ($absolute)
-        {
+        if ($absolute) {
             return $ago;
         }
 
-        return $lang->transChoice($suffix, $difference, array(':time' => $ago));
+        return $lang->transChoice($suffix, $difference, [':time' => $ago]);
     }
 
     /**
@@ -210,21 +194,20 @@ class Date extends Carbon {
      */
     public function format($format)
     {
-        $replace = array();
+        $replace = [];
 
         // Loop all format characters and check if we can translate them.
-        for ($i = 0; $i < strlen($format); $i++)
-        {
+        for ($i = 0; $i < strlen($format); $i++) {
             $character = $format[$i];
 
             // Check if we can replace it with a translated version.
-            if (in_array($character, array('D', 'l', 'F', 'M')))
-            {
+            if (in_array($character, ['D', 'l', 'F', 'M'])) {
                 // Check escaped characters.
-                if ($i > 0 and $format[$i - 1] == '\\') continue;
+                if ($i > 0 and $format[$i - 1] == '\\') {
+                    continue;
+                }
 
-                switch ($character)
-                {
+                switch ($character) {
                     case 'D':
                         $key = parent::format('l');
                         break;
@@ -243,31 +226,28 @@ class Date extends Carbon {
 
                 // For declension support, we need to check if the month is lead by a numeric number.
                 // If so, we will use the second translation choice if it is available.
-                if (in_array($character, array('F', 'M')))
-                {
-                    $choice = (($i - 2) >= 0 and in_array($format[$i - 2], array('d', 'j'))) ? 1 : 0;
+                if (in_array($character, ['F', 'M'])) {
+                    $choice = (($i - 2) >= 0 and in_array($format[$i - 2], ['d', 'j'])) ? 1 : 0;
 
                     $translated = $lang->transChoice(strtolower($key), $choice);
-                }
-                else
-                {
+                } else {
                     $translated = $lang->trans(strtolower($key));
                 }
 
                 // Short notations.
-                if (in_array($character, array('D', 'M')))
-                {
+                if (in_array($character, ['D', 'M'])) {
                     $translated = mb_substr($translated, 0, 3);
                 }
 
                 // Add to replace list.
-                if ($translated and $original != $translated) $replace[$original] = $translated;
+                if ($translated and $original != $translated) {
+                    $replace[$original] = $translated;
+                }
             }
         }
 
         // Replace translations.
-        if ($replace)
-        {
+        if ($replace) {
             return str_replace(array_keys($replace), array_values($replace), parent::format($format));
         }
 
@@ -287,12 +267,11 @@ class Date extends Carbon {
         $lang = $this->getTranslator();
 
         // Create Date instance if needed
-        if ( ! $time instanceof Date)
-        {
+        if (! $time instanceof self) {
             $time = new static($time, $timezone);
         }
 
-        $units = array('y' => 'year', 'm' => 'month', 'w' => 'week', 'd' => 'day', 'h' => 'hour', 'i' => 'minute', 's' => 'second');
+        $units = ['y' => 'year', 'm' => 'month', 'w' => 'week', 'd' => 'day', 'h' => 'hour', 'i' => 'minute', 's' => 'second'];
 
         // Get DateInterval and cast to array
         $interval = (array) $this->diff($time);
@@ -302,12 +281,13 @@ class Date extends Carbon {
         $interval['d'] = $interval['d'] % 7;
 
         // Get ready to build
-        $str = array();
+        $str = [];
 
         // Loop all units and build string
-        foreach ($units as $k => $unit)
-        {
-            if ($interval[$k]) $str[] = $lang->transChoice($unit, $interval[$k], array(':count' => $interval[$k]));
+        foreach ($units as $k => $unit) {
+            if ($interval[$k]) {
+                $str[] = $lang->transChoice($unit, $interval[$k], [':count' => $interval[$k]]);
+            }
         }
 
         return implode(', ', $str);
@@ -321,15 +301,11 @@ class Date extends Carbon {
      */
     public function add($interval)
     {
-        if (is_string($interval))
-        {
+        if (is_string($interval)) {
             // Check for ISO 8601
-            if (strtoupper(substr($interval, 0, 1)) == 'P')
-            {
+            if (strtoupper(substr($interval, 0, 1)) == 'P') {
                 $interval = new DateInterval($interval);
-            }
-            else
-            {
+            } else {
                 $interval = DateInterval::createFromDateString($interval);
             }
         }
@@ -345,15 +321,11 @@ class Date extends Carbon {
      */
     public function sub($interval)
     {
-        if (is_string($interval))
-        {
+        if (is_string($interval)) {
             // Check for ISO 8601
-            if (strtoupper(substr($interval, 0, 1)) == 'P')
-            {
+            if (strtoupper(substr($interval, 0, 1)) == 'P') {
                 $interval = new DateInterval($interval);
-            }
-            else
-            {
+            } else {
                 $interval = DateInterval::createFromDateString($interval);
             }
         }
@@ -382,9 +354,9 @@ class Date extends Carbon {
         // Use RFC 5646 for filenames.
         $resource = __DIR__ . '/Lang/' . str_replace('_', '-', $locale) . '.php';
 
-        if (! file_exists($resource))
-        {
+        if (! file_exists($resource)) {
             static::setLocale(static::getFallbackLocale());
+
             return;
         }
 
@@ -425,8 +397,7 @@ class Date extends Carbon {
      */
     public static function getTranslator()
     {
-        if (static::$translator === null)
-        {
+        if (static::$translator === null) {
             static::$translator = new Translator('en');
             static::$translator->addLoader('array', new ArrayLoader());
             static::setLocale('en');
@@ -454,13 +425,12 @@ class Date extends Carbon {
     public static function translateTimeString($time)
     {
         // Don't run translations for english.
-        if (static::getLocale() == 'en')
-        {
+        if (static::getLocale() == 'en') {
             return $time;
         }
 
         // All the language file items we can translate.
-        $keys = array('january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday');
+        $keys = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
         // Get all the language lines of the current locale.
         $all = static::getTranslator()->getCatalogue()->all();
@@ -470,5 +440,4 @@ class Date extends Carbon {
         // Replace the translated words with the English words
         return str_ireplace($lines, array_keys($lines), $time);
     }
-
 }

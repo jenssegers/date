@@ -3,8 +3,8 @@
 use Jenssegers\Date\Date;
 use Symfony\Component\Translation\MessageSelector;
 
-class AutomaticTest extends PHPUnit_Framework_TestCase {
-
+class AutomaticTest extends PHPUnit_Framework_TestCase
+{
     public function setUp()
     {
         $this->languages = array_slice(scandir('src/Lang'), 2);
@@ -29,13 +29,11 @@ class AutomaticTest extends PHPUnit_Framework_TestCase {
 
         $selector = new MessageSelector;
 
-        foreach ($this->languages as $language)
-        {
+        foreach ($this->languages as $language) {
             $language = str_replace('.php', '', $language);
             $translations = include "src/Lang/$language.php";
 
-            foreach ($months as $month)
-            {
+            foreach ($months as $month) {
                 $date = new Date("1 $month");
                 $date->setLocale($language);
 
@@ -60,13 +58,11 @@ class AutomaticTest extends PHPUnit_Framework_TestCase {
             'sunday',
         );
 
-        foreach ($this->languages as $language)
-        {
+        foreach ($this->languages as $language) {
             $language = str_replace('.php', '', $language);
             $translations = include "src/Lang/$language.php";
 
-            foreach ($days as $day)
-            {
+            foreach ($days as $day) {
                 $date = new Date($day);
                 $date->setLocale($language);
 
@@ -93,27 +89,21 @@ class AutomaticTest extends PHPUnit_Framework_TestCase {
             'second',
         );
 
-        foreach ($this->languages as $language)
-        {
+        foreach ($this->languages as $language) {
             $language = str_replace('.php', '', $language);
             $translations = include "src/Lang/$language.php";
 
-            foreach ($items as $item)
-            {
+            foreach ($items as $item) {
                 $this->assertTrue(isset($translations[$item]), "Language: $language >> $item");
 
-                if ( ! $translations[$item])
-                {
+                if (! $translations[$item]) {
                     echo "\nWARNING! '$item' not set for language $language";
                     continue;
                 }
 
-                if (in_array($item, array('ago', 'from_now', 'after', 'before')))
-                {
+                if (in_array($item, array('ago', 'from_now', 'after', 'before'))) {
                     $this->assertContains(':time', $translations[$item], "Language: $language");
-                }
-                else
-                {
+                } else {
                     $this->assertContains(':count', $translations[$item], "Language: $language");
                 }
             }
@@ -136,35 +126,27 @@ class AutomaticTest extends PHPUnit_Framework_TestCase {
             'second',
         );
 
-        foreach ($this->languages as $language)
-        {
-
+        foreach ($this->languages as $language) {
             $language = str_replace('.php', '', $language);
             $translations = include "src/Lang/$language.php";
 
             $translator = Date::getTranslator();
             $translator->setLocale($language);
 
-            foreach ($items as $item)
-            {
+            foreach ($items as $item) {
                 $this->assertTrue(isset($translations[$item]), "Language: $language >> $item");
 
-                if ( ! $translations[$item])
-                {
+                if (! $translations[$item]) {
                     echo "\nWARNING! '$item' not set for language $language\n";
                     continue;
                 }
 
-                for ($i = 0; $i <= 60; $i++)
-                {
-                    if (in_array($item, array('ago', 'from_now', 'after', 'before')))
-                    {
+                for ($i = 0; $i <= 60; $i++) {
+                    if (in_array($item, array('ago', 'from_now', 'after', 'before'))) {
                         $translation = $translator->transChoice($item, $i, array(':time' => $i));
                         $this->assertNotNull($translation, "Language: $language ($i)");
                         $this->assertNotContains(':time', $translation, "Language: $language ($i)");
-                    }
-                    else
-                    {
+                    } else {
                         $translation = $translator->transChoice($item, $i, array(':count' => $i));
                         $this->assertNotNull($translation, "Language: $language ($i)");
                         $this->assertNotContains(':count', $translation, "Language: $language ($i)");
@@ -173,5 +155,4 @@ class AutomaticTest extends PHPUnit_Framework_TestCase {
             }
         }
     }
-
 }

@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
 
     'ago'       => ':time tagasi',
     'from_now'  => 'alates :time',
@@ -33,5 +33,5 @@ return array(
     'thursday'  => 'neljap&auml;ev',
     'friday'    => 'reede',
     'saturday'  => 'laup&auml;ev',
-    'sunday'    => 'p&uuml;hap&auml;ev'
-);
+    'sunday'    => 'p&uuml;hap&auml;ev',
+];

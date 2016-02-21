@@ -1,12 +1,9 @@
 <?php
 
 use Jenssegers\Date\Date;
-use Symfony\Component\Translation\Loader\ArrayLoader;
-use Symfony\Component\Translation\Translator;
 
 class TranslationKaTest extends PHPUnit_Framework_TestCase
 {
-
     public function setUp()
     {
         date_default_timezone_set('UTC');
@@ -74,5 +71,4 @@ class TranslationKaTest extends PHPUnit_Framework_TestCase
         $date = Date::parse('+10 years');
         $this->assertSame('10 წლის შემდეგ', $date->ago(Date::now()));
     }
-
 }

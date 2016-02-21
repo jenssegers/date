@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -53,4 +53,4 @@ return array(
     'minute_diff'    => '1 Minute|:count Minuten',
     'second_diff'    => '1 Sekunde|:count Sekunden',
 
-);
+];

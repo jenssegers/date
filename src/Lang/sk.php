@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -53,4 +53,4 @@ return array(
     'minute_ago'    => 'minútou|[2,Inf]:count minútami',
     'second_ago'    => '{0}0 sekundami|{1}sekundou|[2,Inf]:count sekundami',
 
-);
+];

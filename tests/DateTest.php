@@ -2,8 +2,8 @@
 
 use Jenssegers\Date\Date;
 
-class DateTest extends PHPUnit_Framework_TestCase {
-
+class DateTest extends PHPUnit_Framework_TestCase
+{
     public function setUp()
     {
         date_default_timezone_set('UTC');
@@ -153,5 +153,4 @@ class DateTest extends PHPUnit_Framework_TestCase {
 
         $this->assertSame('3 months, 1 week, 1 day, 3 hours, 20 minutes', $date->timespan(1403619368));
     }
-
 }
