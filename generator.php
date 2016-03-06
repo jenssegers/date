@@ -33,8 +33,7 @@ $days = array(
 
 $translations = array();
 
-foreach ($months as $month)
-{
+foreach ($months as $month) {
     $date = new Date($month);
     $translation = strftime('%B', $date->getTimestamp());
     $translations[$month] = $translation;
@@ -44,8 +43,7 @@ foreach ($months as $month)
 
 echo "\n";
 
-foreach ($days as $day)
-{
+foreach ($days as $day) {
     $date = new Date($day);
     $translation = strftime('%A', $date->getTimestamp());
     $translations[$day] = $translation;
