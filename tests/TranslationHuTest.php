@@ -33,7 +33,6 @@ class TranslationHuTest extends PHPUnit_Framework_TestCase
 
     public function testAgoTranslated()
     {
-
         $date = Date::parse('-1 minute');
         $this->assertSame('1 perce', $date->diffForHumans());
 
@@ -55,7 +54,6 @@ class TranslationHuTest extends PHPUnit_Framework_TestCase
 
     public function testFromNowTranslated()
     {
-
         $date = Date::parse('+1 minute');
         $this->assertSame('1 perc múlva', $date->ago());
 
