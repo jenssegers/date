@@ -34,43 +34,43 @@ class TranslationHuTest extends PHPUnit_Framework_TestCase
     public function testAgoTranslated()
     {
         $date = Date::parse('-1 minute');
-        $this->assertSame('1 perce', $date->diffForHumans());
+        $this->assertSame('1 perce ezelőtt', $date->ago());
 
         $date = Date::parse('-21 hours');
-        $this->assertSame('21 órája', $date->ago());
+        $this->assertSame('21 órája ezelőtt', $date->ago());
 
         $date = Date::parse('-5 days');
-        $this->assertSame('5 napja', $date->ago());
+        $this->assertSame('5 napja ezelőtt', $date->ago());
 
         $date = Date::parse('-3 weeks');
-        $this->assertSame('3 hete', $date->ago());
+        $this->assertSame('3 hete ezelőtt', $date->ago());
 
         $date = Date::parse('-6 months');
-        $this->assertSame('6 hónapja', $date->ago());
+        $this->assertSame('6 hónapja ezelőtt', $date->ago());
 
         $date = Date::parse('-10 years');
-        $this->assertSame('10 éve', $date->ago());
+        $this->assertSame('10 éve ezelőtt', $date->ago());
     }
 
     public function testFromNowTranslated()
     {
         $date = Date::parse('+1 minute');
-        $this->assertSame('1 perc múlva', $date->ago());
+        $this->assertSame('1 perc ezután', $date->ago());
 
         $date = Date::parse('+21 hours');
-        $this->assertSame('21 óra múlva', $date->ago());
+        $this->assertSame('21 óra ezután', $date->ago());
 
         $date = Date::parse('+5 days');
-        $this->assertSame('5 nap múlva', $date->ago());
+        $this->assertSame('5 nap ezután', $date->ago());
 
         $date = Date::parse('+3 weeks');
-        $this->assertSame('3 hét múlva', $date->ago());
+        $this->assertSame('3 hét ezután', $date->ago());
 
         $date = Date::parse('+6 months');
-        $this->assertSame('6 hónap múlva', $date->ago());
+        $this->assertSame('6 hónap ezután', $date->ago());
 
         $date = Date::parse('+10 years');
-        $this->assertSame('10 év múlva', $date->ago());
+        $this->assertSame('10 év ezután', $date->ago());
     }
 
     public function testAfterTranslated()
