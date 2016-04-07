@@ -82,6 +82,7 @@ This package contains language files for the following languages:
  - Turkmen
  - Ukrainian
  - Vietnamese
+ - Welsh
 
 Usage
 -----
