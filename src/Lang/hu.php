@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -69,4 +69,4 @@ return array(
     'saturday'  => 'szombat',
     'sunday'    => 'vasárnap',
 
-);
+];
