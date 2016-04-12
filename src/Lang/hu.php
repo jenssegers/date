@@ -19,8 +19,8 @@ return [
     'hour'      => ':count óra',
     'minute'    => ':count perc',
     'second'    => ':count másodperc',
-    'ago'       => ':time ezelőtt',
-    'from_now'  => ':time ezután',
+    'ago'       => ':time',
+    'from_now'  => ':time múlva',
     'after'     => ':time később',
     'before'    => ':time korábban',
 
