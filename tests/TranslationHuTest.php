@@ -34,7 +34,7 @@ class TranslationHuTest extends PHPUnit_Framework_TestCase
     public function testAgoTranslated()
     {
         $date = Date::parse('-1 minute');
-        $this->assertSame('1 perce', $date->diffForHumans());
+        $this->assertSame('1 perce', $date->ago());
 
         $date = Date::parse('-21 hours');
         $this->assertSame('21 órája', $date->ago());
