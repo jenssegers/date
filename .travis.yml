@@ -8,18 +8,23 @@ php:
   - 7.0
   - hhvm
 
+sudo: false
+
 matrix:
   fast_finish: true
   allow_failures:
     - php: hhvm
 
-sudo: false
+env:
+  matrix:
+    - PREFER_LOWEST="--prefer-lowest"
+    - PREFER_LOWEST=""
 
 before_install:
   - travis_retry composer self-update
 
 install:
-  - travis_retry composer install --no-interaction --prefer-source
+  - travis_retry composer update --dev --no-interaction --prefer-source $PREFER_LOWEST
 
 script:
   - mkdir -p build/logs
