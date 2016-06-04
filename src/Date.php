@@ -441,25 +441,25 @@ class Date extends Carbon
         // for month and day names.
         // This requires us to split the strings first.
 
-        $aa = array_map(function($line) {
-                if (strpos($line, '|') === false) {
-                    // There is only option to translate this string.
-                    return [$line];
-                } else {
-                    // There are multiple options, delimited by a pipe.
-                    $options = explode('|', $line);
+        $aa = array_map(function ($line) {
+            if (strpos($line, '|') === false) {
+                // There is only option to translate this string.
+                return [$line];
+            } else {
+                // There are multiple options, delimited by a pipe.
+                $options = explode('|', $line);
 
-                    return array_map(function($option){
-                        // First remove ':count'.
-                        $option = trim(str_replace(':count', null, $option));
+                return array_map(function ($option){
+                    // First remove ':count'.
+                    $option = trim(str_replace(':count', null, $option));
 
-                        // Secondly remove the number parameter.
-                        $option = preg_replace('/({\d+(,(\d+|Inf))?}|\[\d+(,(\d+|Inf))?\])/', null, $option);
+                    // Secondly remove the number parameter.
+                    $option = preg_replace('/({\d+(,(\d+|Inf))?}|\[\d+(,(\d+|Inf))?\])/', null, $option);
 
-                        return $option;
-                    }, $options);
-                }
-            }, $lines);
+                    return $option;
+                }, $options);
+            }
+        }, $lines);
 
         $translated = str_ireplace($lines, array_keys($lines), $time);
 
