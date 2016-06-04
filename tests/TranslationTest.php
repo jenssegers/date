@@ -172,4 +172,15 @@ class TranslationTest extends PHPUnit_Framework_TestCase
         $date = new Date('10 march 2015');
         $this->assertSame('10 мартa 2015', $date->format('j F Y'));
     }
+
+    public function testTranslateTimeString()
+    {
+        Date::setLocale('ru');
+        $date = Date::translateTimeString('понедельник 21 март 2015');
+        $this->assertSame('monday 21 march 2015', $date);
+
+        Date::setLocale('de');
+        $date = Date::translateTimeString('Montag 21 März 2015');
+        $this->assertSame('monday 21 march 2015', $date);
+    }
 }

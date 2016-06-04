@@ -437,7 +437,37 @@ class Date extends Carbon
 
         $lines = array_intersect_key($all['messages'], array_flip((array) $keys));
 
+        // Some languages (e.g. Russian) have different translations
+        // for month and day names.
+        // This requires us to split the strings first.
+
+        $aa = array_map(function($line) {
+                if (strpos($line, '|') === false) {
+                    // There is only option to translate this string.
+                    return [$line];
+                } else {
+                    // There are multiple options, delimited by a pipe.
+                    $options = explode('|', $line);
+
+                    return array_map(function($option){
+                        // First remove ':count'.
+                        $option = trim(str_replace(':count', null, $option));
+
+                        // Secondly remove the number parameter.
+                        $option = preg_replace('/({\d+(,(\d+|Inf))?}|\[\d+(,(\d+|Inf))?\])/', null, $option);
+
+                        return $option;
+                    }, $options);
+                }
+            }, $lines);
+
+        $translated = str_ireplace($lines, array_keys($lines), $time);
+
         // Replace the translated words with the English words
-        return str_ireplace($lines, array_keys($lines), $time);
+        foreach ($aa as $key => $values) {
+            $translated = str_ireplace($values, $key, $translated);
+        }
+
+        return $translated;
     }
 }
