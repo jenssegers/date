@@ -449,7 +449,7 @@ class Date extends Carbon
                 // There are multiple options, delimited by a pipe.
                 $options = explode('|', $line);
 
-                return array_map(function ($option){
+                return array_map(function ($option) {
                     // First remove ':count'.
                     $option = trim(str_replace(':count', null, $option));
 
