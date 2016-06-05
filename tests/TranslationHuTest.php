@@ -6,7 +6,6 @@ use Symfony\Component\Translation\Translator;
 
 class TranslationHuTest extends PHPUnit_Framework_TestCase
 {
-
     public function setUp()
     {
         date_default_timezone_set('UTC');
