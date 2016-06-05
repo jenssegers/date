@@ -434,38 +434,32 @@ class Date extends Carbon
 
         // Get all the language lines of the current locale.
         $all = static::getTranslator()->getCatalogue()->all();
+        $terms = array_intersect_key($all['messages'], array_flip((array) $keys));
 
-        $lines = array_intersect_key($all['messages'], array_flip((array) $keys));
-
-        // Some languages (e.g. Russian) have different translations
-        // for month and day names.
-        // This requires us to split the strings first.
-
-        $aa = array_map(function ($line) {
-            if (strpos($line, '|') === false) {
-                // There is only option to translate this string.
-                return [$line];
-            } else {
-                // There are multiple options, delimited by a pipe.
-                $options = explode('|', $line);
-
-                return array_map(function ($option) {
-                    // First remove ':count'.
-                    $option = trim(str_replace(':count', null, $option));
-
-                    // Secondly remove the number parameter.
-                    $option = preg_replace('/({\d+(,(\d+|Inf))?}|\[\d+(,(\d+|Inf))?\])/', null, $option);
-
-                    return $option;
-                }, $options);
+        // Split terms with a | sign.
+        foreach ($terms as $i => $term) {
+            if (strpos($term, '|') === false) {
+                continue;
             }
-        }, $lines);
 
-        $translated = str_ireplace($lines, array_keys($lines), $time);
+            // Split term options.
+            $options = explode('|', $term);
 
-        // Replace the translated words with the English words
-        foreach ($aa as $key => $values) {
-            $translated = str_ireplace($values, $key, $translated);
+            // Remove :count and {count} placeholders.
+            $options = array_map(function ($option) {
+                $option = trim(str_replace(':count', '', $option));
+                $option = preg_replace('/({\d+(,(\d+|Inf))?}|\[\d+(,(\d+|Inf))?\])/', '', $option);
+
+                return $option;
+            }, $options);
+
+            $terms[$i] = $options;
+        }
+
+        // Replace the localized words with English words.
+        $translated = $time;
+        foreach ($terms as $english => $localized) {
+            $translated = str_ireplace($localized, $english, $translated);
         }
 
         return $translated;

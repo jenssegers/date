@@ -153,4 +153,15 @@ class DateTest extends PHPUnit_Framework_TestCase
 
         $this->assertSame('3 months, 1 week, 1 day, 3 hours, 20 minutes', $date->timespan(1403619368));
     }
+
+    public function testTranslateTimeString()
+    {
+        Date::setLocale('ru');
+        $date = Date::translateTimeString('понедельник 21 март 2015');
+        $this->assertSame('monday 21 march 2015', $date);
+
+        Date::setLocale('de');
+        $date = Date::translateTimeString('Montag 21 März 2015');
+        $this->assertSame('monday 21 march 2015', $date);
+    }
 }
