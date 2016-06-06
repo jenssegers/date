@@ -12,10 +12,10 @@ return [
     |
      */
 
-    'ago'       => ':time უკან',
+    'ago'       => ':time წინ',
     'from_now'  => ':time შემდეგ',
     'after'     => ':time შემდეგ',
-    'before'    => ':time უკან',
+    'before'    => ':time წინ',
     'year'      => ':count წლის',
     'month'     => ':count თვის',
     'week'      => ':count კვირის',
