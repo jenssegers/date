@@ -30,19 +30,19 @@ class TranslationKaTest extends PHPUnit_Framework_TestCase
     public function testAgoTranslated()
     {
         $date = Date::parse('-21 hours');
-        $this->assertSame('21 საათის უკან', $date->ago());
+        $this->assertSame('21 საათის წინ', $date->ago());
 
         $date = Date::parse('-5 days');
-        $this->assertSame('5 დღის უკან', $date->ago());
+        $this->assertSame('5 დღის წინ', $date->ago());
 
         $date = Date::parse('-3 weeks');
-        $this->assertSame('3 კვირის უკან', $date->ago());
+        $this->assertSame('3 კვირის წინ', $date->ago());
 
         $date = Date::parse('-6 months');
-        $this->assertSame('6 თვის უკან', $date->ago());
+        $this->assertSame('6 თვის წინ', $date->ago());
 
         $date = Date::parse('-10 years');
-        $this->assertSame('10 წლის უკან', $date->ago());
+        $this->assertSame('10 წლის წინ', $date->ago());
     }
 
     public function testFormatDeclensions()
