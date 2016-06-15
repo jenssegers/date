@@ -109,7 +109,7 @@ echo $date->timespan(); // 3 months, 1 week, 1 day, 3 hours, 20 minutes
 Methods such as `parse` and `createFromFormat` also support "reverse translations". When calling these methods with translated input, it will try to translate it to English before passing it to DateTime:
 
 ```php
-$date = Date::createFromFormat('D d F Y', 'zaterdag 21 maart 2015');
+$date = Date::createFromFormat('l d F Y', 'zaterdag 21 maart 2015');
 ```
 
 Carbon
