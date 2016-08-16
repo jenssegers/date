@@ -96,7 +96,7 @@ class Date extends Carbon
      * @param  bool   $absolute Removes time difference modifiers ago, after, etc
      * @return string
      */
-    public function diffForHumans(Carbon $since = null, $absolute = false)
+    public function diffForHumans(Carbon $since = null, $absolute = false, $short = false)
     {
         // Get translator
         $lang = $this->getTranslator();
