@@ -241,7 +241,7 @@ class Date extends Carbon
                     //lookup language file alternate version first
                     $short_notation_key = ucfirst(mb_substr($key, 0, 3));
 
-                    if($lang->trans($short_notation_key) !== $short_notation_key) {
+                    if ($lang->trans($short_notation_key) !== $short_notation_key) {
                         //lang category return key if entry in language file is not found
                         $translated = $lang->trans($short_notation_key);
                     } else {
