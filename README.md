@@ -52,6 +52,7 @@ This package contains language files for the following languages:
  - Estonian
  - Finnish
  - French
+ - Galician
  - Georgian
  - German
  - Greek
