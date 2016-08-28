@@ -25,6 +25,13 @@ class Date extends Carbon
     protected static $fallbackLocale = 'en';
 
     /**
+     * The errors that can occur.
+     *
+     * @var array
+     */
+    protected static $lastErrors;
+
+    /**
      * Returns new DateTime object.
      *
      * @param  string              $time
