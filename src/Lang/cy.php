@@ -12,9 +12,9 @@ return [
     |
     */
 
-    'ago'       => ':time yn ôl',
+    'ago'       => ':time yn Ã´l',
     'from_now'  => 'mewn :time',
-    'after'     => ':time ar ôl',
+    'after'     => ':time ar Ã´l',
     'before'    => ':time cyn',
     'year'      => '1 blwyddyn|:count flynedd|:count mlynedd|:count mlynedd',
     'month'     => '1 mis|:count fis|:count mis|:count mis',
