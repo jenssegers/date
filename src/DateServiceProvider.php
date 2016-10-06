@@ -18,6 +18,19 @@ class DateServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->app['events']->listen('locale.changed', function () {
+            $this->setLocale();
+        });
+
+        $this->setLocale();
+    }
+
+    /**
+     * Set the locale.
+     *
+     */
+    protected function setLocale()
+    {
         $locale = $this->app['translator']->getLocale();
 
         Date::setLocale($locale);
