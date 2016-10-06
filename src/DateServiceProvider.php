@@ -18,7 +18,7 @@ class DateServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app['events']->listen('locale.changed', function() {
+        $this->app['events']->listen('locale.changed', function () {
             $this->setLocale();
         });
 
