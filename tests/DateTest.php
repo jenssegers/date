@@ -1,6 +1,6 @@
 <?php
 
-use Jenssegers\Date\Date;
+use Egerheed\Date\Date;
 
 class DateTest extends PHPUnit_Framework_TestCase
 {
