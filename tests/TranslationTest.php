@@ -159,7 +159,7 @@ class TranslationTest extends PHPUnit_Framework_TestCase
         $this->assertSame('l 28 F 2013 21:58:16', $date->format('\l j \F Y H:i:s'));
 
         $date = new Date(1367186296);
-        $this->assertSame('zon 28 apr 2013 21:58:16', $date->format('D j M Y H:i:s'));
+        $this->assertSame('zo 28 apr 2013 21:58:16', $date->format('D j M Y H:i:s'));
     }
 
     public function testFormatDeclensions()

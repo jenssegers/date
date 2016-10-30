@@ -37,11 +37,18 @@ class AutomaticTest extends PHPUnit_Framework_TestCase
                 $date = new Date("1 $month");
                 $date->setLocale($language);
 
+                // Full
                 $translation = $selector->choose($translations[$month], 0, $language);
-
                 $this->assertTrue(isset($translation));
-                $this->assertEquals($translation, $date->format('F'), "Language: $language"); // Full
-                $this->assertEquals(mb_substr($translation, 0, 3), $date->format('M'), "Language: $language"); // Short
+                $this->assertEquals($translation, $date->format('F'), "Language: $language");
+
+                // Short
+                $monthShortEnglish = mb_substr($month, 0, 3);
+                if (isset($translations[$monthShortEnglish])) {
+                    $this->assertEquals($translations[$monthShortEnglish], $date->format('M'), "Language: $language");
+                } else {
+                    $this->assertEquals(mb_substr($translation, 0, 3), $date->format('M'), "Language: $language");
+                }
             }
         }
     }
@@ -66,9 +73,17 @@ class AutomaticTest extends PHPUnit_Framework_TestCase
                 $date = new Date($day);
                 $date->setLocale($language);
 
+                // Full
                 $this->assertTrue(isset($translations[$day]));
-                $this->assertEquals($translations[$day], $date->format('l'), "Language: $language"); // Full
-                $this->assertEquals(mb_substr($translations[$day], 0, 3), $date->format('D'), "Language: $language"); // Short
+                $this->assertEquals($translations[$day], $date->format('l'), "Language: $language");
+
+                // Short
+                $dayShortEnglish = mb_substr($day, 0, 3);
+                if (isset($translations[$dayShortEnglish])) {
+                    $this->assertEquals($translations[$dayShortEnglish], $date->format('D'), "Language: $language");
+                } else {
+                    $this->assertEquals(mb_substr($translations[$day], 0, 3), $date->format('D'), "Language: $language");
+                }
             }
         }
     }

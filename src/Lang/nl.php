@@ -37,6 +37,19 @@ return [
     'november'  => 'november',
     'december'  => 'december',
 
+    'jan'       => 'jan',
+    'feb'       => 'feb',
+    'mar'       => 'mrt',
+    'apr'       => 'apr',
+    'may'       => 'mei',
+    'jun'       => 'jun',
+    'jul'       => 'jul',
+    'aug'       => 'aug',
+    'sep'       => 'sep',
+    'oct'       => 'okt',
+    'nov'       => 'nov',
+    'dec'       => 'dec',
+
     'monday'    => 'maandag',
     'tuesday'   => 'dinsdag',
     'wednesday' => 'woensdag',
@@ -44,5 +57,13 @@ return [
     'friday'    => 'vrijdag',
     'saturday'  => 'zaterdag',
     'sunday'    => 'zondag',
+
+    'mon'       => 'ma',
+    'tue'       => 'di',
+    'wed'       => 'wo',
+    'thu'       => 'do',
+    'fri'       => 'vr',
+    'sat'       => 'za',
+    'sun'       => 'zo',
 
 ];
