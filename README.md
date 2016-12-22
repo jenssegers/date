@@ -76,7 +76,8 @@ This package contains language files for the following languages:
  - Romanian
  - Russian
  - Thai
- - Serbian
+ - Serbian (latin)
+ - Serbian (cyrillic)
  - Slovak
  - Slovenian
  - Spanish
