@@ -40,7 +40,7 @@ return [
     'monday'    => 'ponedeljak',
     'tuesday'   => 'utorak',
     'wednesday' => 'sreda',
-    'thursday'  => 'cetvrtak',
+    'thursday'  => 'četvrtak',
     'friday'    => 'petak',
     'saturday'  => 'subota',
     'sunday'    => 'nedelja',
