@@ -64,6 +64,7 @@ This package contains language files for the following languages:
  - Indonesian
  - Italian
  - Japanese
+ - Kazakh
  - Korean
  - Latvian
  - Lithuanian
