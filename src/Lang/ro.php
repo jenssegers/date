@@ -17,7 +17,7 @@ return [
     'after'     => 'peste :time',
     'before'    => 'acum :time',
     'year'      => 'un an|:count ani|:count ani',
-    'month'     => 'o luna|:count luni|:count luni',
+    'month'     => 'o lună|:count luni|:count luni',
     'week'      => 'o săptămână|:count săptămâni|:count săptămâni',
     'day'       => 'o zi|:count zile|:count zile',
     'hour'      => 'o oră|:count ore|:count ore',
