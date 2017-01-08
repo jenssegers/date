@@ -1,4 +1,4 @@
-<?php namespace Jenssegers\Date;
+<?php namespace Egerheed\Date;
 
 use Carbon\Carbon;
 use DateInterval;

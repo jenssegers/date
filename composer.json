@@ -1,12 +1,13 @@
 {
-    "name": "jenssegers/date",
-    "description": "A date library to help you work with dates in different languages",
+    "name": "egerheed/date",
+    "description": "A date library to help you work with dates in different languages, forked from jenssegers/date to override error in norwegian language files when used with octobercms",
     "keywords": ["laravel", "date", "time", "datetime", "i18n", "translation", "carbon"],
-    "homepage": "https://github.com/jenssegers/date",
+    "homepage": "https://github.com/egerheed/date",
     "license" : "MIT",
     "authors": [
         {
             "name": "Jens Segers",
+            "name": "Jan Tore Eger-Heed",
             "homepage": "https://jenssegers.com"
         }
     ],
@@ -21,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Jenssegers\\Date\\": "src/"
+            "EgerHeed\\Date\\": "src/"
         }
     },
     "extra": {
