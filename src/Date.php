@@ -75,7 +75,16 @@ class Date extends Carbon
      */
     public static function parse($time = null, $timezone = null)
     {
-        $time = static::translateTimeString($time);
+        if ($time instanceof Carbon) {
+            return new static(
+                $time->toDateTimeString(),
+                $timezone ?: $time->getTimezone()
+            );
+        }
+
+        if (! is_int($time)) {
+            $time = static::translateTimeString($time);
+        }
 
         return new static($time, $timezone);
     }
@@ -274,8 +283,8 @@ class Date extends Carbon
         $lang = $this->getTranslator();
 
         // Create Date instance if needed
-        if (! $time instanceof self) {
-            $time = new static($time, $timezone);
+        if (! $time instanceof static) {
+            $time = Date::parse($time, $timezone);
         }
 
         $units = ['y' => 'year', 'm' => 'month', 'w' => 'week', 'd' => 'day', 'h' => 'hour', 'i' => 'minute', 's' => 'second'];
