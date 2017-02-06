@@ -64,7 +64,7 @@ class DateTest extends PHPUnit_Framework_TestCase
     public function testCreateFromCarbon()
     {
         $date = Date::make(Carbon::createFromFormat('U', 1367186296));
-        $this->assertInstanceOf(Date::class, $date);
+        $this->assertInstanceOf('Jenssegers\Date\Date', $date);
         $this->assertEquals(1367186296, $date->getTimestamp());
     }
 
