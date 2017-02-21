@@ -66,7 +66,7 @@ class Date extends Carbon
     }
 
     /**
-     * Create a carbon instance from a string.
+     * Create a Date instance from a string.
      *
      * @param  string              $time
      * @param  string|DateTimeZone $timezone
@@ -80,13 +80,7 @@ class Date extends Carbon
     }
 
     /**
-     * Create a Carbon instance from a specific format.
-     *
-     * @param  string              $format
-     * @param  string              $time
-     * @param  DateTimeZone|string $timezone
-     * @return static
-     * @throws InvalidArgumentException
+     * @inheritdoc
      */
     public static function createFromFormat($format, $time, $timezone = null)
     {
@@ -96,11 +90,7 @@ class Date extends Carbon
     }
 
     /**
-     * Get the difference in a human readable format.
-     *
-     * @param  Date $since
-     * @param  bool $absolute Removes time difference modifiers ago, after, etc
-     * @return string
+     * @inheritdoc
      */
     public function diffForHumans(Carbon $since = null, $absolute = false, $short = false)
     {
@@ -308,10 +298,7 @@ class Date extends Carbon
     }
 
     /**
-     * Adds an amount of days, months, years, hours, minutes and seconds to a Date object.
-     *
-     * @param  string|DateInterval $interval
-     * @return Date
+     * @inheritdoc
      */
     public function add($interval)
     {
@@ -328,10 +315,7 @@ class Date extends Carbon
     }
 
     /**
-     * Subtracts an amount of days, months, years, hours, minutes and seconds from a DateTime object.
-     *
-     * @param  string|DateInterval $interval
-     * @return Date
+     * @inheritdoc
      */
     public function sub($interval)
     {
@@ -348,9 +332,7 @@ class Date extends Carbon
     }
 
     /**
-     * Get the current translator locale.
-     *
-     * @return string
+     * @inheritdoc
      */
     public static function getLocale()
     {
@@ -358,10 +340,7 @@ class Date extends Carbon
     }
 
     /**
-     * Set the current locale.
-     *
-     * @param  string $locale
-     * @return void
+     * @inheritdoc
      */
     public static function setLocale($locale)
     {
@@ -405,9 +384,7 @@ class Date extends Carbon
     }
 
     /**
-     * Return the Translator implementation.
-     *
-     * @return Translator
+     * @inheritdoc
      */
     public static function getTranslator()
     {
@@ -421,9 +398,7 @@ class Date extends Carbon
     }
 
     /**
-     * Set the Translator implementation.
-     *
-     * @param Translator $translator
+     * @inheritdoc
      */
     public static function setTranslator(TranslatorInterface $translator)
     {
