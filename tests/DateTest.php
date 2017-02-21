@@ -60,16 +60,17 @@ class DateTest extends PHPUnit_Framework_TestCase
 
     public function testManipulation()
     {
-        $now = Date::now();
+        $this->assertInstanceOf(Date::class, Date::now()->add('1 day'));
+        $this->assertInstanceOf(Date::class, Date::now()->sub('1 day'));
 
-        $this->assertSame(86400, $now->add('1 day')->getTimestamp() - $now->getTimestamp());
-        $this->assertSame(4 * 86400, $now->add('4 day')->getTimestamp() - $now->getTimestamp());
+        $this->assertSame(86400, Date::now()->add('1 day')->getTimestamp() - Date::now()->getTimestamp());
+        $this->assertSame(4 * 86400, Date::now()->add('4 day')->getTimestamp() - Date::now()->getTimestamp());
 
-        $this->assertSame(-86400, $now->sub('1 day')->getTimestamp() - $now->getTimestamp());
-        $this->assertSame(-4 * 86400, $now->sub('4 day')->getTimestamp() - $now->getTimestamp());
+        $this->assertSame(-86400, Date::now()->sub('1 day')->getTimestamp() - Date::now()->getTimestamp());
+        $this->assertSame(-4 * 86400, Date::now()->sub('4 day')->getTimestamp() - Date::now()->getTimestamp());
 
-        $this->assertSame(10 * 86400, $now->add('P10D')->getTimestamp() - $now->getTimestamp());
-        $this->assertSame(-10 * 86400, $now->sub('P10D')->getTimestamp() - $now->getTimestamp());
+        $this->assertSame(10 * 86400, Date::now()->add('P10D')->getTimestamp() - Date::now()->getTimestamp());
+        $this->assertSame(-10 * 86400, Date::now()->sub('P10D')->getTimestamp() - Date::now()->getTimestamp());
     }
 
     public function testFormat()
