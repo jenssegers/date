@@ -183,10 +183,7 @@ class Date extends Carbon
     }
 
     /**
-     * Returns date formatted according to given or predefined format.
-     *
-     * @param  string $format
-     * @return string
+     * @inheritdoc
      */
     public function format($format)
     {
@@ -298,7 +295,10 @@ class Date extends Carbon
     }
 
     /**
-     * @inheritdoc
+     * Adds an amount of days, months, years, hours, minutes and seconds to a Date object.
+     *
+     * @param DateInterval|string $interval
+     * @return Date|bool
      */
     public function add($interval)
     {
@@ -311,11 +311,14 @@ class Date extends Carbon
             }
         }
 
-        return parent::add($interval);
+        return parent::add($interval) ? $this : false;
     }
 
     /**
-     * @inheritdoc
+     * Subtracts an amount of days, months, years, hours, minutes and seconds from a DateTime object.
+     *
+     * @param DateInterval|string $interval
+     * @return Date|bool
      */
     public function sub($interval)
     {
@@ -328,7 +331,7 @@ class Date extends Carbon
             }
         }
 
-        return parent::sub($interval);
+        return parent::sub($interval) ? $this : false;
     }
 
     /**

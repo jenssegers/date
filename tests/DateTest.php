@@ -13,16 +13,14 @@ class DateTest extends PHPUnit_Framework_TestCase
     public function testConstructs()
     {
         $date = new Date;
-        $this->assertInstanceOf('Jenssegers\Date\Date', $date);
+        $this->assertInstanceOf(Date::class, $date);
     }
 
-    public function testStaticConstructor()
+    public function testStaticNow()
     {
-        $date = new Date;
-        $now1 = Date::now();
-        $now2 = new Date('now');
-        $this->assertEquals($date, $now1);
-        $this->assertEquals($date, $now2);
+        $date = Date::now();
+        $this->assertInstanceOf(Date::class, $date);
+        $this->assertEquals(time(), $date->getTimestamp());
     }
 
     public function testConstructFromString()
@@ -55,23 +53,23 @@ class DateTest extends PHPUnit_Framework_TestCase
 
     public function testMake()
     {
-        $now1 = Date::make('now');
-        $now2 = new Date('now');
-        $this->assertEquals($now1, $now2);
+        $date1 = Date::make('Sunday 28 April 2013 21:58:16');
+        $date2 = new Date('Sunday 28 April 2013 21:58:16');
+        $this->assertEquals($date1, $date2);
     }
 
     public function testManipulation()
     {
         $now = Date::now();
 
-        $this->assertSame(86400, Date::now()->add('1 day')->getTimestamp() - Date::now()->getTimestamp());
-        $this->assertSame(4 * 86400, Date::now()->add('4 day')->getTimestamp() - Date::now()->getTimestamp());
+        $this->assertSame(86400, $now->add('1 day')->getTimestamp() - $now->getTimestamp());
+        $this->assertSame(4 * 86400, $now->add('4 day')->getTimestamp() - $now->getTimestamp());
 
-        $this->assertSame(-86400, Date::now()->sub('1 day')->getTimestamp() - Date::now()->getTimestamp());
-        $this->assertSame(-4 * 86400, Date::now()->sub('4 day')->getTimestamp() - Date::now()->getTimestamp());
+        $this->assertSame(-86400, $now->sub('1 day')->getTimestamp() - $now->getTimestamp());
+        $this->assertSame(-4 * 86400, $now->sub('4 day')->getTimestamp() - $now->getTimestamp());
 
-        $this->assertSame(10 * 86400, Date::now()->add('P10D')->getTimestamp() - Date::now()->getTimestamp());
-        $this->assertSame(-10 * 86400, Date::now()->sub('P10D')->getTimestamp() - Date::now()->getTimestamp());
+        $this->assertSame(10 * 86400, $now->add('P10D')->getTimestamp() - $now->getTimestamp());
+        $this->assertSame(-10 * 86400, $now->sub('P10D')->getTimestamp() - $now->getTimestamp());
     }
 
     public function testFormat()
