@@ -2,7 +2,6 @@
 
 use Carbon\Carbon;
 use DateInterval;
-use DateTime;
 use DateTimeZone;
 use Symfony\Component\Translation\Loader\ArrayLoader;
 use Symfony\Component\Translation\Translator;
@@ -83,9 +82,9 @@ class Date extends Carbon
     /**
      * Create a Carbon instance from a specific format.
      *
-     * @param  string                   $format
-     * @param  string                   $time
-     * @param  DateTimeZone|string      $timezone
+     * @param  string              $format
+     * @param  string              $time
+     * @param  DateTimeZone|string $timezone
      * @return static
      * @throws InvalidArgumentException
      */
@@ -99,8 +98,8 @@ class Date extends Carbon
     /**
      * Get the difference in a human readable format.
      *
-     * @param  Date   $since
-     * @param  bool   $absolute Removes time difference modifiers ago, after, etc
+     * @param  Date $since
+     * @param  bool $absolute Removes time difference modifiers ago, after, etc
      * @return string
      */
     public function diffForHumans(Carbon $since = null, $absolute = false, $short = false)
@@ -121,10 +120,10 @@ class Date extends Carbon
         $units = [
             'second' => 60,
             'minute' => 60,
-            'hour'   => 24,
-            'day'    => 7,
-            'week'   => 30 / 7,
-            'month'  => 12,
+            'hour' => 24,
+            'day' => 7,
+            'week' => 30 / 7,
+            'month' => 12,
         ];
 
         // Date difference
@@ -173,8 +172,8 @@ class Date extends Carbon
     /**
      * Alias for diffForHumans.
      *
-     * @param  Date   $since
-     * @param  bool   $absolute Removes time difference modifiers ago, after, etc
+     * @param  Date $since
+     * @param  bool $absolute Removes time difference modifiers ago, after, etc
      * @return string
      */
     public function ago($since = null, $absolute = false)
@@ -185,7 +184,7 @@ class Date extends Carbon
     /**
      * Alias for diffForHumans.
      *
-     * @param  Date   $since
+     * @param  Date $since
      * @return string
      */
     public function until($since = null)
@@ -278,7 +277,15 @@ class Date extends Carbon
             $time = new static($time, $timezone);
         }
 
-        $units = ['y' => 'year', 'm' => 'month', 'w' => 'week', 'd' => 'day', 'h' => 'hour', 'i' => 'minute', 's' => 'second'];
+        $units = [
+            'y' => 'year',
+            'm' => 'month',
+            'w' => 'week',
+            'd' => 'day',
+            'h' => 'hour',
+            'i' => 'minute',
+            's' => 'second',
+        ];
 
         // Get DateInterval and cast to array
         $interval = (array) $this->diff($time);
@@ -359,7 +366,7 @@ class Date extends Carbon
     public static function setLocale($locale)
     {
         // Use RFC 5646 for filenames.
-        $resource = __DIR__ . '/Lang/' . str_replace('_', '-', $locale) . '.php';
+        $resource = __DIR__.'/Lang/'.str_replace('_', '-', $locale).'.php';
 
         if (! file_exists($resource)) {
             static::setLocale(static::getFallbackLocale());
@@ -437,7 +444,27 @@ class Date extends Carbon
         }
 
         // All the language file items we can translate.
-        $keys = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+        $keys = [
+            'january',
+            'february',
+            'march',
+            'april',
+            'may',
+            'june',
+            'july',
+            'august',
+            'september',
+            'october',
+            'november',
+            'december',
+            'monday',
+            'tuesday',
+            'wednesday',
+            'thursday',
+            'friday',
+            'saturday',
+            'sunday',
+        ];
 
         // Get all the language lines of the current locale.
         $all = static::getTranslator()->getCatalogue()->all();
