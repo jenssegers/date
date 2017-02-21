@@ -13,13 +13,13 @@ class DateTest extends PHPUnit_Framework_TestCase
     public function testConstructs()
     {
         $date = new Date;
-        $this->assertInstanceOf(Date::class, $date);
+        $this->assertInstanceOf('Jenssegers\Date\Date', $date);
     }
 
     public function testStaticNow()
     {
         $date = Date::now();
-        $this->assertInstanceOf(Date::class, $date);
+        $this->assertInstanceOf('Jenssegers\Date\Date', $date);
         $this->assertEquals(time(), $date->getTimestamp());
     }
 
@@ -60,8 +60,8 @@ class DateTest extends PHPUnit_Framework_TestCase
 
     public function testManipulation()
     {
-        $this->assertInstanceOf(Date::class, Date::now()->add('1 day'));
-        $this->assertInstanceOf(Date::class, Date::now()->sub('1 day'));
+        $this->assertInstanceOf('Jenssegers\Date\Date', Date::now()->add('1 day'));
+        $this->assertInstanceOf('Jenssegers\Date\Date', Date::now()->sub('1 day'));
 
         $this->assertSame(86400, Date::now()->add('1 day')->getTimestamp() - Date::now()->getTimestamp());
         $this->assertSame(4 * 86400, Date::now()->add('4 day')->getTimestamp() - Date::now()->getTimestamp());
