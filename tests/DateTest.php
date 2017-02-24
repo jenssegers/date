@@ -1,8 +1,9 @@
 <?php
 
 use Jenssegers\Date\Date;
+use PHPUnit\Framework\TestCase;
 
-class DateTest extends PHPUnit_Framework_TestCase
+class DateTest extends TestCase
 {
     public function setUp()
     {

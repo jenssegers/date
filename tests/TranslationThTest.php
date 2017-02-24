@@ -1,8 +1,9 @@
 <?php
 
 use Jenssegers\Date\Date;
+use PHPUnit\Framework\TestCase;
 
-class TranslationThTest extends PHPUnit_Framework_TestCase
+class TranslationThTest extends TestCase
 {
     public function setUp()
     {

@@ -1,9 +1,10 @@
 <?php
 
 use Jenssegers\Date\Date;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Translation\MessageSelector;
 
-class AutomaticTest extends PHPUnit_Framework_TestCase
+class AutomaticTest extends TestCase
 {
     public function setUp()
     {
@@ -12,7 +13,7 @@ class AutomaticTest extends PHPUnit_Framework_TestCase
 
     public function testTranslatesMonths()
     {
-        $months = array(
+        $months = [
             'january',
             'february',
             'march',
@@ -25,7 +26,7 @@ class AutomaticTest extends PHPUnit_Framework_TestCase
             'october',
             'november',
             'december',
-        );
+        ];
 
         $selector = new MessageSelector;
 
@@ -48,7 +49,7 @@ class AutomaticTest extends PHPUnit_Framework_TestCase
 
     public function testTranslatesDays()
     {
-        $days = array(
+        $days = [
             'monday',
             'tuesday',
             'wednesday',
@@ -56,7 +57,7 @@ class AutomaticTest extends PHPUnit_Framework_TestCase
             'friday',
             'saturday',
             'sunday',
-        );
+        ];
 
         foreach ($this->languages as $language) {
             $language = str_replace('.php', '', $language);
@@ -75,7 +76,7 @@ class AutomaticTest extends PHPUnit_Framework_TestCase
 
     public function testTranslatesDiffForHumans()
     {
-        $items = array(
+        $items = [
             'ago',
             'from_now',
             'after',
@@ -87,7 +88,7 @@ class AutomaticTest extends PHPUnit_Framework_TestCase
             'hour',
             'minute',
             'second',
-        );
+        ];
 
         foreach ($this->languages as $language) {
             $language = str_replace('.php', '', $language);
@@ -101,7 +102,7 @@ class AutomaticTest extends PHPUnit_Framework_TestCase
                     continue;
                 }
 
-                if (in_array($item, array('ago', 'from_now', 'after', 'before'))) {
+                if (in_array($item, ['ago', 'from_now', 'after', 'before'])) {
                     $this->assertContains(':time', $translations[$item], "Language: $language");
                 } else {
                     $this->assertContains(':count', $translations[$item], "Language: $language");
@@ -112,7 +113,7 @@ class AutomaticTest extends PHPUnit_Framework_TestCase
 
     public function testTranslatesCounts()
     {
-        $items = array(
+        $items = [
             'ago',
             'from_now',
             'after',
@@ -124,7 +125,7 @@ class AutomaticTest extends PHPUnit_Framework_TestCase
             'hour',
             'minute',
             'second',
-        );
+        ];
 
         foreach ($this->languages as $language) {
             $language = str_replace('.php', '', $language);
@@ -142,12 +143,12 @@ class AutomaticTest extends PHPUnit_Framework_TestCase
                 }
 
                 for ($i = 0; $i <= 60; $i++) {
-                    if (in_array($item, array('ago', 'from_now', 'after', 'before'))) {
-                        $translation = $translator->transChoice($item, $i, array(':time' => $i));
+                    if (in_array($item, ['ago', 'from_now', 'after', 'before'])) {
+                        $translation = $translator->transChoice($item, $i, [':time' => $i]);
                         $this->assertNotNull($translation, "Language: $language ($i)");
                         $this->assertNotContains(':time', $translation, "Language: $language ($i)");
                     } else {
-                        $translation = $translator->transChoice($item, $i, array(':count' => $i));
+                        $translation = $translator->transChoice($item, $i, [':count' => $i]);
                         $this->assertNotNull($translation, "Language: $language ($i)");
                         $this->assertNotContains(':count', $translation, "Language: $language ($i)");
                     }
