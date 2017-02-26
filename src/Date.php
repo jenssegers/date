@@ -229,7 +229,17 @@ class Date extends Carbon
 
                 // Short notations.
                 if (in_array($character, ['D', 'M'])) {
-                    $translated = mb_substr($translated, 0, 3);
+
+                    //some locales, short notaion is not first three characters.
+                    //lookup language file alternate version first
+                    $short_notation_key = ucfirst(mb_substr($key, 0, 3));
+
+                    if ($lang->trans($short_notation_key) !== $short_notation_key) {
+                        //lang category return key if entry in language file is not found
+                        $translated = $lang->trans($short_notation_key);
+                    } else {
+                        $translated = mb_substr($translated, 0, 3);
+                    }
                 }
 
                 // Add to replace list.
