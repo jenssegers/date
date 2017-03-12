@@ -103,9 +103,6 @@ class Date extends Carbon
      */
     public function diffForHumans(Carbon $since = null, $absolute = false, $short = false)
     {
-        // Get translator
-        $lang = $this->getTranslator();
-
         // Are we comparing against another date?
         $relative = ! is_null($since);
 
@@ -116,32 +113,43 @@ class Date extends Carbon
         // Are we comparing to a date in the future?
         $future = $since->getTimestamp() < $this->getTimestamp();
 
-        $units = [
-            'second' => 60,
-            'minute' => 60,
-            'hour' => 24,
-            'day' => 7,
-            'week' => 30 / 7,
-            'month' => 12,
-        ];
+        // Calculate difference between the 2 dates.
+        $diff = $this->diff($since);
 
-        // Date difference
-        $difference = abs($since->getTimestamp() - $this->getTimestamp());
-
-        // Default unit
-        $unit = 'year';
-
-        // Select the best unit.
-        foreach ($units as $key => $value) {
-            if ($difference < $value) {
-                $unit = $key;
+        switch (true) {
+            case $diff->y > 0:
+                $unit = $short ? 'y' : 'year';
+                $count = $diff->y;
                 break;
-            }
-
-            $difference = $difference / $value;
+            case $diff->m > 0:
+                $unit = $short ? 'm' : 'month';
+                $count = $diff->m;
+                break;
+            case $diff->d > 0:
+                $unit = $short ? 'd' : 'day';
+                $count = $diff->d;
+                if ($count >= static::DAYS_PER_WEEK) {
+                    $unit = $short ? 'w' : 'week';
+                    $count = (int) ($count / static::DAYS_PER_WEEK);
+                }
+                break;
+            case $diff->h > 0:
+                $unit = $short ? 'h' : 'hour';
+                $count = $diff->h;
+                break;
+            case $diff->i > 0:
+                $unit = $short ? 'min' : 'minute';
+                $count = $diff->i;
+                break;
+            default:
+                $count = $diff->s;
+                $unit = $short ? 's' : 'second';
+                break;
         }
 
-        $difference = floor($difference);
+        if ($count === 0) {
+            $count = 1;
+        }
 
         // Select the suffix.
         if ($relative) {
@@ -150,22 +158,25 @@ class Date extends Carbon
             $suffix = $future ? 'from_now' : 'ago';
         }
 
+        // Get translator instance.
+        $lang = $this->getTranslator();
+
         // Some languages have different unit translations when used in combination
         // with a specific suffix. Here we will check if there is an optional
         // translation for that specific suffix and use it if it exists.
         if ($lang->trans("${unit}_diff") != "${unit}_diff") {
-            $ago = $lang->transChoice("${unit}_diff", $difference, [':count' => $difference]);
+            $ago = $lang->transChoice("${unit}_diff", $count, [':count' => $count]);
         } elseif ($lang->trans("${unit}_${suffix}") != "${unit}_${suffix}") {
-            $ago = $lang->transChoice("${unit}_${suffix}", $difference, [':count' => $difference]);
+            $ago = $lang->transChoice("${unit}_${suffix}", $count, [':count' => $count]);
         } else {
-            $ago = $lang->transChoice($unit, $difference, [':count' => $difference]);
+            $ago = $lang->transChoice($unit, $count, [':count' => $count]);
         }
 
         if ($absolute) {
             return $ago;
         }
 
-        return $lang->transChoice($suffix, $difference, [':time' => $ago]);
+        return $lang->transChoice($suffix, $count, [':time' => $ago]);
     }
 
     /**
@@ -238,7 +249,7 @@ class Date extends Carbon
 
                 // Short notations.
                 if (in_array($character, ['D', 'M'])) {
-                    $toTranslate     = mb_strtolower($original);
+                    $toTranslate = mb_strtolower($original);
                     $shortTranslated = $lang->trans($toTranslate);
 
                     if ($shortTranslated === $toTranslate) {

@@ -152,6 +152,23 @@ class DateTest extends TestCase
     {
         $date = Date::parse('-5 years');
         $this->assertSame('5 years ago', $date->diffForHumans());
+
+        $date = Date::parse('-15 days');
+        $this->assertSame('2 weeks ago', $date->diffForHumans());
+
+        $date = Date::parse('-13 days');
+        $this->assertSame('1 week ago', $date->diffForHumans());
+
+        $date = Date::parse('-13 days');
+        $this->assertSame('1 week', $date->diffForHumans(null, true));
+
+        $date = Date::parse('-3 months');
+        $this->assertSame('3 months', $date->diffForHumans(null, true));
+
+        $date = Date::parse('-1 week');
+        $future = Date::parse('+1 week');
+        $this->assertSame('2 weeks after', $future->diffForHumans($date));
+        $this->assertSame('2 weeks before', $date->diffForHumans($future));
     }
 
     public function testTimespan()
