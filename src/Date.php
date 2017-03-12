@@ -231,14 +231,23 @@ class Date extends Carbon
                 if (in_array($character, ['F', 'M'])) {
                     $choice = (($i - 2) >= 0 and in_array($format[$i - 2], ['d', 'j'])) ? 1 : 0;
 
-                    $translated = $lang->transChoice(strtolower($key), $choice);
+                    $translated = $lang->transChoice(mb_strtolower($key), $choice);
                 } else {
-                    $translated = $lang->trans(strtolower($key));
+                    $translated = $lang->trans(mb_strtolower($key));
                 }
 
                 // Short notations.
                 if (in_array($character, ['D', 'M'])) {
-                    $translated = mb_substr($translated, 0, 3);
+                    $toTranslate     = mb_strtolower($original);
+                    $shortTranslated = $lang->trans($toTranslate);
+
+                    if ($shortTranslated === $toTranslate) {
+                        // use the first 3 characters as short notation
+                        $translated = mb_substr($translated, 0, 3);
+                    } else {
+                        // use translated version
+                        $translated = $shortTranslated;
+                    }
                 }
 
                 // Add to replace list.
