@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Jenssegers\Date\Date;
 use PHPUnit\Framework\TestCase;
 
@@ -57,6 +58,13 @@ class DateTest extends TestCase
         $date1 = Date::make('Sunday 28 April 2013 21:58:16');
         $date2 = new Date('Sunday 28 April 2013 21:58:16');
         $this->assertEquals($date1, $date2);
+    }
+
+    public function testCreateFromCarbon()
+    {
+        $date = Date::make(Carbon::createFromFormat('U', 1367186296));
+        $this->assertInstanceOf('Jenssegers\Date\Date', $date);
+        $this->assertEquals(1367186296, $date->getTimestamp());
     }
 
     public function testManipulation()
