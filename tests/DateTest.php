@@ -189,4 +189,64 @@ class DateTest extends TestCase
         $date = Date::translateTimeString('Montag 21 März 2015');
         $this->assertSame('monday 21 march 2015', $date);
     }
+
+    public function testToLocaleDateTimeString()
+    {
+        $date = Date::now();
+
+        Date::setLocale('en');
+        $this->assertSame($date->format('D M j H:i:s Y'), $date->toLocaleDateTimeString());
+
+        Date::setLocale('en_US');
+        $this->assertSame($date->format('D d M Y h:i:s A T'), $date->toLocaleDateTimeString());
+
+        Date::setLocale('en_GB');
+        $this->assertSame($date->format('D d M Y H:i:s T'), $date->toLocaleDateTimeString());
+
+        Date::setLocale('ru');
+        $this->assertSame($date->format('D d M Y H:i:s'), $date->toLocaleDateTimeString());
+
+        Date::setLocale('de');
+        $this->assertSame($date->format('D d M Y H:i:s T'), $date->toLocaleDateTimeString());
+    }
+
+    public function testToLocaleDateString()
+    {
+        $date = Date::now();
+
+        Date::setLocale('en');
+        $this->assertSame($date->format('m/d/y'), $date->toLocaleDateString());
+
+        Date::setLocale('en_US');
+        $this->assertSame($date->format('m/d/Y'), $date->toLocaleDateString());
+
+        Date::setLocale('en_GB');
+        $this->assertSame($date->format('d/m/y'), $date->toLocaleDateString());
+
+        Date::setLocale('ru');
+        $this->assertSame($date->format('d.m.Y'), $date->toLocaleDateString());
+
+        Date::setLocale('de');
+        $this->assertSame($date->format('d.m.Y'), $date->toLocaleDateString());
+    }
+
+    public function testToLocaleTimeString()
+    {
+        $date = Date::now();
+
+        Date::setLocale('en');
+        $this->assertSame($date->format('H:i:s'), $date->toLocaleTimeString());
+
+        Date::setLocale('en_US');
+        $this->assertSame($date->format('h:i:s A'), $date->toLocaleTimeString());
+
+        Date::setLocale('en_GB');
+        $this->assertSame($date->format('H:i:s'), $date->toLocaleTimeString());
+
+        Date::setLocale('ru');
+        $this->assertSame($date->format('H:i:s'), $date->toLocaleTimeString());
+
+        Date::setLocale('de');
+        $this->assertSame($date->format('H:i:s'), $date->toLocaleTimeString());
+    }
 }

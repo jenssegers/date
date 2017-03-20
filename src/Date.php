@@ -364,6 +364,54 @@ class Date extends Carbon
     }
 
     /**
+     * Format the instance using the locale's date and time
+     *
+     * @return string
+     */
+    public function toLocaleDateTimeString()
+    {
+        $format = $this->getTranslator()->trans('format_datetime');
+
+        if ($format == 'format_datetime') {
+            $format = static::$toStringFromat;
+        }
+
+        return $this->format($format);
+    }
+
+    /**
+     * Format the instance using the locale's date
+     *
+     * @return string
+     */
+    public function toLocaleDateString()
+    {
+        $format = $this->getTranslator()->trans('format_date');
+
+        if ($format == 'format_date') {
+            $format = 'Y-m-d';
+        }
+
+        return $this->format($format);
+    }
+
+    /**
+     * Format the instance using the locale's time
+     *
+     * @return string
+     */
+    public function toLocaleTimeString()
+    {
+        $format = $this->getTranslator()->trans('format_time');
+
+        if ($format == 'format_time') {
+            $format = 'H:i:s';
+        }
+
+        return $this->format($format);
+    }
+
+    /**
      * @inheritdoc
      */
     public static function getLocale()

@@ -92,7 +92,7 @@ This package contains language files for the following languages:
 Usage
 -----
 
-The Date class extends the Carbon methods such as `format` and `diffForHumans`n and translates them based on your locale:
+The Date class extends the Carbon methods such as `format` and `diffForHumans` and translates them based on your locale:
 
 ```php
 use Jenssegers\Date\Date;
@@ -178,6 +178,16 @@ You can format a Date object like the DateTime object (http://www.php.net/manual
 echo Date::now()->format('Y-m-d'); // 2000-01-31
 ```
 
+You can even use the locale's default format:
+
+```php
+Date::setLocale('nl');
+
+echo Date::now()->toLocaleDateTimeString(); // ma 31 jan 2000 12:00:00 UTC
+echo Date::now()->toLocaleDateString();     // 31-01-00
+echo Date::now()->toLocaleTimeString();     // 12:00:00
+```
+
 The Date object can be cast to a string:
 
 ```php
@@ -253,7 +263,7 @@ Some languages have a different unit translation when they are used in combinati
 'year_ago'      => '1 Jahr|:count Jahren',
 ```
 
-There is also a `generator.php` script that can be used to quickly output day and month translations for a specific locale. If you want to add a new language, this can speed up the process:
+There is also a `generator.php` script that can be used to quickly output day, month, and default format translations for a specific locale. If you want to add a new language, this can speed up the process:
 
 ```bash
 php generator.php nl_NL
@@ -261,6 +271,7 @@ php generator.php nl_NL
 
 **NOTE!** If you are adding languages, please check the rules about the capitalization of month and day names: http://meta.wikimedia.org/wiki/Capitalization_of_Wiktionary_pages#Capitalization_of_month_names
 
-## License
+License
+-------
 
 Laravel Date is licensed under [The MIT License (MIT)](LICENSE).

@@ -66,4 +66,8 @@ return [
     'sat'       => 'za',
     'sun'       => 'zo',
 
+    'format_datetime' => 'D d M Y H:i:s T',
+    'format_date'     => 'd-m-y',
+    'format_time'     => 'H:i:s',
+
 ];

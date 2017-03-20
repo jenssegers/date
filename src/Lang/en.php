@@ -45,4 +45,8 @@ return [
     'saturday'  => 'Saturday',
     'sunday'    => 'Sunday',
 
+    'format_datetime' => 'D M j H:i:s Y',
+    'format_date'     => 'm/d/y',
+    'format_time'     => 'H:i:s',
+
 ];

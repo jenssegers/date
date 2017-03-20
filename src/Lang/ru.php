@@ -45,4 +45,8 @@ return [
     'saturday'  => 'суббота',
     'sunday'    => 'воскресенье',
 
+    'format_datetime' => 'D d M Y H:i:s',
+    'format_date'     => 'd.m.Y',
+    'format_time'     => 'H:i:s',
+
 ];

@@ -74,4 +74,8 @@ return [
     'minute_diff'    => '1 Minute|:count Minuten',
     'second_diff'    => '1 Sekunde|:count Sekunden',
 
+    'format_datetime' => 'D d M Y H:i:s T',
+    'format_date'     => 'd.m.Y',
+    'format_time'     => 'H:i:s',
+
 ];
