@@ -37,7 +37,7 @@ return [
     'november'  => 'نوفمبر',
     'december'  => 'ديسمبر',
 
-    'monday'    => 'الإثنين',
+    'monday'    => 'الاثنين',
     'tuesday'   => 'الثلاثاء',
     'wednesday' => 'الأربعاء',
     'thursday'  => 'الخميس',
