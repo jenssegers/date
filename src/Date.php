@@ -31,6 +31,13 @@ class Date extends Carbon
     protected static $lastErrors;
 
     /**
+     * The overrides to force.
+     *
+     * @var array
+     */
+    protected static $overrides;
+    
+    /**
      * Returns new DateTime object.
      *
      * @param  string              $time
@@ -250,7 +257,12 @@ class Date extends Carbon
                 // Short notations.
                 if (in_array($character, ['D', 'M'])) {
                     $toTranslate = mb_strtolower($original);
-                    $shortTranslated = $lang->trans($toTranslate);
+                    
+                    if ($this->checkForceLocale($key, $choice)) {
+                        $shortTranslated = $lang->transChoice($toTranslate, $choice);
+                    } else {
+                        $shortTranslated = $lang->trans($toTranslate);
+                    }
 
                     if ($shortTranslated === $toTranslate) {
                         // use the first 3 characters as short notation
@@ -276,6 +288,34 @@ class Date extends Carbon
         return parent::format($format);
     }
 
+     /**
+     * Set array in format [ locale => [month => choise] ], to override default translation logic.
+     *
+     * ex: ['ru' => ['May' => 1] ]
+     *
+     * @param  array               $overrides
+     */
+    public static function setForceLocale($overrides) {
+        static::$overrides = $overrides;
+    }
+
+    /**
+     * Check for overrides and if founded pass choice by ref.
+     *
+     * @param  array               $overrides
+     * @param  int                 &$choice
+     * @return  bool               
+     */
+    protected function checkForceLocale($key, &$choice) {
+        if (array_key_exists($this->getLocale(), static::$overrides)) {
+            if (array_key_exists($key, static::$overrides[$this->getLocale()])) {
+                $choice = static::$overrides[$this->getLocale()][$key];
+                return true;
+            }
+        }
+        return false;
+    }
+    
     /**
      * Gets the timespan between this date and another date.
      *
