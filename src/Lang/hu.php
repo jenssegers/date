@@ -75,6 +75,6 @@ return [
     'thu'       => 'Cs',
     'fri'       => 'P',
     'sat'       => 'Szo',
-    'sun'       => 'Vas',
+    'sun'       => 'V',
 
 ];
