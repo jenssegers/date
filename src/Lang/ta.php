@@ -54,16 +54,16 @@ return [
     'sun'       => 'ஞாயிறு',
 
     'day_ago'   => '1 நாள்|:count நாட்களுக்கு',
-	'week_ago'  => '1 வாரத்திற்கு|:count வாரங்களுக்கு',
-	'month_ago' => '1 மாதம்|:count மாதங்களுக்கு',
-	'year_ago'  => '1 ஆண்டு|:count ஆண்டுகளுக்கு',
+    'week_ago'  => '1 வாரத்திற்கு|:count வாரங்களுக்கு',
+    'month_ago' => '1 மாதம்|:count மாதங்களுக்கு',
+    'year_ago'  => '1 ஆண்டு|:count ஆண்டுகளுக்கு',
 
     'second_from_now'   => ':count வினாடியில்|:count வினாடிகளில்',
     'minute_from_now'   => ':count நிமிடத்தில்|:count நிமிடங்களில்',
-	'hour_from_now'     => ':count மணி நேரத்தில்|:count மணி நேரத்தில்',
-	'day_from_now'      => ':count நாளில்|:count நாட்களில்',
-	'week_from_now'     => ':count வாரத்தில்|:count வாரங்களில்',
-	'month_from_now'    => ':count மாதத்தில்|:count மாதங்களில்',
-	'year_from_now'     => ':count ஆண்டில்|:count ஆண்டுகளில்'
+    'hour_from_now'     => ':count மணி நேரத்தில்|:count மணி நேரத்தில்',
+    'day_from_now'      => ':count நாளில்|:count நாட்களில்',
+    'week_from_now'     => ':count வாரத்தில்|:count வாரங்களில்',
+    'month_from_now'    => ':count மாதத்தில்|:count மாதங்களில்',
+    'year_from_now'     => ':count ஆண்டில்|:count ஆண்டுகளில்'
 
 ];
