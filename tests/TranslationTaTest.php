@@ -89,6 +89,122 @@ class TranslationTaTest extends TestCase
 
 	}
 
+	/** @test */
+	public function it_translates_ago ()
+	{
+		$oneAgo = Date::parse('-1 second');
+		$fiveAgo = Date::parse('-5 seconds');
 
+		$this->assertEquals('1 நொடி முன்பு', $oneAgo->ago());
+		$this->assertEquals('5 நொடிகல் முன்பு', $fiveAgo->ago());
+
+		///
+
+		$oneAgo = Date::parse('-1 minute');
+		$fiveAgo = Date::parse('-5 minutes');
+
+		$this->assertEquals('1 நிமிடம் முன்பு', $oneAgo->ago());
+		$this->assertEquals('5 நிமிடங்கள் முன்பு', $fiveAgo->ago());
+
+		///
+
+		$oneAgo = Date::parse('-1 hour');
+		$fiveAgo = Date::parse('-5 hours');
+
+		$this->assertEquals('1 மணி நேரம் முன்பு', $oneAgo->ago());
+		$this->assertEquals('5 மணி நேரம் முன்பு', $fiveAgo->ago());
+
+		///
+
+		$oneAgo = Date::parse('-1 day');
+		$fiveAgo = Date::parse('-5 days');
+
+		$this->assertEquals('1 நாள் முன்பு', $oneAgo->ago());
+		$this->assertEquals('5 நாட்களுக்கு முன்பு', $fiveAgo->ago());
+
+		///
+
+		$oneAgo = Date::parse('-1 week');
+		$fiveAgo = Date::parse('-3 weeks');
+
+		$this->assertEquals('1 வாரத்திற்கு முன்பு', $oneAgo->ago());
+		$this->assertEquals('3 வாரங்களுக்கு முன்பு', $fiveAgo->ago());
+
+		///
+
+		$oneAgo = Date::parse('-1 month');
+		$fiveAgo = Date::parse('-3 months');
+
+		$this->assertEquals('1 மாதம் முன்பு', $oneAgo->ago());
+		$this->assertEquals('3 மாதங்களுக்கு முன்பு', $fiveAgo->ago());
+
+		///
+
+		$oneAgo = Date::parse('-1 year');
+		$fiveAgo = Date::parse('-3 years');
+
+		$this->assertEquals('1 ஆண்டு முன்பு', $oneAgo->ago());
+		$this->assertEquals('3 ஆண்டுகளுக்கு முன்பு', $fiveAgo->ago());
+
+	}
+
+	/** @test */
+	public function it_translates_from_now ()
+	{
+		$oneAgo = Date::parse('1 second');
+		$fiveAgo = Date::parse('5 seconds');
+
+		$this->assertEquals('1 வினாடியில்', $oneAgo->ago());
+		$this->assertEquals('5 வினாடிகளில்', $fiveAgo->ago());
+
+		///
+
+		$oneAgo = Date::parse('1 minute');
+		$fiveAgo = Date::parse('5 minutes');
+
+		$this->assertEquals('1 நிமிடத்தில்', $oneAgo->ago());
+		$this->assertEquals('5 நிமிடங்களில்', $fiveAgo->ago());
+
+		///
+
+		$oneAgo = Date::parse('1 hour');
+		$fiveAgo = Date::parse('5 hours');
+
+		$this->assertEquals('1 மணி நேரத்தில்', $oneAgo->ago());
+		$this->assertEquals('5 மணி நேரத்தில்', $fiveAgo->ago());
+
+		///
+
+		$oneAgo = Date::parse('1 day');
+		$fiveAgo = Date::parse('5 days');
+
+		$this->assertEquals('1 நாளில்', $oneAgo->ago());
+		$this->assertEquals('5 நாட்களில்', $fiveAgo->ago());
+
+		///
+
+		$oneAgo = Date::parse('1 week');
+		$fiveAgo = Date::parse('3 weeks');
+
+		$this->assertEquals('1 வாரத்தில்', $oneAgo->ago());
+		$this->assertEquals('3 வாரங்களில்', $fiveAgo->ago());
+
+		///
+
+		$oneAgo = Date::parse('1 month');
+		$fiveAgo = Date::parse('3 months');
+
+		$this->assertEquals('1 மாதத்தில்', $oneAgo->ago());
+		$this->assertEquals('3 மாதங்களில்', $fiveAgo->ago());
+
+		///
+
+		$oneAgo = Date::parse('1 year');
+		$fiveAgo = Date::parse('3 years');
+
+		$this->assertEquals('1 ஆண்டில்', $oneAgo->ago());
+		$this->assertEquals('3 ஆண்டுகளில்', $fiveAgo->ago());
+
+	}
 
 }

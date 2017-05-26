@@ -12,17 +12,17 @@ return [
     |
     */
 
-    'ago'       => 'vor :time',
-    'from_now'  => 'in :time',
-    'after'     => ':time später',
-    'before'    => ':time vorher',
-    'year'      => '1 Jahr|:count Jahre',
-    'month'     => '1 Monat|:count Monate',
-    'week'      => '1 Woche|:count Wochen',
-    'day'       => '1 Tag|:count Tage',
-    'hour'      => '1 Stunde|:count Stunden',
-    'minute'    => '1 Minute|:count Minuten',
-    'second'    => '1 Sekunde|:count Sekunden',
+    'ago'       => ':time முன்பு',
+    'from_now'  => ':time|:time',
+    'after'     => ':time கழித்து',
+    'before'    => ':time முன்னால்',
+    'year'      => '1 ஆண்டு|:count ஆண்டுகள்',
+    'month'     => '1 மாதம்|:count மாதங்கள்',
+    'week'      => '1 வாரம்|:count வாரங்கள்',
+    'day'       => '1 நாள்|:count நாட்கள்',
+    'hour'      => '1 மணி நேரம்|:count மணி நேரம்',
+    'minute'    => '1 நிமிடம்|:count நிமிடங்கள்',
+    'second'    => '1 நொடி|:count நொடிகல்',
 
     'january'   => 'தை',
     'february'  => 'மாசி',
@@ -53,12 +53,17 @@ return [
     'sat'       => 'சனி',
     'sun'       => 'ஞாயிறு',
 
-    'year_diff'      => '1 Jahr|:count Jahren',
-    'month_diff'     => '1 Monat|:count Monaten',
-    'week_diff'      => '1 Woche|:count Wochen',
-    'day_diff'       => '1 Tag|:count Tagen',
-    'hour_diff'      => '1 Stunde|:count Stunden',
-    'minute_diff'    => '1 Minute|:count Minuten',
-    'second_diff'    => '1 Sekunde|:count Sekunden',
+    'day_ago'   => '1 நாள்|:count நாட்களுக்கு',
+	'week_ago'  => '1 வாரத்திற்கு|:count வாரங்களுக்கு',
+	'month_ago' => '1 மாதம்|:count மாதங்களுக்கு',
+	'year_ago'  => '1 ஆண்டு|:count ஆண்டுகளுக்கு',
+
+    'second_from_now'   => ':count வினாடியில்|:count வினாடிகளில்',
+    'minute_from_now'   => ':count நிமிடத்தில்|:count நிமிடங்களில்',
+	'hour_from_now'     => ':count மணி நேரத்தில்|:count மணி நேரத்தில்',
+	'day_from_now'      => ':count நாளில்|:count நாட்களில்',
+	'week_from_now'     => ':count வாரத்தில்|:count வாரங்களில்',
+	'month_from_now'    => ':count மாதத்தில்|:count மாதங்களில்',
+	'year_from_now'     => ':count ஆண்டில்|:count ஆண்டுகளில்'
 
 ];
