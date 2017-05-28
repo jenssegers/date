@@ -20,7 +20,7 @@ Laravel
 There is a service provider included for integration with the Laravel framework. This provider will get the application locale setting and use this for translations. To register the service provider, add the following to the providers array in `config/app.php`:
 
 ```php
-'Jenssegers\Date\DateServiceProvider',
+Jenssegers\Date\DateServiceProvider::class,
 ```
 
 You can also add it as a Facade in `config/app.php`:
