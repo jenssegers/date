@@ -69,4 +69,12 @@ return [
     'saturday'  => 'szombat',
     'sunday'    => 'vasárnap',
 
+    'mon'       => 'H',
+    'tue'       => 'K',
+    'wed'       => 'Sze',
+    'thu'       => 'Cs',
+    'fri'       => 'P',
+    'sat'       => 'Szo',
+    'sun'       => 'V',
+
 ];
