@@ -35,6 +35,7 @@ Languages
 This package contains language files for the following languages:
 
  - Albanian
+ - Amharic
  - Arabic
  - Azerbaijani
  - Bangla
