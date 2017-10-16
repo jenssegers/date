@@ -8,7 +8,6 @@ use PHPUnit\Framework\TestCase;
  */
 class TranslationJaTest extends TestCase
 {
-
     public function setUp()
     {
         date_default_timezone_set('UTC');
