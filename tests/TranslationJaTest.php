@@ -20,7 +20,7 @@ class TranslationJaTest extends TestCase
     public function it_can_translate_month()
     {
         $jan = Date::createFromFormat('m', '01');
-        $feb = Date::createFromFormat('m', '02');
+        $feb = Date::createFromFormat('m-d', '02-02'); // ('m', '02') overshoots to next month.
         $mar = Date::createFromFormat('m', '03');
         $apr = Date::createFromFormat('m', '04');
         $may = Date::createFromFormat('m', '05');
