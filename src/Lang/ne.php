@@ -13,7 +13,7 @@ return [
     */
 
     'ago'       => ':time पहिले',
-    'from_now'  => ':time देखी',
+    'from_now'  => ':time देखि',
     'after'     => ':time पछि',
     'before'    => ':time अघि',
     'year'      => ':count वर्ष',
@@ -24,7 +24,7 @@ return [
     'minute'    => ':count मिनेट',
     'second'    => ':count सेकेण्ड',
 
-    'january'   => 'जेनवरी',
+    'january'   => 'जनवरी',
     'february'  => 'फेब्रुअरी',
     'march'     => 'मार्च',
     'april'     => 'अप्रिल',
@@ -37,13 +37,13 @@ return [
     'november'  => 'नोभेम्बर',
     'december'  => 'डिसेम्बर',
 
-    'sunday'    => 'आइतवार',
-    'monday'    => 'सोमवार',
-    'tuesday'   => 'मङ्गलवार',
-    'wednesday' => 'बुधवार',
-    'thursday'  => 'बिहिवार',
-    'friday'    => 'शुक्रवार',
-    'saturday'  => 'शनिवार',
+    'sunday'    => 'आइतबार',
+    'monday'    => 'सोमबार',
+    'tuesday'   => 'मङ्गलबार',
+    'wednesday' => 'बुधबार',
+    'thursday'  => 'बिहिबार',
+    'friday'    => 'शुक्रबार',
+    'saturday'  => 'शनिबार',
 
     'sun'       => 'आइत',
     'mon'       => 'सोम',
