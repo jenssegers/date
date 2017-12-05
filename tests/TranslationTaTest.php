@@ -18,18 +18,18 @@ class TranslationTaTest extends TestCase
     /** @test */
     public function it_translates_month()
     {
-        $jan = Date::createFromFormat('m', '01');
-        $feb = Date::createFromFormat('m', '02');
-        $mar = Date::createFromFormat('m', '03');
-        $apr = Date::createFromFormat('m', '04');
-        $may = Date::createFromFormat('m', '05');
-        $jun = Date::createFromFormat('m', '06');
-        $jul = Date::createFromFormat('m', '07');
-        $aug = Date::createFromFormat('m', '08');
-        $sep = Date::createFromFormat('m', '09');
-        $okt = Date::createFromFormat('m', '10');
-        $nov = Date::createFromFormat('m', '11');
-        $dez = Date::createFromFormat('m', '12');
+        $jan = Date::createFromFormat('m-d', '01-01');
+        $feb = Date::createFromFormat('m-d', '02-01');
+        $mar = Date::createFromFormat('m-d', '03-01');
+        $apr = Date::createFromFormat('m-d', '04-01');
+        $may = Date::createFromFormat('m-d', '05-01');
+        $jun = Date::createFromFormat('m-d', '06-01');
+        $jul = Date::createFromFormat('m-d', '07-01');
+        $aug = Date::createFromFormat('m-d', '08-01');
+        $sep = Date::createFromFormat('m-d', '09-01');
+        $oct = Date::createFromFormat('m-d', '10-01');
+        $nov = Date::createFromFormat('m-d', '11-01');
+        $dec = Date::createFromFormat('m-d', '12-01');
 
         $this->assertEquals('தை', $jan->format('F'));
         $this->assertEquals('மாசி', $feb->format('F'));
@@ -40,9 +40,9 @@ class TranslationTaTest extends TestCase
         $this->assertEquals('ஆடி', $jul->format('F'));
         $this->assertEquals('ஆவணி', $aug->format('F'));
         $this->assertEquals('புரட்டாசி', $sep->format('F'));
-        $this->assertEquals('ஐப்பசி', $okt->format('F'));
+        $this->assertEquals('ஐப்பசி', $oct->format('F'));
         $this->assertEquals('கார்த்திகை', $nov->format('F'));
-        $this->assertEquals('மார்கழி', $dez->format('F'));
+        $this->assertEquals('மார்கழி', $dec->format('F'));
     }
 
     /** @test */

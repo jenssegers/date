@@ -19,18 +19,18 @@ class TranslationJaTest extends TestCase
      */
     public function it_can_translate_month()
     {
-        $jan = Date::createFromFormat('m', '01');
-        $feb = Date::createFromFormat('m', '02');
-        $mar = Date::createFromFormat('m', '03');
-        $apr = Date::createFromFormat('m', '04');
-        $may = Date::createFromFormat('m', '05');
-        $jun = Date::createFromFormat('m', '06');
-        $jul = Date::createFromFormat('m', '07');
-        $aug = Date::createFromFormat('m', '08');
-        $sep = Date::createFromFormat('m', '09');
-        $oct = Date::createFromFormat('m', '10');
-        $nov = Date::createFromFormat('m', '11');
-        $dec = Date::createFromFormat('m', '12');
+        $jan = Date::createFromFormat('m-d', '01-01');
+        $feb = Date::createFromFormat('m-d', '02-01');
+        $mar = Date::createFromFormat('m-d', '03-01');
+        $apr = Date::createFromFormat('m-d', '04-01');
+        $may = Date::createFromFormat('m-d', '05-01');
+        $jun = Date::createFromFormat('m-d', '06-01');
+        $jul = Date::createFromFormat('m-d', '07-01');
+        $aug = Date::createFromFormat('m-d', '08-01');
+        $sep = Date::createFromFormat('m-d', '09-01');
+        $oct = Date::createFromFormat('m-d', '10-01');
+        $nov = Date::createFromFormat('m-d', '11-01');
+        $dec = Date::createFromFormat('m-d', '12-01');
 
         $this->assertEquals('1月', $jan->format('F'));
         $this->assertEquals('2月', $feb->format('F'));
