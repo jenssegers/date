@@ -377,11 +377,26 @@ class Date extends Carbon
     public static function setLocale($locale)
     {
         // Use RFC 5646 for filenames.
-        $resource = __DIR__.'/Lang/'.str_replace('_', '-', $locale).'.php';
+        $files = array_unique([
+            str_replace('_', '-', $locale),
+            static::getLanguageFromLocale($locale),
+            str_replace('_', '-', static::getFallbackLocale()),
+            static::getLanguageFromLocale(static::getFallbackLocale()),
+        ]);
 
-        if (! file_exists($resource)) {
-            static::setLocale(static::getFallbackLocale());
+        $found = false;
 
+        foreach ($files as $file) {
+            $resource = __DIR__.'/Lang/'.$file.'.php';
+
+            if (file_exists($resource)) {
+                $found = true;
+                $locale = $file;
+                break;
+            }
+        }
+
+        if (! $found) {
             return;
         }
 
@@ -504,5 +519,18 @@ class Date extends Carbon
         }
 
         return $translated;
+    }
+
+    /**
+     * Get the language portion of the locale.
+     *
+     * @param string $locale
+     * @return string
+     */
+    public static function getLanguageFromLocale($locale)
+    {
+        $parts = explode('_', str_replace('-', '_', $locale));
+
+        return $parts[0];
     }
 }
