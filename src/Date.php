@@ -237,10 +237,10 @@ class Date extends Carbon
                 // Translate.
                 $lang = $this->getTranslator();
 
-                // For declension support, we need to check if the month is lead by a numeric number.
+                // For declension support, we need to check if the month is lead by a day number.
                 // If so, we will use the second translation choice if it is available.
                 if (in_array($character, ['F', 'M'])) {
-                    $choice = (($i - 2) >= 0 and in_array($format[$i - 2], ['d', 'j'])) ? 1 : 0;
+                    $choice = preg_match('#[dj][ .]*$#', substr($format, 0, $i)) ? 1 : 0;
 
                     $translated = $lang->transChoice(mb_strtolower($key), $choice);
                 } else {
