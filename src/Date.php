@@ -101,7 +101,7 @@ class Date extends Carbon
     /**
      * @inheritdoc
      */
-    public function diffForHumans(Carbon $since = null, $absolute = false, $short = false)
+    public function diffForHumans(Carbon $since = null, $absolute = false, $short = false, $parts = 1)
     {
         // Are we comparing against another date?
         $relative = ! is_null($since);
