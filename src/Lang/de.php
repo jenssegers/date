@@ -66,12 +66,13 @@ return [
     'sat'       => 'Sa',
     'sun'       => 'So',
 
-    'year_diff'      => '1 Jahr|:count Jahren',
-    'month_diff'     => '1 Monat|:count Monaten',
-    'week_diff'      => '1 Woche|:count Wochen',
-    'day_diff'       => '1 Tag|:count Tagen',
-    'hour_diff'      => '1 Stunde|:count Stunden',
-    'minute_diff'    => '1 Minute|:count Minuten',
-    'second_diff'    => '1 Sekunde|:count Sekunden',
+    'year_from_now' => '1 Jahr|:count Jahren',
+    'month_from_now' => '1 Monat|:count Monaten',
+    'week_from_now' => '1 Woche|:count Wochen',
+    'day_from_now' => '1 Tag|:count Tagen',
+    'year_ago' => '1 Jahr|:count Jahren',
+    'month_ago' => '1 Monat|:count Monaten',
+    'week_ago' => '1 Woche|:count Wochen',
+    'day_ago' => '1 Tag|:count Tagen',
 
 ];

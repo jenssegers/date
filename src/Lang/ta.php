@@ -13,7 +13,7 @@ return [
     */
 
     'ago'       => ':time முன்பு',
-    'from_now'  => ':time|:time',
+    'from_now'  => ':time',
     'after'     => ':time கழித்து',
     'before'    => ':time முன்னால்',
     'year'      => '1 ஆண்டு|:count ஆண்டுகள்',
@@ -58,12 +58,12 @@ return [
     'month_ago' => '1 மாதம்|:count மாதங்களுக்கு',
     'year_ago'  => '1 ஆண்டு|:count ஆண்டுகளுக்கு',
 
-    'second_from_now'   => ':count வினாடியில்|:count வினாடிகளில்',
-    'minute_from_now'   => ':count நிமிடத்தில்|:count நிமிடங்களில்',
-    'hour_from_now'     => ':count மணி நேரத்தில்|:count மணி நேரத்தில்',
-    'day_from_now'      => ':count நாளில்|:count நாட்களில்',
-    'week_from_now'     => ':count வாரத்தில்|:count வாரங்களில்',
-    'month_from_now'    => ':count மாதத்தில்|:count மாதங்களில்',
-    'year_from_now'     => ':count ஆண்டில்|:count ஆண்டுகளில்'
+    'second_from_now'   => '1 வினாடியில்|:count வினாடிகளில்',
+    'minute_from_now'   => '1 நிமிடத்தில்|:count நிமிடங்களில்',
+    'hour_from_now'     => '1 மணி நேரத்தில்|:count மணி நேரத்தில்',
+    'day_from_now'      => '1 நாளில்|:count நாட்களில்',
+    'week_from_now'     => '1 வாரத்தில்|:count வாரங்களில்',
+    'month_from_now'    => '1 மாதத்தில்|:count மாதங்களில்',
+    'year_from_now'     => '1 ஆண்டில்|:count ஆண்டுகளில்'
 
 ];
