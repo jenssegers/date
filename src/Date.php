@@ -33,9 +33,8 @@ class Date extends Carbon
     /**
      * Returns new DateTime object.
      *
-     * @param  string              $time
+     * @param  string $time
      * @param  string|DateTimeZone $timezone
-     * @return Date
      */
     public function __construct($time = null, $timezone = null)
     {
@@ -56,7 +55,7 @@ class Date extends Carbon
     /**
      * Create and return new Date instance.
      *
-     * @param  string              $time
+     * @param  string $time
      * @param  string|DateTimeZone $timezone
      * @return Date
      */
@@ -68,7 +67,7 @@ class Date extends Carbon
     /**
      * Create a Date instance from a string.
      *
-     * @param  string              $time
+     * @param  string $time
      * @param  string|DateTimeZone $timezone
      * @return Date
      */
@@ -81,7 +80,7 @@ class Date extends Carbon
             );
         }
 
-        if (! is_int($time)) {
+        if (!is_int($time)) {
             $time = static::translateTimeString($time);
         }
 
@@ -198,7 +197,7 @@ class Date extends Carbon
     /**
      * Gets the timespan between this date and another date.
      *
-     * @param  Date                $time
+     * @param  Date $time
      * @param  string|DateTimeZone $timezone
      * @return int
      */
@@ -208,7 +207,7 @@ class Date extends Carbon
         $lang = $this->getTranslator();
 
         // Create Date instance if needed
-        if (! $time instanceof static) {
+        if (!$time instanceof static) {
             $time = Date::parse($time, $timezone);
         }
 
@@ -296,9 +295,9 @@ class Date extends Carbon
     public static function setLocale($locale)
     {
         // Use RFC 5646 for filenames.
-        $resource = __DIR__.'/Lang/'.str_replace('_', '-', $locale).'.php';
+        $resource = __DIR__ . '/Lang/' . str_replace('_', '-', $locale) . '.php';
 
-        if (! file_exists($resource)) {
+        if (!file_exists($resource)) {
             static::setLocale(static::getFallbackLocale());
 
             return;
