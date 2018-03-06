@@ -12,6 +12,10 @@ php:
 sudo: false
 
 matrix:
+  include:
+    - php: 7.2
+      env:
+        - CARBON_PRE_RELEASE='yes'
   fast_finish: true
   allow_failures:
     - php: hhvm
@@ -20,6 +24,7 @@ before_install:
   - travis_retry composer self-update
 
 install:
+  - if [[ $CARBON_PRE_RELEASE == "yes" ]]; then travis_retry composer require nesbot/carbon=dev-master; fi;
   - travis_retry composer update --dev --no-interaction --prefer-source
 
 script:
