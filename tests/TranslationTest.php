@@ -172,6 +172,9 @@ class TranslationTest extends TestCase
 
         $date = new Date('10 march 2015');
         $this->assertSame('10 мартa 2015', $date->format('j F Y'));
+
+        $date = new Date('10 march 2015');
+        $this->assertSame('10. мартa 2015', $date->format('j. F Y'));
     }
 
     public function testTranslateTimeString()
