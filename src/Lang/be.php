@@ -13,7 +13,7 @@ return [
     'from_now'  => 'праз :time',
     'after'     => ':time апасля',
     'before'    => ':time до',
-    'year'      => ':count год|:count годы|:count гадоў',
+    'year'      => ':count год|:count гады|:count гадоў',
     'month'     => ':count месяц|:count месяцы|:count месяцаў',
     'week'      => ':count тыдзень|:count тыдні|:count тыдняў',
     'day'       => ':count дзень|:count дні|:count дзён',
