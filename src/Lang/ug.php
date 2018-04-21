@@ -15,7 +15,7 @@ return [
     'ago' => ':time ئىلگىرى',
     'from_now' => ':time ئىلگىرى',
     'after' => ':time كىيىن',
-    'before' => ':time بۇرۇن',
+    'before' => ':time  بۇرۇن',
     'year' => ':count يىل',
     'month' => ':count ئاي',
     'week' => ':count ھەپتە',
