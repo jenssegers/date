@@ -30,6 +30,15 @@ class TranslationTest extends TestCase
         $this->assertSame('5 years ago', $date->ago());
     }
 
+    public function testFallbackWithRegion()
+    {
+        Date::setFallbackLocale('en_US');
+        Date::setLocale('xx');
+
+        $date = Date::parse('-5 years');
+        $this->assertSame('5 years ago', $date->ago());
+    }
+
     public function testMultiplePluralForms()
     {
         Date::setLocale('hr');
