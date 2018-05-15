@@ -14,8 +14,8 @@ return [
 
     'ago'       => ':time 전',
     'from_now'  => ':time 후',
-    'after'     => ':time 뒤',
-    'before'    => ':time 앞',
+    'after'     => ':time 이전',
+    'before'    => ':time 이후',
     'year'      => ':count 년',
     'month'     => ':count 개월',
     'week'      => ':count 주일',
@@ -44,7 +44,7 @@ return [
     'fri'       => '금',
     'sat'       => '토',
     'sun'       => '일',
-    
+
     'monday'    => '월요일',
     'tuesday'   => '화요일',
     'wednesday' => '수요일',
