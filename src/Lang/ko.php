@@ -13,8 +13,8 @@ return [
 
     'ago' => ':time 전',
     'from_now' => ':time 후',
-    'after' => ':time 뒤',
-    'before' => ':time 앞',
+    'after' => ':time 이후',
+    'before' => ':time 이전',
     'year' => ':count 년',
     'month' => ':count 개월',
     'week' => ':count 주일',
