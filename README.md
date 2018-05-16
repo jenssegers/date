@@ -40,6 +40,7 @@ This package contains language files for the following languages:
  - Bangla
  - Basque
  - Belarusian
+ - Bosnian
  - Brazilian Portuguese
  - Bulgarian
  - Catalan
