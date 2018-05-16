@@ -106,6 +106,7 @@ class TranslationTest extends TestCase
     public function testAgoTranslated()
     {
         Date::setLocale('nl');
+        Date::setTestNow(Date::now());
 
         $date = Date::parse('-5 years');
         $this->assertSame('5 jaar geleden', $date->ago());
