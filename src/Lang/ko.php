@@ -11,6 +11,7 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'ago' => ':time 전',
     'from_now' => ':time 후',
     'after' => ':time 뒤',
@@ -22,6 +23,19 @@ return [
     'hour' => ':count 시간',
     'minute' => ':count 분',
     'second' => ':count 초',
+=======
+    'ago'       => ':time 전',
+    'from_now'  => ':time 후',
+    'after'     => ':time 이전',
+    'before'    => ':time 이후',
+    'year'      => ':count 년',
+    'month'     => ':count 개월',
+    'week'      => ':count 주일',
+    'day'       => ':count 일',
+    'hour'      => ':count 시간',
+    'minute'    => ':count 분',
+    'second'    => ':count 초',
+>>>>>>> 8f58988a48d69ca96588f9d399ce863f81829ec1
 
     'january' => '1월',
     'february' => '2월',
@@ -36,6 +50,7 @@ return [
     'november' => '11월',
     'december' => '12월',
 
+<<<<<<< HEAD
     'mon' => '월',
     'tue' => '화',
     'wed' => '수',
@@ -43,6 +58,23 @@ return [
     'fri' => '금',
     'sat' => '토',
     'sun' => '일',
+=======
+    'mon'       => '월',
+    'tue'       => '화',
+    'wed'       => '수',
+    'thu'       => '목',
+    'fri'       => '금',
+    'sat'       => '토',
+    'sun'       => '일',
+
+    'monday'    => '월요일',
+    'tuesday'   => '화요일',
+    'wednesday' => '수요일',
+    'thursday'  => '목요일',
+    'friday'    => '금요일',
+    'saturday'  => '토요일',
+    'sunday'    => '일요일',
+>>>>>>> 8f58988a48d69ca96588f9d399ce863f81829ec1
 
     'monday' => '월요일',
     'tuesday' => '화요일',
