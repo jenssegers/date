@@ -1,7 +1,7 @@
 Date
 ====
 
-[![Latest Stable Version](http://img.shields.io/github/release/jenssegers/date.svg)](https://packagist.org/packages/jenssegers/date) [![Total Downloads](http://img.shields.io/packagist/dm/jenssegers/date.svg)](https://packagist.org/packages/jenssegers/date) [![Build Status](http://img.shields.io/travis/jenssegers/date.svg)](https://travis-ci.org/jenssegers/date) [![Coverage Status](http://img.shields.io/coveralls/jenssegers/laravel-date.svg)](https://coveralls.io/r/jenssegers/date?branch=master) [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg)](https://www.paypal.me/jenssegers)
+[![Latest Stable Version](http://img.shields.io/github/release/jenssegers/date.svg)](https://packagist.org/packages/jenssegers/date) [![Total Downloads](http://img.shields.io/packagist/dm/jenssegers/date.svg)](https://packagist.org/packages/jenssegers/date) [![Build Status](http://img.shields.io/travis/jenssegers/date.svg)](https://travis-ci.org/jenssegers/date) [![Coverage Status](https://coveralls.io/repos/github/jenssegers/date/badge.svg?branch=master)](https://coveralls.io/github/jenssegers/date?branch=master) [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg)](https://www.paypal.me/jenssegers)
 
 This date library extends [Carbon](https://github.com/briannesbitt/Carbon) with multi-language support. Methods such as `format`, `diffForHumans`, `parse`, `createFromFormat` and the new `timespan`, will now be translated based on your locale.
 
@@ -71,6 +71,7 @@ This package contains language files for the following languages:
  - Macedonian
  - Malay
  - Norwegian
+ - Nepali (नेपाली)
  - Polish
  - Portuguese
  - Persian (Farsi)
@@ -86,6 +87,7 @@ This package contains language files for the following languages:
  - Turkish
  - Turkmen
  - Ukrainian
+ - Uzbek
  - Vietnamese
  - Welsh
 

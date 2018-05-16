@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Date Language Lines
@@ -12,37 +11,36 @@ return [
     |
     */
 
-    'ago'       => ':time önce',
-    'from_now'  => ':time sonra',
-    'after'     => ':time sonra',
-    'before'    => ':time önce',
-    'year'      => ':count yıl',
-    'month'     => ':count ay',
-    'week'      => ':count hafta',
-    'day'       => ':count gün',
-    'hour'      => ':count saat',
-    'minute'    => ':count dakika',
-    'second'    => ':count saniye',
+    'ago' => ':time önce',
+    'from_now' => ':time sonra',
+    'after' => ':time sonra',
+    'before' => ':time önce',
+    'year' => ':count yıl',
+    'month' => ':count ay',
+    'week' => ':count hafta',
+    'day' => ':count gün',
+    'hour' => ':count saat',
+    'minute' => ':count dakika',
+    'second' => ':count saniye',
 
-    'january'   => 'Ocak',
-    'february'  => 'Şubat',
-    'march'     => 'Mart',
-    'april'     => 'Nisan',
-    'may'       => 'Mayıs',
-    'june'      => 'Haziran',
-    'july'      => 'Temmuz',
-    'august'    => 'Ağustos',
+    'january' => 'Ocak',
+    'february' => 'Şubat',
+    'march' => 'Mart',
+    'april' => 'Nisan',
+    'may' => 'Mayıs',
+    'june' => 'Haziran',
+    'july' => 'Temmuz',
+    'august' => 'Ağustos',
     'september' => 'Eylül',
-    'october'   => 'Ekim',
-    'november'  => 'Kasım',
-    'december'  => 'Aralık',
+    'october' => 'Ekim',
+    'november' => 'Kasım',
+    'december' => 'Aralık',
 
-    'monday'    => 'Pazartesi',
-    'tuesday'   => 'Salı',
+    'monday' => 'Pazartesi',
+    'tuesday' => 'Salı',
     'wednesday' => 'Çarşamba',
-    'thursday'  => 'Perşembe',
-    'friday'    => 'Cuma',
-    'saturday'  => 'Cumartesi',
-    'sunday'    => 'Pazar',
-
+    'thursday' => 'Perşembe',
+    'friday' => 'Cuma',
+    'saturday' => 'Cumartesi',
+    'sunday' => 'Pazar',
 ];

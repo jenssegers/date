@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Date Language Lines
@@ -12,37 +11,36 @@ return [
     |
     */
 
-    'ago'       => ':time پیش',
-    'from_now'  => ':time از الآن',
-    'after'     => ':time بعد',
-    'before'    => ':time قبل',
-    'year'      => ':count سال',
-    'month'     => ':count ماه',
-    'week'      => ':count هفته',
-    'day'       => ':count روز',
-    'hour'      => ':count ساعت',
-    'minute'    => ':count دقیقه',
-    'second'    => ':count ثانیه',
+    'ago' => ':time پیش',
+    'from_now' => ':time از الآن',
+    'after' => ':time بعد',
+    'before' => ':time قبل',
+    'year' => ':count سال',
+    'month' => ':count ماه',
+    'week' => ':count هفته',
+    'day' => ':count روز',
+    'hour' => ':count ساعت',
+    'minute' => ':count دقیقه',
+    'second' => ':count ثانیه',
 
-    'january'   => 'ژانویه',
-    'february'  => 'فوریه',
-    'march'     => 'مارس',
-    'april'     => 'آوریل',
-    'may'       => 'مه',
-    'june'      => 'ژوئن',
-    'july'      => 'جولای',
-    'august'    => 'اوت',
+    'january' => 'ژانویه',
+    'february' => 'فوریه',
+    'march' => 'مارس',
+    'april' => 'آوریل',
+    'may' => 'مه',
+    'june' => 'ژوئن',
+    'july' => 'جولای',
+    'august' => 'اوت',
     'september' => 'سپتامبر',
-    'october'   => 'اکتبر',
-    'november'  => 'نوامبر',
-    'december'  => 'دسامبر',
+    'october' => 'اکتبر',
+    'november' => 'نوامبر',
+    'december' => 'دسامبر',
 
-    'monday'    => 'دوشنبه',
-    'tuesday'   => 'سه‌شنبه',
+    'monday' => 'دوشنبه',
+    'tuesday' => 'سه‌شنبه',
     'wednesday' => 'چهارشنبه',
-    'thursday'  => 'پنج‌شنبه',
-    'friday'    => 'جمعه',
-    'saturday'  => 'شنبه',
-    'sunday'    => 'یک‌شنبه',
-
+    'thursday' => 'پنج‌شنبه',
+    'friday' => 'جمعه',
+    'saturday' => 'شنبه',
+    'sunday' => 'یک‌شنبه',
 ];

@@ -30,21 +30,30 @@ class TranslationTest extends TestCase
         $this->assertSame('5 years ago', $date->ago());
     }
 
+    public function testFallbackWithRegion()
+    {
+        Date::setFallbackLocale('en_US');
+        Date::setLocale('xx');
+
+        $date = Date::parse('-5 years');
+        $this->assertSame('5 years ago', $date->ago());
+    }
+
     public function testMultiplePluralForms()
     {
         Date::setLocale('hr');
 
         $date = Date::parse('-1 years');
-        $this->assertSame("prije 1 godinu", $date->ago());
+        $this->assertSame('prije 1 godinu', $date->ago());
 
         $date = Date::parse('-2 years');
-        $this->assertSame("prije 2 godine", $date->ago());
+        $this->assertSame('prije 2 godine', $date->ago());
 
         $date = Date::parse('-3 years');
-        $this->assertSame("prije 3 godine", $date->ago());
+        $this->assertSame('prije 3 godine', $date->ago());
 
         $date = Date::parse('-5 years');
-        $this->assertSame("prije 5 godina", $date->ago());
+        $this->assertSame('prije 5 godina', $date->ago());
     }
 
     public function testCustomSuffix()
@@ -53,13 +62,13 @@ class TranslationTest extends TestCase
 
         // If we use -1 month, we have the chance of it being converted to 4 weeks.
         $date = Date::parse('-40 days');
-        $this->assertSame("vor 1 Monat", $date->ago());
+        $this->assertSame('vor 1 Monat', $date->ago());
 
         $date = Date::parse('-5 months');
-        $this->assertSame("vor 5 Monaten", $date->ago());
+        $this->assertSame('vor 5 Monaten', $date->ago());
 
         $date = Date::parse('-5 seconds');
-        $this->assertSame("vor 5 Sekunden", $date->ago());
+        $this->assertSame('vor 5 Sekunden', $date->ago());
     }
 
     public function testTimespanTranslated()
@@ -97,6 +106,7 @@ class TranslationTest extends TestCase
     public function testAgoTranslated()
     {
         Date::setLocale('nl');
+        Date::setTestNow(Date::now());
 
         $date = Date::parse('-5 years');
         $this->assertSame('5 jaar geleden', $date->ago());
@@ -172,6 +182,9 @@ class TranslationTest extends TestCase
 
         $date = new Date('10 march 2015');
         $this->assertSame('10 мартa 2015', $date->format('j F Y'));
+
+        $date = new Date('10 march 2015');
+        $this->assertSame('10. мартa 2015', $date->format('j. F Y'));
     }
 
     public function testTranslateTimeString()

@@ -1,4 +1,6 @@
-<?php namespace Jenssegers\Date;
+<?php
+
+namespace Jenssegers\Date;
 
 use Carbon\Carbon;
 use DateInterval;
@@ -33,9 +35,8 @@ class Date extends Carbon
     /**
      * Returns new DateTime object.
      *
-     * @param  string              $time
+     * @param  string $time
      * @param  string|DateTimeZone $timezone
-     * @return Date
      */
     public function __construct($time = null, $timezone = null)
     {
@@ -56,7 +57,7 @@ class Date extends Carbon
     /**
      * Create and return new Date instance.
      *
-     * @param  string              $time
+     * @param  string $time
      * @param  string|DateTimeZone $timezone
      * @return Date
      */
@@ -68,7 +69,7 @@ class Date extends Carbon
     /**
      * Create a Date instance from a string.
      *
-     * @param  string              $time
+     * @param  string $time
      * @param  string|DateTimeZone $timezone
      * @return Date
      */
@@ -81,7 +82,7 @@ class Date extends Carbon
             );
         }
 
-        if (! is_int($time)) {
+        if (!is_int($time)) {
             $time = static::translateTimeString($time);
         }
 
@@ -96,87 +97,6 @@ class Date extends Carbon
         $time = static::translateTimeString($time);
 
         return parent::createFromFormat($format, $time, $timezone);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function diffForHumans(Carbon $since = null, $absolute = false, $short = false)
-    {
-        // Are we comparing against another date?
-        $relative = ! is_null($since);
-
-        if (is_null($since)) {
-            $since = new static('now', $this->getTimezone());
-        }
-
-        // Are we comparing to a date in the future?
-        $future = $since->getTimestamp() < $this->getTimestamp();
-
-        // Calculate difference between the 2 dates.
-        $diff = $this->diff($since);
-
-        switch (true) {
-            case $diff->y > 0:
-                $unit = $short ? 'y' : 'year';
-                $count = $diff->y;
-                break;
-            case $diff->m > 0:
-                $unit = $short ? 'm' : 'month';
-                $count = $diff->m;
-                break;
-            case $diff->d > 0:
-                $unit = $short ? 'd' : 'day';
-                $count = $diff->d;
-                if ($count >= static::DAYS_PER_WEEK) {
-                    $unit = $short ? 'w' : 'week';
-                    $count = (int) ($count / static::DAYS_PER_WEEK);
-                }
-                break;
-            case $diff->h > 0:
-                $unit = $short ? 'h' : 'hour';
-                $count = $diff->h;
-                break;
-            case $diff->i > 0:
-                $unit = $short ? 'min' : 'minute';
-                $count = $diff->i;
-                break;
-            default:
-                $count = $diff->s;
-                $unit = $short ? 's' : 'second';
-                break;
-        }
-
-        if ($count === 0) {
-            $count = 1;
-        }
-
-        // Select the suffix.
-        if ($relative) {
-            $suffix = $future ? 'after' : 'before';
-        } else {
-            $suffix = $future ? 'from_now' : 'ago';
-        }
-
-        // Get translator instance.
-        $lang = $this->getTranslator();
-
-        // Some languages have different unit translations when used in combination
-        // with a specific suffix. Here we will check if there is an optional
-        // translation for that specific suffix and use it if it exists.
-        if ($lang->trans("${unit}_diff") != "${unit}_diff") {
-            $ago = $lang->transChoice("${unit}_diff", $count, [':count' => $count]);
-        } elseif ($lang->trans("${unit}_${suffix}") != "${unit}_${suffix}") {
-            $ago = $lang->transChoice("${unit}_${suffix}", $count, [':count' => $count]);
-        } else {
-            $ago = $lang->transChoice($unit, $count, [':count' => $count]);
-        }
-
-        if ($absolute) {
-            return $ago;
-        }
-
-        return $lang->transChoice($suffix, $count, [':time' => $ago]);
     }
 
     /**
@@ -237,10 +157,10 @@ class Date extends Carbon
                 // Translate.
                 $lang = $this->getTranslator();
 
-                // For declension support, we need to check if the month is lead by a numeric number.
+                // For declension support, we need to check if the month is lead by a day number.
                 // If so, we will use the second translation choice if it is available.
                 if (in_array($character, ['F', 'M'])) {
-                    $choice = (($i - 2) >= 0 and in_array($format[$i - 2], ['d', 'j'])) ? 1 : 0;
+                    $choice = preg_match('#[dj][ .]*$#', substr($format, 0, $i)) ? 1 : 0;
 
                     $translated = $lang->transChoice(mb_strtolower($key), $choice);
                 } else {
@@ -279,7 +199,7 @@ class Date extends Carbon
     /**
      * Gets the timespan between this date and another date.
      *
-     * @param  Date                $time
+     * @param  Date $time
      * @param  string|DateTimeZone $timezone
      * @return int
      */
@@ -289,7 +209,7 @@ class Date extends Carbon
         $lang = $this->getTranslator();
 
         // Create Date instance if needed
-        if (! $time instanceof static) {
+        if (!$time instanceof static) {
             $time = Date::parse($time, $timezone);
         }
 
@@ -377,11 +297,26 @@ class Date extends Carbon
     public static function setLocale($locale)
     {
         // Use RFC 5646 for filenames.
-        $resource = __DIR__.'/Lang/'.str_replace('_', '-', $locale).'.php';
+        $files = array_unique([
+            str_replace('_', '-', $locale),
+            static::getLanguageFromLocale($locale),
+            str_replace('_', '-', static::getFallbackLocale()),
+            static::getLanguageFromLocale(static::getFallbackLocale()),
+        ]);
 
-        if (! file_exists($resource)) {
-            static::setLocale(static::getFallbackLocale());
+        $found = false;
 
+        foreach ($files as $file) {
+            $resource = __DIR__.'/Lang/'.$file.'.php';
+
+            if (file_exists($resource)) {
+                $found = true;
+                $locale = $file;
+                break;
+            }
+        }
+
+        if (!$found) {
             return;
         }
 
@@ -397,7 +332,6 @@ class Date extends Carbon
      * Set the fallback locale.
      *
      * @param  string $locale
-     * @return void
      */
     public static function setFallbackLocale($locale)
     {
@@ -504,5 +438,18 @@ class Date extends Carbon
         }
 
         return $translated;
+    }
+
+    /**
+     * Get the language portion of the locale.
+     *
+     * @param string $locale
+     * @return string
+     */
+    public static function getLanguageFromLocale($locale)
+    {
+        $parts = explode('_', str_replace('-', '_', $locale));
+
+        return $parts[0];
     }
 }
