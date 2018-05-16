@@ -69,17 +69,19 @@ class DateTest extends TestCase
 
     public function testManipulation()
     {
-        $this->assertInstanceOf('Jenssegers\Date\Date', Date::now()->add('1 day'));
-        $this->assertInstanceOf('Jenssegers\Date\Date', Date::now()->sub('1 day'));
+        $now = Date::now();
 
-        $this->assertSame(86400, Date::now()->add('1 day')->getTimestamp() - Date::now()->getTimestamp());
-        $this->assertSame(4 * 86400, Date::now()->add('4 day')->getTimestamp() - Date::now()->getTimestamp());
+        $this->assertInstanceOf('Jenssegers\Date\Date', $now->copy()->add('1 day'));
+        $this->assertInstanceOf('Jenssegers\Date\Date', $now->copy()->sub('1 day'));
 
-        $this->assertSame(-86400, Date::now()->sub('1 day')->getTimestamp() - Date::now()->getTimestamp());
-        $this->assertSame(-4 * 86400, Date::now()->sub('4 day')->getTimestamp() - Date::now()->getTimestamp());
+        $this->assertSame(86400, $now->copy()->add('1 day')->getTimestamp() - $now->getTimestamp());
+        $this->assertSame(4 * 86400, $now->copy()->add('4 day')->getTimestamp() - $now->getTimestamp());
 
-        $this->assertSame(10 * 86400, Date::now()->add('P10D')->getTimestamp() - Date::now()->getTimestamp());
-        $this->assertSame(-10 * 86400, Date::now()->sub('P10D')->getTimestamp() - Date::now()->getTimestamp());
+        $this->assertSame(-86400, $now->copy()->sub('1 day')->getTimestamp() - $now->getTimestamp());
+        $this->assertSame(-4 * 86400, $now->copy()->sub('4 day')->getTimestamp() - $now->getTimestamp());
+
+        $this->assertSame(10 * 86400, $now->copy()->add('P10D')->getTimestamp() - $now->->getTimestamp());
+        $this->assertSame(-10 * 86400, $now->copy()->sub('P10D')->getTimestamp() - $now->getTimestamp());
     }
 
     public function testFormat()
