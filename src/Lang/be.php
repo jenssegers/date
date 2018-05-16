@@ -1,5 +1,7 @@
 <?php
+
 return [
+
     /*
     |--------------------------------------------------------------------------
     | Date Language Lines
@@ -9,6 +11,7 @@ return [
     | have a singular and plural translation separated by a '|'.
     |
     */
+
     'ago'       => ':time таму',
     'from_now'  => 'праз :time',
     'after'     => ':time апасля',
@@ -20,6 +23,7 @@ return [
     'hour'      => ':count гадзіну|:count гадзіны|:count гадзін',
     'minute'    => ':count хвіліну|:count хвіліны|:count хвілін',
     'second'    => ':count секунду|:count секунды|:count секунд',
+
     'jan'       => 'сту',
     'feb'       => 'лют',
     'mar'       => 'сак',
@@ -32,7 +36,7 @@ return [
     'oct'       => 'кас',
     'nov'       => 'ліс',
     'dec'       => 'сне',
-    
+
     'january'   => '{0}студзень|{1}студня',
     'february'  => '{0}люты|{1}лютага',
     'march'     => '{0}сакавік|{1}сакавіка',
@@ -45,6 +49,7 @@ return [
     'october'   => '{0}кастрычнік|{1}кастрычніка',
     'november'  => '{0}лістапад|{1}лістапада',
     'december'  => '{0}снежань|{1}снежня',
+
     'monday'    => 'панядзелак',
     'tuesday'   => 'аўторак',
     'wednesday' => 'серада',
