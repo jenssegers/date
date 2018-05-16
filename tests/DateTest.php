@@ -80,7 +80,7 @@ class DateTest extends TestCase
         $this->assertSame(-86400, $now->copy()->sub('1 day')->getTimestamp() - $now->getTimestamp());
         $this->assertSame(-4 * 86400, $now->copy()->sub('4 day')->getTimestamp() - $now->getTimestamp());
 
-        $this->assertSame(10 * 86400, $now->copy()->add('P10D')->getTimestamp() - $now->->getTimestamp());
+        $this->assertSame(10 * 86400, $now->copy()->add('P10D')->getTimestamp() - $now->getTimestamp());
         $this->assertSame(-10 * 86400, $now->copy()->sub('P10D')->getTimestamp() - $now->getTimestamp());
     }
 
