@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Date Language Lines
@@ -12,37 +11,36 @@ return [
     |
     */
 
-    'ago'       => 'prije :time',
-    'from_now'  => 'za :time',
-    'after'     => 'za :time',
-    'before'    => 'prije :time',
-    'year'      => ':count godinu|:count godine|:count godina',
-    'month'     => ':count mjesec|:count mjeseca|:count mjeseci',
-    'week'      => ':count tjedan|:count tjedna|:count tjedana',
-    'day'       => ':count dan|:count dana|:count dana',
-    'hour'      => ':count sat|:count sata|:count sati',
-    'minute'    => ':count minutu|:count minute |:count minuta',
-    'second'    => ':count sekundu|:count sekunde|:count sekundi',
+    'ago' => 'prije :time',
+    'from_now' => 'za :time',
+    'after' => 'za :time',
+    'before' => 'prije :time',
+    'year' => ':count godinu|:count godine|:count godina',
+    'month' => ':count mjesec|:count mjeseca|:count mjeseci',
+    'week' => ':count tjedan|:count tjedna|:count tjedana',
+    'day' => ':count dan|:count dana|:count dana',
+    'hour' => ':count sat|:count sata|:count sati',
+    'minute' => ':count minutu|:count minute |:count minuta',
+    'second' => ':count sekundu|:count sekunde|:count sekundi',
 
-    'january'   => 'siječanj',
-    'february'  => 'veljača',
-    'march'     => 'ožujak',
-    'april'     => 'travanj',
-    'may'       => 'svibanj',
-    'june'      => 'lipanj',
-    'july'      => 'srpanj',
-    'august'    => 'kolovoz',
+    'january' => 'siječanj',
+    'february' => 'veljača',
+    'march' => 'ožujak',
+    'april' => 'travanj',
+    'may' => 'svibanj',
+    'june' => 'lipanj',
+    'july' => 'srpanj',
+    'august' => 'kolovoz',
     'september' => 'rujan',
-    'october'   => 'listopad',
-    'november'  => 'studeni',
-    'december'  => 'prosinac',
+    'october' => 'listopad',
+    'november' => 'studeni',
+    'december' => 'prosinac',
 
-    'monday'    => 'ponedjeljak',
-    'tuesday'   => 'utorak',
+    'monday' => 'ponedjeljak',
+    'tuesday' => 'utorak',
     'wednesday' => 'srijeda',
-    'thursday'  => 'cetvrtak',
-    'friday'    => 'petak',
-    'saturday'  => 'subota',
-    'sunday'    => 'nedjelja',
-
+    'thursday' => 'cetvrtak',
+    'friday' => 'petak',
+    'saturday' => 'subota',
+    'sunday' => 'nedjelja',
 ];

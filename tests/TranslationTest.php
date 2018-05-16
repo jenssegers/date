@@ -44,16 +44,16 @@ class TranslationTest extends TestCase
         Date::setLocale('hr');
 
         $date = Date::parse('-1 years');
-        $this->assertSame("prije 1 godinu", $date->ago());
+        $this->assertSame('prije 1 godinu', $date->ago());
 
         $date = Date::parse('-2 years');
-        $this->assertSame("prije 2 godine", $date->ago());
+        $this->assertSame('prije 2 godine', $date->ago());
 
         $date = Date::parse('-3 years');
-        $this->assertSame("prije 3 godine", $date->ago());
+        $this->assertSame('prije 3 godine', $date->ago());
 
         $date = Date::parse('-5 years');
-        $this->assertSame("prije 5 godina", $date->ago());
+        $this->assertSame('prije 5 godina', $date->ago());
     }
 
     public function testCustomSuffix()
@@ -62,13 +62,13 @@ class TranslationTest extends TestCase
 
         // If we use -1 month, we have the chance of it being converted to 4 weeks.
         $date = Date::parse('-40 days');
-        $this->assertSame("vor 1 Monat", $date->ago());
+        $this->assertSame('vor 1 Monat', $date->ago());
 
         $date = Date::parse('-5 months');
-        $this->assertSame("vor 5 Monaten", $date->ago());
+        $this->assertSame('vor 5 Monaten', $date->ago());
 
         $date = Date::parse('-5 seconds');
-        $this->assertSame("vor 5 Sekunden", $date->ago());
+        $this->assertSame('vor 5 Sekunden', $date->ago());
     }
 
     public function testTimespanTranslated()

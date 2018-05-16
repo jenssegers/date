@@ -28,7 +28,7 @@ class AutomaticTest extends TestCase
             'december',
         ];
 
-        $selector = new MessageSelector;
+        $selector = new MessageSelector();
 
         foreach ($this->languages as $language) {
             $language = str_replace('.php', '', $language);
@@ -112,7 +112,7 @@ class AutomaticTest extends TestCase
             foreach ($items as $item) {
                 $this->assertTrue(isset($translations[$item]), "Language: $language >> $item");
 
-                if (! $translations[$item]) {
+                if (!$translations[$item]) {
                     echo "\nWARNING! '$item' not set for language $language";
                     continue;
                 }
@@ -152,7 +152,7 @@ class AutomaticTest extends TestCase
             foreach ($items as $item) {
                 $this->assertTrue(isset($translations[$item]), "Language: $language >> $item");
 
-                if (! $translations[$item]) {
+                if (!$translations[$item]) {
                     echo "\nWARNING! '$item' not set for language $language\n";
                     continue;
                 }

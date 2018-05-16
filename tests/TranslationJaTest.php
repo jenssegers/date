@@ -4,7 +4,7 @@ use Jenssegers\Date\Date;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class TranslationJaTest
+ * Class TranslationJaTest.
  */
 class TranslationJaTest extends TestCase
 {

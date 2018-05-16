@@ -5,10 +5,6 @@ use PHPUnit\Framework\TestCase;
 
 class TranslationTaTest extends TestCase
 {
-
-    /**
-     * @return void
-     */
     public function setUp()
     {
         date_default_timezone_set('UTC');

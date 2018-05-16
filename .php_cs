@@ -16,5 +16,8 @@ return Config::create()
         'yoda_style' => false,
         'blank_line_before_statement' => false,
         'phpdoc_separation' => false,
+        'pre_increment' => false,
+        'increment_style' => false,
+        'phpdoc_types' => false,
     ])
     ->setFinder($finder);

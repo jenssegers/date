@@ -14,7 +14,7 @@ class DateTest extends TestCase
 
     public function testConstructs()
     {
-        $date = new Date;
+        $date = new Date();
         $this->assertInstanceOf('Jenssegers\Date\Date', $date);
     }
 

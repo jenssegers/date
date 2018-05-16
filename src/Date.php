@@ -1,4 +1,6 @@
-<?php namespace Jenssegers\Date;
+<?php
+
+namespace Jenssegers\Date;
 
 use Carbon\Carbon;
 use DateInterval;
@@ -314,7 +316,7 @@ class Date extends Carbon
             }
         }
 
-        if (! $found) {
+        if (!$found) {
             return;
         }
 
@@ -330,7 +332,6 @@ class Date extends Carbon
      * Set the fallback locale.
      *
      * @param  string $locale
-     * @return void
      */
     public static function setFallbackLocale($locale)
     {
