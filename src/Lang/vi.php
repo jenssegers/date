@@ -37,6 +37,19 @@ return [
     'november'  => 'Tháng mười một',
     'december'  => 'Tháng mười hai',
 
+    'jan'       => 'Th1',
+    'feb'       => 'Th2',
+    'mar'       => 'Th3',
+    'apr'       => 'Th4',
+    'may'       => 'Th5',
+    'jun'       => 'Th6',
+    'jul'       => 'Th7',
+    'aug'       => 'Th8',
+    'sep'       => 'Th9',
+    'oct'       => 'Th10',
+    'nov'       => 'Th11',
+    'dec'       => 'Th12',
+
     'monday'    => 'Thứ hai',
     'tuesday'   => 'Thứ ba',
     'wednesday' => 'Thứ tư',
@@ -44,5 +57,13 @@ return [
     'friday'    => 'Thứ sáu',
     'saturday'  => 'Thứ bảy',
     'sunday'    => 'Chủ nhật',
+
+    'mon'       => 'T2',
+    'tue'       => 'T3',
+    'wed'       => 'T4',
+    'thu'       => 'T5',
+    'fri'       => 'T6',
+    'sat'       => 'T7',
+    'sun'       => 'CN',
 
 ];
