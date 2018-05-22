@@ -11,6 +11,22 @@ class AutomaticTest extends TestCase
         $this->languages = array_slice(scandir('src/Lang'), 2);
     }
 
+    public function testReversibleCreateFromFormat()
+    {
+        $defaultLocale = Date::getLocale();
+        foreach ($this->languages as $language) {
+            $language = str_replace('.php', '', $language);
+            Date::setLocale($language);
+            $createdDate = Date::now()->format('l, M d Y H:i');
+            Date::createFromFormat(
+                'l, M d Y H:i',
+                $createdDate
+            );
+        }
+        $this->assertTrue(true);
+        Date::setLocale($defaultLocale);
+    }
+
     public function testTranslatesMonths()
     {
         $months = [
