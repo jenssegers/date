@@ -10,9 +10,15 @@ use Symfony\Component\Translation\Translator;
 use Symfony\Component\Translation\TranslatorInterface;
 
 if (class_exists('Illuminate\Support\Carbon')) {
-    class BaseCarbon extends \Illuminate\Support\Carbon {}
+    class BaseCarbon extends \Illuminate\Support\Carbon
+    {
+        //
+    }
 } else {
-    class BaseCarbon extends Carbon {}
+    class BaseCarbon extends Carbon
+    {
+        //
+    }
 }
 
 class Date extends BaseCarbon
