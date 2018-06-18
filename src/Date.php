@@ -9,7 +9,13 @@ use Symfony\Component\Translation\Loader\ArrayLoader;
 use Symfony\Component\Translation\Translator;
 use Symfony\Component\Translation\TranslatorInterface;
 
-class Date extends Carbon
+if (class_exists('Illuminate\Support\Carbon')) {
+    class BaseCarbon extends \Illuminate\Support\Carbon {}
+} else {
+    class BaseCarbon extends Carbon {}
+}
+
+class Date extends BaseCarbon
 {
     /**
      * The Translator implementation.
