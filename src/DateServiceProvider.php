@@ -18,13 +18,12 @@ class DateServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $localeChangedEvents = [
-            'locale.changed',
-            // Laravel 5.6+
-            // @see https://github.com/laravel/framework/commit/3385fdc0f8e4890ab57261755bcbbf79f9ec828d#diff-7b18a52eceff5eb716c1de268e98d55dR1045
-            '\\Illuminate\\Foundation\\Events\\LocaleUpdated',
-        ];
-        $this->app['events']->listen($localeChangedEvents, function () {
+        $localeChangedEvent = 'locale.changed';
+        if (class_exists('\\Illuminate\\Foundation\\Events\\LocaleUpdated')) {
+            $localeChangedEvent = \Illuminate\Foundation\Events\LocaleUpdated::class;
+        }
+
+        $this->app['events']->listen($localeChangedEvent, function () {
             $this->setLocale();
         });
 
