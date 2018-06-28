@@ -18,10 +18,9 @@ class DateServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $localeChangedEvent = 'locale.changed';
-        if (class_exists('\\Illuminate\\Foundation\\Events\\LocaleUpdated')) {
-            $localeChangedEvent = \Illuminate\Foundation\Events\LocaleUpdated::class;
-        }
+        $localeChangedEvent = class_exists('\\Illuminate\\Foundation\\Events\\LocaleUpdated') 
+        	? \Illuminate\Foundation\Events\LocaleUpdated::class
+        	: 'locale.changed';
 
         $this->app['events']->listen($localeChangedEvent, function () {
             $this->setLocale();
