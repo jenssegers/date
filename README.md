@@ -17,7 +17,7 @@ composer require jenssegers/date
 Laravel
 -------
 
-There is a service provider included for integration with the Laravel framework. This provider will get the application locale setting and use this for translations. To register the service provider, add the following to the providers array in `config/app.php`:
+There is a service provider included for integration with the Laravel framework. This provider will get the application locale setting and use this for translations. This service will be automatically registered if you use Laravel 5.5+ using the auto-discovery. Else to register the service provider, add the following to the providers array in `config/app.php`:
 
 ```php
 'Jenssegers\Date\DateServiceProvider',
