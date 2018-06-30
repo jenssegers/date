@@ -44,9 +44,14 @@ class AutomaticTest extends TestCase
                 $this->assertEquals($translation, $date->format('F'), "Language: $language");
 
                 // Short
-                $monthShortEnglish = mb_substr($month, 0, 3);
+                $monthShortEnglish = mb_substr($month, 0, 3).'*';
                 if (isset($translations[$monthShortEnglish])) {
-                    $this->assertEquals($translations[$monthShortEnglish], $date->format('M'), "Language: $language");
+                    if (strpos($translations[$monthShortEnglish], '|') !== false) {
+                        $values = explode('|', preg_replace('/\{\d\}/', '', $translations[$monthShortEnglish]));
+                        $this->assertContains($date->format('M'), $values, "Language: $language");
+                    } else {
+                        $this->assertEquals($translations[$monthShortEnglish], $date->format('M'), "Language: $language");
+                    }
                 } else {
                     $this->assertEquals(mb_substr($translation, 0, 3), $date->format('M'), "Language: $language");
                 }
@@ -79,9 +84,14 @@ class AutomaticTest extends TestCase
                 $this->assertEquals($translations[$day], $date->format('l'), "Language: $language");
 
                 // Short
-                $dayShortEnglish = mb_substr($day, 0, 3);
+                $dayShortEnglish = mb_substr($day, 0, 3).'*';
                 if (isset($translations[$dayShortEnglish])) {
-                    $this->assertEquals($translations[$dayShortEnglish], $date->format('D'), "Language: $language");
+                    if (strpos($translations[$dayShortEnglish], '|') !== false) {
+                        $values = explode('|', preg_replace('/\{\d\}/', '', $translations[$dayShortEnglish]));
+                        $this->assertContains($date->format('D'), $values, "Language: $language");
+                    } else {
+                        $this->assertEquals($translations[$dayShortEnglish], $date->format('D'), "Language: $language");
+                    }
                 } else {
                     $this->assertEquals(mb_substr($translations[$day], 0, 3), $date->format('D'), "Language: $language");
                 }

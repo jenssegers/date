@@ -159,30 +159,27 @@ class Date extends Carbon
 
                 // For declension support, we need to check if the month is lead by a day number.
                 // If so, we will use the second translation choice if it is available.
-                if (in_array($character, ['F', 'M'])) {
-                    $choice = preg_match('#[dj][ .]*$#', substr($format, 0, $i)) ? 1 : 0;
+                $choice = in_array($character, ['F', 'M']) && preg_match('#[dj][ .]*$#', substr($format, 0, $i)) ? 1 : 0;
 
-                    $translated = $lang->transChoice(mb_strtolower($key), $choice);
-                } else {
-                    $translated = $lang->trans(mb_strtolower($key));
-                }
-
-                // Short notations.
                 if (in_array($character, ['D', 'M'])) {
+                    // Short notations.
                     $toTranslate = mb_strtolower($original);
-                    $shortTranslated = $lang->trans($toTranslate);
+                    $abbreviatedKey = "$toTranslate*";
+                    $shortTranslated = $lang->transChoice($abbreviatedKey, $choice);
 
-                    if ($shortTranslated === $toTranslate) {
+                    if ($shortTranslated === $abbreviatedKey) {
                         // use the first 3 characters as short notation
-                        $translated = mb_substr($translated, 0, 3);
+                        $translated = mb_substr($lang->transChoice(mb_strtolower($key), $choice), 0, 3);
                     } else {
                         // use translated version
                         $translated = $shortTranslated;
                     }
+                } else {
+                    $translated = $lang->transChoice(mb_strtolower($key), $choice);
                 }
 
                 // Add to replace list.
-                if ($translated and $original != $translated) {
+                if ($translated and $original !== $translated) {
                     $replace[$original] = $translated;
                 }
             }
