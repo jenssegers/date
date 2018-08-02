@@ -428,6 +428,18 @@ class Date extends Carbon
                 return $option;
             }, $options);
 
+            if (count($options) > 1) {
+                usort($options, function ($a, $b) {
+                    if (strpos($a, $b) !== false) {
+                        return -1;
+                    }
+                    if (strpos($b, $a) !== false) {
+                        return 1;
+                    }
+                    return 0;
+                });
+            }
+
             $terms[$i] = $options;
         }
 
