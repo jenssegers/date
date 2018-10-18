@@ -79,6 +79,7 @@ This package contains language files for the following languages:
  - Persian (Farsi)
  - Romanian
  - Russian
+ - Tamil (தமிழ்)
  - Thai
  - Serbian (latin)
  - Serbian (cyrillic)
