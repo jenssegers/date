@@ -37,7 +37,7 @@ return [
     'december' => '{0}prosinec|{1}prosince',
 
     'monday' => 'pondělí',
-    'tuesday' => 'uterý',
+    'tuesday' => 'úterý',
     'wednesday' => 'středa',
     'thursday' => 'čtvrtek',
     'friday' => 'pátek',
