@@ -199,9 +199,9 @@ class Date extends Carbon
     /**
      * Gets the timespan between this date and another date.
      *
-     * @param  Date $time
+     * @param  Date|int $time
      * @param  string|DateTimeZone $timezone
-     * @return int
+     * @return string
      */
     public function timespan($time = null, $timezone = null)
     {
