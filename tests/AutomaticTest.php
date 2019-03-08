@@ -8,6 +8,7 @@ class AutomaticTest extends TestCase
 {
     public function setUp()
     {
+        Date::setTestNow(Date::now());
         $this->languages = array_slice(scandir('src/Lang'), 2);
     }
 

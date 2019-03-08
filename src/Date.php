@@ -103,23 +103,30 @@ class Date extends Carbon
      * Alias for diffForHumans.
      *
      * @param  Date $since
-     * @param  bool $absolute Removes time difference modifiers ago, after, etc
+     * @param  bool $syntax  Removes time difference modifiers ago, after, etc
+     * @param  bool $short   (Carbon 2 only) displays short format of time units
+     * @param  int  $parts   (Carbon 2 only) maximum number of parts to display (default value: 1: single unit)
+     * @param  int  $options (Carbon 2 only) human diff options
      * @return string
      */
-    public function ago($since = null, $absolute = false)
+    public function ago($since = null, $syntax = null, $short = false, $parts = 1, $options = null)
     {
-        return $this->diffForHumans($since, $absolute);
+        return $this->diffForHumans($since, $syntax, $short, $parts, $options);
     }
 
     /**
      * Alias for diffForHumans.
      *
      * @param  Date $since
+     * @param  bool $syntax  Removes time difference modifiers ago, after, etc
+     * @param  bool $short   (Carbon 2 only) displays short format of time units
+     * @param  int  $parts   (Carbon 2 only) maximum number of parts to display (default value: 1: single unit)
+     * @param  int  $options (Carbon 2 only) human diff options
      * @return string
      */
-    public function until($since = null)
+    public function until($since = null, $syntax = null, $short = false, $parts = 1, $options = null)
     {
-        return $this->ago($since);
+        return $this->ago($since, $syntax, $short, $parts, $options);
     }
 
     /**
@@ -247,9 +254,11 @@ class Date extends Carbon
      * Adds an amount of days, months, years, hours, minutes and seconds to a Date object.
      *
      * @param DateInterval|string $interval
+     * @param int                 $value (only effective if using Carbon 2)
+     * @param bool|null           $overflow (only effective if using Carbon 2)
      * @return Date|bool
      */
-    public function add($interval)
+    public function add($interval, $value = 1, $overflow = null)
     {
         if (is_string($interval)) {
             // Check for ISO 8601
@@ -260,16 +269,18 @@ class Date extends Carbon
             }
         }
 
-        return parent::add($interval) ? $this : false;
+        return parent::add($interval, $value, $overflow) ? $this : false;
     }
 
     /**
      * Subtracts an amount of days, months, years, hours, minutes and seconds from a DateTime object.
      *
      * @param DateInterval|string $interval
+     * @param int                 $value (only effective if using Carbon 2)
+     * @param bool|null           $overflow (only effective if using Carbon 2)
      * @return Date|bool
      */
-    public function sub($interval)
+    public function sub($interval, $value = 1, $overflow = null)
     {
         if (is_string($interval)) {
             // Check for ISO 8601
@@ -280,7 +291,7 @@ class Date extends Carbon
             }
         }
 
-        return parent::sub($interval) ? $this : false;
+        return parent::sub($interval, $value, $overflow) ? $this : false;
     }
 
     /**

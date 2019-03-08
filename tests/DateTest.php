@@ -6,9 +6,13 @@ use PHPUnit\Framework\TestCase;
 
 class DateTest extends TestCase
 {
+    protected $time;
+
     public function setUp()
     {
         date_default_timezone_set('UTC');
+        Date::setTestNow(Date::now());
+        $this->time = Date::now()->getTimestamp();
         Date::setLocale('en');
     }
 
@@ -22,7 +26,7 @@ class DateTest extends TestCase
     {
         $date = Date::now();
         $this->assertInstanceOf('Jenssegers\Date\Date', $date);
-        $this->assertEquals(time(), $date->getTimestamp());
+        $this->assertEquals($this->time, $date->getTimestamp());
     }
 
     public function testConstructFromString()
@@ -31,20 +35,20 @@ class DateTest extends TestCase
         $this->assertSame(1359590400, $date->getTimestamp());
 
         $date = new Date('1 day ago');
-        $this->assertSame(time() - 86400, $date->getTimestamp());
+        $this->assertSame($this->time - 86400, $date->getTimestamp());
     }
 
     public function testConstructWithTimezone()
     {
         $date = new Date('now', 'Europe/Paris');
         date_default_timezone_set('Europe/Paris');
-        $this->assertSame(time(), $date->getTimestamp());
+        $this->assertSame($this->time, $date->getTimestamp());
 
         date_default_timezone_set('Europe/Brussels');
 
         $date = new Date(null, 'Europe/Paris');
         date_default_timezone_set('Europe/Paris');
-        $this->assertSame(time(), $date->getTimestamp());
+        $this->assertSame($this->time, $date->getTimestamp());
     }
 
     public function testConstructTimestamp()
