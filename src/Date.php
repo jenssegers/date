@@ -5,6 +5,7 @@ namespace Jenssegers\Date;
 use Carbon\Carbon;
 use DateInterval;
 use DateTimeZone;
+use ReflectionMethod;
 use Symfony\Component\Translation\Loader\ArrayLoader;
 use Symfony\Component\Translation\Translator;
 use Symfony\Component\Translation\TranslatorInterface;
@@ -269,7 +270,12 @@ class Date extends Carbon
             }
         }
 
-        return parent::add($interval, $value, $overflow) ? $this : false;
+        $method = new ReflectionMethod(parent::class, 'add');
+        $result = $method->getNumberOfRequiredParameters() === 1
+            ? parent::add($interval)
+            : parent::add($interval, $value, $overflow);
+
+        return $result ? $this : false;
     }
 
     /**
@@ -291,7 +297,12 @@ class Date extends Carbon
             }
         }
 
-        return parent::sub($interval, $value, $overflow) ? $this : false;
+        $method = new ReflectionMethod(parent::class, 'sub');
+        $result = $method->getNumberOfRequiredParameters() === 1
+            ? parent::sub($interval)
+            : parent::sub($interval, $value, $overflow);
+
+        return $result ? $this : false;
     }
 
     /**
@@ -388,7 +399,7 @@ class Date extends Carbon
      * @param  string $time
      * @return string
      */
-    public static function translateTimeString($time)
+    public static function translateTimeString($time, $from = null, $to = null, $mode = -1)
     {
         // Don't run translations for english.
         if (static::getLocale() == 'en') {
