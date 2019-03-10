@@ -8,6 +8,7 @@ class TranslationThTest extends TestCase
     public function setUp()
     {
         date_default_timezone_set('UTC');
+        Date::setTestNow(Date::now());
         Date::setLocale('th');
     }
 
