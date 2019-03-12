@@ -14,7 +14,7 @@
         "nesbot/carbon": "^2.16"
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.0|^6.0|^7.0",
+        "phpunit/phpunit": "^7.5",
         "satooshi/php-coveralls": "^2.0"
     },
     "autoload": {
