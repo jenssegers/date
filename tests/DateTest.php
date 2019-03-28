@@ -25,20 +25,20 @@ class DateTest extends TestCaseBase
         $this->assertSame(1359590400, $date->getTimestamp());
 
         $date = new Date('1 day ago');
-        $this->assertSame(time() - 86400, $date->getTimestamp());
+        $this->assertSame($this->time - 86400, $date->getTimestamp());
     }
 
     public function testConstructWithTimezone()
     {
         $date = new Date('now', 'Europe/Paris');
         date_default_timezone_set('Europe/Paris');
-        $this->assertSame(time(), $date->getTimestamp());
+        $this->assertSame($this->time, $date->getTimestamp());
 
         date_default_timezone_set('Europe/Brussels');
 
         $date = new Date(null, 'Europe/Paris');
         date_default_timezone_set('Europe/Paris');
-        $this->assertSame(time(), $date->getTimestamp());
+        $this->assertSame($this->time, $date->getTimestamp());
     }
 
     public function testConstructTimestamp()

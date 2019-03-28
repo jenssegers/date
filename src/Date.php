@@ -27,22 +27,22 @@ class Date extends Carbon
      */
     protected static $parseFunction = 'parseWithCurrentLocale';
 
-    public static function parseWithCurrentLocale($time = null, $tz = null)
+    public static function parseWithCurrentLocale($time = null, $timezone = null)
     {
         if (is_string($time)) {
             $time = static::translateTimeString($time, static::getLocale(), 'en');
         }
 
-        return parent::rawParse($time, $tz);
+        return parent::rawParse($time, $timezone);
     }
 
-    public static function createFromFormatWithCurrentLocale($format, $time = null, $tz = null)
+    public static function createFromFormatWithCurrentLocale($format, $time = null, $timezone = null)
     {
         if (is_string($time)) {
             $time = static::translateTimeString($time, static::getLocale(), 'en');
         }
 
-        return parent::rawCreateFromFormat($format, $time, $tz);
+        return parent::rawCreateFromFormat($format, $time, $timezone);
     }
 
     /**
