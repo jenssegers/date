@@ -74,6 +74,7 @@ This package contains language files for the following languages:
  - Malay
  - Norwegian
  - Nepali (नेपाली)
+ - Pashto (پښتو)
  - Polish
  - Portuguese
  - Persian (Farsi)
