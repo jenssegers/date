@@ -90,6 +90,7 @@ This package contains language files for the following languages:
  - Turkish
  - Turkmen
  - Ukrainian
+ - Urdu (اردو)
  - Uzbek
  - Vietnamese
  - Welsh
