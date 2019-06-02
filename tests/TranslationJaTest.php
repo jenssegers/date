@@ -2,6 +2,8 @@
 
 namespace Tests\Jenssegers;
 
+use Jenssegers\Date\Date;
+
 class TranslationJaTest extends TestCaseBase
 {
     const LOCALE = 'ja';

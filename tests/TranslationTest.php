@@ -3,6 +3,7 @@
 namespace Tests\Jenssegers;
 
 use Carbon\Translator;
+use Jenssegers\Date\Date;
 use Symfony\Component\Translation\Loader\ArrayLoader;
 
 class TranslationTest extends TestCaseBase

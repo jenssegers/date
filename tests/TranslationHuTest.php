@@ -2,6 +2,7 @@
 
 namespace Tests\Jenssegers;
 
+use Jenssegers\Date\Date;
 use Carbon\Translator;
 use Symfony\Component\Translation\Loader\ArrayLoader;
 

@@ -9,6 +9,8 @@ class TestCaseBase extends TestCase
 {
     const LOCALE = 'en';
 
+    protected $time;
+
     public function setUp()
     {
         date_default_timezone_set('UTC');
@@ -16,5 +18,7 @@ class TestCaseBase extends TestCase
 
         // Freeze the time for the test duration
         Carbon::setTestNow(Carbon::now());
+
+        $this->time = Carbon::now()->getTimestamp();
     }
 }
