@@ -1,18 +1,13 @@
 <?php
 
-use Jenssegers\Date\Date;
-use PHPUnit\Framework\TestCase;
-use Symfony\Component\Translation\Loader\ArrayLoader;
-use Symfony\Component\Translation\Translator;
+namespace Tests\Jenssegers;
 
-class TranslationHuTest extends TestCase
+use Carbon\Translator;
+use Symfony\Component\Translation\Loader\ArrayLoader;
+
+class TranslationHuTest extends TestCaseBase
 {
-    public function setUp()
-    {
-        date_default_timezone_set('UTC');
-        Date::setTestNow(Date::now());
-        Date::setLocale('hu');
-    }
+    const LOCALE = 'hu';
 
     public function testGetsAndSetsTranslator()
     {

@@ -1,18 +1,12 @@
 <?php
 
-use Jenssegers\Date\Date;
-use PHPUnit\Framework\TestCase;
+namespace Tests\Jenssegers;
+
+use Carbon\Translator;
 use Symfony\Component\Translation\Loader\ArrayLoader;
-use Symfony\Component\Translation\Translator;
 
-class TranslationTest extends TestCase
+class TranslationTest extends TestCaseBase
 {
-    public function setUp()
-    {
-        date_default_timezone_set('UTC');
-        Date::setTestNow(Date::now());
-    }
-
     public function testGetsAndSetsTranslator()
     {
         $translator = new Translator('nl');
@@ -143,13 +137,13 @@ class TranslationTest extends TestCase
         $this->assertSame('1 seconde geleden', $date->ago());
 
         $date = Date::parse('+5 days');
-        $this->assertSame('5 dagen vanaf nu', $date->ago());
+        $this->assertSame('over 5 dagen', $date->ago());
 
         $date = Date::parse('+5 days');
-        $this->assertSame('5 dagen na', $date->ago(Date::now()));
+        $this->assertSame('5 dagen later', $date->ago(Date::now()));
 
         $date = Date::parse('-5 days');
-        $this->assertSame('5 dagen voor', $date->ago(Date::now()));
+        $this->assertSame('5 dagen eerder', $date->ago(Date::now()));
 
         Date::setLocale('ru');
 
@@ -171,7 +165,7 @@ class TranslationTest extends TestCase
         $this->assertSame('l 28 F 2013 21:58:16', $date->format('\l j \F Y H:i:s'));
 
         $date = new Date(1367186296);
-        $this->assertSame('zo 28 apr 2013 21:58:16', $date->format('D j M Y H:i:s'));
+        $this->assertSame('zo. 28 apr. 2013 21:58:16', $date->format('D j M Y H:i:s'));
     }
 
     public function testFormatDeclensions()
@@ -182,20 +176,20 @@ class TranslationTest extends TestCase
         $this->assertSame('март 2015', $date->format('F Y'));
 
         $date = new Date('10 march 2015');
-        $this->assertSame('10 мартa 2015', $date->format('j F Y'));
+        $this->assertSame('10 марта 2015', $date->format('j F Y'));
 
         $date = new Date('10 march 2015');
-        $this->assertSame('10. мартa 2015', $date->format('j. F Y'));
+        $this->assertSame('10. марта 2015', $date->format('j. F Y'));
     }
 
     public function testTranslateTimeString()
     {
         Date::setLocale('ru');
         $date = Date::translateTimeString('понедельник 21 март 2015');
-        $this->assertSame('monday 21 march 2015', $date);
+        $this->assertSame('monday 21 march 2015', mb_strtolower($date));
 
         Date::setLocale('de');
         $date = Date::translateTimeString('Montag 21 März 2015');
-        $this->assertSame('monday 21 march 2015', $date);
+        $this->assertSame('monday 21 march 2015', mb_strtolower($date));
     }
 }

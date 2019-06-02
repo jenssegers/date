@@ -10,9 +10,15 @@
             "homepage": "https://jenssegers.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/kylekatarnls/Carbon.git"
+        }
+    ],
     "require": {
         "php": ">=5.6",
-        "nesbot/carbon": "^1.0|^2.0",
+        "nesbot/carbon": "^2.16",
         "symfony/translation": "^2.7|^3.0|^4.0"
     },
     "require-dev": {
@@ -22,6 +28,11 @@
     "autoload": {
         "psr-4": {
             "Jenssegers\\Date\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Jenssegers\\": "tests/"
         }
     },
     "extra": {
