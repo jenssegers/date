@@ -13,7 +13,7 @@ class TranslationKaTest extends TestCaseBase
         $date = new Date(1403619368);
         $date = $date->sub('-100 days -3 hours -20 minutes');
 
-        $this->assertSame('3 თვე, 1 კვირის, დღე, 3 საათი, 20 წუთი', $date->timespan(1403619368));
+        $this->assertSame('3 თვე, 1 კვირა, 1 დღე, 3 საათი, 20 წუთი', $date->timespan(1403619368));
     }
 
     public function testCreateFromFormat()
@@ -28,19 +28,19 @@ class TranslationKaTest extends TestCaseBase
     public function testAgoTranslated()
     {
         $date = Date::parse('-21 hours');
-        $this->assertSame('21 საათშიში', $date->ago());
+        $this->assertSame('21 საათის წინ', $date->ago());
 
         $date = Date::parse('-5 days');
-        $this->assertSame('5 დღეში', $date->ago());
+        $this->assertSame('5 დღის წინ', $date->ago());
 
         $date = Date::parse('-3 weeks');
-        $this->assertSame('3 კვირისში', $date->ago());
+        $this->assertSame('3 კვირის წინ', $date->ago());
 
         $date = Date::parse('-6 months');
-        $this->assertSame('6 თვეში', $date->ago());
+        $this->assertSame('6 თვის წინ', $date->ago());
 
         $date = Date::parse('-10 years');
-        $this->assertSame('10 წელშიში', $date->ago());
+        $this->assertSame('10 წლის წინ', $date->ago());
     }
 
     public function testFormatDeclensions()
@@ -55,18 +55,18 @@ class TranslationKaTest extends TestCaseBase
     public function testAfterTranslated()
     {
         $date = Date::parse('+21 hours');
-        $this->assertSame('21 საათის წინ', $date->ago());
+        $this->assertSame('21 საათში', $date->ago());
 
         $date = Date::parse('+5 days');
-        $this->assertSame('5 დღის წინ', $date->ago());
+        $this->assertSame('5 დღეში', $date->ago());
 
         $date = Date::parse('+3 weeks');
-        $this->assertSame('3 კვირაა', $date->ago());
+        $this->assertSame('3 კვირაში', $date->ago());
 
         $date = Date::parse('+6 months');
-        $this->assertSame('6 თვის წინ', $date->ago());
+        $this->assertSame('6 თვეში', $date->ago());
 
         $date = Date::parse('+10 years');
-        $this->assertSame('10 წლის წინ', $date->ago());
+        $this->assertSame('10 წელიწადში', $date->ago());
     }
 }
