@@ -11,10 +11,10 @@ return [
     |
     */
 
-    'ago' => ':time រួចមកហើយ',
-    'from_now' => ':time ចាប់ពីឥឡូវនេះ',
-    'after' => ':time ក្រោយ',
-    'before' => ':time មុន',
+    'ago' => ':time មុន',
+    'from_now' => ':time ទៀត',
+    'after' => ' ៅ​ក្រោយ :time',
+    'before' => 'នៅ​មុន :time',
     'year' => ':count ឆ្នាំ',
     'month' => ':count ខែ',
     'week' => ':count សប្តាហ៍',
