@@ -13,7 +13,7 @@ return [
 
     'ago' => ':time មុន',
     'from_now' => ':time ទៀត',
-    'after' => ' ៅ​ក្រោយ :time',
+    'after' => 'នៅក្រោយ :time',
     'before' => 'នៅ​មុន :time',
     'year' => ':count ឆ្នាំ',
     'month' => ':count ខែ',
