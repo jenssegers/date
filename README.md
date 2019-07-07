@@ -1,7 +1,7 @@
 Date
 ====
 
-[![Latest Stable Version](http://img.shields.io/github/release/jenssegers/date.svg)](https://packagist.org/packages/jenssegers/date) [![Total Downloads](http://img.shields.io/packagist/dm/jenssegers/date.svg)](https://packagist.org/packages/jenssegers/date) [![Build Status](http://img.shields.io/travis/jenssegers/date.svg)](https://travis-ci.org/jenssegers/date) [![Coverage Status](https://coveralls.io/repos/github/jenssegers/date/badge.svg?branch=master)](https://coveralls.io/github/jenssegers/date?branch=master) [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg)](https://www.paypal.me/jenssegers)
+[![Financial Contributors on Open Collective](https://opencollective.com/date/all/badge.svg?label=financial+contributors)](https://opencollective.com/date) [![Latest Stable Version](http://img.shields.io/github/release/jenssegers/date.svg)](https://packagist.org/packages/jenssegers/date) [![Total Downloads](http://img.shields.io/packagist/dm/jenssegers/date.svg)](https://packagist.org/packages/jenssegers/date) [![Build Status](http://img.shields.io/travis/jenssegers/date.svg)](https://travis-ci.org/jenssegers/date) [![Coverage Status](https://coveralls.io/repos/github/jenssegers/date/badge.svg?branch=master)](https://coveralls.io/github/jenssegers/date?branch=master) [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg)](https://www.paypal.me/jenssegers)
 
 This date library extends [Carbon](https://github.com/briannesbitt/Carbon) with multi-language support. Methods such as `format`, `diffForHumans`, `parse`, `createFromFormat` and the new `timespan`, will now be translated based on your locale.
 
@@ -264,6 +264,36 @@ php generator.php nl_NL
 ```
 
 **NOTE!** If you are adding languages, please check the rules about the capitalization of month and day names: http://meta.wikimedia.org/wiki/Capitalization_of_Wiktionary_pages#Capitalization_of_month_names
+
+## Contributors
+
+### Code Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="https://github.com/jenssegers/date/graphs/contributors"><img src="https://opencollective.com/date/contributors.svg?width=890&button=false" /></a>
+
+### Financial Contributors
+
+Become a financial contributor and help us sustain our community. [[Contribute](https://opencollective.com/date/contribute)]
+
+#### Individuals
+
+<a href="https://opencollective.com/date"><img src="https://opencollective.com/date/individuals.svg?width=890"></a>
+
+#### Organizations
+
+Support this project with your organization. Your logo will show up here with a link to your website. [[Contribute](https://opencollective.com/date/contribute)]
+
+<a href="https://opencollective.com/date/organization/0/website"><img src="https://opencollective.com/date/organization/0/avatar.svg"></a>
+<a href="https://opencollective.com/date/organization/1/website"><img src="https://opencollective.com/date/organization/1/avatar.svg"></a>
+<a href="https://opencollective.com/date/organization/2/website"><img src="https://opencollective.com/date/organization/2/avatar.svg"></a>
+<a href="https://opencollective.com/date/organization/3/website"><img src="https://opencollective.com/date/organization/3/avatar.svg"></a>
+<a href="https://opencollective.com/date/organization/4/website"><img src="https://opencollective.com/date/organization/4/avatar.svg"></a>
+<a href="https://opencollective.com/date/organization/5/website"><img src="https://opencollective.com/date/organization/5/avatar.svg"></a>
+<a href="https://opencollective.com/date/organization/6/website"><img src="https://opencollective.com/date/organization/6/avatar.svg"></a>
+<a href="https://opencollective.com/date/organization/7/website"><img src="https://opencollective.com/date/organization/7/avatar.svg"></a>
+<a href="https://opencollective.com/date/organization/8/website"><img src="https://opencollective.com/date/organization/8/avatar.svg"></a>
+<a href="https://opencollective.com/date/organization/9/website"><img src="https://opencollective.com/date/organization/9/avatar.svg"></a>
 
 ## License
 
