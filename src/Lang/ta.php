@@ -12,7 +12,7 @@ return [
     */
 
     'ago' => ':time முன்பு',
-    'from_now' => ':time',
+    'from_now' => ':time இல்',
     'after' => ':time கழித்து',
     'before' => ':time முன்னால்',
     'year' => '1 ஆண்டு|:count ஆண்டுகள்',
@@ -21,7 +21,7 @@ return [
     'day' => '1 நாள்|:count நாட்கள்',
     'hour' => '1 மணி நேரம்|:count மணி நேரம்',
     'minute' => '1 நிமிடம்|:count நிமிடங்கள்',
-    'second' => '1 நொடி|:count நொடிகல்',
+    'second' => '1 நொடி|:count நொடிகள்',
 
     'january' => 'தை',
     'february' => 'மாசி',
