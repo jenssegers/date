@@ -13,8 +13,8 @@ return [
 
     'ago' => ':time yang lalu',
     'from_now' => ':time dari sekarang',
-    'after' => ':time setelah',
-    'before' => ':time sebelum',
+    'after' => 'setelah :time',
+    'before' => 'sebelum :time',
     'year' => ':count tahun',
     'month' => ':count bulan',
     'week' => ':count minggu',
