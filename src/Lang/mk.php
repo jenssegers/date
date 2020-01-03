@@ -24,7 +24,7 @@ return [
     'second' => '1 секунда|:count секунди',
 
     'january' => 'јануари',
-    'february' => 'фебруари',
+    'february' => 'февруари',
     'march' => 'март',
     'april' => 'април',
     'may' => 'мај',
