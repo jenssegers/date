@@ -18,6 +18,7 @@ class TestCaseBase extends TestCase
 
         // Freeze the time for the test duration
         Carbon::setTestNow(Carbon::now());
+
         $this->time = Carbon::now()->getTimestamp();
     }
 }
