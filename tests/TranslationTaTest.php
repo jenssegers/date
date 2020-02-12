@@ -81,6 +81,8 @@ class TranslationTaTest extends TestCaseBase
     /** @test */
     public function it_translates_ago()
     {
+        Date::setTestNow('2019-03-27');
+
         $oneAgo = Date::parse('-1 second');
         $fiveAgo = Date::parse('-5 seconds');
 
@@ -121,11 +123,11 @@ class TranslationTaTest extends TestCaseBase
 
         ///
 
-        $oneAgo = Date::parse('-1 month');
-        $fiveAgo = Date::parse('-3 months');
+        $oneAgo = Date::now()->subMonthNoOverflow();
+        $threeAgo = Date::now()->subMonthsNoOverflow(3);
 
         $this->assertEquals('1 மாதம் முன்', $oneAgo->ago());
-        $this->assertEquals('3 மாதங்கள் முன்', $fiveAgo->ago());
+        $this->assertEquals('3 மாதங்கள் முன்', $threeAgo->ago());
 
         ///
 

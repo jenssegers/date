@@ -60,7 +60,7 @@ class TranslationTest extends TestCaseBase
         $date = Date::parse('-40 days');
         $this->assertSame('vor 1 Monat', $date->ago());
 
-        $date = Date::parse('-5 months');
+        $date = Date::now()->subMonthsNoOverflow(5);
         $this->assertSame('vor 5 Monaten', $date->ago());
 
         $date = Date::parse('-5 seconds');
@@ -107,7 +107,7 @@ class TranslationTest extends TestCaseBase
         $date = Date::parse('-5 years');
         $this->assertSame('5 jaar geleden', $date->ago());
 
-        $date = Date::parse('-5 months');
+        $date = Date::now()->subMonthsNoOverflow(5);
         $this->assertSame('5 maanden geleden', $date->ago());
 
         $date = Date::parse('-32 days');

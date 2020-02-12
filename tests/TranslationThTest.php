@@ -36,7 +36,7 @@ class TranslationThTest extends TestCaseBase
         $date = Date::parse('-3 weeks');
         $this->assertSame('3 สัปดาห์ที่แล้ว', $date->ago());
 
-        $date = Date::parse('-6 months');
+        $date = Date::now()->subMonthsNoOverflow(6);
         $this->assertSame('6 เดือนที่แล้ว', $date->ago());
 
         $date = Date::parse('-10 years');
