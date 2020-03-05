@@ -8,7 +8,7 @@ use DateTimeZone;
 use ReflectionMethod;
 use Symfony\Component\Translation\Loader\ArrayLoader;
 use Symfony\Component\Translation\Translator;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class Date extends Carbon
 {
@@ -170,7 +170,7 @@ class Date extends Carbon
                 if (in_array($character, ['F', 'M'])) {
                     $choice = preg_match('#[dj][ .]*$#', substr($format, 0, $i)) ? 1 : 0;
 
-                    $translated = $lang->transChoice(mb_strtolower($key), $choice);
+                    $translated = $lang->trans(mb_strtolower($key), ['%count%' => $choice]);
                 } else {
                     $translated = $lang->trans(mb_strtolower($key));
                 }
@@ -244,7 +244,7 @@ class Date extends Carbon
         // Loop all units and build string
         foreach ($units as $k => $unit) {
             if ($interval[$k]) {
-                $str[] = $lang->transChoice($unit, $interval[$k], [':count' => $interval[$k]]);
+                $str[] = $lang->trans($unit, ['%count%' => $interval[$k]], [':count' => $interval[$k]]);
             }
         }
 
@@ -255,9 +255,11 @@ class Date extends Carbon
      * Adds an amount of days, months, years, hours, minutes and seconds to a Date object.
      *
      * @param DateInterval|string $interval
-     * @param int                 $value (only effective if using Carbon 2)
-     * @param bool|null           $overflow (only effective if using Carbon 2)
+     * @param int $value (only effective if using Carbon 2)
+     * @param bool|null $overflow (only effective if using Carbon 2)
      * @return Date|bool
+     * @throws \ReflectionException
+     * @throws \Exception
      */
     public function add($interval, $value = 1, $overflow = null)
     {
@@ -282,9 +284,11 @@ class Date extends Carbon
      * Subtracts an amount of days, months, years, hours, minutes and seconds from a DateTime object.
      *
      * @param DateInterval|string $interval
-     * @param int                 $value (only effective if using Carbon 2)
-     * @param bool|null           $overflow (only effective if using Carbon 2)
+     * @param int $value (only effective if using Carbon 2)
+     * @param bool|null $overflow (only effective if using Carbon 2)
      * @return Date|bool
+     * @throws \ReflectionException
+     * @throws \Exception
      */
     public function sub($interval, $value = 1, $overflow = null)
     {
@@ -397,6 +401,9 @@ class Date extends Carbon
      * Translate a locale based time string to its english equivalent.
      *
      * @param  string $time
+     * @param null $from
+     * @param null $to
+     * @param int $mode
      * @return string
      */
     public static function translateTimeString($time, $from = null, $to = null, $mode = -1)

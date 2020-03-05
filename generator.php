@@ -1,6 +1,7 @@
 <?php
 require 'vendor/autoload.php';
 
+use Carbon\Carbon;
 use Jenssegers\Date\Date;
 
 // Set the language
