@@ -1,5 +1,4 @@
 <?php
-
 use Jenssegers\Date\Date;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Translation\MessageSelector;
