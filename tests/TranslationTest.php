@@ -178,6 +178,7 @@ class TranslationTest extends TestCase
     {
         Date::setLocale('ru');
 
+
         $date = new Date('10 march 2015');
         $this->assertSame('март 2015', $date->format('F Y'));
 
