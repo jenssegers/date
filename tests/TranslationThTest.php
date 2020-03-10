@@ -1,16 +1,12 @@
 <?php
 
-use Jenssegers\Date\Date;
-use PHPUnit\Framework\TestCase;
+namespace Tests\Jenssegers;
 
-class TranslationThTest extends TestCase
+use Jenssegers\Date\Date;
+
+class TranslationThTest extends TestCaseBase
 {
-    public function setUp()
-    {
-        date_default_timezone_set('UTC');
-        Date::setTestNow(Date::now());
-        Date::setLocale('th');
-    }
+    const LOCALE = 'th';
 
     public function testTimespanTranslated()
     {
@@ -40,7 +36,7 @@ class TranslationThTest extends TestCase
         $date = Date::parse('-3 weeks');
         $this->assertSame('3 สัปดาห์ที่แล้ว', $date->ago());
 
-        $date = Date::parse('-6 months');
+        $date = Date::now()->subMonthsNoOverflow(6);
         $this->assertSame('6 เดือนที่แล้ว', $date->ago());
 
         $date = Date::parse('-10 years');
@@ -59,18 +55,18 @@ class TranslationThTest extends TestCase
     public function testAfterTranslated()
     {
         $date = Date::parse('+21 hours');
-        $this->assertSame('21 ชั่วโมงจากนี้', $date->ago());
+        $this->assertSame('อีก 21 ชั่วโมง', $date->ago());
 
         $date = Date::parse('+5 days');
-        $this->assertSame('5 วันจากนี้', $date->ago());
+        $this->assertSame('อีก 5 วัน', $date->ago());
 
         $date = Date::parse('+3 weeks');
-        $this->assertSame('3 สัปดาห์จากนี้', $date->ago());
+        $this->assertSame('อีก 3 สัปดาห์', $date->ago());
 
         $date = Date::parse('+6 months');
-        $this->assertSame('6 เดือนจากนี้', $date->ago());
+        $this->assertSame('อีก 6 เดือน', $date->ago());
 
         $date = Date::parse('+10 years');
-        $this->assertSame('10 ปีจากนี้', $date->ago());
+        $this->assertSame('อีก 10 ปี', $date->ago());
     }
 }

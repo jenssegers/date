@@ -1,18 +1,14 @@
 <?php
 
-use Jenssegers\Date\Date;
-use PHPUnit\Framework\TestCase;
-use Symfony\Component\Translation\Loader\ArrayLoader;
-use Symfony\Component\Translation\Translator;
+namespace Tests\Jenssegers;
 
-class TranslationHuTest extends TestCase
+use Carbon\Translator;
+use Jenssegers\Date\Date;
+use Symfony\Component\Translation\Loader\ArrayLoader;
+
+class TranslationHuTest extends TestCaseBase
 {
-    public function setUp()
-    {
-        date_default_timezone_set('UTC');
-        Date::setTestNow(Date::now());
-        Date::setLocale('hu');
-    }
+    const LOCALE = 'hu';
 
     public function testGetsAndSetsTranslator()
     {
@@ -46,7 +42,7 @@ class TranslationHuTest extends TestCase
         $date = Date::parse('-3 weeks');
         $this->assertSame('3 hete', $date->ago());
 
-        $date = Date::parse('-6 months');
+        $date = Date::now()->subMonthsNoOverflow(6);
         $this->assertSame('6 hónapja', $date->ago());
 
         $date = Date::parse('-10 years');
@@ -103,7 +99,7 @@ class TranslationHuTest extends TestCase
         $date = Date::parse('-3 weeks');
         $this->assertSame('3 héttel korábban', $date->ago(Date::now()));
 
-        $date = Date::parse('-6 months');
+        $date = Date::now()->subMonthsNoOverflow(6);
         $this->assertSame('6 hónappal korábban', $date->ago(Date::now()));
 
         $date = Date::parse('-10 years');

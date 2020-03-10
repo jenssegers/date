@@ -1,31 +1,21 @@
 <?php
 
-use Carbon\Carbon;
+namespace Tests\Jenssegers;
+
 use Jenssegers\Date\Date;
-use PHPUnit\Framework\TestCase;
 
-class DateTest extends TestCase
+class DateTest extends TestCaseBase
 {
-    protected $time;
-
-    public function setUp()
-    {
-        date_default_timezone_set('UTC');
-        Date::setTestNow(Date::now());
-        $this->time = Date::now()->getTimestamp();
-        Date::setLocale('en');
-    }
-
     public function testConstructs()
     {
         $date = new Date();
-        $this->assertInstanceOf('Jenssegers\Date\Date', $date);
+        $this->assertInstanceOf(Date::class, $date);
     }
 
     public function testStaticNow()
     {
         $date = Date::now();
-        $this->assertInstanceOf('Jenssegers\Date\Date', $date);
+        $this->assertInstanceOf(Date::class, $date);
         $this->assertEquals($this->time, $date->getTimestamp());
     }
 
@@ -64,10 +54,10 @@ class DateTest extends TestCase
         $this->assertEquals($date1, $date2);
     }
 
-    public function testCreateFromCarbon()
+    public function testCreateFromDate()
     {
-        $date = Date::make(Carbon::createFromFormat('U', 1367186296));
-        $this->assertInstanceOf('Jenssegers\Date\Date', $date);
+        $date = Date::make(Date::createFromFormat('U', 1367186296));
+        $this->assertInstanceOf(Date::class, $date);
         $this->assertEquals(1367186296, $date->getTimestamp());
     }
 
@@ -75,8 +65,8 @@ class DateTest extends TestCase
     {
         $now = Date::now();
 
-        $this->assertInstanceOf('Jenssegers\Date\Date', $now->copy()->add('1 day'));
-        $this->assertInstanceOf('Jenssegers\Date\Date', $now->copy()->sub('1 day'));
+        $this->assertInstanceOf(Date::class, $now->copy()->add('1 day'));
+        $this->assertInstanceOf(Date::class, $now->copy()->sub('1 day'));
 
         $this->assertSame(86400, $now->copy()->add('1 day')->getTimestamp() - $now->getTimestamp());
         $this->assertSame(4 * 86400, $now->copy()->add('4 day')->getTimestamp() - $now->getTimestamp());
@@ -189,10 +179,13 @@ class DateTest extends TestCase
     {
         Date::setLocale('ru');
         $date = Date::translateTimeString('понедельник 21 март 2015');
-        $this->assertSame('monday 21 march 2015', $date);
+        $this->assertSame('monday 21 march 2015', mb_strtolower($date));
 
         Date::setLocale('de');
         $date = Date::translateTimeString('Montag 21 März 2015');
-        $this->assertSame('monday 21 march 2015', $date);
+        $this->assertSame('monday 21 march 2015', mb_strtolower($date));
+
+        Date::setLocale('xx');
+        $this->assertSame('Foobar', Date::translateTimeString('Foobar'));
     }
 }

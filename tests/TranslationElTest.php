@@ -1,16 +1,12 @@
 <?php
 
-use Jenssegers\Date\Date;
-use PHPUnit\Framework\TestCase;
+namespace Tests\Jenssegers;
 
-class TranslationElTest extends TestCase
+use Jenssegers\Date\Date;
+
+class TranslationElTest extends TestCaseBase
 {
-    public function setUp()
-    {
-        date_default_timezone_set('UTC');
-        Date::setTestNow(Date::now());
-        Date::setLocale('el');
-    }
+    const LOCALE = 'el';
 
     public function testTimespanTranslated()
     {
@@ -32,19 +28,19 @@ class TranslationElTest extends TestCase
     public function testAgoTranslated()
     {
         $date = Date::parse('-21 hours');
-        $this->assertSame('πριν από 21 ώρες', $date->ago());
+        $this->assertSame('πριν 21 ώρες', $date->ago());
 
         $date = Date::parse('-5 days');
-        $this->assertSame('πριν από 5 μέρες', $date->ago());
+        $this->assertSame('πριν 5 μέρες', $date->ago());
 
         $date = Date::parse('-3 weeks');
-        $this->assertSame('πριν από 3 εβδομάδες', $date->ago());
+        $this->assertSame('πριν 3 εβδομάδες', $date->ago());
 
-        $date = Date::parse('-6 months');
-        $this->assertSame('πριν από 6 μήνες', $date->ago());
+        $date = Date::now()->subMonthsNoOverflow(6);
+        $this->assertSame('πριν 6 μήνες', $date->ago());
 
         $date = Date::parse('-10 years');
-        $this->assertSame('πριν από 10 χρόνια', $date->ago());
+        $this->assertSame('πριν 10 χρόνια', $date->ago());
     }
 
     public function testFormatDeclensions()
@@ -98,18 +94,18 @@ class TranslationElTest extends TestCase
     public function testAfterTranslated()
     {
         $date = Date::parse('+21 hours');
-        $this->assertSame('σε 21 ώρες από τώρα', $date->ago());
+        $this->assertSame('σε 21 ώρες', $date->ago());
 
         $date = Date::parse('+5 days');
-        $this->assertSame('σε 5 μέρες από τώρα', $date->ago());
+        $this->assertSame('σε 5 μέρες', $date->ago());
 
         $date = Date::parse('+3 weeks');
-        $this->assertSame('σε 3 εβδομάδες από τώρα', $date->ago());
+        $this->assertSame('σε 3 εβδομάδες', $date->ago());
 
         $date = Date::parse('+6 months');
-        $this->assertSame('σε 6 μήνες από τώρα', $date->ago());
+        $this->assertSame('σε 6 μήνες', $date->ago());
 
         $date = Date::parse('+10 years');
-        $this->assertSame('σε 10 χρόνια από τώρα', $date->ago());
+        $this->assertSame('σε 10 χρόνια', $date->ago());
     }
 }

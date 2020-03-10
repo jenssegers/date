@@ -1,0 +1,28 @@
+---
+engines:
+  phpmd:
+    enabled: true
+    config:
+      rulesets: "phpmd.xml"
+  rubocop:
+    enabled: true
+  shellcheck:
+    enabled: true
+  stylelint:
+    enabled: true
+  duplication:
+    enabled: true
+  metrics:
+    enabled: true
+  coverage:
+    enabled: true
+  structure:
+    enabled: true
+  sonar-php:
+    enabled: true
+  fixme:
+    enabled: true
+  phpcodesniffer:
+    enabled: true
+exclude_paths:
+  - 'tests/**'

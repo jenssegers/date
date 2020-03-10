@@ -1,19 +1,12 @@
 <?php
 
-use Jenssegers\Date\Date;
-use PHPUnit\Framework\TestCase;
+namespace Tests\Jenssegers;
 
-/**
- * Class TranslationJaTest.
- */
-class TranslationJaTest extends TestCase
+use Jenssegers\Date\Date;
+
+class TranslationJaTest extends TestCaseBase
 {
-    public function setUp()
-    {
-        date_default_timezone_set('UTC');
-        Date::setTestNow(Date::now());
-        Date::setLocale('ja');
-    }
+    const LOCALE = 'ja';
 
     /**
      * @test
@@ -99,8 +92,8 @@ class TranslationJaTest extends TestCase
         $oneSecondAgo = Date::parse('-1 second');
         $fiveSecondsAgo = Date::parse('-5 seconds');
 
-        $this->assertEquals('1 秒 前', $oneSecondAgo->ago());
-        $this->assertEquals('5 秒 前', $fiveSecondsAgo->ago());
+        $this->assertEquals('1秒前', $oneSecondAgo->ago());
+        $this->assertEquals('5秒前', $fiveSecondsAgo->ago());
     }
 
     /**
@@ -111,8 +104,8 @@ class TranslationJaTest extends TestCase
         $oneMinuteAgo = Date::parse('-1 minute');
         $fiveMinutesAgo = Date::parse('-5 minutes');
 
-        $this->assertEquals('1 分 前', $oneMinuteAgo->ago());
-        $this->assertEquals('5 分 前', $fiveMinutesAgo->ago());
+        $this->assertEquals('1分前', $oneMinuteAgo->ago());
+        $this->assertEquals('5分前', $fiveMinutesAgo->ago());
     }
 
     /**
@@ -123,8 +116,8 @@ class TranslationJaTest extends TestCase
         $oneHourAgo = Date::parse('-1 hour');
         $fiveHoursAgo = Date::parse('-5 hours');
 
-        $this->assertEquals('1 時間 前', $oneHourAgo->ago());
-        $this->assertEquals('5 時間 前', $fiveHoursAgo->ago());
+        $this->assertEquals('1時間前', $oneHourAgo->ago());
+        $this->assertEquals('5時間前', $fiveHoursAgo->ago());
     }
 
     /**
@@ -135,8 +128,8 @@ class TranslationJaTest extends TestCase
         $oneDayAgo = Date::parse('-1 day');
         $threeDaysAgo = Date::parse('-3 days');
 
-        $this->assertEquals('1 日 前', $oneDayAgo->ago());
-        $this->assertEquals('3 日 前', $threeDaysAgo->ago());
+        $this->assertEquals('1日前', $oneDayAgo->ago());
+        $this->assertEquals('3日前', $threeDaysAgo->ago());
     }
 
     /**
@@ -147,8 +140,8 @@ class TranslationJaTest extends TestCase
         $oneWeekAgo = Date::parse('-1 week');
         $threeWeeksAgo = Date::parse('-3 weeks');
 
-        $this->assertEquals('1 週間 前', $oneWeekAgo->ago());
-        $this->assertEquals('3 週間 前', $threeWeeksAgo->ago());
+        $this->assertEquals('1週間前', $oneWeekAgo->ago());
+        $this->assertEquals('3週間前', $threeWeeksAgo->ago());
     }
 
     /**
@@ -156,11 +149,13 @@ class TranslationJaTest extends TestCase
      */
     public function it_can_translate_months_ago()
     {
-        $oneMonthAgo = Date::parse('-1 month');
-        $twoMonthsAgo = Date::parse('-2 months');
+        Date::setTestNow('2019-03-27');
 
-        $this->assertEquals('1 ヶ月 前', $oneMonthAgo->ago());
-        $this->assertEquals('2 ヶ月 前', $twoMonthsAgo->ago());
+        $oneMonthAgo = Date::now()->subMonthNoOverflow();
+        $twoMonthsAgo = Date::now()->subMonthsNoOverflow(2);
+
+        $this->assertEquals('1ヶ月前', $oneMonthAgo->ago());
+        $this->assertEquals('2ヶ月前', $twoMonthsAgo->ago());
     }
 
     /**
@@ -171,8 +166,8 @@ class TranslationJaTest extends TestCase
         $oneYearAgo = Date::parse('-1 year');
         $towYearsAgo = Date::parse('-2 years');
 
-        $this->assertEquals('1 年 前', $oneYearAgo->ago());
-        $this->assertEquals('2 年 前', $towYearsAgo->ago());
+        $this->assertEquals('1年前', $oneYearAgo->ago());
+        $this->assertEquals('2年前', $towYearsAgo->ago());
     }
 
     /**
@@ -183,8 +178,8 @@ class TranslationJaTest extends TestCase
         $oneSecondFromNow = Date::parse('1 second');
         $fiveSecondsFromNow = Date::parse('5 seconds');
 
-        $this->assertEquals('今から 1 秒', $oneSecondFromNow->diffForHumans());
-        $this->assertEquals('今から 5 秒', $fiveSecondsFromNow->diffForHumans());
+        $this->assertEquals('1秒後', $oneSecondFromNow->diffForHumans());
+        $this->assertEquals('5秒後', $fiveSecondsFromNow->diffForHumans());
     }
 
     /**
@@ -195,8 +190,8 @@ class TranslationJaTest extends TestCase
         $oneMinuteFromNow = Date::parse('1 minute');
         $fiveMinutesFromNow = Date::parse('5 minutes');
 
-        $this->assertEquals('今から 1 分', $oneMinuteFromNow->diffForHumans());
-        $this->assertEquals('今から 5 分', $fiveMinutesFromNow->diffForHumans());
+        $this->assertEquals('1分後', $oneMinuteFromNow->diffForHumans());
+        $this->assertEquals('5分後', $fiveMinutesFromNow->diffForHumans());
     }
 
     /**
@@ -207,8 +202,8 @@ class TranslationJaTest extends TestCase
         $oneHourFromNow = Date::parse('1 hour');
         $fiveHoursFromNow = Date::parse('5 hours');
 
-        $this->assertEquals('今から 1 時間', $oneHourFromNow->diffForHumans());
-        $this->assertEquals('今から 5 時間', $fiveHoursFromNow->diffForHumans());
+        $this->assertEquals('1時間後', $oneHourFromNow->diffForHumans());
+        $this->assertEquals('5時間後', $fiveHoursFromNow->diffForHumans());
     }
 
     /**
@@ -219,8 +214,8 @@ class TranslationJaTest extends TestCase
         $oneDayFromNow = Date::parse('1 day');
         $threeDaysFromNow = Date::parse('3 days');
 
-        $this->assertEquals('今から 1 日', $oneDayFromNow->diffForHumans());
-        $this->assertEquals('今から 3 日', $threeDaysFromNow->diffForHumans());
+        $this->assertEquals('1日後', $oneDayFromNow->diffForHumans());
+        $this->assertEquals('3日後', $threeDaysFromNow->diffForHumans());
     }
 
     /**
@@ -231,8 +226,8 @@ class TranslationJaTest extends TestCase
         $oneWeekFromNow = Date::parse('1 week');
         $threeWeeksFromNow = Date::parse('3 weeks');
 
-        $this->assertEquals('今から 1 週間', $oneWeekFromNow->diffForHumans());
-        $this->assertEquals('今から 3 週間', $threeWeeksFromNow->diffForHumans());
+        $this->assertEquals('1週間後', $oneWeekFromNow->diffForHumans());
+        $this->assertEquals('3週間後', $threeWeeksFromNow->diffForHumans());
     }
 
     /**
@@ -243,8 +238,8 @@ class TranslationJaTest extends TestCase
         $oneMonthFromNow = Date::parse('1 month');
         $twoMonthsFromNow = Date::parse('2 months');
 
-        $this->assertEquals('今から 1 ヶ月', $oneMonthFromNow->diffForHumans());
-        $this->assertEquals('今から 2 ヶ月', $twoMonthsFromNow->diffForHumans());
+        $this->assertEquals('1ヶ月後', $oneMonthFromNow->diffForHumans());
+        $this->assertEquals('2ヶ月後', $twoMonthsFromNow->diffForHumans());
     }
 
     /**
@@ -255,7 +250,7 @@ class TranslationJaTest extends TestCase
         $oneYearFromNow = Date::parse('1 year');
         $towYearsFromNow = Date::parse('2 years');
 
-        $this->assertEquals('今から 1 年', $oneYearFromNow->diffForHumans());
-        $this->assertEquals('今から 2 年', $towYearsFromNow->diffForHumans());
+        $this->assertEquals('1年後', $oneYearFromNow->diffForHumans());
+        $this->assertEquals('2年後', $towYearsFromNow->diffForHumans());
     }
 }
