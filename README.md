@@ -5,6 +5,8 @@ Date
 
 This date library extends [Carbon](https://github.com/briannesbitt/Carbon) with multi-language support. Methods such as `format`, `diffForHumans`, `parse`, `createFromFormat` and the new `timespan`, will now be translated based on your locale.
 
+> All translations made by contributors have been moved to the Carbon 2 package. This package now uses the Carbon translations to provide you with better multi-language support. Translation issues should be reported on the [Carbon repository](https://github.com/briannesbitt/Carbon). Please also check out the original documentation [here](https://carbon.nesbot.com/docs).
+
 Installation
 ------------
 
@@ -34,64 +36,64 @@ Languages
 
 This package contains language files for the following languages:
 
- - Albanian
- - Arabic
- - Azerbaijani
- - Bangla
- - Basque
- - Belarusian
- - Bosnian
- - Brazilian Portuguese
- - Bulgarian
- - Catalan
- - Croatian
- - Chinese Simplified
- - Chinese Traditional
- - Czech
- - Danish
- - Dutch
- - English
- - Esperanto
- - Estonian
- - Finnish
- - French
- - Galician
- - Georgian
- - German
- - Greek
- - Hebrew
- - Hindi
- - Hungarian
- - Icelandic
- - Indonesian
- - Italian
- - Japanese
- - Kazakh
- - Korean
- - Latvian
- - Lithuanian
- - Macedonian
- - Malay
- - Norwegian
- - Nepali (नेपाली)
- - Polish
- - Portuguese
- - Persian (Farsi)
- - Romanian
- - Russian
- - Thai
- - Serbian (latin)
- - Serbian (cyrillic)
- - Slovak
- - Slovenian
- - Spanish
- - Swedish
- - Turkish
- - Turkmen
- - Ukrainian
- - Uzbek
- - Vietnamese
- - Welsh
+- Albanian
+- Arabic
+- Azerbaijani
+- Bangla
+- Basque
+- Belarusian
+- Bosnian
+- Brazilian Portuguese
+- Bulgarian
+- Catalan
+- Croatian
+- Chinese Simplified
+- Chinese Traditional
+- Czech
+- Danish
+- Dutch
+- English
+- Esperanto
+- Estonian
+- Finnish
+- French
+- Galician
+- Georgian
+- German
+- Greek
+- Hebrew
+- Hindi
+- Hungarian
+- Icelandic
+- Indonesian
+- Italian
+- Japanese
+- Kazakh
+- Korean
+- Latvian
+- Lithuanian
+- Macedonian
+- Malay
+- Norwegian
+- Nepali (नेपाली)
+- Polish
+- Portuguese
+- Persian (Farsi)
+- Romanian
+- Russian
+- Thai
+- Serbian (latin)
+- Serbian (cyrillic)
+- Slovak
+- Slovenian
+- Spanish
+- Swedish
+- Turkish
+- Turkmen
+- Ukrainian
+- Uzbek
+- Vietnamese
+- Welsh
 
 Usage
 -----
@@ -123,11 +125,11 @@ $date = Date::createFromFormat('l d F Y', 'zaterdag 21 maart 2015');
 Carbon
 ------
 
-Carbon is the library the Date class is based on. All of the original Carbon operations are still available, check out https://github.com/briannesbitt/Carbon for more information. Here are some of the available methods:
+Carbon is the library the Date class is based on. All of the original Carbon operations are still available, check out <https://carbon.nesbot.com/docs> for more information. Here are some of the available methods:
 
 ### Creating dates
 
-You can create Date objects just like the DateTime object (http://www.php.net/manual/en/datetime.construct.php):
+You can create Date objects just like the DateTime object (<http://www.php.net/manual/en/datetime.construct.php):>
 
 ```php
 $date = new Date();
@@ -144,7 +146,7 @@ You can skip the creation of a DateTimeZone object:
 $date = new Date('2000-01-31', 'Europe/Brussels');
 ```
 
-Create Date objects from a relative format (http://www.php.net/manual/en/datetime.formats.relative.php):
+Create Date objects from a relative format (<http://www.php.net/manual/en/datetime.formats.relative.php):>
 
 ```php
 $date = new Date('now');
@@ -176,7 +178,7 @@ $date = Date::create(2000, 1, 31, 12, 0, 0);
 
 ### Formatting Dates
 
-You can format a Date object like the DateTime object (http://www.php.net/manual/en/function.date.php):
+You can format a Date object like the DateTime object (<http://www.php.net/manual/en/function.date.php):>
 
 ```php
 echo Date::now()->format('Y-m-d'); // 2000-01-31
@@ -217,7 +219,7 @@ echo $date->age; // -10
 
 ### Manipulating Dates
 
-You can manipulate by using the *add* and *sub* methods, with relative intervals (http://www.php.net/manual/en/datetime.formats.relative.php):
+You can manipulate by using the *add* and *sub* methods, with relative intervals (<http://www.php.net/manual/en/datetime.formats.relative.php):>
 
 ```php
 $yesterday = Date::now()->sub('1 day');
@@ -242,28 +244,7 @@ $date->second = 0;
 Contributing
 ------------
 
-You can easily add new languages by adding a new language file to the *lang* directory. These language entries support pluralization. By using a "pipe" character, you may separate the singular and plural forms of a string:
-
-```php
-'hour'      => '1 hour|:count hours',
-'minute'    => '1 minute|:count minutes',
-'second'    => '1 second|:count seconds',
-```
-
-Some languages have a different unit translation when they are used in combination with a suffix like 'ago'. For those situations you can add additional translations by adding the suffix to the unit as a key:
-
-```php
-'year'          => '1 Jahr|:count Jahre',
-'year_ago'      => '1 Jahr|:count Jahren',
-```
-
-There is also a `generator.php` script that can be used to quickly output day and month translations for a specific locale. If you want to add a new language, this can speed up the process:
-
-```bash
-php generator.php nl_NL
-```
-
-**NOTE!** If you are adding languages, please check the rules about the capitalization of month and day names: http://meta.wikimedia.org/wiki/Capitalization_of_Wiktionary_pages#Capitalization_of_month_names
+Language contributions should made to <https://github.com/briannesbitt/Carbon>.
 
 ## License
 
