@@ -241,11 +241,14 @@ $date->minute = 0;
 $date->second = 0;
 ```
 
-Contributing
-------------
+## Contributing
 
 Language contributions should made to <https://github.com/briannesbitt/Carbon>.
 
 ## License
 
 Laravel Date is licensed under [The MIT License (MIT)](LICENSE).
+
+## Security contact information
+
+To report a security vulnerability, follow [these steps](https://tidelift.com/security).
