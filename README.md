@@ -129,7 +129,7 @@ Carbon is the library the Date class is based on. All of the original Carbon ope
 
 ### Creating dates
 
-You can create Date objects just like the DateTime object (<http://www.php.net/manual/en/datetime.construct.php):>
+You can create Date objects just like the DateTime object (<http://www.php.net/manual/en/datetime.construct.php>):
 
 ```php
 $date = new Date();
@@ -146,7 +146,7 @@ You can skip the creation of a DateTimeZone object:
 $date = new Date('2000-01-31', 'Europe/Brussels');
 ```
 
-Create Date objects from a relative format (<http://www.php.net/manual/en/datetime.formats.relative.php):>
+Create Date objects from a relative format (<http://www.php.net/manual/en/datetime.formats.relative.php>):
 
 ```php
 $date = new Date('now');
@@ -178,7 +178,7 @@ $date = Date::create(2000, 1, 31, 12, 0, 0);
 
 ### Formatting Dates
 
-You can format a Date object like the DateTime object (<http://www.php.net/manual/en/function.date.php):>
+You can format a Date object like the DateTime object (<http://www.php.net/manual/en/function.date.php>):
 
 ```php
 echo Date::now()->format('Y-m-d'); // 2000-01-31
@@ -219,7 +219,7 @@ echo $date->age; // -10
 
 ### Manipulating Dates
 
-You can manipulate by using the *add* and *sub* methods, with relative intervals (<http://www.php.net/manual/en/datetime.formats.relative.php):>
+You can manipulate by using the *add* and *sub* methods, with relative intervals (<http://www.php.net/manual/en/datetime.formats.relative.php>):
 
 ```php
 $yesterday = Date::now()->sub('1 day');
