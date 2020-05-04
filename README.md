@@ -34,66 +34,8 @@ You can also add it as a Facade in `config/app.php`:
 Languages
 ---------
 
-This package contains language files for the following languages:
-
-- Albanian
-- Arabic
-- Azerbaijani
-- Bangla
-- Basque
-- Belarusian
-- Bosnian
-- Brazilian Portuguese
-- Bulgarian
-- Catalan
-- Croatian
-- Chinese Simplified
-- Chinese Traditional
-- Czech
-- Danish
-- Dutch
-- English
-- Esperanto
-- Estonian
-- Finnish
-- French
-- Galician
-- Georgian
-- German
-- Greek
-- Hebrew
-- Hindi
-- Hungarian
-- Icelandic
-- Indonesian
-- Italian
-- Japanese
-- Kazakh
-- Korean
-- Latvian
-- Lithuanian
-- Macedonian
-- Malay
-- Norwegian
-- Nepali (नेपाली)
-- Polish
-- Portuguese
-- Persian (Farsi)
-- Romanian
-- Russian
-- Thai
-- Serbian (latin)
-- Serbian (cyrillic)
-- Slovak
-- Slovenian
-- Spanish
-- Swedish
-- Turkish
-- Turkmen
-- Ukrainian
-- Uzbek
-- Vietnamese
-- Welsh
+This package supports the following languages:
+https://carbon.nesbot.com/docs/#supported-locales
 
 Usage
 -----
