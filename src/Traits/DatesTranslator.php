@@ -10,7 +10,7 @@ trait DatesTranslator {
      * Get the attribute created_at like a instance of Date
      *
      * @param [type] $created_at
-     * @return void
+     * @return Jenssegers\Date
      */
     public function getCreatedAtAttribute($created_at)
     {
@@ -21,7 +21,7 @@ trait DatesTranslator {
      * Get the attribute updated_at like a instance of Date
      *
      * @param [type] $updated_at
-     * @return void
+     * @return Jenssegers\Date
      */
     public function getUpdatedAtAttribute($updated_at)
     {
@@ -32,7 +32,7 @@ trait DatesTranslator {
      * Get the attribute deleted_at like a instance of Date
      *
      * @param [type] $deleted_at
-     * @return void
+     * @return Jenssegers\Date
      */
     public function getDeletedAtAttribute($deleted_at)
     {
