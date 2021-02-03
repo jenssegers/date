@@ -319,7 +319,7 @@ This package contains language files for the following languages (https://carbon
 Usage
 -----
 
-The Date class extends the Carbon methods such as `format` and `diffForHumans`n and translates them based on your locale:
+The Date class extends the Carbon methods such as `format` and `diffForHumans`, and translates them based on your locale:
 
 ```php
 use Jenssegers\Date\Date;
