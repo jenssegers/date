@@ -46,10 +46,10 @@ class TranslationKaTest extends TestCaseBase
     public function testFormatDeclensions()
     {
         $date = new Date('10 march 2015');
-        $this->assertSame('მარტი 2015', $date->format('F Y'));
+        $this->assertSame('მარტს 2015', $date->format('F Y'));
 
         $date = new Date('10 march 2015');
-        $this->assertSame('10 მარტს 2015', $date->format('j F Y'));
+        $this->assertSame('10 მარტი 2015', $date->format('j F Y'));
     }
 
     public function testAfterTranslated()
